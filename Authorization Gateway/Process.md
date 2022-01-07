@@ -147,7 +147,40 @@ Definition and hyperlink to sample SOAP request and response.
 - [**GetCertificationTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetCertificationTerminalSettings)
   - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
   - **Input**:  Accepts no parameters. 
-  - **Output**: Outputs an XML string. 
+  - **Successful Output**: 
+
+```
+<?xml version=”1.0” encoding=”utf-8”?>
+<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” 
+xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
+  <TERMINAL_ID>2318</TERMINAL_ID>
+  <SEC_CODE>WEB</SEC_CODE>
+  <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
+  <ALLOW_CNSMR_CREDITS>false</ALLOW_CNSMR_CREDITS>
+  <DL_REQUIRED>false</DL_REQUIRED>
+  <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
+  <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
+  <SCHEMA_FILE_PATH>	
+http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd
+  </SCHEMA_FILE_PATH>
+  <XML_TEMPLATE_PATH>
+http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml
+  </XML_TEMPLATE_PATH>
+</TERMINAL_SETTINGS>
+```
+### **The Terminal Settings XML will contain the following elements**:
+|                                  |                                                                                                                                                                        |
+|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     TERMINAL_SETTINGS            |     Is the parent   element and contains all other elements within the Terminal Settings XML   document.                                                               |
+|     TERMINAL_ID                  |     Contains the ID   for the terminal. The Terminal ID will be numeric value.                                                                                         |
+|     SEC_CODE                     |     Contains the   Standard Entry Class. This will either be Ck21, PPD, CCD, POP, TEL, or WEB.                                                                         |
+|     IS_GATEWAY_TERMINAL          |     Contains true or   false indicating if the Terminal is a gateway terminal or not.                                                                                  |
+|     DL_REQUIRED                  |     Contains true or   false indicating if the terminal requires the driver’s license state and   number is to be included in the data packet request.                 |
+|     RUN_CHECK_VERIFICATION       |     Contains true or   false indicating if the terminal is setup for check verification.                                                                               |
+|     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
+|     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
+|     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
+
 
 - [**AuthGatewayCertification**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=AuthGatewayCertification)	
   - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
@@ -246,41 +279,7 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
   - **Output**: Outputs an XML string.
 
-## <a name="TerminalSettingsXMLSpecification"></a>Terminal Settings – XML Specification 
-The GetCertificationTerminalSettings and GetTerminalSettings web methods will return the following XML string.
 
-### **Terminal Settings XML Example**:
-```
-<?xml version=”1.0” encoding=”utf-8”?>
-<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” 
-xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
-  <TERMINAL_ID>2318</TERMINAL_ID>
-  <SEC_CODE>WEB</SEC_CODE>
-  <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
-  <ALLOW_CNSMR_CREDITS>false</ALLOW_CNSMR_CREDITS>
-  <DL_REQUIRED>false</DL_REQUIRED>
-  <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
-  <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
-  <SCHEMA_FILE_PATH>	
-http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd
-  </SCHEMA_FILE_PATH>
-  <XML_TEMPLATE_PATH>
-http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml
-  </XML_TEMPLATE_PATH>
-</TERMINAL_SETTINGS>
-```
-### **The Terminal Settings XML will contain the following elements**:
-|                                  |                                                                                                                                                                        |
-|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     TERMINAL_SETTINGS            |     Is the parent   element and contains all other elements within the Terminal Settings XML   document.                                                               |
-|     TERMINAL_ID                  |     Contains the ID   for the terminal. The Terminal ID will be numeric value.                                                                                         |
-|     SEC_CODE                     |     Contains the   Standard Entry Class. This will either be Ck21, PPD, CCD, POP, TEL, or WEB.                                                                         |
-|     IS_GATEWAY_TERMINAL          |     Contains true or   false indicating if the Terminal is a gateway terminal or not.                                                                                  |
-|     DL_REQUIRED                  |     Contains true or   false indicating if the terminal requires the driver’s license state and   number is to be included in the data packet request.                 |
-|     RUN_CHECK_VERIFICATION       |     Contains true or   false indicating if the terminal is setup for check verification.                                                                               |
-|     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
-|     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
-|     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
 
 ## **Validation Handling**
 When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
