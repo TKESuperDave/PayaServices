@@ -7,7 +7,7 @@ The Application Gateway uses web services to present distributed methods for int
 We use (XML)Extensible Markup Language, to send data packet requests and receive responses from the Authorization Gateway.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS, we also employ a custom SOAP header for authentication information. 
 
 ### **Table of Contents**
-1. [Connection Method](Merchant%20Application%20Gateway/Process.md#connection-method)
+1. [Connection Method](Process.md#connection-method)
 2. [Support Electronic Applications](Merchant%20Application%20Gateway/Process.md#supported-electronic-applications)
 3. [Submissions](Merchant%20Application%20Gateway/Process.md#submission)
      - [SOAP Header](Merchant%20Application%20Gateway/Process.md#soap-header)
