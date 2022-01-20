@@ -6,6 +6,36 @@ The Application Gateway uses web services to present distributed methods for int
 
 We use (XML)Extensible Markup Language, to send data packet requests and receive responses from the Authorization Gateway.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS, we also employ a custom SOAP header for authentication information. 
 
+### **Table of Contents**
+1. [Connection Method](Merchant%20Application%20Gateway/Process.md#connection-method)
+2. [Support Electronic Applications](Merchant%20Application%20Gateway/Process.md#supported-electronic-applications)
+3. [Submissions](Merchant%20Application%20Gateway/Process.md#submission)
+     - [SOAP Header](Merchant%20Application%20Gateway/Process.md#soap-header)
+4. [Web Methods](Merchant%20Application%20Gateway/Process.md#web-methods)
+     - [ACH Certification Methods](Merchant%20Application%20Gateway/Process.md#ach-certification-methods)
+     - [Check21 Certification Methods](Merchant%20Application%20Gateway/Process.md#check21-certification-methods)
+     - [Gift Certification Methods](Merchant%20Application%20Gateway/Process.md#gift-certification-methods)
+     - [Other Certification Methods](Merchant%20Application%20Gateway/Process.md#other-certification-methods)
+     - [ACH Production Methods](Merchant%20Application%20Gateway/Process.md#ach-certification-methods)
+     - [Check21 Producation Methods](Merchant%20Application%20Gateway/Process.md#check21-production-methods)
+     - [Gift Production Methods](Merchant%20Application%20Gateway/Process.md#gift-production-methods)
+     - [Other Producations Methods](Merchant%20Application%20Gateway/Process.md#other-production-methods)
+5. [Data Packet - XML Specification](Merchant%20Application%20Gateway/Process.md#data-packet--xml-specification)
+     - [Merchant Application XML Example](Merchant%20Application%20Gateway/Process.md#merchant-application-xml-example)
+7. [How to determine which XSD to Use](Merchant%20Application%20Gateway/Process.md#merchant-application-xml-example)
+     - [ACH Schema]()
+     - [Check21 Schema]()
+     - [Gift Schema]()
+     - [Other Schema]()
+8. [XML Samples](Merchant%20Application%20Gateway/Process.md#xml-samples)
+9. [Data Types](Merchant%20Application%20Gateway/Process.md#data-types)
+10. [Supporting Documents]()
+11. [Response](Merchant%20Application%20Gateway/Process.md#response)
+     - [Response Messages - Example of Success Response](Merchant%20Application%20Gateway/Process.md#response-message--example-success-response)
+12. [Exceptions](Merchant%20Application%20Gateway/Process.md#exceptions)
+     - [Exception Element](Merchant%20Application%20Gateway/Process.md#the-exception-element-will-contain-the-following-elementsthe-exception-element-will-contain-the-following-elements)
+14. [Sample Code](Merchant%20Application%20Gateway/Process.md#sample-code)
+15. [Contact Information]()
 
 # **Connection Method**
 Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  
@@ -961,7 +991,7 @@ termVerificationOnly=&quot;0&quot; /&gt;
 </soapenv:Envelope>
 ```
 
-**Contact Information**
+## **Contact Information**
 For questions or to receive certification and live username/passwords and URLs please contact:
 
 Integration Department
