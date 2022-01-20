@@ -674,28 +674,28 @@ The data packet is an XML string sent using the BoardCertificationMerchant_X and
 
 The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App/ followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
 
-- **ACH Schema**
+### **ACH Schema**
 
   - ACH Application Schema:  [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)
   - New Location Application Schema:  [NewLocApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_ach.xsd)
   - New Terminal Application Schema:  [NewTermApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_ach.xsd)
   - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_ach.xsd)
 
-- **Check21 Schema**
+### **Check21 Schema**
 
   - Check21 Application Schema:  [NewMerchApp_Check21](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)
   - New Location Application Schema:  [NewLocApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_check21.xsd)
   - New Terminal Application Schema:  [NewTermApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_Check21.xsd) 
   - New Create Terminal Application Schema:  [NewTermCreateApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_Check21.xsd)
 
-- **Gift Schema**
+### **Gift Schema**
 
   - Gift Application Schema:  [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)
   - New Location Application Schema:  [NewLocApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_gift.xsd)
   - New Terminal Application Schema:  [NewTermApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermapp_gift.xsd)
   - New Create Terminal Application Schema:  [NewTermCreateApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermCreateapp_gift.xsd)
 
-## **Other Schema** 
+### **Other Schema** 
 
   - Board Merchant Application Schema:  [NewMerchantApp](https://demo.eftchecks.com/webservices/schemas/app/NewMerchantsApp.xsd)
   - Board Location Application Schema:  [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)
