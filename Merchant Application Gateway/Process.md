@@ -22,20 +22,20 @@ We use (XML)Extensible Markup Language, to send data packet requests and receive
      - [Other Producations Methods](Process.md#other-production-methods)
 5. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Merchant Application XML Example](Process.md#merchant-application-xml-example)
+     - [XML Samples](Process.md#xml-samples)
 7. [How to determine which XSD to Use](Process.md#merchant-application-xml-example)
      - [ACH Schema](Process.md#ach-schema)
      - [Check21 Schema](Process.md#check21-schema)
      - [Gift Schema](Process.md#gift-schema)
      - [Other Schema](Process.md#other-schema)
-8. [XML Samples](Process.md#xml-samples)
-9. [Data Types](Process.md#data-types)
-10. [Supporting Documents](Process.md#other-schema)
-11. [Response](Process.md#response)
+8. [Data Types](Process.md#data-types)
+9. [Supporting Documents](Process.md#other-schema)
+10. [Response](Process.md#response)
      - [Response Messages - Example of Success Response](Process.md#response-message--example-success-response)
-12. [Exceptions](Process.md#exceptions)
+11. [Exceptions](Process.md#exceptions)
      - [Exception Element](Process.md#the-exception-element-will-contain-the-following-elementsthe-exception-element-will-contain-the-following-elements)
-14. [Sample Code](Process.md#sample-code)
-15. [Contact Information](Process.md#contact-information)
+12. [Sample Code](Process.md#sample-code)
+13. [Contact Information](Process.md#contact-information)
 
 # **Connection Method**
 Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  
@@ -66,18 +66,9 @@ The Application Gateway has been designed for fast and easy integration with you
 |     UserName    |     String    |     Username   provided by Paya Services for authorization.    |
 |     Password    |     String    |     Password   provided by Paya Services for authorization.    |
 
-(Please Holder Example) 
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
 
-|     Special Character    |     Symbol    |     Escaped Form     |
-|--------------------------|---------------|----------------------|
-|     Ampersand            |     &         |     \&amp;           |
-|     Less-than            |     <         |     \&lt;            |
-|     Greater-than         |     >         |     \&gt;            |
-|     Quotes               |     “         |     \&quot;          |
-|     Apostrophe           |     ‘         |     \&apos;          |
+
 
 # **Web Methods**
 
@@ -458,6 +449,17 @@ Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.co
 # **Data Packet – XML Specification**
 The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
 
+***Note about Special Characters**
+Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+
+|     Special Character    |     Symbol    |     Escaped Form     |
+|--------------------------|---------------|----------------------|
+|     Ampersand            |     &         |     \&amp;           |
+|     Less-than            |     <         |     \&lt;            |
+|     Greater-than         |     >         |     \&gt;            |
+|     Quotes               |     “         |     \&quot;          |
+|     Apostrophe           |     ‘         |     \&apos;          |
+
 ## **Merchant Application XML Example**
 
 ```
@@ -670,6 +672,30 @@ The data packet is an XML string sent using the BoardCertificationMerchant_X and
 |     TERM MRDC:                             |     (Optional)   Indicate if the terminal is MRDC: 1 for yes, 0 for no.                                                                                                                                   |                                                                |
 |     TERM CLONE FROM TERMNIAL ID:           |     Contains   the ID for the terminal to copy.  The [Terminal   ID] is expected as a numeric value.                                                                                                      |                                                                |
 
+## **XML Samples**
+
+_NOTE: Terminal IDs may change based on the data created._
+
+  - ACH Application Sample:  [NewMerchAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_ACH.xml)
+  - Check21 Application Sample:  [NewMerchAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Check21.xml)
+  - Gift Application Sample:  [NewMerchAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Gift.xml)
+
+  - ACH Location Application Sample:  [NewLocAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_ACH.xml)
+  - Check21 Location Application Sample:  [NewLocAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Check21.xml)
+  - Gift Location Application Sample:  [NewLocAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Gift.xml)
+
+  - ACH Terminal Application Sample: [NewTermAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_ACH.xml)
+  - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Check21.xml)
+  - Gift Terminal Application Sample:  [NewTermAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Gift.xml)
+
+  - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_ACH.xml)
+  - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Check21.xml)
+  - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Gift.xml)
+
+  - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchantsAppSample.xml)
+  - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocationsAppSample.xml)
+  - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTerminalsAppSample.xml)
+
 ## How to determine which XSD to Use
 
 The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App/ followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
@@ -701,29 +727,7 @@ The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App
   - Board Location Application Schema:  [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)
   - Create Terminal Application Schema:  [NewTerminalsApp](https://demo.eftchecks.com/webservices/schemas/app/NewTerminalsApp.xsd)
 
-## **XML Samples**
 
-_NOTE: Terminal IDs may change based on the data created._
-
-  - ACH Application Sample:  [NewMerchAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_ACH.xml)
-  - Check21 Application Sample:  [NewMerchAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Check21.xml)
-  - Gift Application Sample:  [NewMerchAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Gift.xml)
-
-  - ACH Location Application Sample:  [NewLocAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_ACH.xml)
-  - Check21 Location Application Sample:  [NewLocAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Check21.xml)
-  - Gift Location Application Sample:  [NewLocAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Gift.xml)
-
-  - ACH Terminal Application Sample: [NewTermAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_ACH.xml)
-  - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Check21.xml)
-  - Gift Terminal Application Sample:  [NewTermAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Gift.xml)
-
-  - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_ACH.xml)
-  - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Check21.xml)
-  - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Gift.xml)
-
-  - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchantsAppSample.xml)
-  - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocationsAppSample.xml)
-  - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTerminalsAppSample.xml)
 
 ## **Data Types**
 Each element in the XML data packet that is sent to the Application Gateway has a data type that defines the format of the data contained within the element.  The XSD defines which elements are of what data type.  A list and links to the available data types is located below.
