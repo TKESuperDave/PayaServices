@@ -38,8 +38,7 @@ We use (XML)Extensible Markup Language, to send data packet requests and receive
 13. [Contact Information](Process.md#contact-information)
 
 # **Connection Method**
-Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  
-The webservice address used for certification and testing is as follows:
+Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  The webservice address used for certification and testing is as follows:
 
 https://demo.eftchecks.com/webservices/AppGateway.asmx
 
@@ -48,6 +47,9 @@ A username and password for certification will be provided upon request.
 _NOTE:  A live webservice address, username, and password will be supplied upon successful certification._
 
 # **Supported Electronic Applications**
+
+The following SEC Codes are supported for an electronic application:
+
  - Telephone Initiated Entry (TEL)
  - Internet Initiated Entry (WEB)
  - Prearranged Payment and Deposit Entry (PPD)
@@ -57,16 +59,15 @@ _NOTE:  A live webservice address, username, and password will be supplied upon 
  - Gift Card
 
 # **Submission**
-The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
+The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd for the appropriate SEC Code and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
 
 ## **SOAP Header**
 
+The SOAP header will need the following fields:
 |                 |               |                                                                |
 |-----------------|---------------|----------------------------------------------------------------|
 |     UserName    |     String    |     Username   provided by Paya Services for authorization.    |
 |     Password    |     String    |     Password   provided by Paya Services for authorization.    |
-
-
 
 
 
@@ -75,6 +76,10 @@ The Application Gateway has been designed for fast and easy integration with you
 A definition of the web methods can be found below. Each web method contains a hyperlink to a sample SOAP request and response.
 
 _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
+
+# **Certification Methods**
+
+Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution.
 
 ## **ACH Certification Methods**
 
@@ -259,6 +264,10 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Paya Services Location ID as Integer
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
+
+
+
+# Production Methods
 
 ## **ACH Production Methods**
 
@@ -696,37 +705,6 @@ _NOTE: Terminal IDs may change based on the data created._
   - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocationsAppSample.xml)
   - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTerminalsAppSample.xml)
 
-## How to determine which XSD to Use
-
-The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App/ followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
-
-### **ACH Schema**
-
-  - ACH Application Schema:  [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)
-  - New Location Application Schema:  [NewLocApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_ach.xsd)
-  - New Terminal Application Schema:  [NewTermApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_ach.xsd)
-  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_ach.xsd)
-
-### **Check21 Schema**
-
-  - Check21 Application Schema:  [NewMerchApp_Check21](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)
-  - New Location Application Schema:  [NewLocApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_check21.xsd)
-  - New Terminal Application Schema:  [NewTermApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_Check21.xsd) 
-  - New Create Terminal Application Schema:  [NewTermCreateApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_Check21.xsd)
-
-### **Gift Schema**
-
-  - Gift Application Schema:  [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)
-  - New Location Application Schema:  [NewLocApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_gift.xsd)
-  - New Terminal Application Schema:  [NewTermApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermapp_gift.xsd)
-  - New Create Terminal Application Schema:  [NewTermCreateApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermCreateapp_gift.xsd)
-
-### **Other Schema** 
-
-  - Board Merchant Application Schema:  [NewMerchantApp](https://demo.eftchecks.com/webservices/schemas/app/NewMerchantsApp.xsd)
-  - Board Location Application Schema:  [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)
-  - Create Terminal Application Schema:  [NewTerminalsApp](https://demo.eftchecks.com/webservices/schemas/app/NewTerminalsApp.xsd)
-
 
 
 ## **Data Types**
@@ -778,6 +756,40 @@ https://demogift.eftchecks.com/schemas/types/StatesAndProvincesSimpleType.xsd
 |     Check21,   POP    |                                                                                         |
 |                       |     Merchant Application                                                                |
 |                       |     Voided Check w/Business Name                                                        |
+
+## How to determine which XSD to Use
+
+The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App/ followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
+
+### **ACH Schema**
+
+  - ACH Application Schema:  [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)
+  - New Location Application Schema:  [NewLocApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_ach.xsd)
+  - New Terminal Application Schema:  [NewTermApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_ach.xsd)
+  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_ach.xsd)
+
+### **Check21 Schema**
+
+  - Check21 Application Schema:  [NewMerchApp_Check21](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)
+  - New Location Application Schema:  [NewLocApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_check21.xsd)
+  - New Terminal Application Schema:  [NewTermApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_Check21.xsd) 
+  - New Create Terminal Application Schema:  [NewTermCreateApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_Check21.xsd)
+
+### **Gift Schema**
+
+  - Gift Application Schema:  [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)
+  - New Location Application Schema:  [NewLocApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_gift.xsd)
+  - New Terminal Application Schema:  [NewTermApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermapp_gift.xsd)
+  - New Create Terminal Application Schema:  [NewTermCreateApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermCreateapp_gift.xsd)
+
+### **Other Schema** 
+
+  - Board Merchant Application Schema:  [NewMerchantApp](https://demo.eftchecks.com/webservices/schemas/app/NewMerchantsApp.xsd)
+  - Board Location Application Schema:  [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)
+  - Create Terminal Application Schema:  [NewTerminalsApp](https://demo.eftchecks.com/webservices/schemas/app/NewTerminalsApp.xsd)
+
+
+
 
 ## **Response**
 Each web method in the Application Gateway will return an XML string and detail the success or failure of the submission.  If the application is accepted the following XML response will be returned.
