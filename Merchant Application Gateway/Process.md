@@ -12,14 +12,16 @@ We use (XML)Extensible Markup Language, to send data packet requests and receive
 3. [Submissions](Process.md#submission)
      - [SOAP Header](Process.md#soap-header)
 4. [Web Methods](Process.md#web-methods)
-     - [ACH Certification Methods](Process.md#ach-certification-methods)
-     - [Check21 Certification Methods](Process.md#check21-certification-methods)
-     - [Gift Certification Methods](Process.md#gift-certification-methods)
-     - [Other Certification Methods](Process.md#other-certification-methods)
-     - [ACH Production Methods](Process.md#ach-certification-methods)
-     - [Check21 Producation Methods](Process.md#check21-production-methods)
-     - [Gift Production Methods](Process.md#gift-production-methods)
-     - [Other Producations Methods](Process.md#other-production-methods)
+     - [Certification](Process.md#certification)
+     	- [ACH Certification Methods](Process.md#ach-certification-methods)
+     	- [Check21 Certification Methods](Process.md#check21-certification-methods)
+     	- [Gift Certification Methods](Process.md#gift-certification-methods)
+     	- [Other Certification Methods](Process.md#other-certification-methods)
+     - [Production](Process.md#Pproduction)
+     	- [ACH Production Methods](Process.md#ach-certification-methods)
+     	- [Check21 Producation Methods](Process.md#check21-production-methods)
+     	- [Gift Production Methods](Process.md#gift-production-methods)
+     	- [Other Producations Methods](Process.md#other-production-methods)
 5. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Merchant Application XML Example](Process.md#merchant-application-xml-example)
      - [XML Samples](Process.md#xml-samples)
@@ -61,7 +63,7 @@ The following SEC Codes are supported for an electronic application:
 # **Submission**
 The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd for the appropriate SEC Code and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
 
-## **SOAP Header**
+### **SOAP Header**
 
 The SOAP header will need the following fields:
 |                 |               |                                                                |
@@ -77,11 +79,11 @@ A definition of the web methods can be found below. Each web method contains a h
 
 _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
 
-# **Certification Methods**
+## **Certification Methods**
 
 Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution.
 
-## **ACH Certification Methods**
+### **ACH Certification Methods**
 
 - [**BoardCertificationMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_ACH)
 
@@ -110,7 +112,7 @@ Before you are able to go into production Paya Services requires that you cerify
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Check21 Certification Methods**
+### **Check21 Certification Methods**
 
 - [**BoardCertificationMerchant_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_Check21)
   - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
@@ -141,7 +143,7 @@ Before you are able to go into production Paya Services requires that you cerify
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Gift Certification Methods**
+### **Gift Certification Methods**
 
 - [**BoardCertificationMerchant_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_Gift)
 
@@ -173,7 +175,7 @@ Before you are able to go into production Paya Services requires that you cerify
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Other Certification Methods**
+### **Other Certification Methods**
 
 - [**UploadCertificationSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationSupportingDocs)
 
@@ -267,9 +269,9 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 
 
-# Production Methods
+## Production Methods
 
-## **ACH Production Methods**
+### **ACH Production Methods**
 
 - [**BoardMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_ACH)
 
@@ -299,7 +301,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Check21 Production Methods**
+### **Check21 Production Methods**
 - [**BoardMerchant_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_Check21)
 
   - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.
@@ -330,7 +332,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Gift Production Methods**
+### **Gift Production Methods**
 
 - [**BoardMerchant_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_GIFT)
 
@@ -362,7 +364,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Other Productions Methods**
+### **Other Productions Methods**
 
 - [**UploadSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadSupportingDocs)
 
