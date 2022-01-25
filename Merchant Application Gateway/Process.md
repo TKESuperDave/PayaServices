@@ -724,7 +724,7 @@ https://demo.eftchecks.com/webservices/Schemas/Types/TerminalSimpleTypes.xsd
   - States and Provinces
 https://demogift.eftchecks.com/schemas/types/StatesAndProvincesSimpleType.xsd
 
- - **Supporting Documents**
+ ### **Supporting Documents**
 
 |     SEC Code          |     Document                                                                            |
 |-----------------------|-----------------------------------------------------------------------------------------|
