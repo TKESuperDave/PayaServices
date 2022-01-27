@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Envelope>
+	<Body>
+		<NewLocation locFeesAccountNum="123456789" locFeesRoutingNum="490000018" locTaxPayerID= "123456789" locTaxPayerName="Al Duran" locMinimumFee="25.00" locStatementFee="10.00" locPhone="1231231234" locZip="32541" locState="FL" locCity="Destin" locAddress1="123 Main Street" locCrossRefID="374891" locName="QA RG Merchant" merchServiceType="ACHDEBIT" isoID="7525">
+			<Statement locStatementAttn="Garey Larrabee" locStatementZip="32541" locStatementState="FL" locStatementCity="Destin" locStatementAddress1="PO Box 1234"/>
+			<NewPOC pocSSN="123121111" pocDOB="1945-10-26" pocZip="32541" pocState="FL" pocCity="Destin" pocAddress="123 Main Street" pocComments="" pocTitle="Owner" pocLastName="Doe" pocFirstName="John" pocPrimary="1"/>
+			<Terminal merchServiceType="GOLDVT" merchMRDCImageFee="0.01" merchFlatFee="0.29" merchNonFlatFee="0.29" merchPercentFee="1.62" merchReturnFee="1.00">
+				<ConsumerConvFee ChargeCCF="1" FeeAmount="7.0" FeeIncludedInTrans="0" FeeIsPercent="0" FeePercentMinAmount="1" FeePercentMaxAmount="11" />
+				<NewTerminal termVerificationOnly="0" termTypeID="16" termPeripheral="63" termCheckLimit="500.00" termCrossRefID="41680"/>
+				<NewTerminal termVerificationOnly="0" termTypeID="903" termPeripheral="63" termCheckLimit="500.00" termCrossRefID="53317"/>
+			</Terminal>
+			<Terminal merchServiceType="ACHDEBIT" merchMRDCImageFee="0.01" merchFlatFee="0.29" merchNonFlatFee="0.29" merchPercentFee="1.89" merchReturnFee="1.00">
+				<ConsumerConvFee ChargeCCF="1" FeeAmount="6.00" FeeIncludedInTrans="0" FeeIsPercent="0" FeePercentMinAmount="1" FeePercentMaxAmount="8" />
+				<NewTerminal termCrossRefID="374891" termCheckLimit="500.00" termPeripheral="63" termTypeID="619" termVerificationOnly="0" />
+				<NewTerminal termCrossRefID="53317" termCheckLimit="5000.00" termPeripheral="6" termTypeID="903" termVerificationOnly="0" />
+			</Terminal>
+		</NewLocation>
+	</Body>
+</Envelope>

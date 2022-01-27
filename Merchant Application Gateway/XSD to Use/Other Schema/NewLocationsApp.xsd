@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" ?>
+<xs:schema id="ACH_APPS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include id="APP_GATEWAY_TYPES" schemaLocation="..//Types/AppGatewayTypes.xsd"></xs:include>
+	<xs:element name="Envelope">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Body">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NewLocation">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Statement">
+											<xs:complexType>
+												<xs:attribute name="locStatementAddress1" type="address" use="required" />
+												<xs:attribute name="locStatementAddress2" type="address-or-empty" />
+												<xs:attribute name="locStatementCity" type="city" use="required" />
+												<xs:attribute name="locStatementState" type="states-and-provinces" use="required" />
+												<xs:attribute name="locStatementZip" type="zip" use="required" />
+												<xs:attribute name="locStatementAttn" type="string200-or-empty" use="required" />
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="NewPOC" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="pocPrimary" type="xs:boolean" use="required" />
+												<xs:attribute name="pocFirstName" type="name" use="required" />
+												<xs:attribute name="pocLastName" type="name" use="required" />
+												<xs:attribute name="pocTitle" type="name-or-empty" use="required" />
+												<xs:attribute name="pocComments" type="string200-or-empty" use="required" />
+												<xs:attribute name="pocAddress" type="address" use="required" />
+												<xs:attribute name="pocCity" type="city" use="required" />
+												<xs:attribute name="pocState" type="states-and-provinces" use="required" />
+												<xs:attribute name="pocZip" type="zip" use="required" />
+												<xs:attribute name="pocDOB" type="xs:date" use="required" />
+												<xs:attribute name="pocSSN" type="ssn" use="required" />
+												<xs:attribute name="pocEmail" type="email-or-empty" use="optional" />
+												<xs:attribute name="pocRole" type="POCRoles" use="optional" />
+											</xs:complexType>
+										</xs:element>
+										<xs:sequence>
+											<xs:element name="Terminal" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element name ="ConsumerConvFee" minOccurs ="0" maxOccurs="1">
+															<xs:complexType>
+																<xs:attribute name ="ChargeCCF" type="xs:boolean" use="required" />
+																<xs:attribute name ="FeeAmount" type="zeroamount" use="optional" />
+																<!--These are mutally exclusive-->
+																<xs:attribute name ="FeeIncludedInTrans" type="xs:boolean" use="optional" />
+																<xs:attribute name ="FeeIsPercent" type="xs:boolean" use="optional" />
+																<!--These are mutally exclusive-->
+																<!--These Only Apply to % based fees-->
+																<xs:attribute name ="FeePercentMinAmount" type="zeroamount" use="optional" />
+																<xs:attribute name ="FeePercentMaxAmount" type="zeroamount" use="optional" />
+																<!--These Only Apply to % based fees-->
+															</xs:complexType>
+														</xs:element>
+														<xs:element maxOccurs="unbounded" name="NewTerminal">
+															<xs:complexType>
+																<xs:attribute name="termCrossRefID" type="crossref" />
+																<xs:attribute name="termCheckLimit" type="amount" use="optional" />
+																<xs:attribute name="termPeripheral" type="Terminal_Peripheral-or-empty" use="required" />
+																<xs:attribute name="termTypeID" type="Terminal_Type" use="required" />
+																<xs:attribute name="termVerificationOnly" type="xs:boolean" use="required" />
+																<xs:attribute name="termLvl2Verification" type="xs:boolean" use="optional" />
+																<xs:attribute name="termLvl3Verification" type="xs:boolean" use="optional" />
+																<xs:attribute name="termSwiftSettleConsumerDebit" type="xs:boolean" use="optional" />
+																<xs:attribute name="termSwiftSettleConsumerCredit" type="xs:boolean" use="optional" />
+																<xs:attribute name="termSwiftSettleMerchantDebit" type="xs:boolean" use="optional" />
+																<xs:attribute name="termOCR" type="xs:boolean" use="optional" />
+																<xs:attribute name="termMRDC" type="xs:boolean" use="optional" />
+															</xs:complexType>
+														</xs:element>
+													</xs:sequence>
+													<xs:attribute name="merchServiceType" type="Merchant_Service_Type" use="required" />
+													<xs:attribute name="merchMRDCImageFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchFlatFee" type="zeroamount-or-empty" use="required" />
+													<xs:attribute name="merchNonFlatFee" type="zeroamount-or-empty" use="required" />
+													<xs:attribute name="merchPercentFee" type="zeroamount-or-empty" use="required" />
+													<xs:attribute name="merchReturnFee" type="zeroamount-or-empty" use="required" />
+													<xs:attribute name="merchAnnualFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchChargebackFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchInvalidTINFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchNetComplianceFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchCancellationFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchVTTermFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchPremiumPercentFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchReaderReplacemntFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchMonthlyServiceFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchMonthlyMinimumFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchReversalFee" type="zeroamount-or-empty" use="optional" />
+													<xs:attribute name="merchBatchFee" type="zeroamount-or-empty" use="optional" />
+												</xs:complexType>
+											</xs:element>											
+										</xs:sequence>
+									</xs:sequence>
+									<xs:attribute name="isoID" type="xs:integer" use="required" />
+									<xs:attribute name="isoName" type="isoname" use="optional"  />
+									<xs:attribute name="merchServiceType" type="Merchant_Service_Type" use="required" />
+									<xs:attribute name="locName" type="entityname" use="required" />
+									<xs:attribute name="locCrossRefID" type="crossref"/>
+									<xs:attribute name="locAddress1" type="address" use="required" />
+									<xs:attribute name="locAddress2" type="address-or-empty" />
+									<xs:attribute name="locCity" type="city" use="required" />
+									<xs:attribute name="locState" type="states-and-provinces" use="required" />
+									<xs:attribute name="locZip" type="zip" use="required" />
+									<xs:attribute name="locPhone" type="phonenumber" use="required" />
+									<xs:attribute name="locStatementFee" type="zeroamount" use="required" />
+									<xs:attribute name="locMinimumFee" type="zeroamount" use="required" />
+									<xs:attribute name="locFeesRoutingNum" type="routingnumber" use="required" />
+									<xs:attribute name="locFeesAccountNum" type="accountnumber" use="required" />
+									<xs:attribute name="locTaxPayerID" type="taxpayerID" use="optional" />
+									<xs:attribute name="locTaxPayerName" type="taxpayername" use="optional" />
+									<xs:attribute name="locACHDescriptor" type="name" use="optional" />
+									<xs:attribute name="locACHCoData" type="ACHCoData" use="optional" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

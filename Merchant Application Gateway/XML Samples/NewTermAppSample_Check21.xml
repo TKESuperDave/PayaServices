@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Envelope>
+  <Body >
+        <NewTerminal termCrossRefID="41680" termPeripheral="6" termTypeID="568" termCloneFromTerminalID="000497" />
+  </Body>
+</Envelope>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Envelope>
+  <Body>      
+      <NewLocation isoID="9999" locName="Gift Test" locCrossRefID="12345" locAddress1="73 Eglin Parkway S.E." locAddress2="Suite 301" locCity="Fort Walton Beach" locState="FL" locZip="32547" locPhone="8503444500" locServiceFee="15.00" locFeesRoutingNum="490000018" locFeesAccountNum="123456">
+        <GiftLoyalty merchGiftServiceType="INTRO" />
+        <Statement locStatementAddress1="73 Eglin Parkway S.E." locStatementAddress2="Suite 301" locStatementCity="Fort Walton Beach" locStatementState="FL" locStatementZip="32547" locStatementAttn="Mike Smith" />
+        <NewPOC pocPrimary="true" pocFirstName="Mike" pocLastName="Smith" pocTitle="President" pocComments="Test POC Comments." pocAddress="1224 Emerald City Dr." pocCity="Destin" pocState="FL" pocZip="32547" pocDOB="1976-09-30" pocSSN="123123123" />
+        <NewTerminal termCrossRefID="654321" termTypeID="562" />
+      </NewLocation>    
+  </Body>
+</Envelope>

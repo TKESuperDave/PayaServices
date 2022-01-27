@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" ?>
+<xs:schema id="ACH_APPS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include id="APP_GATEWAY_TYPES" schemaLocation="..//Types/AppGatewayTypes.xsd"></xs:include>
+  <xs:element name="Envelope">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Body">
+          <xs:complexType>
+            <xs:sequence>                               
+              <xs:element name="NewLocation">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GiftLoyalty">
+                            <xs:complexType>
+                              <xs:attribute name="merchGiftServiceType" type="Merch_Service_Type_GIFT" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Statement">
+                            <xs:complexType>
+                              <xs:attribute name="locStatementAddress1" type="address" use="required" />
+                              <xs:attribute name="locStatementAddress2" type="address-or-empty" />
+                              <xs:attribute name="locStatementCity" type="city" use="required" />
+                              <xs:attribute name="locStatementState" type="states-and-provinces" use="required" />
+                              <xs:attribute name="locStatementZip" type="zip" use="required" />
+                              <xs:attribute name="locStatementAttn" type="string200-or-empty" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="NewPOC">
+                            <xs:complexType>
+                              <xs:attribute name="pocPrimary" type="xs:boolean" use="required" />
+                              <xs:attribute name="pocFirstName" type="name" use="required" />
+                              <xs:attribute name="pocLastName" type="name" use="required" />
+                              <xs:attribute name="pocTitle" type="name-or-empty" use="required" />
+                              <xs:attribute name="pocComments" type="string200-or-empty" use="required" />
+                              <xs:attribute name="pocAddress" type="address" use="required" />
+                              <xs:attribute name="pocCity" type="city" use="required" />
+                              <xs:attribute name="pocState" type="states-and-provinces" use="required" />
+                              <xs:attribute name="pocZip" type="zip" use="required" />
+                              <xs:attribute name="pocDOB" type="xs:date" use="required" />
+                              <xs:attribute name="pocSSN" type="ssn" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element maxOccurs="unbounded" name="NewTerminal">
+                            <xs:complexType>
+                              <xs:attribute name="termCrossRefID" type="crossref" />
+                              <xs:attribute name="termTypeID" type="Gift_Term_Type" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="isoID" type="xs:integer" use="required" />
+                        <xs:attribute name="isoName" type="isoname" use="optional"  />
+                        <xs:attribute name="locName" type="entityname" use="required" />
+                        <xs:attribute name="locCrossRefID" type="crossref"/>
+                        <xs:attribute name="locAddress1" type="address" use="required" />
+                        <xs:attribute name="locAddress2" type="address-or-empty" />
+                        <xs:attribute name="locCity" type="city" use="required" />
+                        <xs:attribute name="locState" type="states-and-provinces" use="required" />
+                        <xs:attribute name="locZip" type="zip" use="required" />
+                        <xs:attribute name="locPhone" type="phonenumber" use="required" />
+                        <xs:attribute name="locServiceFee" type="zeroamount" use="required" />
+                        <xs:attribute name="locFeesRoutingNum" type="routingnumber" use="required" />
+                        <xs:attribute name="locFeesAccountNum" type="accountnumber" use="required" />
+                        <xs:attribute name="locTaxPayerID" type="taxpayerID" use="optional" />
+                        <xs:attribute name="locTaxPayerName" type="taxpayername" use="optional" />
+                      </xs:complexType>
+                    </xs:element>                  
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
