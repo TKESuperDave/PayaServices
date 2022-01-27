@@ -1,6 +1,6 @@
 # SOAP 1.1
 ## Request:
-**Header:**  
+**Header Information:**  
 POST /webservices/AppGateway.asmx HTTP/1.1  
 Host: demo.eftchecks.com  
 Content-Type: text/xml; charset=utf-8  
@@ -27,7 +27,7 @@ SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardCertifi
 
 
 ## Response:
-**Header:**  
+**Header Information:**  
 HTTP/1.1 200 OK  
 Content-Type: text/xml; charset=utf-8  
 Content-Length: length  
@@ -46,7 +46,7 @@ Content-Length: length
 # SOAP 1.2
 
 ## Request:
-**Header:** 
+**Header Information:**  
 POST /webservices/AppGateway.asmx HTTP/1.1  
 Host: demo.eftchecks.com  
 Content-Type: application/soap+xml; charset=utf-8  
@@ -70,7 +70,7 @@ Content-Length: length
 ```
 
 ## Response:
-**Header:**  
+**Header Information:**  
 HTTP/1.1 200 OK  
 Content-Type: text/xml; charset=utf-8  
 Content-Length: length  
