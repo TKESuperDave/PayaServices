@@ -3,7 +3,6 @@
 
 <xs:simpleType name="states-and-provinces">
   <xs:restriction base="xs:string">
-  
 	<xs:enumeration value="AB" id="Alberta" />
     <xs:enumeration value="AK" id="Alaska" />
     <xs:enumeration value="AL" id="Alabama" />
