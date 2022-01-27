@@ -7,7 +7,7 @@ Content-Type: text/xml; charset=utf-8
 Content-Length: length  
 SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardCertificationMerchant_ACH"
 
-https://github.com/TKESuperDave/PayaServices/blob/ad4a46727a07fb3939ad0109c4d069d3b988287d/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/SOAP%201.1/BoardCertificationLocation_ACH.xml#L1
+
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
