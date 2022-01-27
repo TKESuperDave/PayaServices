@@ -1,12 +1,13 @@
+# SOAP 1.1
 ## Request:
-```
-POST /webservices/AppGateway.asmx HTTP/1.1
-Host: demo.eftchecks.com
-Content-Type: text/xml; charset=utf-8
-Content-Length: length
+**Header:**  
+POST /webservices/AppGateway.asmx HTTP/1.1  
+Host: demo.eftchecks.com  
+Content-Type: text/xml; charset=utf-8  
+Content-Length: length  
 SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardCertificationMerchant_ACH"
 
-
+```
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Header>
@@ -26,12 +27,12 @@ SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardCertifi
 
 
 ## Response:
+**Header:**  
+HTTP/1.1 200 OK  
+Content-Type: text/xml; charset=utf-8  
+Content-Length: length  
+
 ```
-HTTP/1.1 200 OK
-Content-Type: text/xml; charset=utf-8
-Content-Length: length
-
-
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
@@ -41,3 +42,47 @@ Content-Length: length
   </soap:Body>
 </soap:Envelope>
 ```
+
+# SOAP 1.2
+
+## Request:
+**Header:** 
+POST /webservices/AppGateway.asmx HTTP/1.1  
+Host: demo.eftchecks.com  
+Content-Type: application/soap+xml; charset=utf-8  
+Content-Length: length  
+```
+<?xml version="1.0" encoding="utf-8"?>
+<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Header>
+    <RemoteAccessHeader xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <UserName>string</UserName>
+      <Password>string</Password>
+      <TerminalID>int</TerminalID>
+    </RemoteAccessHeader>
+  </soap12:Header>
+  <soap12:Body>
+    <BoardCertificationMerchant_ACH xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <DataPacket>string</DataPacket>
+    </BoardCertificationMerchant_ACH>
+  </soap12:Body>
+</soap12:Envelope>
+```
+
+## Response:
+**Header:**  
+HTTP/1.1 200 OK  
+Content-Type: text/xml; charset=utf-8  
+Content-Length: length  
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+  <soap12:Body>
+    <BoardCertificationMerchant_ACHResponse xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <BoardCertificationMerchant_ACHResult>string</BoardCertificationMerchant_ACHResult>
+    </BoardCertificationMerchant_ACHResponse>
+  </soap12:Body>
+</soap12:Envelope>
+```
+
