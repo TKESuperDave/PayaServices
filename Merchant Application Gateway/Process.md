@@ -6,10 +6,41 @@ The Application Gateway uses web services to present distributed methods for int
 
 We use (XML)Extensible Markup Language, to send data packet requests and receive responses from the Authorization Gateway.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS, we also employ a custom SOAP header for authentication information. 
 
+### **Table of Contents**
+1. [Connection Method](Process.md#connection-method)
+2. [Support Electronic Applications](Process.md#supported-electronic-applications)
+3. [Submissions](Process.md#submission)
+     - [SOAP Header](Process.md#soap-header)
+4. [Web Methods](Process.md#web-methods)
+     - [Certification](Process.md#certification)
+     	- [ACH Certification Methods](Process.md#ach-certification-methods)
+     	- [Check21 Certification Methods](Process.md#check21-certification-methods)
+     	- [Gift Certification Methods](Process.md#gift-certification-methods)
+     	- [Other Certification Methods](Process.md#other-certification-methods)
+     - [Production](Process.md#Pproduction)
+     	- [ACH Production Methods](Process.md#ach-certification-methods)
+     	- [Check21 Producation Methods](Process.md#check21-production-methods)
+     	- [Gift Production Methods](Process.md#gift-production-methods)
+     	- [Other Producations Methods](Process.md#other-production-methods)
+5. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
+     - [Merchant Application XML Example](Process.md#merchant-application-xml-example)
+     - [XML Samples](Process.md#xml-samples)
+7. [How to determine which XSD to Use](Process.md#merchant-application-xml-example)
+     - [ACH Schema](Process.md#ach-schema)
+     - [Check21 Schema](Process.md#check21-schema)
+     - [Gift Schema](Process.md#gift-schema)
+     - [Other Schema](Process.md#other-schema)
+8. [Data Types](Process.md#data-types)
+9. [Supporting Documents](Process.md#other-schema)
+10. [Response](Process.md#response)
+     - [Response Messages - Example of Success Response](Process.md#response-message--example-success-response)
+11. [Exceptions](Process.md#exceptions)
+     - [Exception Element](Process.md#the-exception-element-will-contain-the-following-elementsthe-exception-element-will-contain-the-following-elements)
+12. [Sample Code](Process.md#sample-code)
+13. [Contact Information](Process.md#contact-information)
 
 # **Connection Method**
-Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  
-The webservice address used for certification and testing is as follows:
+Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  The webservice address used for certification and testing is as follows:
 
 https://demo.eftchecks.com/webservices/AppGateway.asmx
 
@@ -18,6 +49,9 @@ A username and password for certification will be provided upon request.
 _NOTE:  A live webservice address, username, and password will be supplied upon successful certification._
 
 # **Supported Electronic Applications**
+
+The following SEC Codes are supported for an electronic application:
+
  - Telephone Initiated Entry (TEL)
  - Internet Initiated Entry (WEB)
  - Prearranged Payment and Deposit Entry (PPD)
@@ -27,27 +61,17 @@ _NOTE:  A live webservice address, username, and password will be supplied upon 
  - Gift Card
 
 # **Submission**
-The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
+The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd for the appropriate SEC Code and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
 
-## **SOAP Header**
+### **SOAP Header**
 
+The SOAP header will need the following fields:
 |                 |               |                                                                |
 |-----------------|---------------|----------------------------------------------------------------|
 |     UserName    |     String    |     Username   provided by Paya Services for authorization.    |
 |     Password    |     String    |     Password   provided by Paya Services for authorization.    |
 
-(Please Holder Example) 
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
-
-|     Special Character    |     Symbol    |     Escaped Form     |
-|--------------------------|---------------|----------------------|
-|     Ampersand            |     &         |     \&amp;           |
-|     Less-than            |     <         |     \&lt;            |
-|     Greater-than         |     >         |     \&gt;            |
-|     Quotes               |     “         |     \&quot;          |
-|     Apostrophe           |     ‘         |     \&apos;          |
 
 # **Web Methods**
 
@@ -55,7 +79,11 @@ A definition of the web methods can be found below. Each web method contains a h
 
 _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
 
-## **ACH Certification Methods**
+## **Certification Methods**
+
+Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution.
+
+### **ACH Certification Methods**
 
 - [**BoardCertificationMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_ACH)
 
@@ -84,7 +112,7 @@ _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Check21 Certification Methods**
+### **Check21 Certification Methods**
 
 - [**BoardCertificationMerchant_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_Check21)
   - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
@@ -115,7 +143,7 @@ _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Gift Certification Methods**
+### **Gift Certification Methods**
 
 - [**BoardCertificationMerchant_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_Gift)
 
@@ -147,7 +175,7 @@ _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Other Certification Methods**
+### **Other Certification Methods**
 
 - [**UploadCertificationSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationSupportingDocs)
 
@@ -239,7 +267,11 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **ACH Production Methods**
+
+
+## Production Methods
+
+### **ACH Production Methods**
 
 - [**BoardMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_ACH)
 
@@ -269,7 +301,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Check21 Production Methods**
+### **Check21 Production Methods**
 - [**BoardMerchant_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_Check21)
 
   - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.
@@ -300,7 +332,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Gift Production Methods**
+### **Gift Production Methods**
 
 - [**BoardMerchant_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_GIFT)
 
@@ -332,7 +364,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-## **Other Productions Methods**
+### **Other Productions Methods**
 
 - [**UploadSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadSupportingDocs)
 
@@ -427,6 +459,17 @@ Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.co
 
 # **Data Packet – XML Specification**
 The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
+
+***Note about Special Characters**
+Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+
+|     Special Character    |     Symbol    |     Escaped Form     |
+|--------------------------|---------------|----------------------|
+|     Ampersand            |     &         |     \&amp;           |
+|     Less-than            |     <         |     \&lt;            |
+|     Greater-than         |     >         |     \&gt;            |
+|     Quotes               |     “         |     \&quot;          |
+|     Apostrophe           |     ‘         |     \&apos;          |
 
 ## **Merchant Application XML Example**
 
@@ -640,37 +683,6 @@ The data packet is an XML string sent using the BoardCertificationMerchant_X and
 |     TERM MRDC:                             |     (Optional)   Indicate if the terminal is MRDC: 1 for yes, 0 for no.                                                                                                                                   |                                                                |
 |     TERM CLONE FROM TERMNIAL ID:           |     Contains   the ID for the terminal to copy.  The [Terminal   ID] is expected as a numeric value.                                                                                                      |                                                                |
 
-## How to determine which XSD to Use
-
-The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App/ followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
-
-- **ACH Schema**
-
-  - ACH Application Schema:  [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)
-  - New Location Application Schema:  [NewLocApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_ach.xsd)
-  - New Terminal Application Schema:  [NewTermApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_ach.xsd)
-  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_ach.xsd)
-
-- **Check21 Schema**
-
-  - Check21 Application Schema:  [NewMerchApp_Check21](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)
-  - New Location Application Schema:  [NewLocApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_check21.xsd)
-  - New Terminal Application Schema:  [NewTermApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_Check21.xsd) 
-  - New Create Terminal Application Schema:  [NewTermCreateApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_Check21.xsd)
-
-- **Gift Schema**
-
-  - Gift Application Schema:  [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)
-  - New Location Application Schema:  [NewLocApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_gift.xsd)
-  - New Terminal Application Schema:  [NewTermApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermapp_gift.xsd)
-  - New Create Terminal Application Schema:  [NewTermCreateApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermCreateapp_gift.xsd)
-
-## **Other Schema** 
-
-  - Board Merchant Application Schema:  [NewMerchantApp](https://demo.eftchecks.com/webservices/schemas/app/NewMerchantsApp.xsd)
-  - Board Location Application Schema:  [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)
-  - Create Terminal Application Schema:  [NewTerminalsApp](https://demo.eftchecks.com/webservices/schemas/app/NewTerminalsApp.xsd)
-
 ## **XML Samples**
 
 _NOTE: Terminal IDs may change based on the data created._
@@ -695,6 +707,8 @@ _NOTE: Terminal IDs may change based on the data created._
   - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocationsAppSample.xml)
   - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTerminalsAppSample.xml)
 
+
+
 ## **Data Types**
 Each element in the XML data packet that is sent to the Application Gateway has a data type that defines the format of the data contained within the element.  The XSD defines which elements are of what data type.  A list and links to the available data types is located below.
 
@@ -710,7 +724,7 @@ https://demo.eftchecks.com/webservices/Schemas/Types/TerminalSimpleTypes.xsd
   - States and Provinces
 https://demogift.eftchecks.com/schemas/types/StatesAndProvincesSimpleType.xsd
 
- - **Supporting Documents**
+ ### **Supporting Documents**
 
 |     SEC Code          |     Document                                                                            |
 |-----------------------|-----------------------------------------------------------------------------------------|
@@ -744,6 +758,40 @@ https://demogift.eftchecks.com/schemas/types/StatesAndProvincesSimpleType.xsd
 |     Check21,   POP    |                                                                                         |
 |                       |     Merchant Application                                                                |
 |                       |     Voided Check w/Business Name                                                        |
+
+## How to determine which XSD to Use
+
+The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App/ followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
+
+### **ACH Schema**
+
+  - ACH Application Schema:  [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)
+  - New Location Application Schema:  [NewLocApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_ach.xsd)
+  - New Terminal Application Schema:  [NewTermApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_ach.xsd)
+  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_ach.xsd)
+
+### **Check21 Schema**
+
+  - Check21 Application Schema:  [NewMerchApp_Check21](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)
+  - New Location Application Schema:  [NewLocApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_check21.xsd)
+  - New Terminal Application Schema:  [NewTermApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_Check21.xsd) 
+  - New Create Terminal Application Schema:  [NewTermCreateApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_Check21.xsd)
+
+### **Gift Schema**
+
+  - Gift Application Schema:  [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)
+  - New Location Application Schema:  [NewLocApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_gift.xsd)
+  - New Terminal Application Schema:  [NewTermApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermapp_gift.xsd)
+  - New Create Terminal Application Schema:  [NewTermCreateApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermCreateapp_gift.xsd)
+
+### **Other Schema** 
+
+  - Board Merchant Application Schema:  [NewMerchantApp](https://demo.eftchecks.com/webservices/schemas/app/NewMerchantsApp.xsd)
+  - Board Location Application Schema:  [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)
+  - Create Terminal Application Schema:  [NewTerminalsApp](https://demo.eftchecks.com/webservices/schemas/app/NewTerminalsApp.xsd)
+
+
+
 
 ## **Response**
 Each web method in the Application Gateway will return an XML string and detail the success or failure of the submission.  If the application is accepted the following XML response will be returned.
@@ -961,7 +1009,7 @@ termVerificationOnly=&quot;0&quot; /&gt;
 </soapenv:Envelope>
 ```
 
-**Contact Information**
+## **Contact Information**
 For questions or to receive certification and live username/passwords and URLs please contact:
 
 Integration Department
