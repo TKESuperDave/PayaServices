@@ -1,5 +1,5 @@
 ## Request:
-
+```
 POST /webservices/AppGateway.asmx HTTP/1.1
 Host: demo.eftchecks.com
 Content-Type: text/xml; charset=utf-8
@@ -22,14 +22,16 @@ SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardCertifi
     </BoardCertificationMerchant_ACH>
   </soap:Body>
 </soap:Envelope>
-
+```
 
 
 ## Response:
-
+```
 HTTP/1.1 200 OK
 Content-Type: text/xml; charset=utf-8
 Content-Length: length
+
+
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
@@ -38,3 +40,4 @@ Content-Length: length
     </BoardCertificationMerchant_ACHResponse>
   </soap:Body>
 </soap:Envelope>
+```
