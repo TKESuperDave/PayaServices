@@ -473,7 +473,7 @@ Because the Data packet is XML, some special characters must be escaped to be in
 
 ## **Merchant Application XML Example**
 
-```
+```XML
 <Envelope>
 	<Body 
 	          FileName="261407_28_May_2009_12_05_00_590.xml" 
@@ -798,7 +798,7 @@ Each web method in the Application Gateway will return an XML string and detail 
 
 ### **Response Message – Example Success Response**
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 	<RESPONSE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<STATUS>Approved</STATUS>
@@ -899,7 +899,7 @@ If an error occurs within the Application Gateway the XML string response will d
 
 ### EXCEPTION Element – Example as a child of the RESPONSE element
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 <RESPONSE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<VALIDATION_MESSAGE>
@@ -924,7 +924,7 @@ If an error occurs within the Application Gateway the XML string response will d
 
 ### **Sample SOAP Message**
 
-```
+```XML
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
   <soapenv:Header>
     <app:RemoteAccessHeader>
