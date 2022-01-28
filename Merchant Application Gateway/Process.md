@@ -903,12 +903,11 @@ If an error occurs within the Application Gateway the XML string response will d
 <?xml version="1.0" encoding="utf-8"?>
 <RESPONSE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<VALIDATION_MESSAGE>
-		<RESULT>Failed</RESULT>		<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/schemas/app/NewMerchApp_ACH.xsd
-          </SCHEMA_FILE_PATH>
+		<RESULT>Failed</RESULT>		
+		<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/schemas/app/NewMerchApp_ACH.xsd</SCHEMA_FILE_PATH>
 		<VALIDATION_ERROR LINE_NUMBER="1" LINE_POSITION="138">
 			<SEVERITY>Error</SEVERITY>
-			<MESSAGE>The required attribute 'merchReturnFee' is missing.
-                               </MESSAGE>
+			<MESSAGE>The required attribute 'merchReturnFee' is missing.</MESSAGE>
 		</VALIDATION_ERROR>
 	</VALIDATION_MESSAGE>
 </RESPONSE>
