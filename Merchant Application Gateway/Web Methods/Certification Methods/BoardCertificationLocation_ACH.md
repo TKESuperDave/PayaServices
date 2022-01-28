@@ -9,7 +9,7 @@ SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardCertifi
 
 
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Header>
@@ -34,7 +34,7 @@ HTTP/1.1 200 OK
 Content-Type: text/xml; charset=utf-8  
 Content-Length: length  
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
@@ -53,7 +53,7 @@ POST /webservices/AppGateway.asmx HTTP/1.1
 Host: demo.eftchecks.com  
 Content-Type: application/soap+xml; charset=utf-8  
 Content-Length: length  
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Header>
@@ -77,7 +77,7 @@ HTTP/1.1 200 OK
 Content-Type: text/xml; charset=utf-8  
 Content-Length: length  
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
