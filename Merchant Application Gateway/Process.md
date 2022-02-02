@@ -177,7 +177,7 @@ Before you are able to go into production Paya Services requires that you cerify
 
 ### **Other Certification Methods**
 
-- [**UploadCertificationSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationSupportingDocs)
+- [**UploadCertificationSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
 
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
   - **Input**:  
@@ -185,7 +185,7 @@ Before you are able to go into production Paya Services requires that you cerify
     - Accepts a PDF document as a byte array 
   - **Output**:  none
 
-- [**UploadCertificationSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationSupportingDocs2)
+- [**UploadCertificationSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md)
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
   - **Input**:  
@@ -194,22 +194,22 @@ Before you are able to go into production Paya Services requires that you cerify
     - File Extension as String 
   - **Output**:  none
 
-- [**RetrieveCertificationMerchantStatus**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveCertificationMerchantStatus)
+- [**RetrieveCertificationMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md)
 
   - **Description**:  This method will process a merchant id and return a detailed merchant status.  This method is used during interface testing and certification.
   - **Input**:  Paya Services Merchant ID as Integer
   - **Output**:  Outputs an XML string.
 
-- [**RequestCertificationCheckLimitIncrease**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCertificationCheckLimitIncrease)
+- [**RequestCertificationCheckLimitIncrease**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md)
 
   - **Description**:  This method will request a check limit increase for a specified terminal id.  This method is used during interface testing and certification.
   - **Input**:
     - Paya Services Terminal ID as Integer
     - Requested check limit as a Decimal
   - **Output**:  Outputs an XML string.
-  - **Usage**: After request, use [RetrieveCertificationMerchantStatus](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveCertificationMerchantStatus) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
+  - **Usage**: After request, use [RetrieveCertificationMerchantStatus](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
 
-- [**RequestCertificationBankAccountChange**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCertificationBankAccountChange)
+- [**RequestCertificationBankAccountChange**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md)
 
   - **Description**:  This method will request a bank account change for a location id.  This method is used during interface testing and certification.
   - **Input**:
@@ -217,9 +217,9 @@ Before you are able to go into production Paya Services requires that you cerify
     - New Routing Number as a string
     - New Account Number as a string
   - **Output**:  Outputs an XML string with an Issue Id as Integer.
-  - **Usage**:  After request, use [UploadCertificationIssueSupportingDocs](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationIssueSupportingDocs) to upload signed merchant bank change request as PDF.
+  - **Usage**:  After request, use [UploadCertificationIssueSupportingDocs](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md) to upload signed merchant bank change request as PDF.
 
-- [**UploadCertificationIssueSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationIssueSupportingDocs)
+- [**UploadCertificationIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
 
   - **Description:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
   - **Input**:  
@@ -227,7 +227,7 @@ Before you are able to go into production Paya Services requires that you cerify
     - Accepts a PDF document as a byte array 
   - **Output**:  none
 
-- [**UploadCertificationIssueSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationIssueSupportingDocs2)
+- [**UploadCertificationIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md)
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification. 
 Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
@@ -237,7 +237,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - File Extension as String 
   - **Output**:  none
 
-- [**RequestCertificationMerchantCancellation**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCertificationMerchantCancellation)
+- [**RequestCertificationMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md)
 
   - **Description**:  This method will request a merchant cancellation.  This method is used during interface testing and certification.
   - **Input**:
@@ -245,13 +245,13 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Requested cancellation reason as CancellationReason Enum
   - **Output**:  Outputs an XML string with an Issue Id as Integer.
 
-- [**BoardCertificationMerchants**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchants)
+- [**BoardCertificationMerchants**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md)
 
   - **Description**:  This method will process an ACH and Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
   - **Input**: Accepts an XML string called a data packet that much conform to the application schema.  
   - **Output**:  Outputs an XML string.
 
-- [**BoardCertificationLocations**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationLocations)
+- [**BoardCertificationLocations**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md)
 
   - **Description**:  This method will process an ACH and Check21 location application and return a detail success or failure response.  This method is used during interface testing and certification.  
   - **Input**:  
@@ -259,7 +259,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-- [**CreateCertificationTerminals**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateCertificationTerminals)
+- [**CreateCertificationTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md)
 
   - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
   - **Input**:  
