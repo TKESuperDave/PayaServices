@@ -5,7 +5,7 @@ POST /webservices/AppGateway.asmx HTTP/1.1
 Host: demo.eftchecks.com  
 Content-Type: text/xml; charset=utf-8  
 Content-Length: length  
-SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardLocations"
+SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/RequestCertificationMerchantCancellation"
 
 
 ```XML
@@ -19,10 +19,10 @@ SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardLocatio
     </RemoteAccessHeader>
   </soap:Header>
   <soap:Body>
-    <BoardLocations xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <merchantID>int</merchantID>
-      <DataPacket>string</DataPacket>
-    </BoardLocations>
+    <RequestCertificationMerchantCancellation xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <MerchantID>int</MerchantID>
+      <CancellationReason>Business_Closing or Never_Received_Equipment or No_Reason_Given or Decline_Denied_Svc_per_ISO or Disgruntled_with_GETI or Equipment_Problems or ISO_Requested or No_Need_For_Service or Was_Not_Aware_of_Svc or Equipment_Not_Compatible or All_Fees_Too_High or Sold_Business_Or_Unknown_Owner or Business_Not_Open or Sales_Partner_Issue</CancellationReason>
+    </RequestCertificationMerchantCancellation>
   </soap:Body>
 </soap:Envelope>
 ```
@@ -38,9 +38,9 @@ Content-Length: length
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <BoardLocationsResponse xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <BoardLocationsResult>string</BoardLocationsResult>
-    </BoardLocationsResponse>
+    <RequestCertificationMerchantCancellationResponse xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <RequestCertificationMerchantCancellationResult>string</RequestCertificationMerchantCancellationResult>
+    </RequestCertificationMerchantCancellationResponse>
   </soap:Body>
 </soap:Envelope>
 ```
@@ -65,10 +65,10 @@ Content-Length: length
     </RemoteAccessHeader>
   </soap12:Header>
   <soap12:Body>
-    <BoardLocations xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <merchantID>int</merchantID>
-      <DataPacket>string</DataPacket>
-    </BoardLocations>
+    <RequestCertificationMerchantCancellation xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <MerchantID>int</MerchantID>
+      <CancellationReason>Business_Closing or Never_Received_Equipment or No_Reason_Given or Decline_Denied_Svc_per_ISO or Disgruntled_with_GETI or Equipment_Problems or ISO_Requested or No_Need_For_Service or Was_Not_Aware_of_Svc or Equipment_Not_Compatible or All_Fees_Too_High or Sold_Business_Or_Unknown_Owner or Business_Not_Open or Sales_Partner_Issue</CancellationReason>
+    </RequestCertificationMerchantCancellation>
   </soap12:Body>
 </soap12:Envelope>
 ```
@@ -83,9 +83,9 @@ Content-Length: length
 <?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
-    <BoardLocationsResponse xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <BoardLocationsResult>string</BoardLocationsResult>
-    </BoardLocationsResponse>
+    <RequestCertificationMerchantCancellationResponse xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <RequestCertificationMerchantCancellationResult>string</RequestCertificationMerchantCancellationResult>
+    </RequestCertificationMerchantCancellationResponse>
   </soap12:Body>
 </soap12:Envelope>
 ```

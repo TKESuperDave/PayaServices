@@ -5,7 +5,7 @@ POST /webservices/AppGateway.asmx HTTP/1.1
 Host: demo.eftchecks.com  
 Content-Type: text/xml; charset=utf-8  
 Content-Length: length  
-SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardLocations"
+SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/UploadCertificationSupportingDocs2"
 
 
 ```XML
@@ -19,10 +19,11 @@ SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AppGateway/BoardLocatio
     </RemoteAccessHeader>
   </soap:Header>
   <soap:Body>
-    <BoardLocations xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <merchantID>int</merchantID>
-      <DataPacket>string</DataPacket>
-    </BoardLocations>
+    <UploadCertificationSupportingDocs2 xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <MerchantID>int</MerchantID>
+      <DataPacket>base64Binary</DataPacket>
+      <FileType>string</FileType>
+    </UploadCertificationSupportingDocs2>
   </soap:Body>
 </soap:Envelope>
 ```
@@ -38,9 +39,9 @@ Content-Length: length
 <?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <BoardLocationsResponse xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <BoardLocationsResult>string</BoardLocationsResult>
-    </BoardLocationsResponse>
+    <UploadCertificationSupportingDocs2Response xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <UploadCertificationSupportingDocs2Result>string</UploadCertificationSupportingDocs2Result>
+    </UploadCertificationSupportingDocs2Response>
   </soap:Body>
 </soap:Envelope>
 ```
@@ -52,8 +53,7 @@ Content-Length: length
 POST /webservices/AppGateway.asmx HTTP/1.1  
 Host: demo.eftchecks.com  
 Content-Type: application/soap+xml; charset=utf-8  
-Content-Length: length 
- 
+Content-Length: length  
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
@@ -65,10 +65,11 @@ Content-Length: length
     </RemoteAccessHeader>
   </soap12:Header>
   <soap12:Body>
-    <BoardLocations xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <merchantID>int</merchantID>
-      <DataPacket>string</DataPacket>
-    </BoardLocations>
+    <UploadCertificationSupportingDocs2 xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <MerchantID>int</MerchantID>
+      <DataPacket>base64Binary</DataPacket>
+      <FileType>string</FileType>
+    </UploadCertificationSupportingDocs2>
   </soap12:Body>
 </soap12:Envelope>
 ```
@@ -83,9 +84,9 @@ Content-Length: length
 <?xml version="1.0" encoding="utf-8"?>
 <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
   <soap12:Body>
-    <BoardLocationsResponse xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
-      <BoardLocationsResult>string</BoardLocationsResult>
-    </BoardLocationsResponse>
+    <UploadCertificationSupportingDocs2Response xmlns="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+      <UploadCertificationSupportingDocs2Result>string</UploadCertificationSupportingDocs2Result>
+    </UploadCertificationSupportingDocs2Response>
   </soap12:Body>
 </soap12:Envelope>
 ```
