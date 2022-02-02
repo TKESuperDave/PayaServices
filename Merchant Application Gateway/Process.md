@@ -273,13 +273,13 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 ### **ACH Production Methods**
 
-- [**BoardMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_ACH)
+- [**BoardMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardMerchant_ACH.md)
 
 - **Description**:  This method will process an ACH merchant application and return a detail success or failure response.
   - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
   - **Output**:  Outputs an XML string.
 
-- [**BoardLocation_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocation_ACH)
+- [**BoardLocation_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md)
 
 - **Description**:  This method will process an ACH location application to add a location to an EXISTING merchant and return a detail success or failure response.  
   - **Input**:  
@@ -287,14 +287,14 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new location application schema.
   - **Output**:  Outputs an XML string.
 
-- [**BoardTerminal_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardTerminal_ACH)
+- [**BoardTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardTerminal_ACH.md)
   - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
   - **Input**:  
     - Paya Services Location ID as Integer
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-- [**CreateTerminal_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminal_ACH)
+- [**CreateTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md)
   - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Input**:  
     - Paya Services Location ID as Integer
@@ -302,13 +302,13 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
   - **Output**:  Outputs an XML string.
 
 ### **Check21 Production Methods**
-- [**BoardMerchant_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_Check21)
+- [**BoardMerchant_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardMerchant_Check21.md)
 
   - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.
   - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
   - **Output**:  Outputs an XML string.
 
-- [**BoardLocation_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocation_Check21)
+- [**BoardLocation_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md)
 
   - **Description**:  This method will process a Check21 location application to add a location to an EXISTING merchant and return a detail success or failure response.  
   - **Input**:  
@@ -316,7 +316,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new location application schema.
   - **Output**:  Outputs an XML string.
 
-- [**BoardTerminal_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardTerminal_Check21)
+- [**BoardTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardTerminal_Check21.md)
 
   - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
   - **Input**:  
@@ -324,7 +324,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-- [**CreateTerminal_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminal_Check21)
+- [**CreateTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md)
 
 - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Input**:  
@@ -334,13 +334,13 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 ### **Gift Production Methods**
 
-- [**BoardMerchant_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_GIFT)
+- [**BoardMerchant_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardMerchant_Gift.md)
 
 - **Description**:  This method will process a Gift merchant application and return a detail success or failure response.
   - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
   - **Output**:  Outputs an XML string.
 
-- [**BoardLocation_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocation_GIFT)
+- [**BoardLocation_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardLocation_Gift.md)
 
 - **Description:  This method will process a Gift location application to add a location to an EXISTING merchant and return a detail success or failure response.  
   - **Input**:  
@@ -348,7 +348,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new location application schema.
   - **Output**:  Outputs an XML string.
 
-- [**BoardTerminal_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardTerminal_GIFT)
+- [**BoardTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md)
 
 - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
   - **Input**:  
@@ -356,7 +356,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
   - **Output**:  Outputs an XML string.
 
-- [**CreateTerminal_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminal_GIFT)
+- [**CreateTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md)
 
 - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Input**:  
