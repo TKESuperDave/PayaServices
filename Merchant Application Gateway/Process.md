@@ -85,7 +85,7 @@ Before you are able to go into production Paya Services requires that you cerify
 
 ### **ACH Certification Methods**
 
-- [**BoardCertificationMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_ACH)
+- [**BoardCertificationMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md)
 
   - **Description**:  This method will process an ACH merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
   - **Input**: Accepts an XML string called a data packet that much conform to the application schema.  
