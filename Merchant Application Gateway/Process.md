@@ -82,7 +82,7 @@ _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
 
 ## **Certification Methods**
 
-Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution.
+Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
 
 ### **ACH Certification Methods**
 
@@ -271,6 +271,8 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 
 ## Production Methods
+
+Once you have certified with our Paya Services team you will need to used the production methods listed below to create live transaction within the banking system.
 
 ### **ACH Production Methods**
 
