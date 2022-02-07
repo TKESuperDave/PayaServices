@@ -687,25 +687,25 @@ Because the Data packet is XML, some special characters must be escaped to be in
 
 _NOTE: Terminal IDs may change based on the data created._
 
-  - ACH Application Sample:  [NewMerchAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_ACH.xml)
-  - Check21 Application Sample:  [NewMerchAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Check21.xml)
-  - Gift Application Sample:  [NewMerchAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Gift.xml)
+  - ACH Application Sample:  [NewMerchAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_ACH.xml)
+  - Check21 Application Sample:  [NewMerchAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Check21.xml)
+  - Gift Application Sample:  [NewMerchAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Gift.xml)
 
-  - ACH Location Application Sample:  [NewLocAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_ACH.xml)
-  - Check21 Location Application Sample:  [NewLocAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Check21.xml)
-  - Gift Location Application Sample:  [NewLocAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Gift.xml)
+  - ACH Location Application Sample:  [NewLocAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_ACH.xml)
+  - Check21 Location Application Sample:  [NewLocAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Check21.xml)
+  - Gift Location Application Sample:  [NewLocAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Gift.xml)
 
-  - ACH Terminal Application Sample: [NewTermAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_ACH.xml)
-  - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Check21.xml)
-  - Gift Terminal Application Sample:  [NewTermAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Gift.xml)
+  - ACH Terminal Application Sample: [NewTermAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_ACH.xml)
+  - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Check21.xml)
+  - Gift Terminal Application Sample:  [NewTermAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Gift.xml)
 
-  - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_ACH.xml)
-  - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Check21.xml)
-  - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Gift.xml)
+  - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_ACH.xml)
+  - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Check21.xml)
+  - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Gift.xml)
 
-  - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchantsAppSample.xml)
-  - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocationsAppSample.xml)
-  - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTerminalsAppSample.xml)
+  - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchantsAppSample.xml)
+  - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewLocationsAppSample.xml)
+  - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewTerminalsAppSample.xml)
 
 
 
@@ -713,16 +713,16 @@ _NOTE: Terminal IDs may change based on the data created._
 Each element in the XML data packet that is sent to the Application Gateway has a data type that defines the format of the data contained within the element.  The XSD defines which elements are of what data type.  A list and links to the available data types is located below.
 
   - Application Gateway Types
-https://demo.eftchecks.com/webservices/Schemas/Types/AppGatewayTypes.xsd
+/Merchant%20Application%20Gateway/Data%20Types/AppGatewayTypes.xsd
 
   - Merchant Simple Types 
-https://demo.eftchecks.com/webservices/Schemas/Types/MerchantSimpleTypes.xsd
+/Merchant%20Application%20Gateway/Data%20Types/MerchantSimpleTypes.xsd
 
 - Terminal Simple Types 
-https://demo.eftchecks.com/webservices/Schemas/Types/TerminalSimpleTypes.xsd
+/Merchant%20Application%20Gateway/Data%20Types/TerminalSimpleTypes.xsd
 
   - States and Provinces
-https://demogift.eftchecks.com/schemas/types/StatesAndProvincesSimpleType.xsd
+/Merchant%20Application%20Gateway/Data%20Types/StatesAndProvincesSimpleType.xsd
 
  ### **Supporting Documents**
 
