@@ -9,7 +9,7 @@ We use (XML)Extensible Markup Language, to send data packet requests and receive
 ### **Table of Contents**
 1. [Connection Method](Process.md#connection-method)
 2. [Support Electronic Applications](Process.md#supported-electronic-applications)
-3. [Submissions](Process.md#submission)
+3. [Submissions](Process.md#submissions)
      - [SOAP Header](Process.md#soap-header)
 4. [Web Methods](Process.md#web-methods)
      - [Certification](Process.md#certification-methods)
@@ -61,7 +61,7 @@ The following SEC Codes are supported for an electronic application:
  - Check 21 (C21) 
  - Gift Card
 
-# **Submission**
+# **Submissions**
 The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd for the appropriate SEC Code and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
 
 ### **SOAP Header**
