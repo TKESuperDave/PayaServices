@@ -691,17 +691,21 @@ _NOTE: Terminal IDs may change based on the data created._
   - Check21 Application Sample:  [NewMerchAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Check21.xml)
   - Gift Application Sample:  [NewMerchAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Gift.xml)
 
+
   - ACH Location Application Sample:  [NewLocAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_ACH.xml)
   - Check21 Location Application Sample:  [NewLocAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Check21.xml)
   - Gift Location Application Sample:  [NewLocAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Gift.xml)
+
 
   - ACH Terminal Application Sample: [NewTermAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_ACH.xml)
   - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Check21.xml)
   - Gift Terminal Application Sample:  [NewTermAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Gift.xml)
 
+
   - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_ACH.xml)
   - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Check21.xml)
   - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Gift.xml)
+
 
   - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchantsAppSample.xml)
   - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewLocationsAppSample.xml)
@@ -712,17 +716,13 @@ _NOTE: Terminal IDs may change based on the data created._
 ## **Data Types**
 Each element in the XML data packet that is sent to the Application Gateway has a data type that defines the format of the data contained within the element.  The XSD defines which elements are of what data type.  A list and links to the available data types is located below.
 
-  - Application Gateway Types
-/Merchant%20Application%20Gateway/Data%20Types/AppGatewayTypes.xsd
+  - [Application Gateway Types](/Merchant%20Application%20Gateway/Data%20Types/AppGatewayTypes.xsd)
 
-  - Merchant Simple Types 
-/Merchant%20Application%20Gateway/Data%20Types/MerchantSimpleTypes.xsd
+  - [Merchant Simple Types](/Merchant%20Application%20Gateway/Data%20Types/MerchantSimpleTypes.xsd)
 
-- Terminal Simple Types 
-/Merchant%20Application%20Gateway/Data%20Types/TerminalSimpleTypes.xsd
+  - [Terminal Simple Types](/Merchant%20Application%20Gateway/Data%20Types/TerminalSimpleTypes.xsd)
 
-  - States and Provinces
-/Merchant%20Application%20Gateway/Data%20Types/StatesAndProvincesSimpleType.xsd
+  - [States and Provinces](/Merchant%20Application%20Gateway/Data%20Types/StatesAndProvincesSimpleType.xsd)
 
  ### **Supporting Documents**
 
