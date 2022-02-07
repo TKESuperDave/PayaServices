@@ -221,7 +221,7 @@ Before you are able to go into production Paya Services requires that you cerify
 
 - [**UploadCertificationIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
 
-  - **Description:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
+  - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
   - **Input**:  
     - Paya Services Issue ID as Integer
     - Accepts a PDF document as a byte array 
@@ -275,13 +275,13 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 - [**BoardMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardMerchant_ACH.md)
 
-- **Description**:  This method will process an ACH merchant application and return a detail success or failure response.
+  - **Description**:  This method will process an ACH merchant application and return a detail success or failure response.
   - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
   - **Output**:  Outputs an XML string.
 
 - [**BoardLocation_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md)
 
-- **Description**:  This method will process an ACH location application to add a location to an EXISTING merchant and return a detail success or failure response.  
+  - **Description**:  This method will process an ACH location application to add a location to an EXISTING merchant and return a detail success or failure response.  
   - **Input**:  
     - Paya Services Merchant ID as Integer
     - Accepts an XML string called a data packet that must conform to the new location application schema.
@@ -326,7 +326,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 - [**CreateTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md)
 
-- **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
+  - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Input**:  
     - Paya Services Location ID as Integer
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
@@ -336,13 +336,13 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 - [**BoardMerchant_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardMerchant_Gift.md)
 
-- **Description**:  This method will process a Gift merchant application and return a detail success or failure response.
+  - **Description**:  This method will process a Gift merchant application and return a detail success or failure response.
   - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
   - **Output**:  Outputs an XML string.
 
 - [**BoardLocation_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardLocation_Gift.md)
 
-- **Description:  This method will process a Gift location application to add a location to an EXISTING merchant and return a detail success or failure response.  
+  - **Description:  This method will process a Gift location application to add a location to an EXISTING merchant and return a detail success or failure response.  
   - **Input**:  
     - Paya Services Merchant ID as Integer
     - Accepts an XML string called a data packet that must conform to the new location application schema.
@@ -350,7 +350,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 - [**BoardTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md)
 
-- **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
+  - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
   - **Input**:  
     - Paya Services Location ID as Integer
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
@@ -358,7 +358,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 - [**CreateTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md)
 
-- **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
+    - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Input**:  
     - Paya Services Location ID as Integer
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
