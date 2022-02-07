@@ -366,7 +366,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
 
 ### **Other Productions Methods**
 
-- [**UploadSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadSupportingDocs)
+- [**UploadSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md)
 
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.    
   - **Input**:  
@@ -374,7 +374,7 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - Accepts a PDF document as a byte array 
   - **Output**:  none
 
-- [**UploadSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadSupportingDocs2)
+- [**UploadSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md)
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached.
 Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
@@ -384,22 +384,22 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - File Extension as String 
   - **Output**:  none
 
-- [**RetrieveMerchantStatus**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveMerchantStatus)
+- [**RetrieveMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md)
 
   - **Description**:  This method will process a merchant id and return a detailed merchant status. NOTE: The Output will return a more detailed XML if the Merchant is approved.
   - **Input**:  Paya Services Merchant ID as Integer
   - **Output**:  Outputs an XML string.
 
-- [**RequestCheckLimitIncrease**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCheckLimitIncrease)
+- [**RequestCheckLimitIncrease**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestCheckLimitIncrease.md)
 
   - **Description**:  This method will request a check limit increase for a specified terminal id.  
   - **Input**:
     - Paya Services Terminal ID as Integer
     - Requested check limit as a Decimal
   - **Output**:  Outputs an XML string.
-  - **Usage**: After request, use [RetrieveMerchantStatus](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveMerchantStatus) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
+  - **Usage**: After request, use [RetrieveMerchantStatus](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
 
-- [**RequestBankChange**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestBankChange)
+- [**RequestBankChange**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md)
 
   - **Description**:  This method will request a bank account change for a location id.  
   - **Input**:
@@ -407,10 +407,10 @@ Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS
     - New Routing Number as a string
     - New Account Number as a string
   - **Output**:  Outputs an XML string with an Issue Id as Integer.
-Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadIssueSupportingDocs) to upload signed merchant bank change request as PDF.
+Usage:  After request, use [UploadIssueSupportingDocs](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs.md) to upload signed merchant bank change request as PDF.
 
 
-- [**UploadIssueSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadIssueSupportingDocs)
+- [**UploadIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs.md)
 
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  
   - **Input**:  
@@ -418,7 +418,7 @@ Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.co
     - Accepts a PDF document as a byte array 
   - **Output**:  none
 
-- [**UploadIssueSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadIssueSupportingDocs2)
+- [**UploadIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md)
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached. Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
   - **Input**:  
@@ -427,7 +427,7 @@ Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.co
     - File Extension as String 
   - **Output**:  none
 
-- [**RequestMerchantCancellation**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestMerchantCancellation)
+- [**RequestMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestMerchantCancellation.md)
 
   - **Description**:  This method will request a merchant cancellation.  
   - **Input**:
@@ -435,13 +435,13 @@ Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.co
     - Requested cancellation reason as CancellationReason Enum
   - **Output**:  Outputs an XML string with an Issue Id as Integer.
 
-- [**BoardMerchants**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchants)
+- [**BoardMerchants**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardMerchants.md)
 
   - **Description**:  This method will process an ACH and Check21 merchant application and return a detail success or failure response.
   - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
   - **Output**:  Outputs an XML string.
 
-- [**BoardLocations**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocations)
+- [**BoardLocations**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardLocations.md)
 
   - **Description**:  This method will process an ACH and Check21 location application to add a location to an EXISTING merchant and return a detail success or failure response.  
   - **Input**:  
@@ -449,7 +449,7 @@ Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.co
     - Accepts an XML string called a data packet that must conform to the new location application schema.
   - **Output**:  Outputs an XML string.
 
-- [**CreateTerminals**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminals)
+- [**CreateTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md)
 
   - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Input**:  
