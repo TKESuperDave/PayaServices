@@ -687,26 +687,27 @@ Because the Data packet is XML, some special characters must be escaped to be in
 
 _NOTE: Terminal IDs may change based on the data created._
 
+**Application Samples**:
   - ACH Application Sample:  [NewMerchAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_ACH.xml)
   - Check21 Application Sample:  [NewMerchAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Check21.xml)
   - Gift Application Sample:  [NewMerchAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Gift.xml)
 
-
+**Location Aplication Samples**:
   - ACH Location Application Sample:  [NewLocAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_ACH.xml)
   - Check21 Location Application Sample:  [NewLocAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Check21.xml)
   - Gift Location Application Sample:  [NewLocAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Gift.xml)
 
-
+**Terminal Aplication Samples**:
   - ACH Terminal Application Sample: [NewTermAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_ACH.xml)
   - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Check21.xml)
   - Gift Terminal Application Sample:  [NewTermAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Gift.xml)
 
-
+**Create Terminal Application Samples**:
   - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_ACH.xml)
   - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Check21.xml)
   - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Gift.xml)
 
-
+**Other Samples**:
   - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchantsAppSample.xml)
   - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewLocationsAppSample.xml)
   - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewTerminalsAppSample.xml)
