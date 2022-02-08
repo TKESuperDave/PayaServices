@@ -84,6 +84,8 @@ _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
 
 Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
 
+
+
 ### **ACH Certification Methods**
 
 - [**BoardCertificationMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationMerchant_ACH.md)
@@ -264,10 +266,9 @@ Before you are able to go into production Paya Services requires that you cerify
 - [**CreateCertificationTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md)
 
   - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+  - **Input**: 
+  |[SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)   |**Output**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)|
+  
 
 
 
@@ -455,11 +456,12 @@ Usage:  After request, use [UploadIssueSupportingDocs](/Merchant%20Application%2
 
 - [**CreateTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md)
 
+  - **Replaces**:  [**CreateCertificationTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md)
   - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Input**:  
     - Paya Services Location ID as Integer
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Replaces**:  CreateCertificationTerminals
+  
 
 # **Data Packet – XML Specification**
 The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
