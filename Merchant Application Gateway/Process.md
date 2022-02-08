@@ -188,7 +188,8 @@ Before you are able to go into production Paya Services requires that you cerify
 
 - [**UploadCertificationSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md)
 
-  - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
+  - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached. This method is used during interface testing and certification.    
+  - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP 
   - **Input**:  
     - Paya Services Merchant ID as Integer
     - Accepts a document as a byte array
@@ -231,7 +232,7 @@ Before you are able to go into production Paya Services requires that you cerify
 - [**UploadCertificationIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md)
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification. 
-Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
+  - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
   - **Input**:  
     - Paya Services Issue ID as Integer
     - Accepts a document as a byte array 
@@ -458,7 +459,7 @@ Usage:  After request, use [UploadIssueSupportingDocs](/Merchant%20Application%2
   - **Input**:  
     - Paya Services Location ID as Integer
     - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+  - **Replaces**:  CreateCertificationTerminals
 
 # **Data Packet – XML Specification**
 The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
