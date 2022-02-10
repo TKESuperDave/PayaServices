@@ -1,3 +1,10 @@
+  **Inputs**: 
+   - Accepts an XML string called a data packet that must conform to the application schema. 
+    
+  **Output**:
+  - Returns an XML string.
+
+
 # SOAP 1.1
 ## Request:
 **Header Information:**  
