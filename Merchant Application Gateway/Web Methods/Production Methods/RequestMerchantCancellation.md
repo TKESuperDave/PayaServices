@@ -1,3 +1,10 @@
+  **Input**:
+  - Paya Services Merchant ID as Integer
+  - Requested cancellation reason as CancellationReason Enum
+  
+  **Output**:  
+  - Outputs an XML string with an Issue Id as Integer.
+
 # SOAP 1.1
 ## Request:
 **Header Information:**  
