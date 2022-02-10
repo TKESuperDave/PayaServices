@@ -1,3 +1,10 @@
+**Input**:
+- Paya Services Terminal ID as Integer
+- Requested check limit as a Decimal
+
+**Output**:  
+- Outputs an XML string.
+
 # SOAP 1.1
 ## Request:
 **Header Information:**  
