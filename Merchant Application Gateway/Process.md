@@ -329,8 +329,7 @@ Once you have certified with our Paya Services team you will need to used the pr
 # **Data Packet – XML Specification**
 The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+***Note about Special Characters:** Because the Data packet is XML, the following special characters must be escaped to be included in the data. Please see the examples below.
 
 |     Special Character    |     Symbol    |     Escaped Form     |
 |--------------------------|---------------|----------------------|
