@@ -4,7 +4,7 @@
  
  **Output**:  
  - None
- - 
+  
 # SOAP 1.1
 ## Request:
 **Header Information:**  
