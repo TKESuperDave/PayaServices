@@ -1,3 +1,11 @@
+  **Input**:  
+  - Paya Services Issue ID as Integer
+  - Accepts a document as a byte array 
+  - File Extension as String 
+  
+  **Output**:  
+  - None
+
 # SOAP 1.1
 ## Request:
 **Header Information:**  
