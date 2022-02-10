@@ -108,64 +108,43 @@ Before you are able to go into production Paya Services requires that you cerify
 
 - [**BoardCertificationMerchant_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationMerchant_Check21.md)
   - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
 
 - [**BoardCertificationLocation_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md)
 
   - **Description**:  This method will process a Check21 location application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+  
 
 - [**BoardCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md)
 
   - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+ 
 
 - [**CreateCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md)
 
   - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+
 
 ### **Gift Certification Methods**
 
 - [**BoardCertificationMerchant_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md)
 
   - **Description**:  This method will process a Gift merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
+  
 
 - [**BoardCertificationLocation_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md)
 
   - **Description**:  This method will process a Gift location application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+  
 
 - [**BoardCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md)
 
   - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+ 
 
 - [**CreateCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md)
 
   - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.  This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
+ 
 
 ### **Other Certification Methods**
 
