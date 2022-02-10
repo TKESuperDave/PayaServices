@@ -1,9 +1,9 @@
-  **Input**:  
-  - Paya Services Merchant ID as Integer
-  - Accepts a PDF document as a byte array 
-  
-  **Output**: 
-  - None
+ **Input**:  
+ - Paya Services Issue ID as Integer
+ - Accepts a PDF document as a byte array 
+ 
+ **Output**:  
+ - None
 
 # SOAP 1.1
 ## Request:
