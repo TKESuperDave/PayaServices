@@ -1,3 +1,9 @@
+ **Input**:  
+ - Paya Services Merchant ID as Integer
+ 
+ **Output**:  
+ - Outputs an XML string.
+
 # SOAP 1.1
 ## Request:
 **Header Information:**  
