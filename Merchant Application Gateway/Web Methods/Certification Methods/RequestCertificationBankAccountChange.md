@@ -1,3 +1,11 @@
+**Input**:
+- Paya Services Location ID as Integer
+- New Routing Number as a string
+- New Account Number as a string
+
+**Output**:  
+- Outputs an XML string with an Issue Id as Integer.
+
 # SOAP 1.1
 ## Request:
 **Header Information:**  
