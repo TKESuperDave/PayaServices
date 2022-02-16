@@ -186,8 +186,8 @@ Before you are able to go into production Paya Services requires that you cerify
 - [**UploadCertificationSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
 
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
 
 
 
@@ -195,16 +195,16 @@ Before you are able to go into production Paya Services requires that you cerify
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached. This method is used during interface testing and certification.    
   - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP 
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#response-1)
 
 
 
 - [**RetrieveCertificationMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md)
 
   - **Description**:  This method will process a merchant id and return a detailed merchant status.  This method is used during interface testing and certification.
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#response-1)
 
  
 
@@ -212,23 +212,23 @@ Before you are able to go into production Paya Services requires that you cerify
 
   - **Description**:  This method will request a check limit increase for a specified terminal id.  This method is used during interface testing and certification.
   - **Usage**: After request, use [RetrieveCertificationMerchantStatus](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#response-1)
 
 
 - [**RequestCertificationBankAccountChange**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md)
 
   - **Description**:  This method will request a bank account change for a location id.  This method is used during interface testing and certification.
   - **Usage**:  After request, use [UploadCertificationIssueSupportingDocs](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md) to upload signed merchant bank change request as PDF.
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#response-1)
 
 
 - [**UploadCertificationIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
 
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
 
  
 
@@ -236,27 +236,27 @@ Before you are able to go into production Paya Services requires that you cerify
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification. 
   - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#response-1)
 
 
 - [**RequestCertificationMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md)
 
   - **Description**:  This method will request a merchant cancellation.  This method is used during interface testing and certification.
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#response-1)
 
 - [**BoardCertificationMerchants**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md)
 
   - **Description**:  This method will process an ACH and Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#response-1)
 
 - [**BoardCertificationLocations**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md)
 
   - **Description**:  This method will process an ACH and Check21 location application and return a detail success or failure response.  This method is used during interface testing and certification.
-  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#response-1)
 
 - [**CreateCertificationTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md)
 
