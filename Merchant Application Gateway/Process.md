@@ -228,7 +228,7 @@ Before you are able to go into production Paya Services requires that you cerify
 
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
 
  
 
