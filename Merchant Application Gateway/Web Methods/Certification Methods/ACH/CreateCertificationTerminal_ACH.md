@@ -1,4 +1,4 @@
-**Input**:  
+**Inputs**:  
 - Paya Services Location ID as Integer
 - Accepts an XML string called a data packet that must conform to the new terminal application schema.
 
