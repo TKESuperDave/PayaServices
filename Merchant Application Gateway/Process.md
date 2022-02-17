@@ -4,7 +4,7 @@ Our Application Gateway is designed to accommodate various input requirements, a
 
 The Application Gateway uses web services to present distributed methods for integration into client applications, and an interface can be developed with any programming language that can consume a web service.
 
-We use (XML)Extensible Markup Language, to send data packet requests and receive responses from the Authorization Gateway.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS, we also employ a custom SOAP header for authentication information. 
+We use Extensible Markup Language (XML), to send data packet requests and receive responses from the Authorization Gateway.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS, we also employ a custom SOAP header for authentication information. 
 
 ### **Table of Contents**
 1. [Connection Method](Process.md#connection-method)
@@ -36,7 +36,6 @@ We use (XML)Extensible Markup Language, to send data packet requests and receive
 9. [Response](Process.md#response)
      - [Response Messages - Example of Success Response](Process.md#response-message--example-success-response)
 10. [Exceptions](Process.md#exceptions)
-     - [Exception Element](Process.md#the-exception-element-will-contain-the-following-elementsthe-exception-element-will-contain-the-following-elements)
 11. [Sample Code](Process.md#sample-code)
 12. [Contact Information](Process.md#contact-information)
 
@@ -62,7 +61,7 @@ The following SEC Codes are supported for an electronic application:
  - Gift Card
 
 # **Submissions**
-The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd for the appropriate SEC Code and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
+The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd for the appropriate SEC Code and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods; one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
 
 ### **SOAP Header**
 
@@ -84,8 +83,6 @@ _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
 
 Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
 
-
-
 ### **ACH Certification Methods**
 
 - [**BoardCertificationMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationMerchant_ACH.md)
@@ -94,27 +91,20 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response-1)
 
- 
-
 - [**BoardCertificationLocation_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md)
   - **Description**:  This method will process an ACH location application and return a detail success or failure response.  This method is used during interface testing and certification.  
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response-1)
-
 
 - [**BoardCertificationTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md)
   - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#response-1)
 
- 
-
 - [**CreateCertificationTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md)
   - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#response-1)
-
-
 
 ### **Check21 Certification Methods**
 
@@ -130,23 +120,17 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#response-1)
 
-  
-
 - [**BoardCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md)
 
   - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#response-1)
 
- 
-
 - [**CreateCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md)
 
   - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#response-1)
-
-
 
 ### **Gift Certification Methods**
 
@@ -155,7 +139,6 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Description**:  This method will process a Gift merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#response-1)
-  
 
 - [**BoardCertificationLocation_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md)
 
@@ -163,23 +146,17 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#response-1)
 
-  
-
 - [**BoardCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md)
 
   - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#response-1)
 
- 
-
 - [**CreateCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md)
 
   - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.  This method is used during interface testing and certification.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#response-1)
-
- 
 
 ### **Other Certification Methods**
 
@@ -189,8 +166,6 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
 
-
-
 - [**UploadCertificationSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md)
 
   - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached. This method is used during interface testing and certification.    
@@ -198,15 +173,11 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#response-1)
 
-
-
 - [**RetrieveCertificationMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md)
 
   - **Description**:  This method will process a merchant id and return a detailed merchant status.  This method is used during interface testing and certification.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#response-1)
-
- 
 
 - [**RequestCertificationCheckLimitIncrease**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md)
 
@@ -215,7 +186,6 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#response-1)
 
-
 - [**RequestCertificationBankAccountChange**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md)
 
   - **Description**:  This method will request a bank account change for a location id.  This method is used during interface testing and certification.
@@ -223,14 +193,11 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#response-1)
 
-
 - [**UploadCertificationIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
 
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
-
- 
 
 - [**UploadCertificationIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md)
 
@@ -238,7 +205,6 @@ Before you are able to go into production Paya Services requires that you cerify
   - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#response-1)
-
 
 - [**RequestCertificationMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md)
 
@@ -264,7 +230,6 @@ Before you are able to go into production Paya Services requires that you cerify
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
 
-
 ## Production Methods
 
 Once you have certified with our Paya Services team you will need to used the production methods listed below to create live transaction within the banking system.
@@ -277,7 +242,6 @@ Once you have certified with our Paya Services team you will need to used the pr
    - **Description**:  This method will process an ACH merchant application and return a detail success or failure response.
    - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#response-1)
-  
 
 - [**BoardLocation_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md)
 
@@ -299,8 +263,7 @@ Once you have certified with our Paya Services team you will need to used the pr
    - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
    - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#request-1)
    - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#response-1)
-  
-
+ 
 ### **Check21 Production Methods**
 - [**BoardMerchant_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardMerchant_Check21.md)
 
@@ -315,7 +278,6 @@ Once you have certified with our Paya Services team you will need to used the pr
    - **Description**:  This method will process a Check21 location application to add a location to an EXISTING merchant and return a detail success or failure response. 
    - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#request-1)
    - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#response-1)
-     
 
 - [**BoardTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardTerminal_Check21.md)
 
@@ -330,7 +292,6 @@ Once you have certified with our Paya Services team you will need to used the pr
    - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
    - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#request-1)
    - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#response-1)
- 
 
 ### **Gift Production Methods**
 
@@ -355,14 +316,12 @@ Once you have certified with our Paya Services team you will need to used the pr
    - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#request-1)
    - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#response-1)
  
-
 - [**CreateTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md)
 
      - **Replaces**:  [**CreateCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md)
      - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
 	 - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#request-1)
 	 - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#response-1)
- 
 
 ### **Other Productions Methods**
 
@@ -372,7 +331,6 @@ Once you have certified with our Paya Services team you will need to used the pr
   - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response-1)  
-  
 
 - [**UploadSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md)
 
@@ -381,7 +339,6 @@ Once you have certified with our Paya Services team you will need to used the pr
   - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#response-1)
-  
 
 - [**RetrieveMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md)
 
@@ -405,14 +362,12 @@ Once you have certified with our Paya Services team you will need to used the pr
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#response-1)
 
-
 - [**UploadIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs.md)
 
    - **Replaces**:  [**UploadCertificationIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
    - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.
    - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request-1)
    - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response-1)   
-  
 
 - [**UploadIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md)
  
@@ -420,7 +375,6 @@ Once you have certified with our Paya Services team you will need to used the pr
   - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached. Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#response-1)
-  
 
 - [**RequestMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestMerchantCancellation.md)
 
@@ -449,12 +403,11 @@ Once you have certified with our Paya Services team you will need to used the pr
   - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#response-1)
-  
 
 # **Data Packet – XML Specification**
 The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
 
-***Note about Special Characters:** Because the Data packet is XML, the following special characters must be escaped to be included in the data. Please see the examples below.
+***Note about Special Characters:** Because the Data packet is XML, the following special characters must be escaped to be included in the data. 
 
 |     Special Character    |     Symbol    |     Escaped Form     |
 |--------------------------|---------------|----------------------|
@@ -891,7 +844,7 @@ Test Merchant ACH 1 (ISO ID: 9999, CrossRef: 261407, Status: AppApprovedandActiv
 
 If an error occurs within the Application Gateway the XML string response will detail the reason for the error within an Exception element. The Exception element will NOT be present if an error did not occur. 
 
-### EXCEPTION Element – Example as a child of the RESPONSE element
+EXCEPTION Element – Example as a child of the RESPONSE element
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -906,12 +859,8 @@ If an error occurs within the Application Gateway the XML string response will d
 	</VALIDATION_MESSAGE>
 </RESPONSE>
 ```
-
-### **The Exception element will contain the following elements.**
-
-|                                          |                                                         |
-|------------------------------------------|---------------------------------------------------------|
-|     MESSAGE or   VALIDATION_MESSAGE:     |     Contains text information about   the exception.    |
+ The Exception element will contain the following elements:
+-  **MESSAGE** or **VALIDATION_MESSAGE**: Contains text information about the exception.
 
 ## **Sample Code**
 
