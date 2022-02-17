@@ -755,7 +755,7 @@ Each element in the XML data packet that is sent to the Application Gateway has 
 
 ## How to determine which XSD to Use
 
-The root path for all XSDs is https://github.com/PayaServices/tree/XML/Merchant%20Application%20Gateway/XSD%20to%20Use followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
+The example Schema file paths would be as follows:
 
 ### **ACH Schema**
 
@@ -788,7 +788,7 @@ The root path for all XSDs is https://github.com/PayaServices/tree/XML/Merchant%
 
 
 ## **Response**
-Each web method in the Application Gateway will return an XML string and detail the success or failure of the submission.  If the application is accepted the following XML response will be returned.
+Each web method in the Application Gateway will return an XML string and detail the success or failure of the submission.  If the application is accepted the following is a sample of an XML response that will be returned.
 
 ### **Response Message – Example Success Response**
 
@@ -907,7 +907,7 @@ If an error occurs within the Application Gateway the XML string response will d
 </RESPONSE>
 ```
 
-### **The Exception element will contain the following elements.The Exception element will contain the following elements.**
+### **The Exception element will contain the following elements.**
 
 |                                          |                                                         |
 |------------------------------------------|---------------------------------------------------------|
