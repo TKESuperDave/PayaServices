@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="APP_GATEWAY_TYPES" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include id="MERCHANT_SIMPLE_TYPES" schemaLocation="MerchantSimpleTypes.xsd" />
+  <xs:include id="TERMINAL_SIMPLE_TYPES" schemaLocation="TerminalSimpleTypes.xsd" />
+  <xs:include id="STATES_AND_PROVINCES" schemaLocation="StatesAndProvincesSimpleType.xsd" />
+
+
+  <xs:simpleType name="empty-string">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="amount">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.01"></xs:minInclusive>
+      <xs:pattern value="^\d+(?:\.\d{0,2})?$"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="zeroamount">
+    <xs:restriction base="xs:decimal">
+      <xs:pattern value="^\d+(?:\.\d{0,2})?$"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="amount-or-empty">
+    <xs:union memberTypes="amount empty-string" />
+  </xs:simpleType>
+
+  <xs:simpleType name="zeroamount-or-empty">
+    <xs:union memberTypes="zeroamount empty-string" />
+  </xs:simpleType>
+
+  <xs:simpleType name="city">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z ]{1,50}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="address">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9 #-:;']{1,200}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="address-or-empty">
+    <xs:union memberTypes="address empty-string" />
+  </xs:simpleType>
+
+  <xs:simpleType name="zip">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{5}(-\d{4})?"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="phonenumber">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="[1-9]\d{9}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="phonenumber-or-empty">
+    <xs:union memberTypes="phonenumber empty-string" />
+  </xs:simpleType>
+
+  <xs:simpleType name="routingnumber">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="\d{9,9}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="accountnumber">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="\d{1,17}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="name">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[-a-zA-Z .,']{1,100}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="name-or-empty">
+    <xs:union memberTypes="name empty-string" />
+  </xs:simpleType>
+
+  <xs:simpleType name="string200">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[-a-zA-Z .,']{1,200}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="string200-or-empty">
+    <xs:union memberTypes="string200 empty-string" />
+  </xs:simpleType>
+
+
+  <xs:simpleType name="ssn">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="\d{1,9}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="crossref">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9 #-:;']{1,50}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="entityname">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9 #-:;']{1,100}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Term_Peripheral-or-empty">
+    <xs:union memberTypes="Term_Peripheral empty-string" />
+  </xs:simpleType>
+
+
+  <xs:simpleType name="TerminalID">
+    <xs:restriction base="xs:positiveInteger">
+     </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="taxpayerID">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:pattern value="\d{1,9}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="taxpayername">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[-a-zA-Z .,']{1,100}"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="isoname">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="250" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="email">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="email-or-empty">
+    <xs:union memberTypes="email empty-string" />
+  </xs:simpleType>
+  
+  <xs:simpleType name="url">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\b(([\w-]+://?|www[.])[^\s()&lt;&gt;]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))"></xs:pattern>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="url-or-empty">
+    <xs:union memberTypes="url empty-string" />
+  </xs:simpleType>
+  
+  <xs:simpleType name="ACHCoData">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="POCRoles">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="4" id="MerchantOwner" />
+      <xs:enumeration value="5" id="MerchantClerk" />
+      <xs:enumeration value="6" id="MerchantCPA" />
+      <xs:enumeration value="15" id="StatementeMailRecipient" />
+      <xs:enumeration value="17" id="EFTContact" />
+      <xs:enumeration value="18" id="PrimaryPOC" />
+    </xs:restriction>
+  </xs:simpleType>
+
+	<xs:simpleType name="Terminal_Peripheral-or-empty">
+		<xs:union memberTypes="Terminal_Peripheral empty-string" />
+	</xs:simpleType>
+</xs:schema>

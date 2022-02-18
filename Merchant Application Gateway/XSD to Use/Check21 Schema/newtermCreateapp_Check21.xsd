@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" ?>
+<xs:schema id="ACH_APPS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include id="APP_GATEWAY_TYPES" schemaLocation="..//Types/AppGatewayTypes.xsd"></xs:include>
+  <xs:element name="Envelope">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Body">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Terminal" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="NewTerminal">
+                      <xs:complexType>
+                        <xs:attribute name="termCrossRefID" type="crossref" />
+                        <xs:attribute name="termCheckLimit" type="amount" use="optional" />
+                        <xs:attribute name="termPeripheral" type="Term_Peripheral_Check21" use="required" />
+                        <xs:attribute name="termTypeID" type="Term_Type_Check21" use="required" />
+                        <xs:attribute name="termVerificationOnly" type="xs:boolean" use="required" />
+                        <xs:attribute name="termLvl2Verification" type="xs:boolean" use="optional" />
+                        <xs:attribute name="termLvl3Verification" type="xs:boolean" use="optional" />
+                        <xs:attribute name="termSwiftSettleConsumerDebit" type="xs:boolean" use="optional" />
+                        <xs:attribute name="termOCR" type="xs:boolean" use="optional" />
+                        <xs:attribute name="termMRDC" type="xs:boolean" use="optional" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="merchServiceType" type="Merch_Service_Type_Check21" use="required" />
+                  <xs:attribute name="merchMRDCImageFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchCheck21FlatFee" type="zeroamount-or-empty" use="required" />
+                  <xs:attribute name="merchCheck21NonFlatFee" type="zeroamount-or-empty" use="required" />
+                  <xs:attribute name="merchCheck21PercentFee" type="zeroamount-or-empty" use="required" />
+                  <xs:attribute name="merchC21PreimumFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchReturnFee" type="zeroamount-or-empty" use="required" />
+                  <xs:attribute name="merchAnnualFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchChargebackFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchInvalidTINFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchNetComplianceFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchCancellationFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchVTTermFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchPremiumPercentFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchReaderReplacemntFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchMonthlyServiceFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchMonthlyMinimumFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchReversalFee" type="zeroamount-or-empty" use="optional" />
+                  <xs:attribute name="merchBatchFee" type="zeroamount-or-empty" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

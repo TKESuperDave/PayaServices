@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" ?>
+<xs:schema id="ACH_APPS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include id="APP_GATEWAY_TYPES" schemaLocation="..//Types/AppGatewayTypes.xsd"></xs:include>
+  <xs:element name="Envelope">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Body">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GiftLoyalty">
+                      <xs:complexType>
+                        <xs:attribute name ="TimeZone" type="Time_Zone" use ="required"></xs:attribute>
+                        <xs:attribute name ="BusinessType" type="Gift_Type" use ="required"></xs:attribute>
+                        <xs:attribute name="merchGiftServiceType" type="Merch_Service_Type_GIFT" use="required" />
+                        <xs:attribute name="merchGiftTransFee" type="zeroamount-or-empty" use="required" />
+                        <xs:attribute name="merchCostPerCard" type="zeroamount-or-empty" use="required" />
+                        <xs:attribute name="merchGiftPercentFee" type="zeroamount-or-empty" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+              <xs:element name="Terminal" maxOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>                    
+                    <xs:element maxOccurs="unbounded" name="NewTerminal">
+                      <xs:complexType>
+                        <xs:attribute name="termCrossRefID" type="crossref" />
+                        <xs:attribute name="termTypeID" type="Gift_Term_Type" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

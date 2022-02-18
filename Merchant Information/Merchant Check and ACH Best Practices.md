@@ -1,3 +1,53 @@
+
+
+### **Table of Contents**
+
+1. [Check and ACH Processing Best Practices]()
+	- [Check and ACH Processing Overview]()
+	- [Payement Solutions]()
+	- [What physical checks can be accepted?]()
+2. [Guarantee]()
+3. [Paper Check]()
+	- [Non-conversion Guarantee/Non-Guarantee]()
+4. [Point-of-Sale Conversion]()
+   	- [Guarantee/Non-Guarantee]()
+5. [Check 21]()
+     - [Face-to-Face, Guarantee/Non-Guarantee]()
+     - [Consumer Not Present - Guarantee/Non-Guarantee]()
+6. [ACH Debit/Credit]()
+	 - [Guarantee/Non-Guarantee]()
+		- [Customer Authorization Requirements]()
+		- [Prearranged Payment and Deposit (PPD) Requirements]()
+		- [Corporate Credit or Debit (CCD) Requirements]()
+7. [Checks By Phone]()
+     - [Guarantee/Non-Guarantee]()
+		- [Customer Authorization Requirements]()
+8. [Checks By Web]()
+	 - [Bill Pay/e-Commerce Non-Guarantee]()
+		- [Customer Authorization Requirements]()
+		- [Customer Authentication Requirements]()
+9. [Optional Enhancements]()
+	 - [SwiftSettle]()
+		- [Same Day ACH]()
+10. [Stop Payment Coverage]()
+11. [Consumer Convenience Fees]()
+12. [Check Verification Services]()
+	 - [Level One: Nationwide Proprietary Database]()
+	 - [Level Two: Advanced Account Validation]()
+	 - [Level Three: Identity Verification]()
+13. [Money Laundering]()
+14. [Fraudulent or Suspicious Transactions]()
+15. [Client Services and Support]()
+16. [Online Reporting Business Management Tool]()
+	 - [Reporting Options]()
+	 - [Information available]()
+17. [Customer Transaction Disputes]()
+18. [Expedited Processor Returns]()
+	 - [E-Code Returns]()
+19. [Transaction Returns]()
+	 - [Transaction Return Tips]()
+	 
+
 # Check and ACH Processing Best Practices
 
 ## Check and ACH Processing Overview
@@ -9,6 +59,7 @@ Electronic payment processing is more than checks. Paya is dedicated to facilita
 Note: Automated Clearing House (ACH) are governed by the National Automated Clearing House Association (NACHA), the organization that manages the electronic movement of money in the U.S. Paya has unique rules to follow based on the NACHA Operating Rules & Guidelines and has compliance specialists and risk analysts on staff to help guide and assist you in knowing and following the applicable rules. 
 
 Below, we have summarized some basics to help you with some best practices and tips to make your relationship with Paya successful and to protect yourself from customer payment fraud. 
+
 
 ## Payment Solutions
 
@@ -49,19 +100,19 @@ Paya allows physical personal or business checks to be accepted for the Point-of
    - Checkwriter’s driver’s license picture must match the person presenting the check
    - Checkwriter’s name on the driver’s license must match the name on the check
 
-## Guarantee
+# Guarantee
 Improve cash flow and eliminate collection operations with Guarantee. Below are the programs eligible for Guarantee:
  - POS Conversion
  - ACH Debit (Single Debit Transactions Only)
  - Paper Check – Paper Guarantee
  - Checks by Phone
 
-## How does Guarantee work?
+### How does Guarantee work?
 While completing a check transaction, the equipment electronically and automatically receives a verification of the checkwriter’s account history in order to approve and process the debit. Requirements for Guarantee vary by program and can help you avoid risk of non-payment from customers’ returned checks. The Guarantee programs are designed for businesses to keep funds from the payment while Paya handles the collection of the return from the customer. The funds are guaranteed as long as authorization stipulations are met. 
 Customer claims of fraud, stop payments, and customer fraud are essentially eliminated from funding guarantee and your company will be debited for the return. 
 
-## Paper Check
-Non-conversion Guarantee/Non-Guarantee
+# Paper Check
+## Non-conversion Guarantee/Non-Guarantee
 The verification program allows Paya to “verify” that the customer doesn’t have any outstanding returned checks. Once the check is approved, you can proceed with submitting the check.
  - Equipment will give an approval “auth” code or “decline” reason. Document the auth code number on the check and deposit it into your bank account. 
  - Physical checks must be deposited into your bank on the next banking day.
@@ -71,12 +122,11 @@ The verification program allows Paya to “verify” that the customer doesn’t
  - If the customer’s payment returns, please reference the Guarantee section. 
 
 # Point-of-Sale Conversion
-
 ## Guarantee/Non-Guarantee
 
 The ACH Conversion program allows Paya to verify that a customer doesn’t have any outstanding returned checks. If the check is approved, Paya processes the check as an ACH transaction and sends you the funds for the check. 
 
-## How it works:
+How it works:
  - Equipment will give an approval “auth” code or “decline” reason and print a receipt. 
  - If you receive a “decline” response from the equipment for any reason, do not attempt to process that check again. 
  - If you receive an “approval”, the Electronic Funds Transfer (EFT) receipt will print. 
@@ -92,7 +142,6 @@ The ACH Conversion program allows Paya to verify that a customer doesn’t have 
  - If your customer’s payment returns, please reference the Guarantee section. 
 
 # Check 21
-
 ## Face-to-Face, Guarantee/Non-Guarantee
 
 The Check 21 program “verifies” that a Paya customer does not have any outstanding returned checks. Once the check is approved, Paya processes the check image, both front and back, and sends you the funds. 
@@ -101,7 +150,8 @@ The Check 21 program “verifies” that a Paya customer does not have any outst
  - The physical check must be stored by you for a minimum of 90-days and then can be shredded.  
  - If your customer’s payment returns, please see the Guarantee section above. 
 
-Consumer Not Present – Guarantee/Non-Guarantee
+## Consumer Not Present – Guarantee/Non-Guarantee
+
 The Check 21 program “verifies” that a Paya customer does not have any outstanding returned checks. Once the check is approved, Paya processes the check image, both front and back, and sends you the funds. Checks received in the mail may be accepted up to two weeks after the date of the check.
 See below for more tips:
  - Equipment will give an approval “auth” code or “decline” reason. You will need to write the auth code number on the check before storing.
@@ -109,19 +159,18 @@ See below for more tips:
  - The physical check must be stored by you for a minimum of 90-days and then can be shredded.  
  - If your customer’s payment returns, please see the Guarantee section above. 
 
-# Check 21
-
+# ACH Debit/Credit
 ## Guarantee/Non-Guarantee
 
 Customers may authorize a debit to their checking or savings accounts through a written agreement with his or her signature. The ACH Debit program allows debits to an individual or personal bank account using the NACHA Code for Pre-arranged Payment and Deposit (PPD) or to a business bank account using the NACHA Code for Corporate Credit or Debit (CCD). 
 Single or one-time debit transactions can be processed on a Guarantee program. Recurring debit transactions are only available to be processed on a Non-Guarantee program.
 
-# Customer Authorization Requirements
+### Customer Authorization Requirements
 
 Clients must retain the customer’s original authorization or copy of the original authorization in its original form that can be reproduced upon request. Authorization’s should be securely stored and retained for two (2) years from the last ACH transaction to the customer’s bank account. You should obtain a copy of a voided check and attach it to the authorization form to ensure proper routing and account number(s) are retained. 
 Authorization’s must be readily identifiable as an authorization containing clear and readily understandable terms (amount and timing). 
 
-## Pre-arranged Payment and Deposit (PPD) Requirements
+#### Pre-arranged Payment and Deposit (PPD) Requirements
 
  - Electronic signatures are acceptable if compliance with the National E-Sign Act. 
    - Details can be found at https://fdic.gov/regulations/compliance/manual/10/x-3.1.pdf 
@@ -141,7 +190,7 @@ Authorization’s must be readily identifiable as an authorization containing cl
 In the event that I choose to revoke this authorization, I will do so by contacting the Merchant directly. Processing times may not allow for revocation of this authorization. 
 I understand that this payment plan may be cancelled by the Merchant due to NSF (Non-Sufficient Funds). In the event this draft, or EFT is returned unpaid, I will be liable to pay an NSF fee of $25.00 (or the amount allowable by law), that may be automatically debited to this bank account via draft or EFT for each NSF.” 
 
-## Corporate Credit or Debit (CCD) Requirements
+### Corporate Credit or Debit (CCD) Requirements
   
  - NACHA does not have requirements for a specific format. 
  - Business consumer has a written agreement with the business originator under which both businesses have agreed to be bound by the ACH rules. 
@@ -161,16 +210,19 @@ I understand that this payment plan may be cancelled by the Merchant due to NSF 
 Checks by Phone allows customers to authorize a debit to their check or savings bank account over the phone. The Checks by Phone program can only be used when there is an existing relationship between a business and consumer unless a situation arises where the consumer initiates the phone call to the business. 
 Single or one-time Check by Phone debit transactions can be processed on a Guarantee program. Recurring debit transactions are only available to be processed on a Non-Guarantee program. 
 
-## Customer Authorization Requirements
+### Customer Authorization Requirements
   
 Clients are required to use commercially reasonable methods to authenticate, verify, and validate a customer’s identity prior or during authorization. 
 Clients must retain the customer’s original authorization or a copy of the original authorization in its original form that can be reproduced upon request. 
 Authorization should be securely stores and retained for two (2) years from the last ACH transaction to the customer’s bank account. 
 Authorizations must be readily identifiable as an authorization containing clear and readily understandable terms (amount and timing). 
 Single or one-time debit authorizations must be recorded through one of the following methods:
+
  - Recorded oral authorization 
  - Provide the consumer with written notice confirming the oral authorization prior to the settlement date of the debit entry
+ 
 Additional requirements include:
+
  - The authorization or agreement must provide the consumer with the method to revoke his or her authorization by notifying the business in the manner prescribed and the time-frame in which the revocation of the authorization must be provided.
  - Authorizations must include the following minimum information as part of the authorization:
    - Consumer Name
@@ -180,7 +232,7 @@ Additional requirements include:
    - Telephone Number that is answered during normal business houses
    - Date or Oral Authorization
    - Statement that authorization was obtained for and is a single ACH Debit
-•	Authorizations must also include the following verbiage (or substantially similar) and must be read and captured on the recording and/or written notice:
+ -	Authorizations must also include the following verbiage (or substantially similar) and must be read and captured on the recording and/or written notice:
   
 “<Customer’s First and Last Name>, by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you <Customer’s Name> are authorizing <Business Name> to create an ACH debit to your account and that this Check by Phone may be drafted from your account as early as today. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
 “Do you authorize <Business Name> to proceed with this Check by Phone?” 
@@ -206,12 +258,12 @@ Date <MM/DD/YY>
 Please allow 12 to 72 business hours for this ACH Debit to post to your account. Revoking an authorization must be done by calling <Phone Number> by <date>. 
 Should you have any questions regarding your payment, you may reach our office at <Contact Phone>. The ACH Debit should show on your bank statement as <Business Name>.
 
-## Recurring authorization must be recorded through one of the following methods:
+Recurring authorization must be recorded through one of the following methods:
 
  - Recorded Oral Authorization
  - Provide the consumer with written notice confirming the oral authorization prior to the settlement date of the debit entry
 
-## Additional requirements include: 
+ Additional requirements include: 
   
  - Authorizations must include the following minimum information as part of the authorization:
    - Consumer Name
@@ -237,7 +289,7 @@ Customer must state “Yes” or “No”
 Installments will begin on <Verbally provide date> and will occur on <1st/5th/15th, etc.> of each <day/week/month/etc.> (as applicable). Please allow 12 to 72 business hours for this transaction to post to your account. Should you have any questions regarding your payment, or choose to revoke your authorization, you may reach our office at <Business Telephone that is answered during normal business hours>. Please be advised that depending on the timing of your scheduled ACH, revocation of the authorization may not be available.”
 
 
-# Below is a sample Single Authorization Notice:
+Below is a sample Single Authorization Notice:
 
 By providing your bank account information and verbal authorization today <Enter Today’s Date – MM/DD/YY>, you have authorized <Business Name> to create an ACH debit to your bank account on the following schedule.
 A <daily/weekly/monthly> ACH debit was authorized with the following information for <Number> installments.
@@ -258,7 +310,7 @@ Should you have any questions regarding your payment, you may reach our office a
 Check by Web include customers who authorize a debit to their checking or savings account through a website or mobile app (such as a shopping cart).
 Single or one-time and recurring debit transactions are only available to be processed on a Non-Guaranteed program. 
 
-## Customer Authorization Requirements
+### Customer Authorization Requirements
 
 Authorizations must be readily identifiable as an authorization containing clear and readily understandable terms (amount and timing). 
  - The payment page must require the customer to take action to authorize a debit, such as clicking a virtual button, in which the customer acknowledges or agrees to the ACH debit. 
@@ -295,7 +347,7 @@ Authorizations must be readily identifiable as an authorization containing clear
    - Website address where the payment was accepted
    - Statement of how the consumer’s identity was authenticated
 
-Customer Authorization Requirements
+### Customer Authorization Requirements
 Clients are required to use commercially reasonable methods to authenticate, verify, or validate a customer’s identity prior or during authorization. It is not commercially reasonable to do nothing.
  - Assigning any password(s) and customer(s) authorizing debit(s) within the same Internet session is not commercially reasonable. 
  - Possible methods to authenticate users are noted below:
@@ -317,9 +369,9 @@ Suggested methods:
 
 # Optional Enhancements
 
-# SwiftSettle
+## SwiftSettle
 
-## Same Day ACH
+### Same Day ACH
   
 Paya created the SwiftSettle program in response to the NACHA-developed Same-Day ACH product. SwiftSettle is a faster way to process ACH transactions. Clients can initiate ACH credit and debit transactions to settle to the consumer on the same day for time-sensitive payments such as, payroll or refunds. Please keep in mind that client funding is not settled on the same day. 
  - Transactions must be received prior to the established cut-off time(s)
@@ -328,7 +380,7 @@ Paya created the SwiftSettle program in response to the NACHA-developed Same-Day
  - This must be for an amount of $25,000 or less
  - International (IAT) transactions cannot be processed under SwiftSettle; domestic only
 
-# Stop Payment Coverage
+## Stop Payment Coverage
   
 Certain types of businesses can receive a funding guarantee when the consumer returns a check or ACH as a stop payment through the Stop Payment Coverage program. Clients must receive checks in a face-to-face environment and have one of the products below:
  - POS Conversion Guarantee: Conversion of checks with a funding guarantee
@@ -338,13 +390,13 @@ Clients shall have performed all of their obligations related to the issuance of
 On the POS Conversion Guarantee and Check 21 + POS Guarantee, the client is required to have a check imager to qualify for stop payment coverage. In addition, stop payment claims require a copy of the invoice/work order and an image of the check along with written information regarding any claims for reimbursement. Please note, all service(s) or product(s) must have been delivered to the consumer. 
 On the Paper Guarantee, the client is required to provide a copy of the invoice/work order and the original check along with written information regarding any claims for reimbursement. Claims must be submitted within 30-days from the date of the original transaction. Please note, all service(s) or product(s) must have been delivered to the check writer.
 
-## Important Notes:
+Important Notes:
  - Stop Payment Coverage is only applicable on eligible ACH items.
  - Stop payment returns will automatically be debited from the client’s account until the claim is investigated by Paya Services.
  - Accepted claims will be paid within 30-days.
  - Stop Payment Coverage requires the client to pay an additional 25% discount rate per transaction. 
 
-## Stop Payment Coverage is designed for the following types of clients:
+Stop Payment Coverage is designed for the following types of clients:
  - Auto Glass Install/Repair
  - Auto Repair
  - Boat Repair
@@ -353,7 +405,7 @@ On the Paper Guarantee, the client is required to provide a copy of the invoice/
  - Paint and Body Repair
  - Transmission Repair
 
-# Stop Payment Coverage
+## Stop Payment Coverage
   
 Paya offers a Consumer Convenience Fee (CCF) program, which is a no-fee check processing service. CCF gives clients the opportunity to pass processing costs to the consumer, resulting in no-fee for ACH transaction processing. 
 Clients benefit from added secure payment methods without increased costs as there are no processing fees or annual fees for clients. Clients receive online reporting to track transactions at no added cost to them. 
@@ -370,34 +422,34 @@ Options are compatible with the following programs:
  - Checks by Web
  - Non-Guarantee Programs Only
 
-# Check Verification Services
+## Check Verification Services
 
 Paya provides three different levels of consumer bank account verification or identity validation through third-party vendors. Paya’s verification features assist in reducing overall Paya and/or client loss by declining to process check and ACH transactions to bank accounts that may be more likely to return. 
 
-## Level One: Nationwide Proprietary Database
+### Level One: Nationwide Proprietary Database
  - Thousands of organizations nationwide participate in contributing data to a third-party vendor database that tracks consumers by checking account number and driver’s license number. The database uses the check and ACH transaction information to verify if a consumer has outstanding bad checks within the participating clients and/or check collection companies. 
  - A consumer with prior returned check(s) or ACH transactions associated with their bank account or driver’s license will be declined from processing. 
  - This database verification enables Paya to customize velocity limits for consumer transactions. Each velocity limit only approves a specific number of checks with a total combined amount per consumer with a specific window. 
 
-## Level Two: Advanced Account Validation
+### Level Two: Advanced Account Validation
  - Paya uses a third-party vendor to complete real-time verification of a checking or savings account for the account status. The Advanced Banking Verification checks if a consumer’s bank account is open and has a minimum of $1.00 balance. 
 
-## How does the verification work?
+** How does the verification work?**
  - Consumers’ financial institution report to the third-party vendor on the status of their customers’ bank accounts at the end of the prior day’s processing cycle. 
  - When Paya receives a transaction for verification, the data is passed to the vendor seamlessly in real-time.
  - The vendor will check the status from the financial institution and respond as “approve” or “decline” based on the status. 
 
-## What causes a decline?
+** What causes a decline?**
  - Accounts that do not match an active bank account
  - Accounts that have recent negative history of insufficient funds that have returned
  - Accounts that match a closed or negative bank account
 
-## Items to Note:
+** Items to Note:**
  - An approved transaction can still return because changes can happen to a bank account between the verification and presentation.
  - Not all banks participate, approximately 75% to 80% take part in this verification process
  - If the bank account numb er is for a non-participating bank, the transaction will be approved, but the transaction can still be returned
 
-## Level Three: Identity Verification
+### Level Three: Identity Verification
  - Paya uses a third-party vendor to complete real-time seamless authentication of consumer’s identity using the following consumer information that is collected and entered into a check or ACH transaction:
    - Name
    - Address
@@ -429,7 +481,7 @@ We ask our clients to always be on the lookout for possible fraud. Below are som
 If you have any questions about the legitimacy of your customer or the check presented to you, we urge you to carefully consider not taking the check as form of payment. Remember, clients can help us to continue to keep our product costs low by always being on the lookout for possible fraud. 
 If you are ever unsure of how to handle a check or unusual transaction, please consult with a knowledgeable Paya Support Agent. Please also refer to your terminal guide, where you will find many helpful “Quick-tips”.
 
-# Client Services and Support
+## Client Services and Support
   
 The Paya Support Staff is available Monday through Friday from 8:00 AM to 6:00 PM Central Time. 
  - Customer Care: (888)-481-0757 or CustomerSuport@eftsupport.com 
@@ -440,9 +492,9 @@ You can chat live with a support agent directly from our website during the same
 Did you know that you can access your account information online? We provide our clients the option to access statements, view reports, and manage your account 24/7 with no wait time. If you have not already established your online access, ask your payment processing provider support agent to setup your online account access today! 
 As a client, it is important to remember to notify us anytime information regarding your business changes. This includes a change of address, telephone or fax number, bank account changes, and/or ownership changes. Failure to keep your business information up-to-date could result in delayed funding to your account. 
 
-# Online Reporting Business Management Tool
+## Online Reporting Business Management Tool
   
-## Reporting Options
+### Reporting Options
   
 My Online Reports is a secure, web-hosted online reporting system that lets you take control of your transaction reporting. Clients can access their account information, transaction data, view statements, utilize custom reports, and manage their account 24/7. It’s simple to use and available at no extra cost. 
 
@@ -467,7 +519,7 @@ Here are the steps to access My Online Reports:
 5.	Click the menu bar to make a selection
 First-time users must register through a Paya Support Agent
 
-# Customer Transaction Disputes
+## Customer Transaction Disputes
   
 Businesses that have used credit card processing are familiar with the term “chargeback”. A chargeback is when a customer disputes a credit card payment. Federal banking laws and NACHA Operating Rules & Guidelines allow customer disputes to protect consumers. 
 Paya Services uses similar terminology. However, in Paya Services, a client receives a “chargeback” after a customer’s return is received from an ACH debit or Check 21 transaction when the client previously received funding from Paya Services and one of the following occurred: 

@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="TERMINAL_SIMPLE_TYPES" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+  <xs:simpleType name="Term_Peripheral">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="0" id="Unknown_Peripheral" />
+      <xs:enumeration value="1" id="Verifone_P250" />
+      <xs:enumeration value="6" id="RDM_Imager" />
+      <xs:enumeration value="7" id="MagTeck" />
+      <xs:enumeration value="29" id="En_2500" />
+      <xs:enumeration value="30" id="Welsh_Allen" />
+      <xs:enumeration value="49" id="Ingenico_Imager" />
+      <xs:enumeration value="50" id="CR600" />
+      <xs:enumeration value="60" id="CMR431" />
+      <xs:enumeration value="61" id="Citizen_250_Printer" />
+      <xs:enumeration value="62" id="Scribe_612_Printer" />
+      <xs:enumeration value="63" id="MagTeck_Imager" />
+      <xs:enumeration value="64" id="CR1000i" />
+      <xs:enumeration value="68" id="MagTek_MICR_Magstripe" />
+      <xs:enumeration value="71" id="Receipt_Master_2000" />
+      <xs:enumeration value="72" id="Four_Acess" />
+      <xs:enumeration value="74" id="CMR431_Check_Reader" />
+      <xs:enumeration value="94" id="Epson_TranScan" />
+      <xs:enumeration value="98" id="Digital_Check_Imager" />
+      <xs:enumeration value="99" id="Intelbanq_EasyScan_Imager" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Term_Billing_Cycle_Type">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="1" id="Delay_Days"/>
+      <xs:enumeration value="2" id="Immediate"/>
+      <xs:enumeration value="3" id="Montnly"/>
+      <xs:enumeration value="4" id="Bi_Monthly"/>
+      <xs:enumeration value="5" id="Weekly"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="Gift_Term_Type">
+    <xs:restriction base ="xs:integer">
+      <xs:enumeration value="0" id="Unknown_Type_Gift" />
+      <xs:enumeration value="7" id="Lipman_Nurit_2085_Gift" />
+      <xs:enumeration value="16" id="Lipman_Nurit_3000_Gift" />
+      <xs:enumeration value="20" id="Lipman_Nurit_8310_Gift" />
+      <xs:enumeration value="129" id="Lipman_Nurit_2090_Gift" />
+      <xs:enumeration value="145" id="Lipman_Nurit_3020_Gift" />
+      <xs:enumeration value="562" id="Lipman_Nurit_8320_Gift" />
+      <xs:enumeration value="563" id="Lipman_Nurit_8100_Gift" />
+      <xs:enumeration value="564" id="Lipman_Nurit_8000_Gift" />
+      <xs:enumeration value="572" id="Lipmin_Nurit_2159_Gift" />
+      <xs:enumeration value="578" id="Lipman_Nurit_8010_Gift" />
+      <xs:enumeration value="616" id="Primetrex_IP_Gift" />
+      <xs:enumeration value="617" id="Lipman_Nurit_8400_Gift" />
+      <xs:enumeration value="630" id="Lipman_Nurit_8020_Gift" />
+      <xs:enumeration value="631" id="Ingenico_i5100_Gift" />
+      <xs:enumeration value="632" id="Ingenico_i7780_Gift" />
+      <xs:enumeration value="634" id="Ingenico_Aqua_Gift" />
+      <xs:enumeration value="641" id="EPN_Gift_Gift" />
+      <xs:enumeration value="663" id="Street_Savings_Gift" />
+      <xs:enumeration value="725" id="Virtual_Terminal_Gift" />
+      <xs:enumeration value="753" id="T-GateGateway_Gift" />
+      <xs:enumeration value="769" id="Vx520_Gift" />
+      <xs:enumeration value="771" id="Fortune3_Shopping_Cart_Gift" />
+      <xs:enumeration value="792" id="PrimeTrex_S_Gift" />
+      <xs:enumeration value="798" id="PhoenixGateway" />
+      <xs:enumeration value="800" id="nCLOSEGateway" />
+      <xs:enumeration value="846" id="RNCMobilePayGateway" />
+      <xs:enumeration value="848" id="PAX_S80_Gift" />
+      <xs:enumeration value="849" id="PAX_S90_Gift" />
+      <xs:enumeration value="850" id="PAX_SP30_Gift" />
+      <xs:enumeration value="851" id="PAX_MT30_Gift" />
+      <xs:enumeration value="852" id="PAX_S300_Gift" />
+      <xs:enumeration value="853" id="PAX_S500_Gift" />
+      <xs:enumeration value="854" id="PAX_S800_Gift" />
+      <xs:enumeration value="855" id="PAX_S900_Gift" />
+      <xs:enumeration value="856" id="PAX_D200_Gift" />
+      <xs:enumeration value="857" id="PAX_D210_Gift" />
+      <xs:enumeration value="875" id="Ingenico_iCT200_Gift" />
+      <xs:enumeration value="880" id="Exadigm_NX1200_Gift" />
+      <xs:enumeration value="881" id="Exadigm_NX2200_Gift" />
+      <xs:enumeration value="882" id="Exadigm_NX2200E_Gift" />
+	    <xs:enumeration value="878" id="CFCDistributorsGateway_Gift" />
+      <xs:enumeration value="904" id="UnifiedPaymentsGateway_Gift" />
+      <xs:enumeration value="911" id="MainEntreeGateway_Gift" />
+      <xs:enumeration value="920" id="POYNTGateway_Gift" />
+      <xs:enumeration value="927" id="HMSMotorsportGateway" />
+      <xs:enumeration value="929" id="CherryRepublicGateway" />
+      <xs:enumeration value="948" id="EnzoCCCGateway" />
+      <xs:enumeration value="975" id = "XCartGateway" />
+      <xs:enumeration value="973" id = "CyberSolutionsGateway" />
+
+
+
+
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Term_Type">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="0" id="Unknown_Type" />
+      <xs:enumeration value="1" id="Talento_2U" />
+      <xs:enumeration value="2" id="Talento_2UD" />
+      <xs:enumeration value="3" id="Talento_4UD" />
+      <xs:enumeration value="5" id="IVI_Check_Manager_3000" />
+      <xs:enumeration value="7" id="Lipman_Nurit_2085" />
+      <xs:enumeration value="8" id="Verifone_Tranz_460" />
+      <xs:enumeration value="9" id="Verifone_Tranz_380x2" />
+      <xs:enumeration value="10" id="Verifone_Tranz_330" />
+      <xs:enumeration value="11" id="TEL_Manual_Entry" />
+      <xs:enumeration value="12" id="TEL_Files" />
+      <xs:enumeration value="13" id="B2C_Auto_Debit" />
+      <xs:enumeration value="14" id="RCK_Files" />
+      <xs:enumeration value="15" id="TEL_MOTO_Representments" />
+      <xs:enumeration value="16" id="Lipman_Nurit_3000" />
+      <xs:enumeration value="17" id="Lipman_Nurit_3010" />
+      <xs:enumeration value="18" id="PCCharge" />
+      <xs:enumeration value="19" id="Omni_3200" />
+      <xs:enumeration value="20" id="Lipman_Nurit_8310" />
+      <xs:enumeration value="55" id="TPI_Software" />
+      <xs:enumeration value="100" id="Hypercom_T7P" />
+      <xs:enumeration value="103" id="Hypercom_ICE_5500" />
+      <xs:enumeration value="105" id="Hypercom_ICE_5700" />
+      <xs:enumeration value="107" id="ARC_Terminal" />
+      <xs:enumeration value="129" id="Lipman_Nurit_2090" />
+      <xs:enumeration value="137" id="B2C_Recurring_Files" />
+      <xs:enumeration value="143" id="Zon_Jr._XL" />
+      <xs:enumeration value="145" id="Lipman_Nurit_3020" />
+      <xs:enumeration value="148" id="Hypercom_T77-F" />
+      <xs:enumeration value="149" id="Transaction_Manager_WEB" />
+      <xs:enumeration value="150" id="Transaction_Manager_PPD" />
+      <xs:enumeration value="151" id="Transaction_Manager_TEL" />
+      <xs:enumeration value="155" id="Ice5000" />
+      <xs:enumeration value="157" id="Lipman_Nurit_2080" />
+      <xs:enumeration value="158" id="B2B_Manual_Entry" />
+      <xs:enumeration value="159" id="B2B_Files" />
+      <xs:enumeration value="160" id="B2B_Auto_Debit" />
+      <xs:enumeration value="161" id="Omni_3750" />
+      <xs:enumeration value="162" id="B2C_Manual_Entry" />
+      <xs:enumeration value="163" id="Omni_3300" />
+      <xs:enumeration value="164" id="RDM-ARC" />
+      <xs:enumeration value="172" id="Hypercom_T7" />
+      <xs:enumeration value="173" id="HYpercom_T77" />
+      <xs:enumeration value="178" id="Talento_TIPP" />
+      <xs:enumeration value="179" id="Talento_T-ONE" />
+      <xs:enumeration value="180" id="Verifone_Tranz_420" />
+      <xs:enumeration value="181" id="Omni_3740" />
+      <xs:enumeration value="183" id="Nurit_2060" />
+      <xs:enumeration value="184" id="Verifion_Tranz_420" />
+      <xs:enumeration value="197" id="LinkPoint_3000" />
+      <xs:enumeration value="198" id="Omni_3210" />
+      <xs:enumeration value="200" id="Phone_Auth" />
+      <xs:enumeration value="201" id="CellCharge" />
+      <xs:enumeration value="207" id="RCK_Program" />
+      <xs:enumeration value="213" id="EPN_MICR" />
+      <xs:enumeration value="221" id="EPN_Mobile" />
+      <xs:enumeration value="222" id="Comstar_Nurit_3010" />
+      <xs:enumeration value="223" id="Comstar_Nurit_8000" />
+      <xs:enumeration value="224" id="Positouch" />
+      <xs:enumeration value="225" id="Aloha_V5.2_and_above" />
+      <xs:enumeration value="226" id="Micros_3700" />
+      <xs:enumeration value="227" id="Innovax" />
+      <xs:enumeration value="228" id="Triversity_SD8" />
+      <xs:enumeration value="229" id="IBM_StorePay_4690" />
+      <xs:enumeration value="230" id="NCR_2127" />
+      <xs:enumeration value="231" id="Data_Tran" />
+      <xs:enumeration value="232" id="CDX-32" />
+      <xs:enumeration value="233" id="LinkPoint_2000" />
+      <xs:enumeration value="234" id="LinkPoint_AIO" />
+      <xs:enumeration value="240" id="Omni_3730" />
+      <xs:enumeration value="241" id="Omni_3730LE" />
+      <xs:enumeration value="250" id="Ingenico_Elite_710" />
+      <xs:enumeration value="251" id="Ingenico_Elite_712" />
+      <xs:enumeration value="253" id="RDM_Synergy" />
+      <xs:enumeration value="561" id="Matre_D" />
+      <xs:enumeration value="562" id="Lipman_Nurit_8320" />
+      <xs:enumeration value="563" id="Lipman_Nurit_8100" />
+      <xs:enumeration value="564" id="Lipman_Nurit_8000" />
+      <xs:enumeration value="566" id="Hypercom_T7E" />
+      <xs:enumeration value="567" id="Dionica_Omerox_" />
+      <xs:enumeration value="568" id="_4Access_Orion" />
+      <xs:enumeration value="569" id="Magic_6100" />
+      <xs:enumeration value="571" id="Mobilescape_5000" />
+      <xs:enumeration value="572" id="Lipmin_Nurit_2159" />
+      <xs:enumeration value="573" id="Omni_Vx570" />
+      <xs:enumeration value="574" id="OPT_Virtual_Terminal" />
+      <xs:enumeration value="575" id="Magtek_Imager-ARC" />
+      <xs:enumeration value="576" id="TeleDebit" />
+      <xs:enumeration value="577" id="Virtual_Terminal_ACH" />
+      <xs:enumeration value="578" id="Lipman_Nurit_8010" />
+      <xs:enumeration value="580" id="OPT_Web_Terrminal_-_O" />
+      <xs:enumeration value="601" id="Omni_Vx510" />
+      <xs:enumeration value="602" id="Omni_Vx510LE" />
+      <xs:enumeration value="603" id="RDM-BOC" />
+      <xs:enumeration value="604" id="Magtek_Imager-BOC" />
+      <xs:enumeration value="606" id="TPI_Software_" />
+      <xs:enumeration value="607" id="HPS_Connect" />
+      <xs:enumeration value="610" id="Check_By_Phone" />
+      <xs:enumeration value="611" id="Linked_Terminal" />
+      <xs:enumeration value="612" id="Cyclone_Web_Service" />
+      <xs:enumeration value="616" id="Primetrex_IP" />
+      <xs:enumeration value="617" id="Lipman_Nurit_8400" />
+      <xs:enumeration value="619" id="SkipJack" />
+      <xs:enumeration value="623" id="Medcom_Transaction_Portal" />
+      <xs:enumeration value="624" id="Datacap_Systems" />
+      <xs:enumeration value="630" id="Lipman_Nurit_8020" />
+      <xs:enumeration value="631" id="Ingenico_i5100" />
+      <xs:enumeration value="632" id="Ingenico_i7780" />
+      <xs:enumeration value="633" id="Mitek_Check_21_Gateway_Terminal" />
+      <xs:enumeration value="634" id="Ingenico_Aqua" />
+      <xs:enumeration value="635" id="Nurit_8500X" />
+      <xs:enumeration value="636" id="TotalBillings" />
+      <xs:enumeration value="637" id="Hypercom_T4100" />
+      <xs:enumeration value="638" id="EncomPOS_Software" />
+      <xs:enumeration value="639" id="EvoCharge" />
+      <xs:enumeration value="640" id="Hypercom_T4200" />
+      <xs:enumeration value="641" id="EPN_Gift" />
+      <xs:enumeration value="642" id="Payment_Portal" />
+      <xs:enumeration value="645" id="GoToBilling_Files" />
+      <xs:enumeration value="646" id="Moneris_File" />
+      <xs:enumeration value="647" id="HPS_Web_Connect" />
+      <xs:enumeration value="648" id="EPN_Files" />
+      <xs:enumeration value="649" id="OSIS_Gateway" />
+      <xs:enumeration value="650" id="RDM_Synergy_II" />
+      <xs:enumeration value="651" id="Squirrel" />
+      <xs:enumeration value="652" id="Lucy" />
+      <xs:enumeration value="653" id="Merchant_Services_Network_Convert-a-check" />
+      <xs:enumeration value="654" id="NGT" />
+      <xs:enumeration value="655" id="Clear_Charge" />
+      <xs:enumeration value="656" id="NPS_Charge" />
+      <xs:enumeration value="657" id="One_Time_Debit_Virtual_Terminal" />
+      <xs:enumeration value="658" id="Recurring_Debit_Virtual_Terminal" />
+      <xs:enumeration value="660" id="FILE" />
+      <xs:enumeration value="661" id="PayTrace_Gateway" />
+      <xs:enumeration value="662" id="Moneris_eSelect_VT" />
+      <xs:enumeration value="663" id="Street_Savings" />
+      <xs:enumeration value="664" id="Dejavoo_X5" />
+      <xs:enumeration value="665" id="Dejavoo_X8" />
+      <xs:enumeration value="666" id="Dejavoo_M_Series" />
+      <xs:enumeration value="668" id="i-Check" />
+      <xs:enumeration value="669" id="EPN_Gateway" />
+      <xs:enumeration value="675" id="Pay_Leap_Gateway" />
+      <xs:enumeration value="676" id="Fail_Safe_Certo_Gateway" />
+      <xs:enumeration value="677" id="Deco_Solutions" />
+      <xs:enumeration value="678" id="Micros_e7" />
+      <xs:enumeration value="679" id="Mimeya" />
+      <xs:enumeration value="680" id="GoForte_Gateway" />
+      <xs:enumeration value="681" id="NMI_Gateway" />
+      <xs:enumeration value="682" id="Way_5000_Paper" />
+      <xs:enumeration value="683" id="EPN_Recurring" />
+      <xs:enumeration value="684" id="Omni_VX610" />
+      <xs:enumeration value="686" id="Brightworks_Shopping_Cart" />
+      <xs:enumeration value="687" id="Hypercom_M4200" />
+      <xs:enumeration value="688" id="nTelagentGateway" />
+      <xs:enumeration value="689" id="JPheeny_Solutions" />
+      <xs:enumeration value="691" id="Micros_9700" />
+      <xs:enumeration value="692" id="Xacti_Gateway" />
+      <xs:enumeration value="693" id="PAS_Transaction_Portal" />
+      <xs:enumeration value="694" id="MS_Dynamic_RMS" />
+      <xs:enumeration value="695" id="ConvenienceFee" />
+      <xs:enumeration value="696" id="Merchant_Partners_Gateway" />
+      <xs:enumeration value="701" id="ePaySpot_Gateway" />
+      <xs:enumeration value="702" id="TransactionX_Gateway" />
+      <xs:enumeration value="703" id="Inovium_Gateway" />
+      <xs:enumeration value="704" id="Web_Cart" />
+      <xs:enumeration value="705" id="MonsterPayGateway" />
+      <xs:enumeration value="706" id="PowerPayGateway" />
+      <xs:enumeration value="707" id="SynapseGateway" />
+      <xs:enumeration value="708" id="EasyPayGateway" />
+      <xs:enumeration value="709" id="OPT_Generic_Teminal" />
+      <!--<xs:enumeration value="710" id="SecurePayGateway" /-->
+      <xs:enumeration value="711" id="FILE_MID" />
+      <xs:enumeration value="712" id="CrossroadsGateway" />
+      <xs:enumeration value="713" id="BrainrunnerGateway" />
+      <xs:enumeration value="714" id="SecureEDIGateway" />
+      <xs:enumeration value="715" id="IndiaPayGateway" />
+      <xs:enumeration value="716" id="PAYware_Transact_Gateway" />
+      <xs:enumeration value="717" id="TransiacGateway" />
+      <xs:enumeration value="718" id="_5LinxGateway" />
+      <xs:enumeration value="719" id="OPTiTerm_Windows_PC" />
+      <xs:enumeration value="720" id="InHouseGateway" />
+      <xs:enumeration value="721" id="NationwideGateway" />
+      <xs:enumeration value="722" id="MunicipalGateway" />
+      <xs:enumeration value="723" id="RevenueAdvantageGateway" />
+      <xs:enumeration value="724" id="XpressBetGateway" />
+      <xs:enumeration value="726" id="GEMShoppingGateway" />
+      <xs:enumeration value="727" id="GETIGatewayEmulator" />
+      <xs:enumeration value="728" id="PrimeTrex_One" />
+      <xs:enumeration value="730" id="TransaXGateway" />
+      <xs:enumeration value="732" id="BFocused_Gateway" />
+      <xs:enumeration value="733" id="GrandRapidsGateway" />
+      <xs:enumeration value="734" id="OrderCupGateway" />
+      <xs:enumeration value="735" id="PAYware_Connect_Gateway" />
+      <xs:enumeration value="736" id="IVRTechGateway" />
+      <xs:enumeration value="737" id="SlimCDGateway" />
+      <xs:enumeration value="738" id="OurBlok_Web_Terminal" />
+      <xs:enumeration value="739" id="AllianceClubReadyGateway" />
+      <xs:enumeration value="740" id="FirstPresbGateway" />
+      <xs:enumeration value="744" id="BlueLineGateway" />
+      <xs:enumeration value="745" id="CITIESGateway" />
+      <xs:enumeration value="746" id="StratusPaymentGateway" />
+      <xs:enumeration value="747" id="GWSMCGateway" />
+      <xs:enumeration value="748" id="RoamDataGateway" />
+      <xs:enumeration value="749" id="FirstBaptistEustisGateway" />
+      <xs:enumeration value="750" id="Payjistix" />
+      <xs:enumeration value="751" id="CynergyGateway" />
+      <xs:enumeration value="752" id="GracePlaceGateway" />
+      <xs:enumeration value="753" id="T-GateGateway" />
+      <xs:enumeration value="754" id="WoodenDockGateway" />
+      <xs:enumeration value="756" id="Ingenico_Vantiv_ICT" />
+      <xs:enumeration value="757" id="Ingenico_iWL200" />
+      <xs:enumeration value="759" id="AudigyCareGateway" />
+      <xs:enumeration value="760" id="GreenlightGateway" />
+      <xs:enumeration value="761" id="GoEmerchantGateway" />
+      <xs:enumeration value="763" id="TenantMagicGateway" />
+      <xs:enumeration value="764" id="Heartland_e3" />
+      <xs:enumeration value="766" id="UniqueConsultingGateway" />
+      <xs:enumeration value="767" id="WebgistixGateway" />
+      <xs:enumeration value="768" id="PlugNPayGateway" />
+      <xs:enumeration value="769" id="Vx520" />
+      <xs:enumeration value="770" id="ExplosionSportGateway" />
+      <xs:enumeration value="771" id="Fortune3_Shopping_Cart" />
+      <xs:enumeration value="772" id="BaldwinCoGateway" />
+      <xs:enumeration value="773" id="SuperiorPayGateway" />
+      <xs:enumeration value="774" id="ICashDirectGateway" />
+      <xs:enumeration value="775" id="NxSystemsGateway" />
+      <xs:enumeration value="776" id="PrivaBlockGateway" />
+      <xs:enumeration value="777" id="HPSGateway" />
+      <xs:enumeration value="778" id="TransmodusGateway" />
+      <xs:enumeration value="779" id="FILE_-_Moulton" />
+      <xs:enumeration value="781" id="_1stPayGateway" />
+      <xs:enumeration value="782" id="Payment21Gateway" />
+      <xs:enumeration value="783" id="Dejavoo_Vega_V5" />
+      <xs:enumeration value="784" id="Dejavoo_Vega_V8" />
+      <xs:enumeration value="785" id="Dejavoo_Vega_V8plus" />
+      <xs:enumeration value="786" id="Dejavoo_Vega_V9" />
+      <xs:enumeration value="787" id="Dejavoo_Vega_V9plus" />
+      <xs:enumeration value="788" id="Y2PaymentsGateway" />
+      <xs:enumeration value="789" id="OPT_Web_Terminal_-_X" />
+      <xs:enumeration value="790" id="FrippVacGateway" />
+      <xs:enumeration value="791" id="ParagouldGateway" />
+      <xs:enumeration value="792" id="PrimeTrex_S" />
+      <xs:enumeration value="793" id="PrismPay-File" />
+      <xs:enumeration value="794" id="FluidGateway" />
+      <xs:enumeration value="795" id="USALifeGateway" />
+      <xs:enumeration value="796" id="UniversityValuesGateway" />
+      <xs:enumeration value="797" id="RevoGateway" />
+      <xs:enumeration value="798" id="PhoenixGateway" />
+      <xs:enumeration value="799" id="SpecialFinancingGateway" />
+      <xs:enumeration value="800" id="nCLOSEGateway" />
+      <xs:enumeration value="801" id="BlackstoneGateway" />
+      <xs:enumeration value="802" id="PayleaseGateway" />
+      <xs:enumeration value="803" id="UKEliteGateway" />
+      <xs:enumeration value="804" id="QAGETIGateway" />
+      <xs:enumeration value="805" id="HEI_QRAGateway" />
+      <xs:enumeration value="814" id="e-NablerGateway" />
+      <xs:enumeration value="815" id="PointandPayGateway" />
+      <xs:enumeration value="816" id="OPT-VT" />
+      <xs:enumeration value="817" id="Datacap_GIFTePay" />
+      <xs:enumeration value="818" id="CHECK_COLLECT" />
+      <xs:enumeration value="819" id="EmpoweredGateway" />
+      <xs:enumeration value="820" id="RossGroupGateway" />
+      <xs:enumeration value="821" id="StringrayGateway" />
+      <xs:enumeration value="822" id="AllianceProcessingGateway" />
+      <xs:enumeration value="823" id="CheckAlt_-_File" />
+      <xs:enumeration value="824" id="CityLoanGateway" />
+      <xs:enumeration value="825" id="TheRXHelperGateway" />
+      <xs:enumeration value="826" id="WP_VX-520" />
+      <xs:enumeration value="827" id="Stratus-File" />
+      <!--Renamed ID828 from 5thDimension to SparrowOne per ISO request-->
+      <xs:enumeration value="828" id="SparrowOneGateway" />
+      <xs:enumeration value="829" id="PremiereGateway" />
+      <xs:enumeration value="830" id="TransmodusFeeFile" />
+      <xs:enumeration value="831" id="TransmodusACHFile" />
+      <xs:enumeration value="832" id="TransmodusC21File" />
+      <xs:enumeration value="833" id="CohensOpticalGateway" />
+      <xs:enumeration value="834" id="SelectedGateway" />
+      <xs:enumeration value="835" id="MerchantPartnersGateway" />
+      <xs:enumeration value="836" id="IACGateway" />
+      <xs:enumeration value="837" id="USAePayGateway" />
+      <xs:enumeration value="838" id="BridgePayGateway" />
+      <xs:enumeration value="839" id="DescommGateway" />
+      <xs:enumeration value="840" id="SolupayGateway" />
+      <xs:enumeration value="841" id="TheSatelliteGateway" />
+      <xs:enumeration value="842" id="WellnessServicesGateway" />
+      <xs:enumeration value="843" id="NABGateway" />
+      <xs:enumeration value="844" id="JGX5EnterprisesGateway" />
+      <xs:enumeration value="845" id="NetSecureGateway" />
+      <xs:enumeration value="848" id="PAX_S80" />
+      <xs:enumeration value="849" id="PAX_S90" />
+      <xs:enumeration value="850" id="PAX_SP30" />
+      <xs:enumeration value="851" id="PAX_MT30" />
+      <xs:enumeration value="852" id="PAX_S300" />
+      <xs:enumeration value="853" id="PAX_S500" />
+      <xs:enumeration value="854" id="PAX_S800" />
+      <xs:enumeration value="855" id="PAX_S900" />
+      <xs:enumeration value="856" id="PAX_D200" />
+      <xs:enumeration value="857" id="PAX_D210" />
+      <xs:enumeration value="858" id="VerosaGateway" />
+      <xs:enumeration value="859" id="OPTICardGateway" />
+      <xs:enumeration value="860" id="DebtPayGatgeway" />
+      <xs:enumeration value="861" id="Dejavoo_Vega_V5S" />
+      <xs:enumeration value="862" id="Dejavoo_Vega_V8S" />
+      <xs:enumeration value="863" id="Dejavoo_Vega_V8Splus" />
+      <xs:enumeration value="864" id="Dejavoo_Vega_V9S" />
+      <xs:enumeration value="865" id="Dejavoo_Vega_V9Splus" />
+      <xs:enumeration value="866" id="DayAtTheTrackGateway" />
+      <xs:enumeration value="867" id="iMobile3Gateway" />
+      <xs:enumeration value="868" id="GreenCourtGateway" />
+      <xs:enumeration value="869" id="MercuryPaymentsGateway" />
+      <xs:enumeration value="870" id="PivotalPaymentsGateway" />
+      <xs:enumeration value="871" id="InstaCreditGateway" />
+      <xs:enumeration value="872" id="PetsBestGateway" />
+      <xs:enumeration value="873" id="AlnaPropertiesGateway" />
+      <xs:enumeration value="874" id="BenchmarkGateway" />
+      <xs:enumeration value="875" id="Ingenico_iCT200" />
+      <xs:enumeration value="876" id="OnlineGivingGateway" />
+	    <xs:enumeration value="877" id="VoucherSysGateway" />
+	    <xs:enumeration value="878" id="CFCDistributorsGateway" />
+      <xs:enumeration value="879" id="PortraitInnovationsGateway" />
+      <xs:enumeration value="880" id="Exadigm_NX1200" />
+      <xs:enumeration value="881" id="Exadigm_NX2200" />
+      <xs:enumeration value="882" id="Exadigm_NX2200E" />
+	    <xs:enumeration value="883" id="ReservationServiceGateway" />
+	    <xs:enumeration value="884" id="CheckSaversGateway" />
+	    <xs:enumeration value="885" id="FlexShopperGateway" />
+	    <xs:enumeration value="886" id="BlackbeltCRMGateway" />
+      <xs:enumeration value="887" id="EZACHFile" />
+      <xs:enumeration value="888" id="ITransactGateway" />
+      <xs:enumeration value="889" id="UnitedMerchantServicesGateway" />
+      <xs:enumeration value="890" id="DonorICEGateway" />
+      <xs:enumeration value="891" id="EnvocGateway" />
+      <xs:enumeration value="892" id="CayanGateway" />
+      <xs:enumeration value="893" id="MESGateway" />
+      <xs:enumeration value="894" id="HannahPetGateway" />
+      <xs:enumeration value="895" id="VSCRepairGateway" />
+      <xs:enumeration value="896" id="Dejavoo_Z1" />
+      <xs:enumeration value="897" id="Dejavoo_Z3" />
+      <xs:enumeration value="898" id="Dejavoo_Z6" />
+      <xs:enumeration value="899" id="Dejavoo_Z8" />
+      <xs:enumeration value="900" id="Dejavoo Z9" />
+      <xs:enumeration value="901" id="Dejavoo_Z11" />
+      <xs:enumeration value="902" id="OMGGateway" />
+      <xs:enumeration value="903" id="PayzerGateway" />
+      <xs:enumeration value="904" id="UnifiedPaymentsGateway" />
+      <xs:enumeration value="905" id="DentalPlansGateway" />
+      <xs:enumeration value="906" id="MyersStevensGateway" />
+      <xs:enumeration value="907" id="HowardGateway" />
+      <xs:enumeration value="908" id="NutrasolanaHealthGateway" />
+      <xs:enumeration value="909" id="CornerstoneGateway" />
+      <xs:enumeration value="910" id="KeyFobGuardianGateway" />
+      <xs:enumeration value="911" id="MainEntreeGateway" />
+      <xs:enumeration value="912" id="NationalCollectorsGateway" />
+      <xs:enumeration value="914" id="ParadigmGateway" />
+      <xs:enumeration value="915" id="UnifiedPaymentsMRDCGateway" />
+      <xs:enumeration value="916" id="Desktop_Terminal_POP" />
+      <xs:enumeration value="917" id="Desktop_Terminal_Check_21" />
+      <xs:enumeration value="918" id="SPSGateway" />
+      <xs:enumeration value="919" id="RentMojiGateway" />
+      <xs:enumeration value="920" id="POYNTGateway" />
+      <xs:enumeration value="921" id="POYNTGatewaymRDC" />
+      <xs:enumeration value="922" id="WebsitePipelineGateway" />
+      <xs:enumeration value="923" id="Pay2DayGateway" />
+      <xs:enumeration value="924" id="SmartCareGateway" />
+      <xs:enumeration value="925" id="ePayDataGateway" />
+      <xs:enumeration value="926" id="AutosoftGateway" />
+      <xs:enumeration value="927" id="HMSMotorsportGateway" />
+      <xs:enumeration value="928" id="SETECSGateway" />
+      <xs:enumeration value="929" id="CherryRepublicGateway" />
+      <xs:enumeration value="930" id="LexChargeGateway" />
+      <xs:enumeration value="931" id="ConvenientGateway" />
+      <xs:enumeration value="932" id="NorthwayGatewayMRDC" />
+      <xs:enumeration value="933" id="NorthwayGateway" />
+      <xs:enumeration value="934" id="LindseyGateway" />
+      <xs:enumeration value="935" id="ElectronicsProductGateway" />
+      <xs:enumeration value="936" id="ParibetGateway" />
+      <xs:enumeration value="937" id="MonarchGateway" />
+      <xs:enumeration value="940" id="DadeSystemsGateway" />
+      <xs:enumeration value="941" id="SURTechGateway" />
+      <xs:enumeration value="942" id="MoahcoGateway" />
+      <xs:enumeration value="943" id="SolupayInsGateway" />
+      <xs:enumeration value="944" id="ProcessingPointGatewayMRDC" />
+      <xs:enumeration value="945" id="ProcessingPointGateway" />
+      <xs:enumeration value="946" id="SilverSkyGateway" />
+      <xs:enumeration value="947" id="FluidPayGateway" />
+      <xs:enumeration value="948" id="EnzoCCCGateway" />
+      <xs:enumeration value="950" id="Enrollment123Gateway" />
+      <xs:enumeration value="951" id="PrismPayGateway" />
+      <xs:enumeration value="952" id="PRCOGateway" />
+      <xs:enumeration value="953" id="BanquestGateway" />
+      <xs:enumeration value="954" id="LansHoldingsGateway" />
+      <xs:enumeration value="955" id="PropertyBlvdGateway" />
+      <xs:enumeration value="956" id="JiffyGateway" />
+      <xs:enumeration value="957" id="SPSRGateway" />
+      <xs:enumeration value="958" id="SimplyEasierGateway" />
+      <xs:enumeration value="959" id="CrankingGateway" />
+      <xs:enumeration value="960" id="NatCareerFairsGateway" />
+      <xs:enumeration value="961" id="ZeamsterGateway" />
+      <xs:enumeration value="962" id="PayaConnectGateway" />
+      <xs:enumeration value="963" id="CoalesceGateway" />
+      <xs:enumeration value="964" id="RefPay" />
+      <xs:enumeration value="965" id="GOVTPortalGateway" />
+      <xs:enumeration value="966" id = "EdminifyGateway" />
+      <xs:enumeration value="967" id = "KDSwitchGateway" />
+      <xs:enumeration value="968" id = "IBXGateway" />
+      <xs:enumeration value="969" id = "DealerPayGateway" />
+      <xs:enumeration value="970" id = "ExpinetGateway" />
+      <xs:enumeration value="977" id = "eMerchantBrokerGateway" />
+      <xs:enumeration value="976" id = "SelectronGateway" />
+      <xs:enumeration value="975" id = "XCartGateway" />
+      <xs:enumeration value="974" id = "AcceptBlueGateway" />
+      <xs:enumeration value="973" id = "CyberSolutionsGateway" />
+      <xs:enumeration value="972" id = "KellyRegGateway" />
+      <xs:enumeration value="971" id = "StillwaterGateway" />
+      <xs:enumeration value="978" id="VoIPXGateway" />
+      <xs:enumeration value="979" id="ChargeLogicGateway" />
+      <xs:enumeration value="980" id="InfinityGateway" />
+      <xs:enumeration value="981" id="PineappleGateway" />
+      <xs:enumeration value="982" id="MSGPayGateway" />
+      <xs:enumeration value="983" id="AronowGateway" />
+      <xs:enumeration value="984" id="ELVPreprodGateway" />
+      <xs:enumeration value="985" id="ElavonGateway" />
+	    <xs:enumeration value="987" id="RedfinGateway" />
+      <xs:enumeration value="988" id = "SoftTouchGateway" />
+      <xs:enumeration value="989" id = "MedicalFinancialGateway" />
+      <xs:enumeration value="990" id = "UCSComicGateway" />
+      <xs:enumeration value="991" id = "CodeBlueGateway" />
+      <xs:enumeration value="992" id = "CoreCommerceGateway" />
+      <xs:enumeration value="993" id = "ClearentGateway" />   
+	  <xs:enumeration value="994" id = "TimewiseGateway" />
+      <xs:enumeration value="995" id = "iWalletGateway" />
+      <xs:enumeration value="996" id = "PaymentLOCKGateway" /> 	  
+  </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Term_Type_Check21">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="0" id="Unknown_Type_Check21" />
+      <xs:enumeration value="568" id="_4Access_Orion_Check21" />
+      <xs:enumeration value="618" id="Virtual_Terminal_Check_21" />
+      <xs:enumeration value="660" id="FILE_Check_21" />
+      <xs:enumeration value="687" id="Hypercom_M4200_21" />
+      <xs:enumeration value="161" id="Omni_3750_21" />
+      <xs:enumeration value="181" id="Omni_3740_21" />
+      <xs:enumeration value="240" id="Omni_3730_21" />
+      <xs:enumeration value="241" id="Omni_3730LE_21" />
+      <xs:enumeration value="573" id="Omni_Vx570_21" />
+      <xs:enumeration value="601" id="Omni_Vx510_21" />
+      <xs:enumeration value="602" id="Omni_Vx510LE_21" />
+      <xs:enumeration value="684" id="Omni_VX610_21" />
+      <xs:enumeration value="730" id="TransaXGateway" />
+      <xs:enumeration value="903" id="PayzerGateway" />
+      <xs:enumeration value="904" id="UnifiedPaymentsGateway" />
+      <xs:enumeration value="915" id="UnifiedPaymentsMRDCGateway" />
+      <xs:enumeration value="920" id="POYNTGateway" />
+      <xs:enumeration value="921" id="POYNTGatewaymRDC" />
+      <xs:enumeration value="932" id="NorthwayGatewayMRDC" />
+      <xs:enumeration value="933" id="NorthwayGateway" />
+      <xs:enumeration value="940" id="DadeSystemsGateway" />
+      <xs:enumeration value="944" id="ProcessingPointGatewayMRDC" />
+      <xs:enumeration value="945" id="ProcessingPointGateway" />
+      <xs:enumeration value="961" id="ZeamsterGateway" />
+      <xs:enumeration value="962" id="PayaConnectGateway" />
+      <xs:enumeration value="963" id="CoalesceGateway" />
+      <xs:enumeration value="982" id="MSGPayGateway" />
+      <xs:enumeration value="984" id="ELVPreprodGateway" />
+      <xs:enumeration value="985" id="ElavonGateway" />
+	  <xs:enumeration value="987" id="RedfinGateway" />
+      <xs:enumeration value="988" id = "SoftTouchGateway" />
+      <xs:enumeration value="989" id = "MedicalFinancialGateway" />
+      <xs:enumeration value="991" id = "CodeBlueGateway" />
+	  <xs:enumeration value="995" id = "iWalletGateway" />
+      <xs:enumeration value="996" id = "PaymentLOCKGateway" /> 	       
+
+    </xs:restriction >
+  </xs:simpleType>
+
+  <xs:simpleType name="Term_Peripheral_Check21">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="0" id="Unknown_Peripheral_Check21" />
+      <xs:enumeration value="6" id="RDM_Imager_7000" />
+      <xs:enumeration value="95" id="MagTeck_Imager_Excella" />
+      <xs:enumeration value="96" id="MagTeck_Imager_Excella_STX" />
+      <xs:enumeration value="72" id="_4Access" />
+    </xs:restriction>
+  </xs:simpleType>
+ 
+  
+  <xs:simpleType name="Term_Type_Gift">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="568" id="_4Access_Orion_Gift" />
+      <xs:enumeration value="225" id="Aloha_V5.2_and_above_Gift" />
+      <xs:enumeration value="686" id="Brightworks_Shopping_Cart_Gift" />
+      <xs:enumeration value="232" id="CDX-32_Gift" />
+      <xs:enumeration value="677" id="Deco_Solutions__Gift" />
+      <xs:enumeration value="669" id="EPN_Gateway_Gift" />
+      <xs:enumeration value="213" id="EPN_MICR_Gift" />
+      <xs:enumeration value="221" id="EPN_Mobile_Gift" />
+      <xs:enumeration value="687" id="Hypercom_M4200_Gift" />
+      <xs:enumeration value="637" id="Hypercom_T4100_Gift" />
+      <xs:enumeration value="640" id="Hypercom_T4200_Gift" />
+      <xs:enumeration value="172" id="Hypercom_T7Plus_Gift" />
+      <xs:enumeration value="173" id="HYpercom_T77_Gift" />
+      <xs:enumeration value="566" id="Hypercom_T7E_Gift" />
+      <xs:enumeration value="100" id="Hypercom_T7P_Gift" />
+      <xs:enumeration value="229" id="IBM_StorePay_4690_Gift" />
+      <xs:enumeration value="634" id="Ingenico_Aqua_Gift" />
+      <xs:enumeration value="250" id="Ingenico_Elite_710_Gift" />
+      <xs:enumeration value="251" id="Ingenico_Elite_712_Gift" />
+      <xs:enumeration value="631" id="Ingenico_i5100_Gift" />
+      <xs:enumeration value="632" id="Ingenico_i7780_Gift" />
+      <xs:enumeration value="227" id="Innovax_Gift" />
+      <xs:enumeration value="7"  id="Lipman_Nurit_2085_Gift" />
+      <xs:enumeration value="16"  id="Lipman_Nurit_3000_Gift" />
+      <xs:enumeration value="145" id="Lipman_Nurit_3020_Gift" />
+      <xs:enumeration value="564" id="Lipman_Nurit_8000_Gift" />
+      <xs:enumeration value="563" id="Lipman_Nurit_8100_Gift" />
+      <xs:enumeration value="562" id="Lipman_Nurit_8320_Gift" />
+      <xs:enumeration value="617" id="Lipman_Nurit_8400_Gift" />
+      <xs:enumeration value="561" id="Matre_D_Gift" />
+      <xs:enumeration value="226" id="Micros_3700_Gift" />
+      <xs:enumeration value="691" id="Micros_9700_Gift" />
+      <xs:enumeration value="678" id="Micros_e7_Gift" />
+      <xs:enumeration value="694" id="MS_Dynamic_RMS_Gift" />
+      <xs:enumeration value="230" id="NCR_2127_Gift" />
+      <xs:enumeration value="19" id="Omni_3200_Gift" />
+      <xs:enumeration value="198" id="Omni_3210_Gift" />
+      <xs:enumeration value="163" id="Omni_3300_Gift" />
+      <xs:enumeration value="240" id="Omni_3730_Gift" />
+      <xs:enumeration value="241" id="Omni_3730LE_Gift" />
+      <xs:enumeration value="181" id="Omni_3740_Gift" />
+      <xs:enumeration value="161" id="Omni_3750_Gift" />
+      <xs:enumeration value="601" id="Omni_Vx510_Gift" />
+      <xs:enumeration value="602" id="Omni_Vx510LE_Gift" />
+      <xs:enumeration value="573" id="Omni_Vx570_Gift" />
+      <xs:enumeration value="684" id="Omni_VX610_Gift" />
+      <xs:enumeration value="675" id="Pay_Leap_Gateway_Gift" />
+      <xs:enumeration value="224" id="Positouch_Gift" />
+      <xs:enumeration value="616" id="Primetrex_IP_Gift" />
+      <xs:enumeration value="651" id="Squirrel_Gift" />
+      <xs:enumeration value="228" id="Triversity_SD8_Gift" />
+      <xs:enumeration value="143" id="Zon_Jr._XL_Gift" />
+      <xs:enumeration value="10" id="Verifone_Tranz_330_Gift" />
+      <xs:enumeration value="9"  id="Verifone_Tranz_380x2_Gift" />
+      <xs:enumeration value="143" id="Zon_Jr_XL_Gift" />
+      <xs:enumeration value="800" id="nCLOSEGateway_Gift" />
+      <xs:enumeration value="814" id="e-NablerGateway_GIFT" />
+      <xs:enumeration value="837" id="USAePayGateway_GIFT" />
+      <xs:enumeration value="843" id="NABGateway_GIFT" />
+      <xs:enumeration value="846" id="RNCMobilePayGateway_GIFT" />
+      <xs:enumeration value="867" id="iMobile3Gateway_Gift" />
+	  <xs:enumeration value="878" id="CFCDistributorsGateway_Gift" />
+      <xs:enumeration value="848" id="PAX_S80_Gift" />
+      <xs:enumeration value="849" id="PAX_S90_Gift" />
+      <xs:enumeration value="850" id="PAX_SP30_Gift" />
+      <xs:enumeration value="851" id="PAX_MT30_Gift" />
+      <xs:enumeration value="852" id="PAX_S300_Gift" />
+      <xs:enumeration value="853" id="PAX_S500_Gift" />
+      <xs:enumeration value="854" id="PAX_S800_Gift" />
+      <xs:enumeration value="855" id="PAX_S900_Gift" />
+      <xs:enumeration value="856" id="PAX_D200_Gift" />
+      <xs:enumeration value="857" id="PAX_D210_Gift" />
+      <xs:enumeration value="904" id="UnifiedPaymentsGateway_Gift" />
+      <xs:enumeration value="911" id="MainEntreeGateway" />
+      <xs:enumeration value="912" id="NationalCollectorsGateway" />
+      <xs:enumeration value="913" id="HealthyPawsGateway" />
+      <xs:enumeration value="920" id="POYNTGateway_Gift" />
+      <xs:enumeration value="927" id="HMSMotorsportGateway" />
+      <xs:enumeration value="929" id="CherryRepublicGateway" />
+      <xs:enumeration value="948" id="EnzoCCCGateway" />
+      <xs:enumeration value="975" id = "XCartGateway" />
+      <xs:enumeration value="973" id = "CyberSolutionsGateway" />
+
+    </xs:restriction>
+  </xs:simpleType>
+
+	<xs:simpleType name="Terminal_Peripheral">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="0" id="Unknown_Peripheral" />
+			<xs:enumeration value="1" id="Verifone_P250" />
+			<xs:enumeration value="6" id="RDM_Imager" />
+			<xs:enumeration value="7" id="MagTeck" />
+			<xs:enumeration value="29" id="En_2500" />
+			<xs:enumeration value="30" id="Welsh_Allen" />
+			<xs:enumeration value="49" id="Ingenico_Imager" />
+			<xs:enumeration value="50" id="CR600" />
+			<xs:enumeration value="60" id="CMR431" />
+			<xs:enumeration value="61" id="Citizen_250_Printer" />
+			<xs:enumeration value="62" id="Scribe_612_Printer" />
+			<xs:enumeration value="63" id="MagTeck_Imager" />
+			<xs:enumeration value="64" id="CR1000i" />
+			<xs:enumeration value="68" id="MagTek_MICR_Magstripe" />
+			<xs:enumeration value="71" id="Receipt_Master_2000" />
+			<xs:enumeration value="72" id="Four_Acess" />
+			<xs:enumeration value="74" id="CMR431_Check_Reader" />
+			<xs:enumeration value="94" id="Epson_TranScan" />
+			<xs:enumeration value="95" id="MagTeck_Imager_Excella" />
+			<xs:enumeration value="96" id="MagTeck_Imager_Excella_STX" />
+			<xs:enumeration value="98" id="Digital_Check_Imager" />
+			<xs:enumeration value="99" id="Intelbanq_EasyScan_Imager" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Terminal_Type">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="0" id="Unknown_Type" />
+			<xs:enumeration value="1" id="Talento_2U" />
+			<xs:enumeration value="2" id="Talento_2UD" />
+			<xs:enumeration value="3" id="Talento_4UD" />
+			<xs:enumeration value="5" id="IVI_Check_Manager_3000" />
+			<xs:enumeration value="7" id="Lipman_Nurit_2085" />
+			<xs:enumeration value="8" id="Verifone_Tranz_460" />
+			<xs:enumeration value="9" id="Verifone_Tranz_380x2" />
+			<xs:enumeration value="10" id="Verifone_Tranz_330" />
+			<xs:enumeration value="11" id="TEL_Manual_Entry" />
+			<xs:enumeration value="12" id="TEL_Files" />
+			<xs:enumeration value="13" id="B2C_Auto_Debit" />
+			<xs:enumeration value="14" id="RCK_Files" />
+			<xs:enumeration value="15" id="TEL_MOTO_Representments" />
+			<xs:enumeration value="16" id="Lipman_Nurit_3000" />
+			<xs:enumeration value="17" id="Lipman_Nurit_3010" />
+			<xs:enumeration value="18" id="PCCharge" />
+			<xs:enumeration value="19" id="Omni_3200" />
+			<xs:enumeration value="20" id="Lipman_Nurit_8310" />
+			<xs:enumeration value="55" id="TPI_Software" />
+			<xs:enumeration value="100" id="Hypercom_T7P" />
+			<xs:enumeration value="103" id="Hypercom_ICE_5500" />
+			<xs:enumeration value="105" id="Hypercom_ICE_5700" />
+			<xs:enumeration value="107" id="ARC_Terminal" />
+			<xs:enumeration value="129" id="Lipman_Nurit_2090" />
+			<xs:enumeration value="137" id="B2C_Recurring_Files" />
+			<xs:enumeration value="143" id="Zon_Jr._XL" />
+			<xs:enumeration value="145" id="Lipman_Nurit_3020" />
+			<xs:enumeration value="148" id="Hypercom_T77-F" />
+			<xs:enumeration value="149" id="Transaction_Manager_WEB" />
+			<xs:enumeration value="150" id="Transaction_Manager_PPD" />
+			<xs:enumeration value="151" id="Transaction_Manager_TEL" />
+			<xs:enumeration value="155" id="Ice5000" />
+			<xs:enumeration value="157" id="Lipman_Nurit_2080" />
+			<xs:enumeration value="158" id="B2B_Manual_Entry" />
+			<xs:enumeration value="159" id="B2B_Files" />
+			<xs:enumeration value="160" id="B2B_Auto_Debit" />
+			<xs:enumeration value="161" id="Omni_3750" />
+			<xs:enumeration value="162" id="B2C_Manual_Entry" />
+			<xs:enumeration value="163" id="Omni_3300" />
+			<xs:enumeration value="164" id="RDM-ARC" />
+			<xs:enumeration value="172" id="Hypercom_T7" />
+			<xs:enumeration value="173" id="HYpercom_T77" />
+			<xs:enumeration value="178" id="Talento_TIPP" />
+			<xs:enumeration value="179" id="Talento_T-ONE" />
+			<xs:enumeration value="180" id="Verifone_Tranz_420" />
+			<xs:enumeration value="181" id="Omni_3740" />
+			<xs:enumeration value="183" id="Nurit_2060" />
+			<xs:enumeration value="184" id="Verifion_Tranz_420" />
+			<xs:enumeration value="197" id="LinkPoint_3000" />
+			<xs:enumeration value="198" id="Omni_3210" />
+			<xs:enumeration value="200" id="Phone_Auth" />
+			<xs:enumeration value="201" id="CellCharge" />
+			<xs:enumeration value="207" id="RCK_Program" />
+			<xs:enumeration value="213" id="EPN_MICR" />
+			<xs:enumeration value="221" id="EPN_Mobile" />
+			<xs:enumeration value="222" id="Comstar_Nurit_3010" />
+			<xs:enumeration value="223" id="Comstar_Nurit_8000" />
+			<xs:enumeration value="224" id="Positouch" />
+			<xs:enumeration value="225" id="Aloha_V5.2_and_above" />
+			<xs:enumeration value="226" id="Micros_3700" />
+			<xs:enumeration value="227" id="Innovax" />
+			<xs:enumeration value="228" id="Triversity_SD8" />
+			<xs:enumeration value="229" id="IBM_StorePay_4690" />
+			<xs:enumeration value="230" id="NCR_2127" />
+			<xs:enumeration value="231" id="Data_Tran" />
+			<xs:enumeration value="232" id="CDX-32" />
+			<xs:enumeration value="233" id="LinkPoint_2000" />
+			<xs:enumeration value="234" id="LinkPoint_AIO" />
+			<xs:enumeration value="240" id="Omni_3730" />
+			<xs:enumeration value="241" id="Omni_3730LE" />
+			<xs:enumeration value="250" id="Ingenico_Elite_710" />
+			<xs:enumeration value="251" id="Ingenico_Elite_712" />
+			<xs:enumeration value="253" id="RDM_Synergy" />
+			<xs:enumeration value="561" id="Matre_D" />
+			<xs:enumeration value="562" id="Lipman_Nurit_8320" />
+			<xs:enumeration value="563" id="Lipman_Nurit_8100" />
+			<xs:enumeration value="564" id="Lipman_Nurit_8000" />
+			<xs:enumeration value="566" id="Hypercom_T7E" />
+			<xs:enumeration value="567" id="Dionica_Omerox_" />
+			<xs:enumeration value="568" id="_4Access_Orion" />
+			<xs:enumeration value="569" id="Magic_6100" />
+			<xs:enumeration value="571" id="Mobilescape_5000" />
+			<xs:enumeration value="572" id="Lipmin_Nurit_2159" />
+			<xs:enumeration value="573" id="Omni_Vx570" />
+			<xs:enumeration value="574" id="OPT_Virtual_Terminal" />
+			<xs:enumeration value="575" id="Magtek_Imager-ARC" />
+			<xs:enumeration value="576" id="TeleDebit" />
+			<xs:enumeration value="577" id="Virtual_Terminal_ACH" />
+			<xs:enumeration value="578" id="Lipman_Nurit_8010" />
+			<xs:enumeration value="580" id="OPT_Web_Terrminal_-_O" />
+			<xs:enumeration value="601" id="Omni_Vx510" />
+			<xs:enumeration value="602" id="Omni_Vx510LE" />
+			<xs:enumeration value="603" id="RDM-BOC" />
+			<xs:enumeration value="604" id="Magtek_Imager-BOC" />
+			<xs:enumeration value="606" id="TPI_Software_" />
+			<xs:enumeration value="607" id="HPS_Connect" />
+			<xs:enumeration value="610" id="Check_By_Phone" />
+			<xs:enumeration value="611" id="Linked_Terminal" />
+			<xs:enumeration value="612" id="Cyclone_Web_Service" />
+			<xs:enumeration value="616" id="Primetrex_IP" />
+			<xs:enumeration value="617" id="Lipman_Nurit_8400" />
+			<xs:enumeration value="618" id="Virtual_Terminal_Check_21" />
+			<xs:enumeration value="619" id="SkipJack" />
+			<xs:enumeration value="623" id="Medcom_Transaction_Portal" />
+			<xs:enumeration value="624" id="Datacap_Systems" />
+			<xs:enumeration value="630" id="Lipman_Nurit_8020" />
+			<xs:enumeration value="631" id="Ingenico_i5100" />
+			<xs:enumeration value="632" id="Ingenico_i7780" />
+			<xs:enumeration value="633" id="Mitek_Check_21_Gateway_Terminal" />
+			<xs:enumeration value="634" id="Ingenico_Aqua" />
+			<xs:enumeration value="635" id="Nurit_8500X" />
+			<xs:enumeration value="636" id="TotalBillings" />
+			<xs:enumeration value="637" id="Hypercom_T4100" />
+			<xs:enumeration value="638" id="EncomPOS_Software" />
+			<xs:enumeration value="639" id="EvoCharge" />
+			<xs:enumeration value="640" id="Hypercom_T4200" />
+			<xs:enumeration value="641" id="EPN_Gift" />
+			<xs:enumeration value="642" id="Payment_Portal" />
+			<xs:enumeration value="645" id="GoToBilling_Files" />
+			<xs:enumeration value="646" id="Moneris_File" />
+			<xs:enumeration value="647" id="HPS_Web_Connect" />
+			<xs:enumeration value="648" id="EPN_Files" />
+			<xs:enumeration value="649" id="OSIS_Gateway" />
+			<xs:enumeration value="650" id="RDM_Synergy_II" />
+			<xs:enumeration value="651" id="Squirrel" />
+			<xs:enumeration value="652" id="Lucy" />
+			<xs:enumeration value="653" id="Merchant_Services_Network_Convert-a-check" />
+			<xs:enumeration value="654" id="NGT" />
+			<xs:enumeration value="655" id="Clear_Charge" />
+			<xs:enumeration value="656" id="NPS_Charge" />
+			<xs:enumeration value="657" id="One_Time_Debit_Virtual_Terminal" />
+			<xs:enumeration value="658" id="Recurring_Debit_Virtual_Terminal" />
+			<xs:enumeration value="660" id="FILE" />
+			<xs:enumeration value="661" id="PayTrace_Gateway" />
+			<xs:enumeration value="662" id="Moneris_eSelect_VT" />
+			<xs:enumeration value="663" id="Street_Savings" />
+			<xs:enumeration value="664" id="Dejavoo_X5" />
+			<xs:enumeration value="665" id="Dejavoo_X8" />
+			<xs:enumeration value="666" id="Dejavoo_M_Series" />
+			<xs:enumeration value="668" id="i-Check" />
+			<xs:enumeration value="669" id="EPN_Gateway" />
+			<xs:enumeration value="675" id="Pay_Leap_Gateway" />
+			<xs:enumeration value="676" id="Fail_Safe_Certo_Gateway" />
+			<xs:enumeration value="677" id="Deco_Solutions" />
+			<xs:enumeration value="678" id="Micros_e7" />
+			<xs:enumeration value="679" id="Mimeya" />
+			<xs:enumeration value="680" id="GoForte_Gateway" />
+			<xs:enumeration value="681" id="NMI_Gateway" />
+			<xs:enumeration value="682" id="Way_5000_Paper" />
+			<xs:enumeration value="683" id="EPN_Recurring" />
+			<xs:enumeration value="684" id="Omni_VX610" />
+			<xs:enumeration value="686" id="Brightworks_Shopping_Cart" />
+			<xs:enumeration value="687" id="Hypercom_M4200" />
+			<xs:enumeration value="688" id="nTelagentGateway" />
+			<xs:enumeration value="689" id="JPheeny_Solutions" />
+			<xs:enumeration value="691" id="Micros_9700" />
+			<xs:enumeration value="692" id="Xacti_Gateway" />
+			<xs:enumeration value="693" id="PAS_Transaction_Portal" />
+			<xs:enumeration value="694" id="MS_Dynamic_RMS" />
+			<xs:enumeration value="695" id="ConvenienceFee" />
+			<xs:enumeration value="696" id="Merchant_Partners_Gateway" />
+			<xs:enumeration value="701" id="ePaySpot_Gateway" />
+			<xs:enumeration value="702" id="TransactionX_Gateway" />
+			<xs:enumeration value="703" id="Inovium_Gateway" />
+			<xs:enumeration value="704" id="Web_Cart" />
+			<xs:enumeration value="705" id="MonsterPayGateway" />
+			<xs:enumeration value="706" id="PowerPayGateway" />
+			<xs:enumeration value="707" id="SynapseGateway" />
+			<xs:enumeration value="708" id="EasyPayGateway" />
+			<xs:enumeration value="709" id="OPT_Generic_Teminal" />
+			<!--<xs:enumeration value="710" id="SecurePayGateway" /-->
+			<xs:enumeration value="711" id="FILE_MID" />
+			<xs:enumeration value="712" id="CrossroadsGateway" />
+			<xs:enumeration value="713" id="BrainrunnerGateway" />
+			<xs:enumeration value="714" id="SecureEDIGateway" />
+			<xs:enumeration value="715" id="IndiaPayGateway" />
+			<xs:enumeration value="716" id="PAYware_Transact_Gateway" />
+			<xs:enumeration value="717" id="TransiacGateway" />
+			<xs:enumeration value="718" id="_5LinxGateway" />
+			<xs:enumeration value="719" id="OPTiTerm_Windows_PC" />
+			<xs:enumeration value="720" id="InHouseGateway" />
+			<xs:enumeration value="721" id="NationwideGateway" />
+			<xs:enumeration value="722" id="MunicipalGateway" />
+			<xs:enumeration value="723" id="RevenueAdvantageGateway" />
+			<xs:enumeration value="724" id="XpressBetGateway" />
+			<xs:enumeration value="726" id="GEMShoppingGateway" />
+			<xs:enumeration value="727" id="GETIGatewayEmulator" />
+			<xs:enumeration value="728" id="PrimeTrex_One" />
+			<xs:enumeration value="730" id="TransaXGateway" />
+			<xs:enumeration value="732" id="BFocused_Gateway" />
+			<xs:enumeration value="733" id="GrandRapidsGateway" />
+			<xs:enumeration value="734" id="OrderCupGateway" />
+			<xs:enumeration value="735" id="PAYware_Connect_Gateway" />
+			<xs:enumeration value="736" id="IVRTechGateway" />
+			<xs:enumeration value="737" id="SlimCDGateway" />
+			<xs:enumeration value="738" id="OurBlok_Web_Terminal" />
+			<xs:enumeration value="739" id="AllianceClubReadyGateway" />
+			<xs:enumeration value="740" id="FirstPresbGateway" />
+			<xs:enumeration value="744" id="BlueLineGateway" />
+			<xs:enumeration value="745" id="CITIESGateway" />
+			<xs:enumeration value="746" id="StratusPaymentGateway" />
+			<xs:enumeration value="747" id="GWSMCGateway" />
+			<xs:enumeration value="748" id="RoamDataGateway" />
+			<xs:enumeration value="749" id="FirstBaptistEustisGateway" />
+			<xs:enumeration value="750" id="Payjistix" />
+			<xs:enumeration value="751" id="CynergyGateway" />
+			<xs:enumeration value="752" id="GracePlaceGateway" />
+			<xs:enumeration value="753" id="T-GateGateway" />
+			<xs:enumeration value="754" id="WoodenDockGateway" />
+			<xs:enumeration value="756" id="Ingenico_Vantiv_ICT" />
+			<xs:enumeration value="757" id="Ingenico_iWL200" />
+			<xs:enumeration value="759" id="AudigyCareGateway" />
+			<xs:enumeration value="760" id="GreenlightGateway" />
+			<xs:enumeration value="761" id="GoEmerchantGateway" />
+			<xs:enumeration value="763" id="TenantMagicGateway" />
+			<xs:enumeration value="764" id="Heartland_e3" />
+			<xs:enumeration value="766" id="UniqueConsultingGateway" />
+			<xs:enumeration value="767" id="WebgistixGateway" />
+			<xs:enumeration value="768" id="PlugNPayGateway" />
+			<xs:enumeration value="769" id="Vx520" />
+			<xs:enumeration value="770" id="ExplosionSportGateway" />
+			<xs:enumeration value="771" id="Fortune3_Shopping_Cart" />
+			<xs:enumeration value="772" id="BaldwinCoGateway" />
+			<xs:enumeration value="773" id="SuperiorPayGateway" />
+			<xs:enumeration value="774" id="ICashDirectGateway" />
+			<xs:enumeration value="775" id="NxSystemsGateway" />
+			<xs:enumeration value="776" id="PrivaBlockGateway" />
+			<xs:enumeration value="777" id="HPSGateway" />
+			<xs:enumeration value="778" id="TransmodusGateway" />
+			<xs:enumeration value="779" id="FILE_-_Moulton" />
+			<xs:enumeration value="781" id="_1stPayGateway" />
+			<xs:enumeration value="782" id="Payment21Gateway" />
+			<xs:enumeration value="783" id="Dejavoo_Vega_V5" />
+			<xs:enumeration value="784" id="Dejavoo_Vega_V8" />
+			<xs:enumeration value="785" id="Dejavoo_Vega_V8plus" />
+			<xs:enumeration value="786" id="Dejavoo_Vega_V9" />
+			<xs:enumeration value="787" id="Dejavoo_Vega_V9plus" />
+			<xs:enumeration value="788" id="Y2PaymentsGateway" />
+			<xs:enumeration value="789" id="OPT_Web_Terminal_-_X" />
+			<xs:enumeration value="790" id="FrippVacGateway" />
+			<xs:enumeration value="791" id="ParagouldGateway" />
+			<xs:enumeration value="792" id="PrimeTrex_S" />
+			<xs:enumeration value="793" id="PrismPay-File" />
+			<xs:enumeration value="794" id="FluidGateway" />
+			<xs:enumeration value="795" id="USALifeGateway" />
+			<xs:enumeration value="796" id="UniversityValuesGateway" />
+			<xs:enumeration value="797" id="RevoGateway" />
+			<xs:enumeration value="798" id="PhoenixGateway" />
+			<xs:enumeration value="799" id="SpecialFinancingGateway" />
+			<xs:enumeration value="800" id="nCLOSEGateway" />
+			<xs:enumeration value="801" id="BlackstoneGateway" />
+			<xs:enumeration value="802" id="PayleaseGateway" />
+			<xs:enumeration value="803" id="UKEliteGateway" />
+			<xs:enumeration value="804" id="QAGETIGateway" />
+			<xs:enumeration value="805" id="HEI_QRAGateway" />
+			<xs:enumeration value="814" id="e-NablerGateway" />
+			<xs:enumeration value="815" id="PointandPayGateway" />
+			<xs:enumeration value="816" id="OPT-VT" />
+			<xs:enumeration value="817" id="Datacap_GIFTePay" />
+			<xs:enumeration value="818" id="CHECK_COLLECT" />
+			<xs:enumeration value="819" id="EmpoweredGateway" />
+			<xs:enumeration value="820" id="RossGroupGateway" />
+			<xs:enumeration value="821" id="StringrayGateway" />
+			<xs:enumeration value="822" id="AllianceProcessingGateway" />
+			<xs:enumeration value="823" id="CheckAlt_-_File" />
+			<xs:enumeration value="824" id="CityLoanGateway" />
+			<xs:enumeration value="825" id="TheRXHelperGateway" />
+			<xs:enumeration value="826" id="WP_VX-520" />
+			<xs:enumeration value="827" id="Stratus-File" />
+			<!--Renamed ID828 from 5thDimension to SparrowOne per ISO request-->
+			<xs:enumeration value="828" id="SparrowOneGateway" />
+			<xs:enumeration value="829" id="PremiereGateway" />
+			<xs:enumeration value="830" id="TransmodusFeeFile" />
+			<xs:enumeration value="831" id="TransmodusACHFile" />
+			<xs:enumeration value="832" id="TransmodusC21File" />
+			<xs:enumeration value="833" id="CohensOpticalGateway" />
+			<xs:enumeration value="834" id="SelectedGateway" />
+			<xs:enumeration value="835" id="MerchantPartnersGateway" />
+			<xs:enumeration value="836" id="IACGateway" />
+			<xs:enumeration value="837" id="USAePayGateway" />
+			<xs:enumeration value="838" id="BridgePayGateway" />
+			<xs:enumeration value="839" id="DescommGateway" />
+			<xs:enumeration value="840" id="SolupayGateway" />
+			<xs:enumeration value="841" id="TheSatelliteGateway" />
+			<xs:enumeration value="842" id="WellnessServicesGateway" />
+			<xs:enumeration value="843" id="NABGateway" />
+			<xs:enumeration value="844" id="JGX5EnterprisesGateway" />
+			<xs:enumeration value="845" id="NetSecureGateway" />
+			<xs:enumeration value="848" id="PAX_S80" />
+			<xs:enumeration value="849" id="PAX_S90" />
+			<xs:enumeration value="850" id="PAX_SP30" />
+			<xs:enumeration value="851" id="PAX_MT30" />
+			<xs:enumeration value="852" id="PAX_S300" />
+			<xs:enumeration value="853" id="PAX_S500" />
+			<xs:enumeration value="854" id="PAX_S800" />
+			<xs:enumeration value="855" id="PAX_S900" />
+			<xs:enumeration value="856" id="PAX_D200" />
+			<xs:enumeration value="857" id="PAX_D210" />
+			<xs:enumeration value="858" id="VerosaGateway" />
+			<xs:enumeration value="859" id="OPTICardGateway" />
+			<xs:enumeration value="860" id="DebtPayGatgeway" />
+			<xs:enumeration value="861" id="Dejavoo_Vega_V5S" />
+			<xs:enumeration value="862" id="Dejavoo_Vega_V8S" />
+			<xs:enumeration value="863" id="Dejavoo_Vega_V8Splus" />
+			<xs:enumeration value="864" id="Dejavoo_Vega_V9S" />
+			<xs:enumeration value="865" id="Dejavoo_Vega_V9Splus" />
+			<xs:enumeration value="866" id="DayAtTheTrackGateway" />
+			<xs:enumeration value="867" id="iMobile3Gateway" />
+			<xs:enumeration value="868" id="GreenCourtGateway" />
+			<xs:enumeration value="869" id="MercuryPaymentsGateway" />
+			<xs:enumeration value="870" id="PivotalPaymentsGateway" />
+			<xs:enumeration value="871" id="InstaCreditGateway" />
+			<xs:enumeration value="872" id="PetsBestGateway" />
+			<xs:enumeration value="873" id="AlnaPropertiesGateway" />
+			<xs:enumeration value="874" id="BenchmarkGateway" />
+			<xs:enumeration value="875" id="Ingenico_iCT200" />
+			<xs:enumeration value="876" id="OnlineGivingGateway" />
+			<xs:enumeration value="877" id="VoucherSysGateway" />
+			<xs:enumeration value="878" id="CFCDistributorsGateway" />
+			<xs:enumeration value="879" id="PortraitInnovationsGateway" />
+			<xs:enumeration value="880" id="Exadigm_NX1200" />
+			<xs:enumeration value="881" id="Exadigm_NX2200" />
+			<xs:enumeration value="882" id="Exadigm_NX2200E" />
+			<xs:enumeration value="883" id="ReservationServiceGateway" />
+			<xs:enumeration value="884" id="CheckSaversGateway" />
+			<xs:enumeration value="885" id="FlexShopperGateway" />
+			<xs:enumeration value="886" id="BlackbeltCRMGateway" />
+			<xs:enumeration value="887" id="EZACHFile" />
+			<xs:enumeration value="888" id="ITransactGateway" />
+			<xs:enumeration value="889" id="UnitedMerchantServicesGateway" />
+			<xs:enumeration value="890" id="DonorICEGateway" />
+			<xs:enumeration value="891" id="EnvocGateway" />
+			<xs:enumeration value="892" id="CayanGateway" />
+			<xs:enumeration value="893" id="MESGateway" />
+			<xs:enumeration value="894" id="HannahPetGateway" />
+			<xs:enumeration value="895" id="VSCRepairGateway" />
+			<xs:enumeration value="896" id="Dejavoo_Z1" />
+			<xs:enumeration value="897" id="Dejavoo_Z3" />
+			<xs:enumeration value="898" id="Dejavoo_Z6" />
+			<xs:enumeration value="899" id="Dejavoo_Z8" />
+			<xs:enumeration value="900" id="Dejavoo Z9" />
+			<xs:enumeration value="901" id="Dejavoo_Z11" />
+			<xs:enumeration value="902" id="OMGGateway" />
+			<xs:enumeration value="903" id="PayzerGateway" />
+			<xs:enumeration value="904" id="UnifiedPaymentsGateway" />
+			<xs:enumeration value="905" id="DentalPlansGateway" />
+			<xs:enumeration value="906" id="MyersStevensGateway" />
+			<xs:enumeration value="907" id="HowardGateway" />
+			<xs:enumeration value="908" id="NutrasolanaHealthGateway" />
+			<xs:enumeration value="909" id="CornerstoneGateway" />
+			<xs:enumeration value="910" id="KeyFobGuardianGateway" />
+			<xs:enumeration value="911" id="MainEntreeGateway" />
+			<xs:enumeration value="912" id="NationalCollectorsGateway" />
+			<xs:enumeration value="914" id="ParadigmGateway" />
+			<xs:enumeration value="915" id="UnifiedPaymentsMRDCGateway" />
+			<xs:enumeration value="916" id="Desktop_Terminal_POP" />
+			<xs:enumeration value="917" id="Desktop_Terminal_Check_21" />
+			<xs:enumeration value="918" id="SPSGateway" />
+			<xs:enumeration value="919" id="RentMojiGateway" />
+			<xs:enumeration value="920" id="POYNTGateway" />
+			<xs:enumeration value="921" id="POYNTGatewaymRDC" />
+			<xs:enumeration value="922" id="WebsitePipelineGateway" />
+			<xs:enumeration value="923" id="Pay2DayGateway" />
+			<xs:enumeration value="924" id="SmartCareGateway" />
+			<xs:enumeration value="925" id="ePayDataGateway" />
+			<xs:enumeration value="926" id="AutosoftGateway" />
+			<xs:enumeration value="927" id="HMSMotorsportGateway" />
+			<xs:enumeration value="928" id="SETECSGateway" />
+			<xs:enumeration value="929" id="CherryRepublicGateway" />
+			<xs:enumeration value="930" id="LexChargeGateway" />
+			<xs:enumeration value="931" id="ConvenientGateway" />
+			<xs:enumeration value="932" id="NorthwayGatewayMRDC" />
+			<xs:enumeration value="933" id="NorthwayGateway" />
+			<xs:enumeration value="934" id="LindseyGateway" />
+			<xs:enumeration value="935" id="ElectronicsProductGateway" />
+			<xs:enumeration value="936" id="ParibetGateway" />
+			<xs:enumeration value="937" id="MonarchGateway" />
+			<xs:enumeration value="940" id="DadeSystemsGateway" />
+			<xs:enumeration value="941" id="SURTechGateway" />
+			<xs:enumeration value="942" id="MoahcoGateway" />
+			<xs:enumeration value="943" id="SolupayInsGateway" />
+			<xs:enumeration value="944" id="ProcessingPointGatewayMRDC" />
+			<xs:enumeration value="945" id="ProcessingPointGateway" />
+			<xs:enumeration value="946" id="SilverSkyGateway" />
+			<xs:enumeration value="947" id="FluidPayGateway" />
+			<xs:enumeration value="948" id="EnzoCCCGateway" />
+			<xs:enumeration value="950" id="Enrollment123Gateway" />
+			<xs:enumeration value="951" id="PrismPayGateway" />
+			<xs:enumeration value="952" id="PRCOGateway" />
+			<xs:enumeration value="953" id="BanquestGateway" />
+			<xs:enumeration value="954" id="LansHoldingsGateway" />
+			<xs:enumeration value="955" id="PropertyBlvdGateway" />
+			<xs:enumeration value="956" id="JiffyGateway" />
+			<xs:enumeration value="957" id="SPSRGateway" />
+			<xs:enumeration value="958" id="SimplyEasierGateway" />
+			<xs:enumeration value="959" id="CrankingGateway" />
+			<xs:enumeration value="960" id="NatCareerFairsGateway" />
+			<xs:enumeration value="961" id="ZeamsterGateway" />
+			<xs:enumeration value="962" id="PayaConnectGateway" />
+			<xs:enumeration value="963" id="CoalesceGateway" />
+			<xs:enumeration value="964" id="RefPay" />
+			<xs:enumeration value="965" id="GOVTPortalGateway" />
+			<xs:enumeration value="966" id = "EdminifyGateway" />
+			<xs:enumeration value="967" id = "KDSwitchGateway" />
+			<xs:enumeration value="968" id = "IBXGateway" />
+			<xs:enumeration value="969" id = "DealerPayGateway" />
+			<xs:enumeration value="970" id = "ExpinetGateway" />
+			<xs:enumeration value="977" id = "eMerchantBrokerGateway" />
+			<xs:enumeration value="976" id = "SelectronGateway" />
+			<xs:enumeration value="975" id = "XCartGateway" />
+			<xs:enumeration value="974" id = "AcceptBlueGateway" />
+			<xs:enumeration value="973" id = "CyberSolutionsGateway" />
+			<xs:enumeration value="972" id = "KellyRegGateway" />
+			<xs:enumeration value="971" id = "StillwaterGateway" />
+			<xs:enumeration value="978" id="VoIPXGateway" />
+			<xs:enumeration value="979" id="ChargeLogicGateway" />
+			<xs:enumeration value="980" id="InfinityGateway" />
+			<xs:enumeration value="981" id="PineappleGateway" />
+			<xs:enumeration value="982" id="MSGPayGateway" />
+			<xs:enumeration value="983" id="AronowGateway" />
+			<xs:enumeration value="984" id="ELVPreprodGateway" />
+			<xs:enumeration value="985" id="ElavonGateway" />
+			<xs:enumeration value="987" id = "RedfinGateway" />
+      <xs:enumeration value="988" id = "SoftTouchGateway" />
+      <xs:enumeration value="989" id = "MedicalFinancialGateway" />
+      <xs:enumeration value="990" id = "UCSComicGateway" />
+      <xs:enumeration value="991" id = "CodeBlueGateway" />
+      <xs:enumeration value="992" id = "CoreCommerceGateway" />
+      <xs:enumeration value="993" id = "ClearentGateway" />
+      <xs:enumeration value="994" id = "TimewiseGateway" />
+      <xs:enumeration value="995" id = "iWalletGateway" />
+      <xs:enumeration value="996" id = "PaymentLOCKGateway" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

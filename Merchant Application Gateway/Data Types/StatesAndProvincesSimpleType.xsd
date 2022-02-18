@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<xs:schema id="STATES_AND_PROVINCES" xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+
+<xs:simpleType name="states-and-provinces">
+  <xs:restriction base="xs:string">
+	<xs:enumeration value="AB" id="Alberta" />
+    <xs:enumeration value="AK" id="Alaska" />
+    <xs:enumeration value="AL" id="Alabama" />
+    <xs:enumeration value="AR" id="Arkansas" />
+    <xs:enumeration value="AS" id="American_Samoa" />
+    <xs:enumeration value="AZ" id="Arizona" />
+    <xs:enumeration value="BC" id="British_Columbia" />
+    <xs:enumeration value="CA" id="California" />
+    <xs:enumeration value="CO" id="Colorado" />
+    <xs:enumeration value="CT" id="Connecticut" />
+    <xs:enumeration value="DC" id="District_of_Columbia" />
+    <xs:enumeration value="DE" id="Delaware" />
+    <xs:enumeration value="FL" id="Florida" />
+    <xs:enumeration value="GA" id="Georgia" />
+    <xs:enumeration value="GU" id="Guam" />
+    <xs:enumeration value="HI" id="Hawaii" />
+    <xs:enumeration value="IA" id="Iowa" />
+    <xs:enumeration value="ID" id="Idaho" />
+    <xs:enumeration value="IL" id="Illinois" />
+    <xs:enumeration value="IN" id="Indiana" />
+    <xs:enumeration value="KS" id="Kansas" />
+    <xs:enumeration value="KY" id="Kentucky" />
+    <xs:enumeration value="LA" id="Louisiana" />
+    <xs:enumeration value="MA" id="Massachusetts" />
+    <xs:enumeration value="MB" id="Manitoba" />
+    <xs:enumeration value="MD" id="Maryland" />
+    <xs:enumeration value="ME" id="Maine" />
+    <xs:enumeration value="MI" id="Michigan" />
+    <xs:enumeration value="MN" id="Minnesota" />
+    <xs:enumeration value="MO" id="Missouri" />
+    <xs:enumeration value="MS" id="Mississippi" />
+    <xs:enumeration value="MT" id="Montana" />
+    <xs:enumeration value="NB" id="New_Brunswick" />
+    <xs:enumeration value="NC" id="North_Carolina" />
+    <xs:enumeration value="ND" id="North_Dakota" />
+    <xs:enumeration value="NE" id="Nebraska" />
+    <xs:enumeration value="NF" id="Newfoundland" />
+    <xs:enumeration value="NH" id="New_Hampshire" />
+    <xs:enumeration value="NJ" id="New_Jersey" />
+    <xs:enumeration value="NM" id="New_Mexico" />
+    <xs:enumeration value="NS" id="Nova_Scotia" />
+    <xs:enumeration value="NT" id="Northwest_Territories" />
+    <xs:enumeration value="NU" id="Nunavut" />
+    <xs:enumeration value="NV" id="Nevada" />
+    <xs:enumeration value="NY" id="New_York" />
+    <xs:enumeration value="OH" id="Ohio" />
+    <xs:enumeration value="OK" id="Oklahoma" />
+    <xs:enumeration value="ON" id="Ontario" />
+    <xs:enumeration value="OR" id="Oregon" />
+    <xs:enumeration value="PA" id="Pennsylvania" />
+    <xs:enumeration value="PE" id="Prince_Edward_Island" />
+    <xs:enumeration value="PR" id="Puerto_Rico" />
+    <xs:enumeration value="QC" id="Quebec" />
+    <xs:enumeration value="RI" id="Rhode_Island" />
+    <xs:enumeration value="SC" id="South_Carolina" />
+    <xs:enumeration value="SD" id="South_Dakota" />
+    <xs:enumeration value="SK" id="Seskatchewan" />
+    <xs:enumeration value="TN" id="Tennessee" />
+    <xs:enumeration value="TX" id="Texas" />
+    <xs:enumeration value="UT" id="Utah" />
+    <xs:enumeration value="VA" id="Virginia" />
+    <xs:enumeration value="VI" id="Virgin_Islands" />
+    <xs:enumeration value="VT" id="Vermont" />
+    <xs:enumeration value="WA" id="Washington" />
+    <xs:enumeration value="WI" id="Wisconsin" />
+    <xs:enumeration value="WV" id="West_Virginia" />
+    <xs:enumeration value="WY" id="Wyoming" />
+    <xs:enumeration value="YT" id="Yukon_Territory" />
+    
+  </xs:restriction>
+</xs:simpleType>
+</xs:schema>

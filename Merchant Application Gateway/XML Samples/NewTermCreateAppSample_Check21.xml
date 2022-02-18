@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Envelope>
+  <Body>
+    <Terminal merchServiceType="CK21POSGRNT" merchMRDCImageFee="0.01" merchAchFlatFee="0.29" merchNonAchFlatFee="0.29" merchPercentFee="1.89" merchReturnFee="1.00">
+      <NewTerminal termCrossRefID="41680" termPeripheral="6" termTypeID="568" termVerificationOnly="0" />
+      <NewTerminal termCrossRefID="53317" termPeripheral="6" termTypeID="568" termVerificationOnly="0" />
+      <NewTerminal termCrossRefID="296223" termPeripheral="6" termTypeID="568" termVerificationOnly="0" />
+      <NewTerminal termCrossRefID="296228" termPeripheral="6" termTypeID="568" termVerificationOnly="0" />
+      <NewTerminal termCrossRefID="296225" termPeripheral="6" termTypeID="568" termVerificationOnly="0" />
+    </Terminal>
+  </Body>
+</Envelope>
+

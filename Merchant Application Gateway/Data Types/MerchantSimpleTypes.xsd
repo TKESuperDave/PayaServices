@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="MERCHANT_SIMPLE_TYPES" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <xs:simpleType name="Merch_Status_ID">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="3" id="Pending_Input_and_Confirmation_for_Merchant_Admin_Staff" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="Merch_Service_Type_ACH">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACHDEBIT" id="PPD_Written_Authorization_From_Personal_Account" />
+      <xs:enumeration value="ACHDEBITB2B" id="CCD_Written_Authorization_From_Corporate_Account "/>
+      <xs:enumeration value="ACHDEBITB2BFILE" id="CCD_Written_Authorization_From_Corporate_Account_File" />
+      <xs:enumeration value="ACHDEBITB2BGRNT" id="CCD_Guarantee_Written_Authorization_From_Corporate_Account" />
+      <xs:enumeration value="ACHDEBITFILE" id="PPD_Written_Authorization_From_Personal_Account_FILE" />
+      <xs:enumeration value="ACHDEBITGRNT" id="PPD_Guarantee_Written_Authorization_From_Personal_Account" />
+      <xs:enumeration value="BRONZE" id="Service_Level_Used_For_Non-Guaranteed_Verification-Only_Processing" />
+      <xs:enumeration value="BRONZEVT" id="POP_Verification_Only_Virtual_Terminal" />
+      <xs:enumeration value="CCF" id="PPD_Written_Authorization_From_Personal_Account_Conv_Fee" />
+      <xs:enumeration value="GOLD" id="Service_Level_Used_For_Guaranteed_ACHed_Transaction_Processing" />
+      <xs:enumeration value="GOLDVT" id="POP_Guarantee_Conversion_Virtual_Terminal" />
+      <xs:enumeration value="QSP" id="POP_Guarantee_Conversion_50_Max_Transaction" />      
+      <xs:enumeration value="QSPVT" id="POP_Guarantee_Conversion_50_Max_Transaction_Virtual_Terminal" />
+      <xs:enumeration value="SILVER" id="Service_Level_Used_For_Non-Guaranteed_ACHed_Transaction_Processing" />
+      <xs:enumeration value="SILVERVT" id="POP_Conversion_Non-Guarantee_Virtual_Terminal" />
+      <xs:enumeration value="TRADITIONAL" id="Service_Level_Used_For_Guaranteed_Verification-Only_Processing" />
+      <xs:enumeration value="TRADITIONALVT" id="POP_Paper_Guarantee_Merchant_Manually_Deposits_Check_Virtual_Terminal" />
+      <xs:enumeration value="WEBBILLPAYFILE" id="WEB_Bill_Payment_FILE" />
+      <xs:enumeration value="WEBBILLPAYGW" id="WEB_Bill_Payment_Virtual_Terminal" />
+      <xs:enumeration value="WEBECOMFILE" id="WEB_Ecommerce_FILE" />
+      <xs:enumeration value="WEBECOMGW" id="WEB_Ecommerce_Virtual_Terminal" />
+      <xs:enumeration value="TELGRNT" id="TEL_Phone_Authorization_Guarantee" />
+      <xs:enumeration value="TELNONGRNT" id="TEL_Phone_Authorization_Non-Guarantee" />
+	  <xs:enumeration value="BOC" id="BOC_Authorization_Non-Guarantee" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Merch_Service_Type_GIFT">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INTRO" id="INTRO_PACKAGE"></xs:enumeration>
+      <xs:enumeration value ="PREDESIGNED" id="PREDESIGNED_PACKAGE"></xs:enumeration>
+      <xs:enumeration value ="LOGO" id="LOGO_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="CUSTOM" id ="CUSTOM_PACKAGE"></xs:enumeration>
+      <xs:enumeration value ="ALACARTE" id="ALACARTE"></xs:enumeration>
+      <!--New Numbered Programs-->
+      <xs:enumeration value="CUSTOM100" id="CUSTOM100_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="CUSTOM1000" id="CUSTOM1000_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="PREDESIGNED100" id="PREDESIGNED100_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="PREDESIGNED500" id="PREDESIGNED500_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="INTRO30" id="INTRO30_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="LOGO100" id="LOGO100_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="LOGO1000" id="LOGO1000_PACKAGE"></xs:enumeration>
+      <!--New FLAT Rate Programs-->
+      <xs:enumeration value="ALACARTEFLAT" id="ALACARTEFLAT_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="CUSTOM1000FLAT" id="CUSTOM1000FLAT_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="CUSTOM100FLAT" id="CUSTOM100FLAT_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="PREDESIGNED100FLAT" id="PREDESIGNED100FLAT_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="PREDESIGNED500FLAT" id="PREDESIGNED500FLAT_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="INTRO30FLAT" id="INTRO30FLAT_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="LOGO1000FLAT" id="LOGO1000FLAT_PACKAGE"></xs:enumeration>
+      <xs:enumeration value="LOGO100FLAT" id="LOGO100FLAT_PACKAGE"></xs:enumeration>
+
+    </xs:restriction>
+    
+  </xs:simpleType>
+
+  <xs:simpleType name="Merch_Service_Type_Check21">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CK21POSNONGRNTPAY" id="Service_Level_Used_For_Non-Guaranteed_Check21_PayCheck_Transaction_Processing" />      
+      <xs:enumeration value="CK21POSNONGRNTPAYVT" id="Service_Level_Used_For_Non-Guaranteed_Check21_PayCheck_Transaction_Processing_Virtual_Terminal_Only" />
+      <xs:enumeration value="CK21POSGRNTPAY" id="Service_Level_Used_For_Guaranteed_Check21_PayCheck_Processing" />
+      <xs:enumeration value="CK21POSGRNTPAYVT" id="Service_Level_Used_Guaranteed_Check21_PayCheck_Processing_Virtual_Terminal_Only" />
+      <xs:enumeration value="CK21POSGRNT" id="Service_Level_Used_For_Guaranteed_POS_Check21_Processing" />
+      <xs:enumeration value="CK21POSGRNTVT" id="Service_Level_Used_For_Guaranteed_POS_Check21_Processing_Virtual_Terminal_Only" />
+      <xs:enumeration value="CK21POSNONGRNT" id="Service_Level_Used_For_Non-Guaranteed_POS_Check21_Processing" />
+      <xs:enumeration value="CK21POSNONGRNTVT" id="Service_Level_Used_For_Non-Guaranteed_POS_Check21_Processing_Virtual_Terminal_Only" />
+      <xs:enumeration value="CK21REMOTEGRNT" id="Service_Level_Used_For_Guaranteed_Remote_Check21_Processing" />
+      <xs:enumeration value="CK21REMOTEGRNTVT" id="Service_Level_Used_For_Guaranteed_Remote_Check21_Processing_Virtual_Terminal_Only" />
+      <xs:enumeration value="CK21REMOTENONGRNT" id="Service_Level_Used_For_Non-Guaranteed_Remote_Check21_Processing" />
+      <xs:enumeration value="CK21REMOTENONGRNTVT" id="Service_Level_Used_For_Non-Guaranteed_Remote_Check21_Processing_Virtual_Terminal_Only" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Merch_Payout_PeriodID">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="1" id="Tenth_Of_Next_Month" />
+      <xs:enumeration value="2" id="After_Short_Clear" />
+      <xs:enumeration value="3" id="Friday_After_Clear" />
+      <xs:enumeration value="4" id="Next_Banking_Day" />
+      <xs:enumeration value="5" id="Eighth_Of_Next_Month" />
+      <xs:enumeration value="6" id="Auto_Debit" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Merch_Ownership">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="1" id="Corporation" />
+      <xs:enumeration value="2" id="Partnership" />
+      <xs:enumeration value="3" id="Sole_Proprietor" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="Time_Zone">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Central" id="Central" />
+      <xs:enumeration value="Eastern" id="Eastern" />
+      <xs:enumeration value="Mountain" id="Mountain" />
+      <xs:enumeration value="Pacific" id="Pacific" />
+      <xs:enumeration value="Hawaiian" id="Hawaiian" />
+      <xs:enumeration value="Alaska" id="Alaska" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Gift_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Retail" id="Retail" />
+      <xs:enumeration value="Restaurant" id="Restaurant" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  
+  <xs:simpleType name="Merch_Type_ID">
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="1" id="Antique_Shops" />
+      <xs:enumeration value="2" id="Applicances_Electrical_Repair" />
+      <xs:enumeration value="3" id="Art_Dealers_Art_Galleries" />
+      <xs:enumeration value="4" id="Artists_Supplies" />
+      <xs:enumeration value="5" id="Auto_Dealers_New_All_Depts" />
+      <xs:enumeration value="6" id="Auto_And_Home_Supplies" />
+      <xs:enumeration value="7" id="Auto_Parking_Lots_Garages" />
+      <xs:enumeration value="8" id="Auto_Parts_Stores" />
+      <xs:enumeration value="9" id="Auto_Rentals_And_Leasing" />
+      <xs:enumeration value="10" id="Auto_Paint_Top_Body" />
+      <xs:enumeration value="11" id="Auto_Repair" />
+      <xs:enumeration value="12" id="Auto_Sales_Used_Only" />
+      <xs:enumeration value="13" id="Automotive_Glass" />
+      <xs:enumeration value="14" id="Automotive_Tire_Stores" />
+      <xs:enumeration value="16" id="Bakeries" />
+      <xs:enumeration value="17" id="Barber_Beauty_Shops" />
+      <xs:enumeration value="18" id="Bicycle_Sales_Service" />
+      <xs:enumeration value="19" id="Billiards_Tables_And_Supplies" />
+      <xs:enumeration value="20" id="Boats_Dealers_All" />
+      <xs:enumeration value="21" id="Boats_Dealers_Parts_Service" />
+      <xs:enumeration value="22" id="Book_Stores" />
+      <xs:enumeration value="23" id="Bridal_Shops_And_Accessories" />
+      <xs:enumeration value="24" id="Building_Materials" />
+      <xs:enumeration value="25" id="Camera_And_Photo_Supplies" />
+      <xs:enumeration value="26" id="Car_Stero_Cellular_Phones_And_Pagers" />
+      <xs:enumeration value="27" id="Car_Washes" />
+      <xs:enumeration value="28" id="Card_Gift_Shops" />
+      <xs:enumeration value="29" id="Cigar_Stores" />
+      <xs:enumeration value="30" id="Clothing" />
+      <xs:enumeration value="31" id="Computers_And_Software_Retail_Only" />
+      <xs:enumeration value="32" id="Contractors" />
+      <xs:enumeration value="33" id="Convenience_Stores" />
+      <xs:enumeration value="34" id="Cosmetic_Beauty_Supplies" />
+      <xs:enumeration value="35" id="Department_Stores" />
+      <xs:enumeration value="36" id="Drug_Stores_And_Pharmacies" />
+      <xs:enumeration value="37" id="Dry_Cleaners" />
+      <xs:enumeration value="38" id="Electrical_Contractors" />
+      <xs:enumeration value="39" id="Eyeglass_Stores" />
+      <xs:enumeration value="40" id="Fabric_Stores" />
+      <xs:enumeration value="41" id="Floor_Covering" />
+      <xs:enumeration value="42" id="Florists" />
+      <xs:enumeration value="43" id="Funeral_Homes_Crematories" />
+      <xs:enumeration value="44" id="Furniture_Stores" />
+      <xs:enumeration value="45" id="Garden_Lawn_Supply" />
+      <xs:enumeration value="46" id="Gas_Stations" />
+      <xs:enumeration value="47" id="Glass_Stores" />
+      <xs:enumeration value="48" id="Golf_Course_Pro_Shop" />
+      <xs:enumeration value="49" id="Grocery_Supermarket" />
+      <xs:enumeration value="50" id="Hardware_Stores" />
+      <xs:enumeration value="51" id="Health_Food_Stores" />
+      <xs:enumeration value="52" id="Heating_Air" />
+      <xs:enumeration value="53" id="Heavy_Equipment_Truck_Repair" />
+      <xs:enumeration value="54" id="Heavy_Equipment_Rentals" />
+      <xs:enumeration value="55" id="Heavy_Equipment_Sales" />
+      <xs:enumeration value="56" id="Hospitals_Clinics" />
+      <xs:enumeration value="57" id="Hotels_Motels" />
+      <xs:enumeration value="58" id="Housewares" />
+      <xs:enumeration value="59" id="Jewelry_Sales" />
+      <xs:enumeration value="60" id="Liquor_Stores" />
+      <xs:enumeration value="61" id="Locksmiths" />
+      <xs:enumeration value="62" id="Maintenance_Cleaning_Service" />
+      <xs:enumeration value="63" id="Motorcycle_Dealers_All" />
+      <xs:enumeration value="64" id="Motorhome_Dealers" />
+      <xs:enumeration value="65" id="Moving_Storage_Delivery" />
+      <xs:enumeration value="66" id="Muffler_Shops" />
+      <xs:enumeration value="67" id="Music_Stores_Instruments" />
+      <xs:enumeration value="68" id="Office_Supply" />
+      <xs:enumeration value="69" id="Oil_Change_Shop" />
+      <xs:enumeration value="70" id="Optometrists" />
+      <xs:enumeration value="71" id="Pet_Shops" />
+      <xs:enumeration value="72" id="Physicians" />
+      <xs:enumeration value="73" id="Pizza_Parlors" />
+      <xs:enumeration value="74" id="Postal_Shipping_Services" />
+      <xs:enumeration value="75" id="Print_Shops" />
+      <xs:enumeration value="76" id="Record_Shops" />
+      <xs:enumeration value="77" id="Rental_Trucks_And_Trailers" />
+      <xs:enumeration value="78" id="Restaurants" />
+      <xs:enumeration value="79" id="Salvage_And_Wrecking" />
+      <xs:enumeration value="80" id="Secondhand_Stores" />
+      <xs:enumeration value="81" id="Sporting_Goods_Stores" />
+      <xs:enumeration value="82" id="Stereo_Sales_Radio_Sales" />
+      <xs:enumeration value="83" id="Swimming_Pool_Sales" />
+      <xs:enumeration value="84" id="Tack_Shop_Equestrian_Supplies" />
+      <xs:enumeration value="85" id="Towing_Services" />
+      <xs:enumeration value="87" id="Transmission_Repair" />
+      <xs:enumeration value="88" id="Vacuum_Cleaner_Sales" />
+      <xs:enumeration value="89" id="Veterinary_Clinics_Hospitals" />
+      <xs:enumeration value="90" id="Video_Stores" />
+      <xs:enumeration value="91" id="Childcare_Daycare_Preschool" />
+      <xs:enumeration value="92" id="Meat_And_Seafood" />
+      <xs:enumeration value="93" id="Dental" />
+      <xs:enumeration value="94" id="Plumbing_Contractors" />
+      <xs:enumeration value="95" id="Employment_Agency" />
+      <xs:enumeration value="96" id="Sign_Shops" />
+      <xs:enumeration value="97" id="Carpentry" />
+      <xs:enumeration value="98" id="Physical_Therapy" />
+      <xs:enumeration value="99" id="Motorcycle_Repair" />
+      <xs:enumeration value="100" id="Nail_Products_Manicures" />
+      <xs:enumeration value="101" id="Meetings_Events_Banquets_Parties" />
+      <xs:enumeration value="102" id="Accounting_Firms" />
+      <xs:enumeration value="103" id="Uniforms" />
+      <xs:enumeration value="104" id="Bar_Lounge" />
+      <xs:enumeration value="105" id="Tanning_Salons" />
+      <xs:enumeration value="106" id="Hospital_Equipment_Supplies" />
+      <xs:enumeration value="107" id="Metal_Fabricators" />
+      <xs:enumeration value="108" id="Transportation_Services" />
+      <xs:enumeration value="109" id="Fitness_Spa_Gym" />
+      <xs:enumeration value="110" id="Pawn_Shop" />
+      <xs:enumeration value="111" id="Bowling_Alley" />
+      <xs:enumeration value="112" id="Legal_Services" />
+      <xs:enumeration value="113" id="Religious_Organizations" />
+      <xs:enumeration value="115" id="School" />
+      <xs:enumeration value="116" id="Pet_Grooming" />
+      <xs:enumeration value="117" id="Electronics_Electronic_Repair" />
+      <xs:enumeration value="118" id="Travel_Agency" />
+      <xs:enumeration value="119" id="Tatto_Body_Piercing_Parlor" />
+      <xs:enumeration value="120" id="Insurance_Agency" />
+      <xs:enumeration value="121" id="Recreational" />
+      <xs:enumeration value="122" id="Real_Estate" />
+      <xs:enumeration value="123" id="Trailer_Sales" />
+      <xs:enumeration value="124" id="Exterminators" />
+      <xs:enumeration value="125" id="Party_Supply_Store" />
+      <xs:enumeration value="126" id="Entertainment" />
+      <xs:enumeration value="127" id="Bail_Bonds" />
+      <xs:enumeration value="128" id="Hobbie_Shop" />
+      <xs:enumeration value="129" id="Craft_Shop" />
+      <xs:enumeration value="130" id="Photo_Studio" />
+      <xs:enumeration value="131" id="Marina" />
+      <xs:enumeration value="132" id="Security_And_Alarms" />
+      <xs:enumeration value="133" id="Auto_Detailing" />
+      <xs:enumeration value="134" id="Furniture_Rental" />
+      <xs:enumeration value="135" id="General_Merchandise" />
+      <xs:enumeration value="136" id="Leather_Goods_Lugguage" />
+      <xs:enumeration value="137" id="Waste_Removal" />
+      <xs:enumeration value="138" id="Tool_Rentals" />
+      <xs:enumeration value="139" id="Other" />
+      <xs:enumeration value="140" id="Casino_Gambling" />
+    </xs:restriction>
+  </xs:simpleType>
+
+	<xs:simpleType name="Merchant_Service_Type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACHDEBIT" id="PPD_Written_Authorization_From_Personal_Account" />
+			<xs:enumeration value="ACHDEBITB2B" id="CCD_Written_Authorization_From_Corporate_Account "/>
+			<xs:enumeration value="ACHDEBITB2BFILE" id="CCD_Written_Authorization_From_Corporate_Account_File" />
+			<xs:enumeration value="ACHDEBITB2BGRNT" id="CCD_Guarantee_Written_Authorization_From_Corporate_Account" />
+			<xs:enumeration value="ACHDEBITFILE" id="PPD_Written_Authorization_From_Personal_Account_FILE" />
+			<xs:enumeration value="ACHDEBITGRNT" id="PPD_Guarantee_Written_Authorization_From_Personal_Account" />
+			<xs:enumeration value="BRONZE" id="Service_Level_Used_For_Non-Guaranteed_Verification-Only_Processing" />
+			<xs:enumeration value="BRONZEVT" id="POP_Verification_Only_Virtual_Terminal" />
+			<xs:enumeration value="CCF" id="PPD_Written_Authorization_From_Personal_Account_Conv_Fee" />
+			<xs:enumeration value="GOLD" id="Service_Level_Used_For_Guaranteed_ACHed_Transaction_Processing" />
+			<xs:enumeration value="GOLDVT" id="POP_Guarantee_Conversion_Virtual_Terminal" />
+			<xs:enumeration value="QSP" id="POP_Guarantee_Conversion_50_Max_Transaction" />
+			<xs:enumeration value="QSPVT" id="POP_Guarantee_Conversion_50_Max_Transaction_Virtual_Terminal" />
+			<xs:enumeration value="SILVER" id="Service_Level_Used_For_Non-Guaranteed_ACHed_Transaction_Processing" />
+			<xs:enumeration value="SILVERVT" id="POP_Conversion_Non-Guarantee_Virtual_Terminal" />
+			<xs:enumeration value="TRADITIONAL" id="Service_Level_Used_For_Guaranteed_Verification-Only_Processing" />
+			<xs:enumeration value="TRADITIONALVT" id="POP_Paper_Guarantee_Merchant_Manually_Deposits_Check_Virtual_Terminal" />
+			<xs:enumeration value="WEBBILLPAYFILE" id="WEB_Bill_Payment_FILE" />
+			<xs:enumeration value="WEBBILLPAYGW" id="WEB_Bill_Payment_Virtual_Terminal" />
+			<xs:enumeration value="WEBECOMFILE" id="WEB_Ecommerce_FILE" />
+			<xs:enumeration value="WEBECOMGW" id="WEB_Ecommerce_Virtual_Terminal" />
+			<xs:enumeration value="TELGRNT" id="TEL_Phone_Authorization_Guarantee" />
+			<xs:enumeration value="TELNONGRNT" id="TEL_Phone_Authorization_Non-Guarantee" />
+			<xs:enumeration value="BOC" id="BOC_Authorization_Non-Guarantee" />
+			<xs:enumeration value="CK21POSNONGRNTPAY" id="Service_Level_Used_For_Non-Guaranteed_Check21_PayCheck_Transaction_Processing" />
+			<xs:enumeration value="CK21POSNONGRNTPAYVT" id="Service_Level_Used_For_Non-Guaranteed_Check21_PayCheck_Transaction_Processing_Virtual_Terminal_Only" />
+			<xs:enumeration value="CK21POSGRNTPAY" id="Service_Level_Used_For_Guaranteed_Check21_PayCheck_Processing" />
+			<xs:enumeration value="CK21POSGRNTPAYVT" id="Service_Level_Used_Guaranteed_Check21_PayCheck_Processing_Virtual_Terminal_Only" />
+			<xs:enumeration value="CK21POSGRNT" id="Service_Level_Used_For_Guaranteed_POS_Check21_Processing" />
+			<xs:enumeration value="CK21POSGRNTVT" id="Service_Level_Used_For_Guaranteed_POS_Check21_Processing_Virtual_Terminal_Only" />
+			<xs:enumeration value="CK21POSNONGRNT" id="Service_Level_Used_For_Non-Guaranteed_POS_Check21_Processing" />
+			<xs:enumeration value="CK21POSNONGRNTVT" id="Service_Level_Used_For_Non-Guaranteed_POS_Check21_Processing_Virtual_Terminal_Only" />
+			<xs:enumeration value="CK21REMOTEGRNT" id="Service_Level_Used_For_Guaranteed_Remote_Check21_Processing" />
+			<xs:enumeration value="CK21REMOTEGRNTVT" id="Service_Level_Used_For_Guaranteed_Remote_Check21_Processing_Virtual_Terminal_Only" />
+			<xs:enumeration value="CK21REMOTENONGRNT" id="Service_Level_Used_For_Non-Guaranteed_Remote_Check21_Processing" />
+			<xs:enumeration value="CK21REMOTENONGRNTVT" id="Service_Level_Used_For_Non-Guaranteed_Remote_Check21_Processing_Virtual_Terminal_Only" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

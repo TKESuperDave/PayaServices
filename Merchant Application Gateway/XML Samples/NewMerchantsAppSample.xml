@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Envelope>
+	<Body FileName="261407_28_May_2009_12_05_00_590.xml" FileDate="2009-05-28T12:05:00.590">
+		<NewMerchant isoID="7525" merchCrossRefID="261407" merchName="Merchant2282" merchTypeID="49" merchServiceType="ACHDEBIT" merchAddress1="123 Main Street" merchCity="Destin" merchState="FL" merchZip="32541" merchPhone="1231231234" merchFlatFee="0.29" merchNonFlatFee="0.29" merchPercentFee="1.89" merchComments="Food market" merchReturnFee="1.00" PromoCode="FALL2019">
+			<BusinessInfo merchOwnership="3" merchAvgCheckAmount="50.00" merchMaxCheckAmount="200.00" merchTotalTimeInBusiness="456" />
+			<NewLocation locName="Merchant 2282" locCrossRefID="261407" locAddress1="123 Main Street" locCity="Destin" locState="FL" locZip="32541" locPhone="1231231234" locStatementFee="10.00" locMinimumFee="25.00" locFeesRoutingNum="490000018" locFeesAccountNum="123456789">
+				<Statement locStatementAddress1="PO Box 1234" locStatementAddress2="Test" locStatementCity="Destin" locStatementState="FL" locStatementZip="32541" locStatementAttn="Garey Larrabee" />
+				<NewPOC pocPrimary="1" pocFirstName="John" pocLastName="Doe" pocTitle="Owner" pocComments="" pocAddress="123 Main Street" pocCity="Destin" pocState="FL" pocZip="32541" pocDOB="1945-10-26" pocSSN="123121111" />
+				<Terminal merchServiceType="ACHDEBIT" merchMRDCImageFee="0.01" merchFlatFee="0.29" merchNonFlatFee="0.29" merchPercentFee="1.89" merchReturnFee="1.00">
+					<ConsumerConvFee ChargeCCF="1" FeeAmount="8.00" FeeIncludedInTrans="0" FeeIsPercent="" FeePercentMinAmount="1" FeePercentMaxAmount="9" />
+					<NewTerminal termCrossRefID="374891" termCheckLimit="500.00" termPeripheral="63" termTypeID="618" termVerificationOnly="0" />
+					<NewTerminal termCrossRefID="53317" termCheckLimit="5000.00" termPeripheral="63" termTypeID="903" termVerificationOnly="0" />
+				</Terminal>
+				<Terminal merchServiceType="CK21POSNONGRNTVT" merchMRDCImageFee="0.02" merchFlatFee="0.39" merchNonFlatFee="0.39" merchPercentFee="2.89" merchReturnFee="2.00">
+					<NewTerminal termCrossRefID="41680" termCheckLimit="500.00" termPeripheral="96" termTypeID="568" termVerificationOnly="0" />
+					<NewTerminal termCrossRefID="53317" termCheckLimit="5000.00" termPeripheral="95" termTypeID="903" termVerificationOnly="0" />
+				</Terminal>
+			</NewLocation>
+		</NewMerchant>
+	</Body>
+</Envelope>

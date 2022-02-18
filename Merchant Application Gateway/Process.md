@@ -4,12 +4,43 @@ Our Application Gateway is designed to accommodate various input requirements, a
 
 The Application Gateway uses web services to present distributed methods for integration into client applications, and an interface can be developed with any programming language that can consume a web service.
 
-We use (XML)Extensible Markup Language, to send data packet requests and receive responses from the Authorization Gateway.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS, we also employ a custom SOAP header for authentication information. 
+We use Extensible Markup Language (XML), to send data packet requests and receive responses from the Authorization Gateway.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS, we also employ a custom SOAP header for authentication information. 
 
+### **Table of Contents**
+1. [Connection Method](Process.md#connection-method)
+2. [Support Electronic Applications](Process.md#supported-electronic-applications)
+3. [Submissions](Process.md#submissions)
+     - [SOAP Header](Process.md#soap-header)
+4. [Web Methods](Process.md#web-methods)
+     - [Certification](Process.md#certification-methods)
+     	- [ACH Certification Methods](Process.md#ach-certification-methods)
+     	- [Check21 Certification Methods](Process.md#check21-certification-methods)
+     	- [Gift Certification Methods](Process.md#gift-certification-methods)
+     	- [Other Certification Methods](Process.md#other-certification-methods)
+     - [Production](Process.md#production-methods)
+     	- [ACH Production Methods](Process.md#ach-certification-methods)
+     	- [Check21 Producation Methods](Process.md#check21-production-methods)
+     	- [Gift Production Methods](Process.md#gift-production-methods)
+     	- [Other Producations Methods](Process.md#other-productions-methods)
+5. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
+     - [Merchant Application XML Example](Process.md#merchant-application-xml-example)
+     - [XML Samples](Process.md#xml-samples)
+6. [Data Types](Process.md#data-types)
+7. [Supporting Documents](Process.md#supporting-documents)
+8. [How to determine which XSD to Use](Process.md#how-to-determine-which-xsd-to-use)
+     - [ACH Schema](Process.md#ach-schema)
+     - [Check21 Schema](Process.md#check21-schema)
+     - [Gift Schema](Process.md#gift-schema)
+     - [Other Schema](Process.md#other-schema)
+
+9. [Response](Process.md#response)
+     - [Response Messages - Example of Success Response](Process.md#response-message--example-success-response)
+10. [Exceptions](Process.md#exceptions)
+11. [Sample Code](Process.md#sample-code)
+12. [Contact Information](Process.md#contact-information)
 
 # **Connection Method**
-Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  
-The webservice address used for certification and testing is as follows:
+Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  The webservice address used for certification and testing is as follows:
 
 https://demo.eftchecks.com/webservices/AppGateway.asmx
 
@@ -18,6 +49,9 @@ A username and password for certification will be provided upon request.
 _NOTE:  A live webservice address, username, and password will be supplied upon successful certification._
 
 # **Supported Electronic Applications**
+
+The following SEC Codes are supported for an electronic application:
+
  - Telephone Initiated Entry (TEL)
  - Internet Initiated Entry (WEB)
  - Prearranged Payment and Deposit Entry (PPD)
@@ -26,20 +60,365 @@ _NOTE:  A live webservice address, username, and password will be supplied upon 
  - Check 21 (C21) 
  - Gift Card
 
-# **Submission**
-The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods: one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
+# **Submissions**
+The Application Gateway has been designed for fast and easy integration with your existing system.  Simply create an xml data packet that conforms to the NewMerchApp xsd for the appropriate SEC Code and pass it to the Application Gateway for processing. To accomplish this the Application Gateway provides 2 web methods; one for certification and one for production.  In addition, each web method contains a custom SOAP header used for authentication.
 
-## **SOAP Header**
+### **SOAP Header**
 
+The SOAP header will need the following fields:
 |                 |               |                                                                |
 |-----------------|---------------|----------------------------------------------------------------|
 |     UserName    |     String    |     Username   provided by Paya Services for authorization.    |
 |     Password    |     String    |     Password   provided by Paya Services for authorization.    |
 
-(Please Holder Example) 
+Example:
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+```XML 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+  <soapenv:Header>
+    <app:RemoteAccessHeader>
+      <app:UserName> GATEWAYUserName </app:UserName>
+      <app:Password> GATEWAYPassword</app:Password>
+     </app:RemoteAccessHeader>
+  </soapenv:Header>
+```
+
+
+# **Web Methods**
+
+A definition of the web methods can be found below. Each web method contains a hyperlink to a sample SOAP request and response.
+
+_NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
+
+## **Certification Methods**
+
+Before you are able to go into production, Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
+
+### **ACH Certification Methods**
+
+- [**BoardCertificationMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationMerchant_ACH.md)
+
+  - **Description**:  This method will process an ACH merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response-1)
+
+- [**BoardCertificationLocation_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md)
+  - **Description**:  This method will process an ACH location application and return a detail success or failure response.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response-1)
+
+- [**BoardCertificationTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md)
+  - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md#response-1)
+
+- [**CreateCertificationTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md)
+  - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md#response-1)
+
+### **Check21 Certification Methods**
+
+- [**BoardCertificationMerchant_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationMerchant_Check21.md)
+  - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationMerchant_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationMerchant_Check21.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationMerchant_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationMerchant_Check21.md#response-1)
+
+
+- [**BoardCertificationLocation_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md)
+
+  - **Description**:  This method will process a Check21 location application and return a detail success or failure response.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md#response-1)
+
+- [**BoardCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md)
+
+  - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md#response-1)
+
+- [**CreateCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md)
+
+  - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md#response-1)
+
+### **Gift Certification Methods**
+
+- [**BoardCertificationMerchant_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md)
+
+  - **Description**:  This method will process a Gift merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md#response-1)
+
+- [**BoardCertificationLocation_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md)
+
+  - **Description**:  This method will process a Gift location application and return a detail success or failure response.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md#response-1)
+
+- [**BoardCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md)
+
+  - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md#response-1)
+
+- [**CreateCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md)
+
+  - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.  This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md#response-1)
+
+### **Other Certification Methods**
+
+- [**UploadCertificationSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
+
+  - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
+
+- [**UploadCertificationSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md)
+
+  - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached. This method is used during interface testing and certification.    
+  - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP 
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md#response-1)
+
+- [**RetrieveCertificationMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md)
+
+  - **Description**:  This method will process a merchant id and return a detailed merchant status.  This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md#response-1)
+
+- [**RequestCertificationCheckLimitIncrease**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md)
+
+  - **Description**:  This method will request a check limit increase for a specified terminal id.  This method is used during interface testing and certification.
+  - **Usage**: After request, use [RetrieveCertificationMerchantStatus](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md#response-1)
+
+- [**RequestCertificationBankAccountChange**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md)
+
+  - **Description**:  This method will request a bank account change for a location id.  This method is used during interface testing and certification.
+  - **Usage**:  After request, use [UploadCertificationIssueSupportingDocs](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md) to upload signed merchant bank change request as PDF.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md#response-1)
+
+- [**UploadCertificationIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
+
+  - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md#response-1)
+
+- [**UploadCertificationIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md)
+
+  - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification. 
+  - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md#response-1)
+
+- [**RequestCertificationMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md)
+
+  - **Description**:  This method will request a merchant cancellation.  This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md#response-1)
+
+- [**BoardCertificationMerchants**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md)
+
+  - **Description**:  This method will process an ACH and Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md#response-1)
+
+- [**BoardCertificationLocations**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md)
+
+  - **Description**:  This method will process an ACH and Check21 location application and return a detail success or failure response.  This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md#response-1)
+
+- [**CreateCertificationTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md)
+
+  - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md#response-1)
+
+## Production Methods
+
+Once you have **certified** with our Paya Services team you will need to used the Production Methods listed below to create live transaction within the banking system.
+
+### **ACH Production Methods**
+
+- [**BoardMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardMerchant_ACH.md)
+
+   - **Replaces**:  [**BoardCertificationMerchant_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationMerchant_ACH.md)
+   - **Description**:  This method will process an ACH merchant application and return a detail success or failure response.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#response-1)
+
+- [**BoardLocation_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md)
+
+   - **Replaces**:  [**BoardCertificationLocation_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md)
+   - **Description**:  This method will process an ACH location application to add a location to an EXISTING merchant and return a detail success or failure response.  
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardLocation_ACH.md#response-1)
+
+- [**BoardTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardTerminal_ACH.md)
+  
+  - **Replaces**:  [**BoardCertificationTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationTerminal_ACH.md)
+  - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardTerminal_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardTerminal_ACH.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardTerminal_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/BoardTerminal_ACH.md#response-1)
+
+- [**CreateTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md)
+   
+   - **Replaces**:  [**CreateCertificationTerminal_ACH**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/CreateCertificationTerminal_ACH.md)
+   - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/ACH/CreateTerminal_ACH.md#response-1)
+ 
+### **Check21 Production Methods**
+- [**BoardMerchant_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardMerchant_Check21.md)
+
+   - **Replaces**:  [**BoardCertificationMerchant_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationMerchant_Check21.md)
+   - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardMerchant_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardMerchant_Check21.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardMerchant_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardMerchant_Check21.md#response-1)
+  
+- [**BoardLocation_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md)
+
+   - **Replaces**:  [**BoardCertificationLocation_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationLocation_Check21.md)
+   - **Description**:  This method will process a Check21 location application to add a location to an EXISTING merchant and return a detail success or failure response. 
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardLocation_Check21.md#response-1)
+
+- [**BoardTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardTerminal_Check21.md)
+
+   - **Replaces**: [**BoardCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/BoardCertificationTerminal_Check21.md)
+   - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardTerminal_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardTerminal_Check21.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardTerminal_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/BoardTerminal_Check21.md#response-1)
+
+- [**CreateTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md)
+
+   - **Replaces**:  [**CreateCertificationTerminal_Check21**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Check21/CreateCertificationTerminal_Check21.md)
+   - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Check21/CreateTerminal_Check21.md#response-1)
+
+### **Gift Production Methods**
+
+- [**BoardMerchant_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardMerchant_Gift.md)
+
+   - **Replaces**:  [**BoardCertificationMerchant_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationMerchant_Gift.md)
+   - **Description**:  This method will process a Gift merchant application and return a detail success or failure response.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardMerchant_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardMerchant_Gift.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardMerchant_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardMerchant_Gift.md#response-1)
+ 
+- [**BoardLocation_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardLocation_Gift.md)
+
+   - **Replaces**:  [**BoardCertificationLocation_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationLocation_Gift.md)
+   - **Description:  This method will process a Gift location application to add a location to an EXISTING merchant and return a detail success or failure response.  
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardLocation_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardLocation_Gift.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardLocation_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardLocation_Gift.md#response-1)
+ 
+- [**BoardTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md)
+
+   - **Replaces**:  [**BoardCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/BoardCertificationTerminal_Gift.md)
+   - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/BoardTerminal_Gift.md#response-1)
+ 
+- [**CreateTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md)
+
+     - **Replaces**:  [**CreateCertificationTerminal_Gift**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/Gift/CreateCertificationTerminal_Gift.md)
+     - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
+	 - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#request-1)
+	 - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/Gift/CreateTerminal_Gift.md#response-1)
+
+### **Other Productions Methods**
+
+- [**UploadSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md)
+
+  - **Replaces**:  [**UploadCertificationSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
+  - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response-1)  
+
+- [**UploadSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md)
+
+  - **Replaces**:  [**UploadCertificationSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs2.md)
+  - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached.
+  - Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs2.md#response-1)
+
+- [**RetrieveMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md)
+
+   - **Replaces**:  [**RetrieveCertificationMerchantStatus**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RetrieveCertificationMerchantStatus.md)
+   - **Description**:  This method will process a merchant id and return a detailed merchant status. NOTE: The Output will return a more detailed XML if the Merchant is approved.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md#response-1)
+- [**RequestCheckLimitIncrease**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestCheckLimitIncrease.md)
+
+   - **Replaces**:  [**RequestCertificationCheckLimitIncrease**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationCheckLimitIncrease.md)
+   - **Description**:  This method will request a check limit increase for a specified terminal id.  
+   - **Usage**: After request, use [RetrieveMerchantStatus](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RetrieveMerchantStatus.md) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestCheckLimitIncrease.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestCheckLimitIncrease.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestCheckLimitIncrease.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestCheckLimitIncrease.md#response-1)
+
+- [**RequestBankAccountChange**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md)
+
+  - **Replaces**:  [**RequestCertificationBankAccountChange**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationBankAccountChange.md)
+  - **Description**:  This method will request a bank account change for a location id.  
+  - **Usage**:  After request, use [UploadIssueSupportingDocs](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs.md) to upload signed merchant bank change request as PDF.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestBankAccountChange.md#response-1)
+
+- [**UploadIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs.md)
+
+   - **Replaces**:  [**UploadCertificationIssueSupportingDocs**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationSupportingDocs.md)
+   - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadSupportingDocs.md#response-1)   
+
+- [**UploadIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md)
+ 
+  - **Replaces**:  [**UploadCertificationIssueSupportingDocs2**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/UploadCertificationIssueSupportingDocs2.md)
+  - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached. Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/UploadIssueSupportingDocs2.md#response-1)
+
+- [**RequestMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestMerchantCancellation.md)
+
+  - **Replaces**:  [**RequestCertificationMerchantCancellation**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/RequestCertificationMerchantCancellation.md)
+  - **Description**:  This method will request a merchant cancellation.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestMerchantCancellation.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestMerchantCancellation.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestMerchantCancellation.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/RequestMerchantCancellation.md#response-1)  
+
+- [**BoardMerchants**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardMerchants.md)
+
+   - **Replaces**:  [**BoardCertificationMerchants**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationMerchants.md)
+   - **Description**:  This method will process an ACH and Check21 merchant application and return a detail success or failure response.
+   - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardMerchants.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardMerchants.md#request-1)
+   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardMerchants.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardMerchants.md#response-1)
+  
+- [**BoardLocations**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardLocations.md)
+
+  - **Replaces**:  [**BoardCertificationLocations**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/BoardCertificationLocations.md)
+  - **Description**:  This method will process an ACH and Check21 location application to add a location to an EXISTING merchant and return a detail success or failure response.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardLocations.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardLocations.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardLocations.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/BoardLocations.md#response-1)  
+
+- [**CreateTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md)
+
+  - **Replaces**:  [**CreateCertificationTerminals**](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/CreateCertificationTerminals.md)
+  - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
+  - **Request**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#request) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Production%20Methods/CreateTerminals.md#response-1)
+
+# **Data Packet – XML Specification**
+The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
+
+***Note about Special Characters:** Because the Data packet is XML, the following special characters must be escaped to be included in the data. 
 
 |     Special Character    |     Symbol    |     Escaped Form     |
 |--------------------------|---------------|----------------------|
@@ -49,388 +428,9 @@ Because the Data packet is XML, some special characters must be escaped to be in
 |     Quotes               |     “         |     \&quot;          |
 |     Apostrophe           |     ‘         |     \&apos;          |
 
-# **Web Methods**
-
-A definition of the web methods can be found below. Each web method contains a hyperlink to a sample SOAP request and response.
-
-_NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
-
-## **ACH Certification Methods**
-
-- [**BoardCertificationMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_ACH)
-
-  - **Description**:  This method will process an ACH merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**: Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardCertificationLocation_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationLocation_ACH)
-  - **Description**:  This method will process an ACH location application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**BoardCertificationTerminal_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationTerminal_ACH)
-  - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateCertificationTerminal_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateCertificationTerminal_ACH)
-  - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-## **Check21 Certification Methods**
-
-- [**BoardCertificationMerchant_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_Check21)
-  - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardCertificationLocation_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationLocation_Check21)
-
-  - **Description**:  This method will process a Check21 location application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**BoardCertificationTerminal_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationTerminal_Check21)
-
-  - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateCertificationTerminal_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateCertificationTerminal_Check21)
-
-  - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-## **Gift Certification Methods**
-
-- [**BoardCertificationMerchant_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchant_Gift)
-
-  - **Description**:  This method will process a Gift merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardCertificationLocation_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationLocation_Gift)
-
-  - **Description**:  This method will process a Gift location application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**BoardCertificationTerminal_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationTerminal_GIFT)
-
-  - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateCertificationTerminal_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateCertificationTerminal_GIFT)
-
-  - **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.  This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-## **Other Certification Methods**
-
-- [**UploadCertificationSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationSupportingDocs)
-
-  - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts a PDF document as a byte array 
-  - **Output**:  none
-
-- [**UploadCertificationSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationSupportingDocs2)
-
-  - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts a document as a byte array
-    - File Extension as String 
-  - **Output**:  none
-
-- [**RetrieveCertificationMerchantStatus**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveCertificationMerchantStatus)
-
-  - **Description**:  This method will process a merchant id and return a detailed merchant status.  This method is used during interface testing and certification.
-  - **Input**:  Paya Services Merchant ID as Integer
-  - **Output**:  Outputs an XML string.
-
-- [**RequestCertificationCheckLimitIncrease**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCertificationCheckLimitIncrease)
-
-  - **Description**:  This method will request a check limit increase for a specified terminal id.  This method is used during interface testing and certification.
-  - **Input**:
-    - Paya Services Terminal ID as Integer
-    - Requested check limit as a Decimal
-  - **Output**:  Outputs an XML string.
-  - **Usage**: After request, use [RetrieveCertificationMerchantStatus](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveCertificationMerchantStatus) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
-
-- [**RequestCertificationBankAccountChange**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCertificationBankAccountChange)
-
-  - **Description**:  This method will request a bank account change for a location id.  This method is used during interface testing and certification.
-  - **Input**:
-    - Paya Services Location ID as Integer
-    - New Routing Number as a string
-    - New Account Number as a string
-  - **Output**:  Outputs an XML string with an Issue Id as Integer.
-  - **Usage**:  After request, use [UploadCertificationIssueSupportingDocs](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationIssueSupportingDocs) to upload signed merchant bank change request as PDF.
-
-- [**UploadCertificationIssueSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationIssueSupportingDocs)
-
-  - **Description:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Issue ID as Integer
-    - Accepts a PDF document as a byte array 
-  - **Output**:  none
-
-- [**UploadCertificationIssueSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadCertificationIssueSupportingDocs2)
-
-  - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  This method is used during interface testing and certification. 
-Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
-  - **Input**:  
-    - Paya Services Issue ID as Integer
-    - Accepts a document as a byte array 
-    - File Extension as String 
-  - **Output**:  none
-
-- [**RequestCertificationMerchantCancellation**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCertificationMerchantCancellation)
-
-  - **Description**:  This method will request a merchant cancellation.  This method is used during interface testing and certification.
-  - **Input**:
-    - Paya Services Merchant ID as Integer
-    - Requested cancellation reason as CancellationReason Enum
-  - **Output**:  Outputs an XML string with an Issue Id as Integer.
-
-- [**BoardCertificationMerchants**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationMerchants)
-
-  - **Description**:  This method will process an ACH and Check21 merchant application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**: Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardCertificationLocations**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardCertificationLocations)
-
-  - **Description**:  This method will process an ACH and Check21 location application and return a detail success or failure response.  This method is used during interface testing and certification.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateCertificationTerminals**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateCertificationTerminals)
-
-  - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program. This method is used during interface testing and certification.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-## **ACH Production Methods**
-
-- [**BoardMerchant_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_ACH)
-
-- **Description**:  This method will process an ACH merchant application and return a detail success or failure response.
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardLocation_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocation_ACH)
-
-- **Description**:  This method will process an ACH location application to add a location to an EXISTING merchant and return a detail success or failure response.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new location application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**BoardTerminal_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardTerminal_ACH)
-  - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateTerminal_ACH**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminal_ACH)
-  - **Description**:  This method will process an ACH terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-## **Check21 Production Methods**
-- [**BoardMerchant_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_Check21)
-
-  - **Description**:  This method will process a Check21 merchant application and return a detail success or failure response.
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardLocation_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocation_Check21)
-
-  - **Description**:  This method will process a Check21 location application to add a location to an EXISTING merchant and return a detail success or failure response.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new location application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**BoardTerminal_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardTerminal_Check21)
-
-  - **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateTerminal_Check21**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminal_Check21)
-
-- **Description**:  This method will process a Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-## **Gift Production Methods**
-
-- [**BoardMerchant_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchant_GIFT)
-
-- **Description**:  This method will process a Gift merchant application and return a detail success or failure response.
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardLocation_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocation_GIFT)
-
-- **Description:  This method will process a Gift location application to add a location to an EXISTING merchant and return a detail success or failure response.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new location application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**BoardTerminal_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardTerminal_GIFT)
-
-- **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateTerminal_Gift**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminal_GIFT)
-
-- **Description**:  This method will process a Gift terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response.  It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-## **Other Productions Methods**
-
-- [**UploadSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadSupportingDocs)
-
-  - **Description**:  This method will upload a PDF as a byte array of the signed merchant application as well as other supporting documents that need to be attached.    
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts a PDF document as a byte array 
-  - **Output**:  none
-
-- [**UploadSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadSupportingDocs2)
-
-  - **Description**:  This method will upload a file as a byte array of the signed merchant application as well as other supporting documents that need to be attached.
-Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts a document as a byte array
-    - File Extension as String 
-  - **Output**:  none
-
-- [**RetrieveMerchantStatus**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveMerchantStatus)
-
-  - **Description**:  This method will process a merchant id and return a detailed merchant status. NOTE: The Output will return a more detailed XML if the Merchant is approved.
-  - **Input**:  Paya Services Merchant ID as Integer
-  - **Output**:  Outputs an XML string.
-
-- [**RequestCheckLimitIncrease**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestCheckLimitIncrease)
-
-  - **Description**:  This method will request a check limit increase for a specified terminal id.  
-  - **Input**:
-    - Paya Services Terminal ID as Integer
-    - Requested check limit as a Decimal
-  - **Output**:  Outputs an XML string.
-  - **Usage**: After request, use [RetrieveMerchantStatus](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RetrieveMerchantStatus) to see if the check limit increase was approved and to retrieve your new MID number to input into the physical terminal.
-
-- [**RequestBankChange**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestBankChange)
-
-  - **Description**:  This method will request a bank account change for a location id.  
-  - **Input**:
-    - Paya Services Location ID as Integer
-    - New Routing Number as a string
-    - New Account Number as a string
-  - **Output**:  Outputs an XML string with an Issue Id as Integer.
-Usage:  After request, use [UploadIssueSupportingDocs](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadIssueSupportingDocs) to upload signed merchant bank change request as PDF.
-
-
-- [**UploadIssueSupportingDocs**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadIssueSupportingDocs)
-
-  - **Description**:  This method will upload a PDF as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached.  
-  - **Input**:  
-    - Paya Services Issue ID as Integer
-    - Accepts a PDF document as a byte array 
-  - **Output**:  none
-
-- [**UploadIssueSupportingDocs2**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=UploadIssueSupportingDocs2)
-
-  - **Description**:  This method will upload a file as a byte array of the signed merchant bank change request as well as other supporting documents that need to be attached. Supported file extensions include DOC, DOCX, XLS, XLSX, TIFF, JPEG, PSD, AI, EPS, PDF, PNG, JPG, GIF, & BMP
-  - **Input**:  
-    - Paya Services Issue ID as Integer
-    - Accepts a document as a byte array 
-    - File Extension as String 
-  - **Output**:  none
-
-- [**RequestMerchantCancellation**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=RequestMerchantCancellation)
-
-  - **Description**:  This method will request a merchant cancellation.  
-  - **Input**:
-    - Paya Services Merchant ID as Integer
-    - Requested cancellation reason as CancellationReason Enum
-  - **Output**:  Outputs an XML string with an Issue Id as Integer.
-
-- [**BoardMerchants**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardMerchants)
-
-  - **Description**:  This method will process an ACH and Check21 merchant application and return a detail success or failure response.
-  - **Input**:  Accepts an XML string called a data packet that much conform to the application schema.  
-  - **Output**:  Outputs an XML string.
-
-- [**BoardLocations**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=BoardLocations)
-
-  - **Description**:  This method will process an ACH and Check21 location application to add a location to an EXISTING merchant and return a detail success or failure response.  
-  - **Input**:  
-    - Paya Services Merchant ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new location application schema.
-  - **Output**:  Outputs an XML string.
-
-- [**CreateTerminals**](https://demo.eftchecks.com/webservices/AppGateway.asmx?op=CreateTerminals)
-
-  - **Description**:  This method will process an ACH and Check21 terminal application to add a terminal to an EXISTING merchant location and return a detail success or failure response. It does not require a terminal to clone. The method also allows a terminal to be boarded for a new Program.
-  - **Input**:  
-    - Paya Services Location ID as Integer
-    - Accepts an XML string called a data packet that must conform to the new terminal application schema.
-  - **Output**:  Outputs an XML string.
-
-# **Data Packet – XML Specification**
-The data packet is an XML string sent using the BoardCertificationMerchant_X and BoardMerchant_X web methods.  The XML data packet must conform to the XSD specified for the transaction type.
-
 ## **Merchant Application XML Example**
 
-```
+```XML
 <Envelope>
 	<Body 
 	          FileName="261407_28_May_2009_12_05_00_590.xml" 
@@ -640,77 +640,49 @@ The data packet is an XML string sent using the BoardCertificationMerchant_X and
 |     TERM MRDC:                             |     (Optional)   Indicate if the terminal is MRDC: 1 for yes, 0 for no.                                                                                                                                   |                                                                |
 |     TERM CLONE FROM TERMNIAL ID:           |     Contains   the ID for the terminal to copy.  The [Terminal   ID] is expected as a numeric value.                                                                                                      |                                                                |
 
-## How to determine which XSD to Use
-
-The root path for all XSDs is https://demo.eftchecks.com/webservices/Schemas/App/ followed by the application type as the Schema Name.  The example Schema file paths would be as follows:
-
-- **ACH Schema**
-
-  - ACH Application Schema:  [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)
-  - New Location Application Schema:  [NewLocApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_ach.xsd)
-  - New Terminal Application Schema:  [NewTermApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_ach.xsd)
-  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_ach.xsd)
-
-- **Check21 Schema**
-
-  - Check21 Application Schema:  [NewMerchApp_Check21](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)
-  - New Location Application Schema:  [NewLocApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_check21.xsd)
-  - New Terminal Application Schema:  [NewTermApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_Check21.xsd) 
-  - New Create Terminal Application Schema:  [NewTermCreateApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_Check21.xsd)
-
-- **Gift Schema**
-
-  - Gift Application Schema:  [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)
-  - New Location Application Schema:  [NewLocApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_gift.xsd)
-  - New Terminal Application Schema:  [NewTermApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermapp_gift.xsd)
-  - New Create Terminal Application Schema:  [NewTermCreateApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermCreateapp_gift.xsd)
-
-## **Other Schema** 
-
-  - Board Merchant Application Schema:  [NewMerchantApp](https://demo.eftchecks.com/webservices/schemas/app/NewMerchantsApp.xsd)
-  - Board Location Application Schema:  [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)
-  - Create Terminal Application Schema:  [NewTerminalsApp](https://demo.eftchecks.com/webservices/schemas/app/NewTerminalsApp.xsd)
-
 ## **XML Samples**
 
 _NOTE: Terminal IDs may change based on the data created._
 
-  - ACH Application Sample:  [NewMerchAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_ACH.xml)
-  - Check21 Application Sample:  [NewMerchAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Check21.xml)
-  - Gift Application Sample:  [NewMerchAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchAppSample_Gift.xml)
+**Application Samples**:
+  - ACH Application Sample:  [NewMerchAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_ACH.xml)
+  - Check21 Application Sample:  [NewMerchAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Check21.xml)
+  - Gift Application Sample:  [NewMerchAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchAppSample_Gift.xml)
 
-  - ACH Location Application Sample:  [NewLocAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_ACH.xml)
-  - Check21 Location Application Sample:  [NewLocAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Check21.xml)
-  - Gift Location Application Sample:  [NewLocAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocAppSample_Gift.xml)
+**Location Aplication Samples**:
+  - ACH Location Application Sample:  [NewLocAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_ACH.xml)
+  - Check21 Location Application Sample:  [NewLocAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Check21.xml)
+  - Gift Location Application Sample:  [NewLocAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewLocAppSample_Gift.xml)
 
-  - ACH Terminal Application Sample: [NewTermAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_ACH.xml)
-  - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Check21.xml)
-  - Gift Terminal Application Sample:  [NewTermAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermAppSample_Gift.xml)
+**Terminal Aplication Samples**:
+  - ACH Terminal Application Sample: [NewTermAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_ACH.xml)
+  - Check21 Terminal Application Sample:  [NewTermAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Check21.xml)
+  - Gift Terminal Application Sample:  [NewTermAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermAppSample_Gift.xml)
 
-  - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_ACH.xml)
-  - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Check21.xml)
-  - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTermCreateAppSample_Gift.xml)
+**Create Terminal Application Samples**:
+  - ACH Create Terminal Application Sample:  [NewTermCreateAppSample_ACH](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_ACH.xml)
+  - Check21 Create Terminal Application Sample:  [NewTermCreateAppSample_Check21](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Check21.xml)
+  - Gift Create Terminal Application Sample:  [NewTermCreateAppSample_Gift](/Merchant%20Application%20Gateway/XML%20Samples/NewTermCreateAppSample_Gift.xml)
 
-  - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewMerchantsAppSample.xml)
-  - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewLocationsAppSample.xml)
-  - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](https://demo.eftchecks.com/webservices/Schemas/App/Example/NewTerminalsAppSample.xml)
+**Other Samples**:
+  - Board Merchant with multiple SEC Codes Sample:  [NewMerchantsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewMerchantsAppSample.xml)
+  - Board Location with multiple SEC Codes Sample:  [NewLocationsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewLocationsAppSample.xml)
+  - Create Terminals with multiple SEC Codes Sample:  [NewTerminalsAppSample](/Merchant%20Application%20Gateway/XML%20Samples/NewTerminalsAppSample.xml)
+
+
 
 ## **Data Types**
 Each element in the XML data packet that is sent to the Application Gateway has a data type that defines the format of the data contained within the element.  The XSD defines which elements are of what data type.  A list and links to the available data types is located below.
 
-  - Application Gateway Types
-https://demo.eftchecks.com/webservices/Schemas/Types/AppGatewayTypes.xsd
+  - [Application Gateway Types](/Merchant%20Application%20Gateway/Data%20Types/AppGatewayTypes.xsd)
 
-  - Merchant Simple Types 
-https://demo.eftchecks.com/webservices/Schemas/Types/MerchantSimpleTypes.xsd
+  - [Merchant Simple Types](/Merchant%20Application%20Gateway/Data%20Types/MerchantSimpleTypes.xsd)
 
-- Terminal Simple Types 
-https://demo.eftchecks.com/webservices/Schemas/Types/TerminalSimpleTypes.xsd
+  - [Terminal Simple Types](/Merchant%20Application%20Gateway/Data%20Types/TerminalSimpleTypes.xsd)
 
-  - States and Provinces
-https://demogift.eftchecks.com/schemas/types/StatesAndProvincesSimpleType.xsd
+  - [States and Provinces](/Merchant%20Application%20Gateway/Data%20Types/StatesAndProvincesSimpleType.xsd)
 
- - **Supporting Documents**
+ <!-- ### **Supporting Documents**
 
 |     SEC Code          |     Document                                                                            |
 |-----------------------|-----------------------------------------------------------------------------------------|
@@ -743,14 +715,48 @@ https://demogift.eftchecks.com/schemas/types/StatesAndProvincesSimpleType.xsd
 |                       |     Recording Service Setup Form (if   applicable)                                      |
 |     Check21,   POP    |                                                                                         |
 |                       |     Merchant Application                                                                |
-|                       |     Voided Check w/Business Name                                                        |
+|                       |     Voided Check w/Business Name                                                        | -->
+
+## How to determine which XSD to Use
+
+The example Schema file paths would be as follows:
+
+### **ACH Schema**
+
+  - ACH Application Schema:  [NewMerchApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/NewMerchApp_ACH.xsd)
+  - New Location Application Schema:  [NewLocApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newlocapp_ach.xsd)
+  - New Terminal Application Schema:  [NewTermApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermapp_ach.xsd)
+  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermCreateapp_ach.xsd)
+
+### **Check21 Schema**
+
+  - Check21 Application Schema:  [NewMerchApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/NewMerchApp_Check21.xsd)
+  - New Location Application Schema:  [NewLocApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newlocapp_check21.xsd)
+  - New Terminal Application Schema:  [NewTermApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermapp_Check21.xsd) 
+  - New Create Terminal Application Schema:  [NewTermCreateApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermCreateapp_Check21.xsd)
+
+### **Gift Schema**
+
+  - Gift Application Schema:  [NewMerchApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/NewMerchApp_Gift.xsd)
+  - New Location Application Schema:  [NewLocApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newlocapp_gift.xsd)
+  - New Terminal Application Schema:  [NewTermApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermapp_gift.xsd)
+  - New Create Terminal Application Schema:  [NewTermCreateApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermCreateapp_gift.xsd)
+
+### **Other Schema** 
+
+  - Board Merchant Application Schema:  [NewMerchantApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewMerchantsApp.xsd)
+  - Board Location Application Schema:  [NewLocationsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewLocationsApp.xsd)
+  - Create Terminal Application Schema:  [NewTerminalsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewTerminalsApp.xsd)
+
+
+
 
 ## **Response**
-Each web method in the Application Gateway will return an XML string and detail the success or failure of the submission.  If the application is accepted the following XML response will be returned.
+Each web method in the Application Gateway will return an XML string and detail the success or failure of the submission.  If the application is accepted the following is a sample of an XML response that will be returned.
 
 ### **Response Message – Example Success Response**
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 	<RESPONSE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<STATUS>Approved</STATUS>
@@ -849,34 +855,29 @@ Test Merchant ACH 1 (ISO ID: 9999, CrossRef: 261407, Status: AppApprovedandActiv
 
 If an error occurs within the Application Gateway the XML string response will detail the reason for the error within an Exception element. The Exception element will NOT be present if an error did not occur. 
 
-### EXCEPTION Element – Example as a child of the RESPONSE element
+EXCEPTION Element – Example as a child of the RESPONSE element
 
-```
+```XML
 <?xml version="1.0" encoding="utf-8"?>
 <RESPONSE xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<VALIDATION_MESSAGE>
-		<RESULT>Failed</RESULT>		<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/schemas/app/NewMerchApp_ACH.xsd
-          </SCHEMA_FILE_PATH>
+		<RESULT>Failed</RESULT>		
+		<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/schemas/app/NewMerchApp_ACH.xsd</SCHEMA_FILE_PATH>
 		<VALIDATION_ERROR LINE_NUMBER="1" LINE_POSITION="138">
 			<SEVERITY>Error</SEVERITY>
-			<MESSAGE>The required attribute 'merchReturnFee' is missing.
-                               </MESSAGE>
+			<MESSAGE>The required attribute 'merchReturnFee' is missing.</MESSAGE>
 		</VALIDATION_ERROR>
 	</VALIDATION_MESSAGE>
 </RESPONSE>
 ```
-
-### **The Exception element will contain the following elements.The Exception element will contain the following elements.**
-
-|                                          |                                                         |
-|------------------------------------------|---------------------------------------------------------|
-|     MESSAGE or   VALIDATION_MESSAGE:     |     Contains text information about   the exception.    |
+ The Exception element will contain the following elements:
+-  **MESSAGE** or **VALIDATION_MESSAGE**: Contains text information about the exception.
 
 ## **Sample Code**
 
 ### **Sample SOAP Message**
 
-```
+```XML
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
   <soapenv:Header>
     <app:RemoteAccessHeader>
@@ -961,7 +962,7 @@ termVerificationOnly=&quot;0&quot; /&gt;
 </soapenv:Envelope>
 ```
 
-**Contact Information**
+## **Contact Information**
 For questions or to receive certification and live username/passwords and URLs please contact:
 
 Integration Department

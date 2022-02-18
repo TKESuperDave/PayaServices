@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<xs:schema id="ACH_APPS" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include id="APP_GATEWAY_TYPES" schemaLocation="..//Types/AppGatewayTypes.xsd"></xs:include>
+  <xs:element name="Envelope">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Body">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="1" name="NewTerminal">
+                <xs:complexType>
+                  <xs:attribute name="termCrossRefID" type="crossref" />
+                  <xs:attribute name="termPeripheral" type="Term_Peripheral-or-empty" use="required" />
+                  <xs:attribute name="termTypeID" type="Term_Type" use="required" />
+                  <xs:attribute name="termCloneFromTerminalID" type="TerminalID" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
