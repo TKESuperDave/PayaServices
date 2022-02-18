@@ -45,7 +45,7 @@
 18. [Expedited Processor Returns]()
 	 - [E-Code Returns]()
 19. [Transaction Returns]()
-		- Transaction Return Tips 
+	 - [Transaction Return Tips]()
 	 
 
 # Check and ACH Processing Best Practices
