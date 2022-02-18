@@ -71,6 +71,17 @@ The SOAP header will need the following fields:
 |     UserName    |     String    |     Username   provided by Paya Services for authorization.    |
 |     Password    |     String    |     Password   provided by Paya Services for authorization.    |
 
+Example:
+
+```XML 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
+  <soapenv:Header>
+    <app:RemoteAccessHeader>
+      <app:UserName> GATEWAYUserName </app:UserName>
+      <app:Password> GATEWAYPassword</app:Password>
+     </app:RemoteAccessHeader>
+  </soapenv:Header>
+```
 
 
 # **Web Methods**
