@@ -25,36 +25,6 @@ The Authorization Gateway uses the Standard Entry Class (SEC) codes to determine
 
 •	**C21** - Check 21 :  Although not an SEC Code C21 is used to denote Check 21 transactions. Check 21 requires a check reading device capture the routing number, account number, and check number from the source document (Check) as well as capture images of both the front and back of the source document.  
 
-
-## **How to determine which XML Template to Use**
-The XML data packet can be built from scratch or one of the available XML templates can be used to build the XML data packet prior to submitting to the Authorization Gateway. The URI for the XML data packet for a given terminal can be retrieved from the Terminal Settings but can also be determined by using the criteria below.
-
-The root path for all XML Templates is https://demo.eftchecks.com/webserivces/schemas/  followed by the SEC Code, “/Templates/”, and the XML Template name.  The XML Template is determined by the following criteria:
-
- - 	If the Terminal requires the Driver’s License Information.
- - 	If the Terminal is configured for Check Verification.
- - 	If the Terminal is configured for Identity Verification.
-
-A matrix of the available XML Templates for each SEC code can be found in the XML templates section. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
-
-The grid also includes the Terminal IDs that can be used for testing and certifying the XML data packet that can be built from the provided XML Template. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.  Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx.
-
-There are also published example XML data packets that contain example data. 
-https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
-
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
-
-|     Special Character    |     Symbol    |     Escaped Form     |
-|--------------------------|---------------|----------------------|
-|     Ampersand            |     &         |     \&amp;           |
-|     Less-than            |     <         |     \&lt;            |
-|     Greater-than         |     >         |     \&gt;            |
-|     Quotes               |     “         |     \&quot;          |
-|     Apostrophe           |     ‘         |     \&apos;          |
-
-Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
-
 # **Phase 2 Development**
 
 **Interfacing with the Authorization Gateway**
@@ -73,6 +43,52 @@ We have provided example request XML Data Packets to assist your integration tea
 
 
 Once you have determined how you will create your XML data packets in your system; we recommend reviewing each element and attribute and when they are best used. The Data Packet – XML Specification(#DataPacketXMLSpecification) provides links to XML templates, and text description of the regular expressions, data types, or enumerations that control the allowed data formats for each element.
+
+## **How to determine which XML Template to Use**
+
+The XML data packet can be built from scratch or one of the available XML templates can be used to build the XML data packet prior to submitting to the Authorization Gateway. The URI for the XML data packet for a given terminal can be retrieved from the Terminal Settings but can also be determined by using the criteria below.
+
+The root path for all XML Templates is https://demo.eftchecks.com/webserivces/schemas/  followed by the SEC Code, “/Templates/”, and the XML Template name.  The XML Template is determined by the following criteria:
+
+ - 	If the Terminal requires the Driver’s License Information.
+ - 	If the Terminal is configured for Check Verification.
+ - 	If the Terminal is configured for Identity Verification.
+
+## [**How to determine which XSD to Use**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS)
+                       
+The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
+
+The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+
+ - If the Terminal requires the Driver’s License Information. 
+ - If the Terminal is configured for Check Verification.
+ - If the Terminal is configured for Identity Verification.
+ - For PPD and CCD entries, If the Terminal is configured to allow Credit entries   
+   
+A matrix of the available XML Templates, and XSD Schemas for each SEC code can be found in the XML/XSD section, by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.  
+  
+**Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx**
+
+An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
+https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
+
+There are published example XML data packets that contain example data, and XSD Schema packets. 
+https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
+
+***Note about Special Characters**
+Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+
+|     Special Character    |     Symbol    |     Escaped Form     |
+|--------------------------|---------------|----------------------|
+|     Ampersand            |     &         |     \&amp;           |
+|     Less-than            |     <         |     \&lt;            |
+|     Greater-than         |     >         |     \&gt;            |
+|     Quotes               |     “         |     \&quot;          |
+|     Apostrophe           |     ‘         |     \&apos;          |
+
+Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
+Link to [XSD Schemas](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD)
+
 
 ## **Data Identification**
 The specification for the Authorization Gateway XML Data Packet allows you to optionally identify your data in two distinct ways. The **REQUEST_ID** attribute contained within the AUTH_GATEWAY element and the **TRANSACTION_ID** element. These are built in so your host system can match a response from the Authorization Gateway with the original request. 
@@ -393,7 +409,8 @@ This XML data packet example contains all available elements. The elements and d
 ### **Authorization Gateway XML Data Packet with Token Example**:
 
 This XML data packet example contains all available elements. The elements and data types that are required for a specific terminal are defined in that terminal’s XSD.
-```
+```XML
+
 <?xml version=”1.0” encoding=”utf-8”?>
 <AUTH_GATEWAY REQUEST_ID=”4654”>
 <TRANSACTION>
@@ -483,57 +500,79 @@ This XML data packet example contains all available elements. The elements and d
 |     TYPE:                  |     The   type attribute contains the content type of the image. Valid   TYPE valuesare “tiff”.                                                                                                                                                                                                                                                                                                                                |
 |     MRDCIMGCOUNT:          |     This   is an optional element for transactions that have an SEC code of POP or   Check21. NOTE:  Please view POP or   Check21 XSD’s for implementation.                                                                                                                                                                                                                                                                    |
 |     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.                                                                                                                                                                                                                                                                                                   |
-## **XML Templates** 
+## **XSD Schimas with XML Template examples** 
 
-### **Standard XML Templates**
-A matrix of the available XML Templates for each SEC code can be found below. The grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
+A matrix of the available XML Templates and XSD Schmimas for each SEC code can be found below. 
 
-### **PPD XML Templates**
+### **PPD XSD Schemas with XML Template examples**
 
-(Root path:  https://demo.eftchecks.com/webservices/schemas/ppd/templates)
-
-| Template                                             | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  (Guar/Non)  |
-|------------------------------------------------------|---------------|----------------|-------------|----------------------------------------|
-| [CheckNoVerificationDLOptional.xml](CheckNoVerficationDLOptional.xml)                    |               |                |             | 1010 / 2010                            |
-| [CheckNoVerificationDLRequired.xml](CheckNoVerificationDLRequired.xml)                    | X             |                |             | 1011 / 2011                            |
-| [CheckVerificationIdentityVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)  |               | X              | X           | 1012 / 2012                            |
-| [CheckVerificationIdentityVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)  | X             | X              | X           | 1013 / 2013                            |
-| [CheckVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLOptional.xml)                  |               | X              |             | 1014 / 2014                            |
-| [CheckVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLRequired.xml)                  | X             | X              |             | 1015 / 2015                            |
-| [IdentityVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLOptional.xml)               |               |                | X           | 1016 / 2016                            |
-| [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLRequired.xml)               | X             |                | X           | 1017 / 2017                            |
-
-### **CCD XML Templates**
-
-(Root path:  https://demo.eftchecks.com/webservices/schemas/ccd//templates)
-
-|     Template                                               |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID     (Guar/Non)    |
-|------------------------------------------------------------|------------------------|-------------------------|----------------------|---------------------------------------------------|
-|     [CheckNoVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckNoVerficationDLOptional.xml)                      |                        |                         |                      |     1710 / 2710                                   |
-|     [CheckNoVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckNoVerficationDLRequired.xml)                      |     X                  |                         |                      |     1711 / 2711                                   |
-|     [CheckVerificationIdentityVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)    |                        |     X                   |     X                |     1712 / 2712                                   |
-|     [CheckVerificationIdentityVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)    |     X                  |     X                   |     X                |     1713 / 2713                                   |
-|     [CheckVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationOnlyDLOptional.xml)                    |                        |     X                   |                      |     1714 / 2714                                   |
-|     [CheckVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationOnlyDLRequired.xml)                    |     X                  |     X                   |                      |     1715 / 2715                                   |
-|     [IdentityVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/IdentityVerificationOnlyDLOptional.xml)                 |                        |                         |     X                |     1716 / 2716                                   |
-|     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/CCD%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     1717 / 2717                                   |
+| **PPD**                                                    | Certification Terminal ID                |                |                     |             |                       |
+|------------------------------------------------------------|------------------------------------------|----------------|---------------------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | [XSD Guarenteed](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed) | [XML Example](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XML/Standard/PPD%20Templates) | [XML Example with Token](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates) |
+| **Debit Only Transactions**                                |                                          |                |                     |             |                       |
+| Check - No Verification DL Optional                          | 1010 / 2010                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckNoVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerficationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| Check - No Verification DL Required                          | 1011 / 2011                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| Check - Verification Identity Verification DL Optional       | 1012 / 2012                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| Check - Verification Identity Verification DL Required       | 1013 / 2013                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| Check - Verification Only DL Optional                       | 1014 / 2014                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| Check - Verification Only DL Required                       | 1015 / 2015                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| Identity Verification Only DL Optional                    | 1016 / 2016                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| Identity Verification Only DL Required                    | 1017 / 2017                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+|                                                            |                                          |                |                     |             |                       |
+| **Credit & Debit Transactions**                            |                                          |                |                     |             |                       |
+| Credit Check - No Verification DL Optional                    | 1810 / 2810                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerficationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| Credit Check - No Verification DL Required                     | 1811 / 2811                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| Credit Check - Verification Identity Verification DL Optional | 1812 / 2812                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| Credi Check - Verification Identity Verification DL Required | 1813 / 2813                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| Credit Check - Verification Only DL Optional                 | 1814 / 2814                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| Credit Check - Verification Only DL Required                  | 1815 / 2815                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| Credit Identity - Verification Only DL Optional               | 1816 / 2816                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditIdentityVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| Credit Identity - Verification Only DL Required               | 1817 / 2817                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
 
 
-### **WEB XML Templates**
 
-(Root path:  https://demo.eftchecks.com/webservices/schemas/web/templates)
 
-|     Template                                               |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|     [CheckNoVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckNoVerficationDLOptional.xml)                      |                        |                         |                      |     2310                           |
-|     [CheckNoVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckNoVerficationDLRequired.xml)                      |     X                  |                         |                      |     2311                           |
-|     [CheckVerificationIdentityVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)    |                        |     X                   |     X                |     2312                           |
-|     [CheckVerificationIdentityVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)    |     X                  |     X                   |     X                |     2313                           |
-|     [CheckVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationOnlyDLOptional.xml)                    |                        |     X                   |                      |     2314                           |
-|     [CheckVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationOnlyDLRequired.xml)                    |     X                  |     X                   |                      |     2315                           |
-|     [IdentityVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/IdentityVerificationOnlyDLOptional.xml)                 |                        |                         |     X                |     2316                           |
-|     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/WEB%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     2317                           |
 
+### **CCD XSD Schemas with XML Template examples**
+
+|                                                               | Certification Terminal ID |                |                       |               |                         |
+|---------------------------------------------------------------|:-------------------------:|:--------------:|:---------------------:|:-------------:|:-----------------------:|
+|                              **CCD**                              |    Guarenteed   1000's    |                |                       |               |                         |
+|                  **Debit Only Transactions**                  |  Non-Guarenteed   2000's  | XSD Guarenteed | XSD Non-   Guarenteed | XML   Example | XML   Exampl with Token |
+| Check No Verification DL Optional                             |        1710 / 2710        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Check No Verification DL Required                             |        1711 / 2711        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Check Verification Identity Verification   DL Optional        |        1712 / 2712        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Check Verification Identity Verification   DL Required        |        1713 / 2713        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Check Verification Only DL Optional                           |        1714 / 2714        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Check Verification Only DL Required                           |        1715 / 2715        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Identity Verification Only DL Optional                        |        1716 / 2716        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Identity Verification Only DL Required                        |        1717 / 2717        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+|                                                               |                           |                |                       |               |                         |
+|                **Credit & Debit Transactions**                |                           |                |                       |               |                         |
+| Credit Check No Verification DL Optional                      |        1910 / 2910        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Credit Check No Verification DL Required                      |        1911 / 2911        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Credit Check Verification Identity   Verification DL Optional |        1912 / 2912        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Credit Check Verification Identity   Verification DL Required |         1913 / 293        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Credit Check Verification Only DL   Optional                  |        1914 / 2914        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Credit Check Verification Only DL   Required                  |        1915 / 2915        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Credit Identity Verification Only DL   Optional               |        1916 / 2916        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+| Credit Identity Verification Only DL   Required               |        1917 / 2917        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+
+### **WEB XSD Schemas with XML Template examples**
+
+
+|     **WEB**                                                      |     Certification   Terminal ID |                          |                   |                                |
+|--------------------------------------------------------------|:-------------------------------:|--------------------------|-------------------|--------------------------------|
+|                                                              |                                 |                          |                   |                                |
+|     **Debit Only Transactions**                              |       Non-Guarenteed   2000's   |     XSD   Non-Guarenteed |     XML   Example |     XML   Exampl with Token    |
+|     Check No Verification DL Optional                        |                 2310            |            [XSD]()       |        [XML]()    |             [XML]()            |
+|     Check No Verification DL Required                        |                 2311            |            [XSD]()       |        [XML]()    |             [XML]()            |
+|     Check Verification Identity   Verification   DL Optional |                 2312            |            [XSD]()       |        [XML]()    |             [XML]()            |
+|     Check Verification Identity   Verification   DL Required |                 2313            |            [XSD]()       |        [XML]()    |             [XML]()            |
+|     Check Verification Only DL Optional                      |                 2314            |            [XSD]()       |        [XML]()    |             [XML]()            |
+|     Check Verification Only DL Required                      |                 2315            |            [XSD]()       |        [XML]()    |             [XML]()            |
+|     Identity Verification Only DL Optional                   |                 2316            |            [XSD]()       |        [XML]()    |             [XML]()            |
+|     Identity Verification Only DL Required                   |                 2317            |            [XSD]()       |        [XML]()    |             [XML]()            |
 
 ### **TEL XML Templates**	
 
@@ -584,49 +623,6 @@ A matrix of the available XML Templates for each SEC code can be found below. Th
 ## [**XML Templates using Tokens**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML/With%20Tokens)
 
 A matrix of the available XML Templates when using tokens for each SEC code can be found below. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
-
-### [**PPD XML Templates**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates)
-(Root path:  https://demo.eftchecks.com/webservices/schemas/ppd/templates)
-
-| Template                                                      | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  (Guar/Non)  |
-|---------------------------------------------------------------|---------------|----------------|-------------|----------------------------------------|
-| [CheckNoVerificationDLWithTokenOptional.xml](CheckNoVerificationDLWithTokenOptional.xml)                    |               |                |             | 1010 / 2010                            |
-| [CheckNoVerificationDLWithTokenRequired.xml](CheckNoVerificationDLWithTokenRequired.xml)                    | X             |                |             | 1011 / 2011                            |
-| [CheckVerificationIdentityVerificationDLWithTokenOptional.xml](CheckVerificationIdentityVerificationDLWithTokenOptional.xml)  |               | X              | X           | 1012 / 2012                            |
-| [CheckVerificationIdentityVerificationDLWithTokenRequired.xml](CheckVerificationIdentityVerificationDLWithTokenRequired.xml)  | X             | X              | X           | 1013 / 2013                            |
-| [CheckVerificationOnlyDLWithTokenOptional.xml](CheckVerificationOnlyDLWithTokenOptional.xml)                  |               | X              |             | 1014 / 2014                            |
-| [CheckVerificationOnlyDLWithTokenRequired.xml](CheckVerificationOnlyDLWithTokenRequired.xml)                  | X             | X              |             | 1015 / 2015                            |
-| [IdentityVerificationOnlyDLWithTokenOptional.xml](IdentityVerificationOnlyDLWithTokenOptional.xml)               |               |                | X           | 1016 / 2016                            |
-| [IdentityVerificationOnlyDLWithTokenRequired.xml](IdentityVerificationOnlyDLWithTokenRequired.xml)               | X             |                | X           | 1017 / 2017                            |
-
-### [**CCD XML Templates**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates)
-(Root path:  https://demo.eftchecks.com/webservices/schemas/ccd//templates)
-
-| Template                                                      | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  (Guar/Non)  |
-|---------------------------------------------------------------|---------------|----------------|-------------|----------------------------------------|
-| [CheckNoVerificationDLWithTokenOptional.xml](CheckNoVerificationDLWithTokenOptional.xml)                    |               |                |             | 1710 / 2710                            |
-| [CheckNoVerificationDLWithTokenRequired.xml](CheckNoVerificationDLWithTokenRequired.xml)                    | X             |                |             | 1711 / 2711                            |
-| [CheckVerificationIdentityVerificationDLWithTokenOptional.xml](CheckVerificationIdentityVerificationDLWithTokenOptional.xml)  |               | X              | X           | 1712 / 2712                            |
-| [CheckVerificationIdentityVerificationDLWithTokenRequired.xml](CheckVerificationIdentityVerificationDLWithTokenRequired.xml)  | X             | X              | X           | 1713 / 2713                            |
-| [CheckVerificationOnlyDLWithTokenOptional.xml](CheckVerificationOnlyDLWithTokenOptional.xml)                  |               | X              |             | 1714 / 2714                            |
-| [CheckVerificationOnlyDLWithTokenRequired.xml](CheckVerificationOnlyDLWithTokenRequired.xml)                  | X             | X              |             | 1715 / 2715                            |
-| [IdentityVerificationOnlyDLWithTokenOptional.xml](IdentityVerificationOnlyDLWithTokenOptional.xml)               |               |                | X           | 1716 / 2716                            |
-| [IdentityVerificationOnlyDLWithTokenRequired.xml](IdentityVerificationOnlyDLWithTokenRequired.xml)               | X             |                | X           | 1717 / 2717                            |
-
-
-### **WEB XML Templates	**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/web/templates)
-
-| Template                                                      | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  |
-|---------------------------------------------------------------|---------------|----------------|-------------|----------------------------------------|
-| [CheckNoVerificationDLWithTokenOptional.xml](CheckNoVerificationDLWithTokenOptional.xml)                    |               |                |             | 2310                            |
-| [CheckNoVerificationDLWithTokenRequired.xml](CheckNoVerificationDLWithTokenRequired.xml)                    | X             |                |             | 2311                            |
-| [CheckVerificationIdentityVerificationDLWithTokenOptional.xml](CheckVerificationIdentityVerificationDLWithTokenOptional.xml)  |               | X              | X           | 2312                            |
-| [CheckVerificationIdentityVerificationDLWithTokenRequired.xml](CheckVerificationIdentityVerificationDLWithTokenRequired.xml)  | X             | X              | X           | 2313                            |
-| [CheckVerificationOnlyDLWithTokenOptional.xml](CheckVerificationOnlyDLWithTokenOptional.xml)                  |               | X              |             | 2314                            |
-| [CheckVerificationOnlyDLWithTokenRequired.xml](CheckVerificationOnlyDLWithTokenRequired.xml)                  | X             | X              |             | 2315                            |
-| [IdentityVerificationOnlyDLWithTokenOptional.xml](IdentityVerificationOnlyDLWithTokenOptional.xml)               |               |                | X           | 2316                            |
-| [IdentityVerificationOnlyDLWithTokenRequired.xml](IdentityVerificationOnlyDLWithTokenRequired.xml)               | X             |                | X           | 2317                            |
 
 
 ### **TEL XML Templates**
@@ -780,114 +776,7 @@ https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVeri
 ## **Standard XSD Schemas**
 A matrix of the available XSDs can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema.
 
-### **PPD Schemas – Guaranteed**
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/ppd/)
-
-|     Template                                                     |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|    ** Debit   Only Transactions **                                   |                        |                         |                      |                                    |
-|     CheckNoVerificationDLOptional.xsd                            |                        |                         |                      |     1010                           |
-|     CheckNoVerificationDLRequired.xsd                            |     X                  |                         |                      |     1011                           |
-|     CheckVerificationIdentityVerificationDLOptional.xsd          |                        |     X                   |     X                |     1012                           |
-|     CheckVerificationIdentityVerificationDLRequired.xsd          |     X                  |     X                   |     X                |     1013                           |
-|     CheckVerificationOnlyDLOptional.xsd                          |                        |     X                   |                      |     1014                           |
-|     CheckVerificationOnlyDLRequired.xsd                          |     X                  |     X                   |                      |     1015                           |
-|     IdentityVerificationOnlyDLOptional.xsd                       |                        |                         |     X                |     1016                           |
-|     IdentityVerificationOnlyDLRequired.xsd                       |     X                  |                         |     X                |     1017                           |
-|     **Credit   & Debit Transactions**                                |                        |                         |                      |                                    |
-|     CreditCheckNoVerificationDLOptional.xsd                      |                        |                         |                      |     1810                           |
-|     CreditCheckNoVerificationDLRequired.xsd                      |     X                  |                         |                      |     1811                           |
-|     CreditCheckVerificationIdentityVerificationDLOptional.xsd    |                        |     X                   |     X                |     1812                           |
-|     CreditCheckVerificationIdentityVerificationDLRequired.xsd    |     X                  |     X                   |     X                |     1813                           |
-|     CreditCheckVerificationOnlyDLOptional.xsd                    |                        |     X                   |                      |     1814                           |
-|     CreditCheckVerificationOnlyDLRequired.xsd                    |     X                  |     X                   |                      |     1815                           |
-|     CreditIdentityVerificationOnlyDLOptional.xsd                 |                        |                         |     X                |     1816                           |
-|     CreditIdentityVerificationOnlyDLRequired.xsd                 |     X                  |                         |     X                |     1817                           |
-
-### **Schemas – Non-Guaranteed**
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/ppd/)
-
-|     Template                                                        |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|---------------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|     **Debit   Only Transactions**                                       |                        |                         |                      |                                    |
-|     Ng_CheckNoVerificationDLOptional.xsd                            |                        |                         |                      |     2010                           |
-|     Ng_CheckNoVerificationDLRequired.xsd                            |     X                  |                         |                      |     2011                           |
-|     Ng_CheckVerificationIdentityVerificationDLOptional.xsd          |                        |     X                   |     X                |     2012                           |
-|     Ng_CheckVerificationIdentityVerificationDLRequired.xsd          |     X                  |     X                   |     X                |     2013                           |
-|     Ng_CheckVerificationOnlyDLOptional.xsd                          |                        |     X                   |                      |     2014                           |
-|     Ng_CheckVerificationOnlyDLRequired.xsd                          |     X                  |     X                   |                      |     2015                           |
-|     Ng_IdentityVerificationOnlyDLOptional.xsd                       |                        |                         |     X                |     2016                           |
-|     Ng_IdentityVerificationOnlyDLRequired.xsd                       |     X                  |                         |     X                |     2017                           |
-|     **Credit   & Debit Transactions**                                   |                        |                         |                      |                                    |
-|     Ng_CreditCheckNoVerificationDLOptional.xsd                      |                        |                         |                      |     2810                           |
-|     Ng_CreditCheckNoVerificationDLRequired.xsd                      |     X                  |                         |                      |     2811                           |
-|     Ng_CreditCheckVerificationIdentityVerificationDLOptional.xsd    |                        |     X                   |     X                |     2812                           |
-|     Ng_CreditCheckVerificationIdentityVerificationDLRequired.xsd    |     X                  |     X                   |     X                |     2813                           |
-|     Ng_CreditCheckVerificationOnlyDLOptional.xsd                    |                        |     X                   |                      |     2814                           |
-|     Ng_CreditCheckVerificationOnlyDLRequired.xsd                    |     X                  |     X                   |                      |     2815                           |
-|     Ng_CreditIdentityVerificationOnlyDLOptional.xsd                 |                        |                         |     X                |     2816                           |
-|     Ng_CreditIdentityVerificationOnlyDLRequired.xsd                 |     X                  |                         |     X                |     2817                           |
-### **CCD Schemas – Guaranteed**
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/ccd/)
-
-|     Template                                                     |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|   **Debit   Only Transactions**                                    |                        |                         |                      |                                    |
-|     CheckNoVerificationDLOptional.xsd                            |                        |                         |                      |     1710                           |
-|     CheckNoVerificationDLRequired.xsd                            |     X                  |                         |                      |     1711                           |
-|     CheckVerificationIdentityVerificationDLOptional.xsd          |                        |     X                   |     X                |     1712                           |
-|     CheckVerificationIdentityVerificationDLRequired.xsd          |     X                  |     X                   |     X                |     1713                           |
-|     CheckVerificationOnlyDLOptional.xsd                          |                        |     X                   |                      |     1714                           |
-|     CheckVerificationOnlyDLRequired.xsd                          |     X                  |     X                   |                      |     1715                           |
-|     IdentityVerificationOnlyDLOptional.xsd                       |                        |                         |     X                |     1716                           |
-|     IdentityVerificationOnlyDLRequired.xsd                       |     X                  |                         |     X                |     1717                           |
-|     **Credit   & Debit Transactions**                                |                        |                         |                      |                                    |
-|     CreditCheckNoVerificationDLOptional.xsd                      |                        |                         |                      |     1910                           |
-|     CreditCheckNoVerificationDLRequired.xsd                      |     X                  |                         |                      |     1911                           |
-|     CreditCheckVerificationIdentityVerificationDLOptional.xsd    |                        |     X                   |     X                |     1912                           |
-|     CreditCheckVerificationIdentityVerificationDLRequired.xsd    |     X                  |     X                   |     X                |     1913                           |
-|     CreditCheckVerificationOnlyDLOptional.xsd                    |                        |     X                   |                      |     1914                           |
-|     CreditCheckVerificationOnlyDLRequired.xsd                    |     X                  |     X                   |                      |     1915                           |
-|     CreditIdentityVerificationOnlyDLOptional.xsd                 |                        |                         |     X                |     1916                           |
-|     CreditIdentityVerificationOnlyDLRequired.xsd                 |     X                  |                         |     X                |     1917                           |
-
-CCD Schemas – Non-Guaranteed
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/ccd/)
-
-|     Template                                                        |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|---------------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|     Debit   Only Transactions                                       |                        |                         |                      |                                    |
-|     Ng_CheckNoVerificationDLOptional.xsd                            |                        |                         |                      |     2710                           |
-|     Ng_CheckNoVerificationDLRequired.xsd                            |     X                  |                         |                      |     2711                           |
-|     Ng_CheckVerificationIdentityVerificationDLOptional.xsd          |                        |     X                   |     X                |     2712                           |
-|     Ng_CheckVerificationIdentityVerificationDLRequired.xsd          |     X                  |     X                   |     X                |     2713                           |
-|     Ng_CheckVerificationOnlyDLOptional.xsd                          |                        |     X                   |                      |     2714                           |
-|     Ng_CheckVerificationOnlyDLRequired.xsd                          |     X                  |     X                   |                      |     2715                           |
-|     Ng_IdentityVerificationOnlyDLOptional.xsd                       |                        |                         |     X                |     2716                           |
-|     Ng_IdentityVerificationOnlyDLRequired.xsd                       |     X                  |                         |     X                |     2717                           |
-|     Credit   & Debit Transactions                                   |                        |                         |                      |                                    |
-|     Ng_CreditCheckNoVerificationDLOptional.xsd                      |                        |                         |                      |     2910                           |
-|     Ng_CreditCheckNoVerificationDLRequired.xsd                      |     X                  |                         |                      |     2911                           |
-|     Ng_CreditCheckVerificationIdentityVerificationDLOptional.xsd    |                        |     X                   |     X                |     2912                           |
-|     Ng_CreditCheckVerificationIdentityVerificationDLRequired.xsd    |     X                  |     X                   |     X                |     2913                           |
-|     Ng_CreditCheckVerificationOnlyDLOptional.xsd                    |                        |     X                   |                      |     2914                           |
-|     Ng_CreditCheckVerificationOnlyDLRequired.xsd                    |     X                  |     X                   |                      |     2915                           |
-|     Ng_CreditIdentityVerificationOnlyDLOptional.xsd                 |                        |                         |     X                |     2916                           |
-|     Ng_CreditIdentityVerificationOnlyDLRequired.xsd                 |     X                  |                         |     X                |     2917                           |
-
-### **WEB Schemas** 
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/web/)
-
-|     Template                                                  |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|---------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|     Ng_CheckNoVerificationDLOptional.xsd                      |                        |                         |                      |     2310                           |
-|     Ng_CheckNoVerificationDLRequired.xsd                      |     X                  |                         |                      |     2311                           |
-|     Ng_CheckVerificationIdentityVerificationDLOptional.xsd    |                        |     X                   |     X                |     2312                           |
-|     Ng_CheckVerificationIdentityVerificationDLRequired.xsd    |     X                  |     X                   |     X                |     2313                           |
-|     Ng_CheckVerificationOnlyDLOptional.xsd                    |                        |     X                   |                      |     2314                           |
-|     Ng_CheckVerificationOnlyDLRequired.xsd                    |     X                  |     X                   |                      |     2315                           |
-|     Ng_IdentityVerificationOnlyDLOptional.xsd                 |                        |                         |     X                |     2316                           |
-|     Ng_IdentityVerificationOnlyDLRequired.xsd                 |     X                  |                         |     X                |     2317                           |
+ 
 
 ### **TEL Schemas – Guaranteed**
 (Root path:  http://demo.eftchecks.com/webservices/Schemas/tel/)
