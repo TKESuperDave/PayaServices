@@ -81,7 +81,7 @@ _NOTE: Board Location and Board Terminal will use the Data from Board Merchant._
 
 ## **Certification Methods**
 
-Before you are able to go into production Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
+Before you are able to go into production, Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
 
 ### **ACH Certification Methods**
 
@@ -232,7 +232,7 @@ Before you are able to go into production Paya Services requires that you cerify
 
 ## Production Methods
 
-Once you have certified with our Paya Services team you will need to used the production methods listed below to create live transaction within the banking system.
+Once you have **certified** with our Paya Services team you will need to used the Production Methods listed below to create live transaction within the banking system.
 
 ### **ACH Production Methods**
 
@@ -671,7 +671,7 @@ Each element in the XML data packet that is sent to the Application Gateway has 
 
   - [States and Provinces](/Merchant%20Application%20Gateway/Data%20Types/StatesAndProvincesSimpleType.xsd)
 
- ### **Supporting Documents**
+ <!-- ### **Supporting Documents**
 
 |     SEC Code          |     Document                                                                            |
 |-----------------------|-----------------------------------------------------------------------------------------|
@@ -704,7 +704,7 @@ Each element in the XML data packet that is sent to the Application Gateway has 
 |                       |     Recording Service Setup Form (if   applicable)                                      |
 |     Check21,   POP    |                                                                                         |
 |                       |     Merchant Application                                                                |
-|                       |     Voided Check w/Business Name                                                        |
+|                       |     Voided Check w/Business Name                                                        | -->
 
 ## How to determine which XSD to Use
 
