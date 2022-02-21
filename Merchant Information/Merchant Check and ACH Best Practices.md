@@ -94,9 +94,9 @@ Paya allows physical personal or business checks to be accepted for the Point-of
    - Pre-printed physical address (if P.O. Box, ask for a physical address, not a counter check)
    - Phone number with area code
    - Driver’s license number with the issuing state (document any missing information on the front of the check)
-   - Checkwriter must be present when running the check through the equipment
-   - Checkwriter’s driver’s license picture must match the person presenting the check
-   - Checkwriter’s name on the driver’s license must match the name on the check
+ - Checkwriter must be present when running the check through the equipment
+ - Checkwriter’s driver’s license picture must match the person presenting the check
+ - Checkwriter’s name on the driver’s license must match the name on the check
 
 # Guarantee
 Improve cash flow and eliminate collection operations with Guarantee. Below are the programs eligible for Guarantee:
@@ -107,6 +107,7 @@ Improve cash flow and eliminate collection operations with Guarantee. Below are 
 
 ### How does Guarantee work?
 While completing a check transaction, the equipment electronically and automatically receives a verification of the checkwriter’s account history in order to approve and process the debit. Requirements for Guarantee vary by program and can help you avoid risk of non-payment from customers’ returned checks. The Guarantee programs are designed for businesses to keep funds from the payment while Paya handles the collection of the return from the customer. The funds are guaranteed as long as authorization stipulations are met. 
+
 Customer claims of fraud, stop payments, and customer fraud are essentially eliminated from funding guarantee and your company will be debited for the return. 
 
 # Paper Check
@@ -151,6 +152,7 @@ The Check 21 program “verifies” that a Paya customer does not have any outst
 ## Consumer Not Present – Guarantee/Non-Guarantee
 
 The Check 21 program “verifies” that a Paya customer does not have any outstanding returned checks. Once the check is approved, Paya processes the check image, both front and back, and sends you the funds. Checks received in the mail may be accepted up to two weeks after the date of the check.
+
 See below for more tips:
  - Equipment will give an approval “auth” code or “decline” reason. You will need to write the auth code number on the check before storing.
  - Do not deposit the check unless Paya contacts you and requests that you deposit.
@@ -166,6 +168,7 @@ Single or one-time debit transactions can be processed on a Guarantee program. R
 ### Customer Authorization Requirements
 
 Clients must retain the customer’s original authorization or copy of the original authorization in its original form that can be reproduced upon request. Authorization’s should be securely stored and retained for two (2) years from the last ACH transaction to the customer’s bank account. You should obtain a copy of a voided check and attach it to the authorization form to ensure proper routing and account number(s) are retained. 
+
 Authorization’s must be readily identifiable as an authorization containing clear and readily understandable terms (amount and timing). 
 
 #### Pre-arranged Payment and Deposit (PPD) Requirements
@@ -184,9 +187,11 @@ Authorization’s must be readily identifiable as an authorization containing cl
      - Authorization verbiage, NSF fee verbiage, applicable terms, and revocation method(s)
    - The payment page must display the following authorization verbiage (or substantially similar):
 
-“By signing below, I authorize the Merchant to convert this transaction into an Electronic Funds Transfer transaction or paper draft, and to debit this account for the amount as identified above and to the terms stated here. This authorization shall remain in effect until <Merchant> receives written notification from me of intent to terminate at such time and in such manner as to afford the Merchant a reasonable opportunity to act. I authorize this plan to continue as long as the payment amount remains unchanged until the amount owed to the Merchant is paid off, or unless the plan is terminated earlier by me as stated above. I understand that all changes such as payment amount, frequency, bank account number change, will require a new ACH Debit Payment Authorization Form to be filled out and submitted to the Merchant 15-days prior to any change being implemented.
-In the event that I choose to revoke this authorization, I will do so by contacting the Merchant directly. Processing times may not allow for revocation of this authorization. 
-I understand that this payment plan may be cancelled by the Merchant due to NSF (Non-Sufficient Funds). In the event this draft, or EFT is returned unpaid, I will be liable to pay an NSF fee of $25.00 (or the amount allowable by law), that may be automatically debited to this bank account via draft or EFT for each NSF.” 
+		> By signing below, I authorize the Merchant to convert this transaction into an Electronic Funds Transfer transaction or paper draft, and to debit this account for the amount as identified above and to the terms stated here. This authorization shall remain in effect until (Merchant) receives written notification from me of intent to terminate at such time and in such manner as to afford the Merchant a reasonable opportunity to act. I authorize this plan to continue as long as the payment amount remains unchanged until the amount owed to the Merchant is paid off, or unless the plan is terminated earlier by me as stated above. I understand that all changes such as payment amount, frequency, bank account number change, will require a new ACH Debit Payment Authorization Form to be filled out and submitted to the Merchant 15-days prior to any change being implemented.
+		>
+		> In the event that I choose to revoke this authorization, I will do so by contacting the Merchant directly. Processing times may not allow for revocation of this authorization. 
+		>
+		> I understand that this payment plan may be cancelled by the Merchant due to NSF (Non-Sufficient Funds). In the event this draft, or EFT is returned unpaid, I will be liable to pay an NSF fee of $25.00 (or the amount allowable by law), that may be automatically debited to this bank account via draft or EFT for each NSF. 
 
 ### Corporate Credit or Debit (CCD) Requirements
   
@@ -199,21 +204,26 @@ I understand that this payment plan may be cancelled by the Merchant due to NSF 
    - Details can be found [here](https://www.fdic.gov/resources/supervision-and-examinations/consumer-compliance-examination-manual/documents/10/x-3-1.pdf).
  - An authorization or agreement must provide the business consumer with the method to revoke his or her authorization by notifying the business originator in the manner prescribed, and the time-frame in which the revocation of the authorization must be provided. 
  - An authorization or agreement must have the following verbiage (or substantially similar):
-“Submission of this transaction assumes an agreement is in place between both parties to allow converting this transaction into an Electronic Funds Transfer transaction or paper draft, and to debit this account for the amount of the transaction. Additionally, the agreement further states that in the event this draft, or EFT is returned unpaid, a service fee, as allowable by law, will be charged to this account via draft, or EFT. In the event you choose to revoke this authorization, please do so by contacting the merchant directly. Please note that processing times may not allow for revocation of this authorization.”
+	>Submission of this transaction assumes an agreement is in place between both parties to allow converting this transaction into an Electronic Funds Transfer transaction or paper draft, and to debit this account for the amount of the transaction. Additionally, the agreement further states that in the event this draft, or EFT is returned unpaid, a service fee, as allowable by law, will be charged to this account via draft, or EFT. In the event you choose to revoke this authorization, please do so by contacting the merchant directly. Please note that processing times may not allow for revocation of this authorization.
 
 # Checks by Phone
   
 ## Guarantee/Non-Guarantee
   
 Checks by Phone allows customers to authorize a debit to their check or savings bank account over the phone. The Checks by Phone program can only be used when there is an existing relationship between a business and consumer unless a situation arises where the consumer initiates the phone call to the business. 
+
 Single or one-time Check by Phone debit transactions can be processed on a Guarantee program. Recurring debit transactions are only available to be processed on a Non-Guarantee program. 
 
 ### Customer Authorization Requirements
   
 Clients are required to use commercially reasonable methods to authenticate, verify, and validate a customer’s identity prior or during authorization. 
+
 Clients must retain the customer’s original authorization or a copy of the original authorization in its original form that can be reproduced upon request. 
+
 Authorization should be securely stores and retained for two (2) years from the last ACH transaction to the customer’s bank account. 
+
 Authorizations must be readily identifiable as an authorization containing clear and readily understandable terms (amount and timing). 
+
 Single or one-time debit authorizations must be recorded through one of the following methods:
 
  - Recorded oral authorization 
@@ -232,13 +242,13 @@ Additional requirements include:
    - Statement that authorization was obtained for and is a single ACH Debit
 - Authorizations must also include the following verbiage (or substantially similar) and must be read and captured on the recording and/or written notice:
   
-	> “(Customer’s First and Last Name), by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you (Customer’s Name) are authorizing (Business Name) to create an ACH debit to your account and that this Check by Phone may be drafted from your account as early as today. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
+	> (Customer’s First and Last Name), by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you (Customer’s Name) are authorizing (Business Name) to create an ACH debit to your account and that this Check by Phone may be drafted from your account as early as today. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.
 	>
-	> “Do you authorize <Business Name> to proceed with this Check by Phone?” 
+	> Do you authorize <Business Name> to proceed with this Check by Phone? 
 	
 	Customer must state “Yes” or “No”
 
-	>“A Check by Phone will be drafted from your bank account with the following information (Bank Routing Number, Bank Account Number, Check Number, and Check by Phone Amount).  Please allow 12 to 72 business hours for this transaction to post to your account. Should you have any questions regarding your payment, or choose to revoke your authorization, you may reach our office at (Verbally provide the Business Telephone that is answered during normal business hours). Please be advised that depending on the timing of your scheduled ACH, revocation of the authorization may not be available.”
+	>A Check by Phone will be drafted from your bank account with the following information (Bank Routing Number, Bank Account Number, Check Number, and Check by Phone Amount).  Please allow 12 to 72 business hours for this transaction to post to your account. Should you have any questions regarding your payment, or choose to revoke your authorization, you may reach our office at (Verbally provide the Business Telephone that is answered during normal business hours). Please be advised that depending on the timing of your scheduled ACH, revocation of the authorization may not be available.
 
 - Below is a sample Single Authorization Notice:
 	>  (Name),
@@ -251,6 +261,7 @@ Additional requirements include:
 	> - Check Number (____)
 	> - Amount ($_____)
 	> - Date (MM/DD/YY)
+	>
 	>
 	> Please allow 12 to 72 business hours for this ACH Debit to post to your account. Revoking an authorization must be done by calling (Phone Number) by (date). Should you have any questions regarding your payment, you may reach our office at (Contact Phone). The ACH Debit should show on your bank statement as (Business Name).
 
@@ -272,32 +283,38 @@ Recurring authorization must be recorded through one of the following methods:
 
 - Authorizations must include the following verbiage (or substantially similar) read and captured on the recorded line and/or written notice:
 
-“<Customer’s First and Last Name>, by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you <Customer’s Name> are authorizing <Business Name> to create an ACH debit to your account and that this Check by Phone may be drafted from your account (daily/weekly/monthly) for <Number> installments. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
-“Do you authorize <Business Name> to proceed with this Check by Phone?”
-Customer must state “Yes” or “No”
+	>(Customer’s First and Last Name), by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you (Customer’s Name) are authorizing (Business Name) to create an ACH debit to your account and that this Check by Phone may be drafted from your account (daily/weekly/monthly) for (Number) installments. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.
+	>
+	>Do you authorize (Business Name) to proceed with this Check by Phone?
+	
+	Customer must state “Yes” or “No”
 
-“A Check by Phone will be drafted from your bank account with the following information:
- - Bank Routing Number
- - Bank Account Number
- - Check Number
- - Check by Phone Amount
+	>A Check by Phone will be drafted from your bank account with the following information:
+ 	> - Bank Routing Number
+ 	> - Bank Account Number
+ 	> - Check Number
+ 	> - Check by Phone Amount
+	>
+	>
+	> Installments will begin on (Verbally provide date) and will occur on (1st/5th/15th, etc.) of each (day/week/month/etc.) (as applicable). Please allow 12 to 72 business hours for this transaction to post to your account. Should you have any questions regarding your payment, or choose to revoke your authorization, you may reach our office at (Business Telephone that is answered during normal business hours). Please be advised that depending on the timing of your scheduled ACH, revocation of the authorization may not be available.”
 
-Installments will begin on <Verbally provide date> and will occur on <1st/5th/15th, etc.> of each <day/week/month/etc.> (as applicable). Please allow 12 to 72 business hours for this transaction to post to your account. Should you have any questions regarding your payment, or choose to revoke your authorization, you may reach our office at <Business Telephone that is answered during normal business hours>. Please be advised that depending on the timing of your scheduled ACH, revocation of the authorization may not be available.”
+- Sample Recurring Authorization Notice:
 
-
-Below is a sample Single Authorization Notice:
-
-By providing your bank account information and verbal authorization today <Enter Today’s Date – MM/DD/YY>, you have authorized <Business Name> to create an ACH debit to your bank account on the following schedule.
-A <daily/weekly/monthly> ACH debit was authorized with the following information for <Number> installments.
-Bank Name <________________>
-Account Number Ending in <____>
-Amount <$_____>
-
-Installments being on <Enter Date> and will occur on <1st/5th/15th/etc.> of each < day/week/month/etc.> (as applicable). 
-
-Please allow 12 to 72 business hours for this ACH Debit to post to your account. Revoking an authorization must be done by calling <Phone Number> by <date>.
-
-Should you have any questions regarding your payment, you may reach our office at <Contact Phone>. The ACH Debit should show on your bank statement as <Business Name>.
+	>(Name),
+	>
+	>By providing your bank account information and verbal authorization today (Enter Today’s Date – MM/DD/YY), you have authorized (Business Name) to create an ACH debit to your bank account on the following schedule.
+	>
+	> A (daily/weekly/monthly) ACH debit was authorized with the following information for (Number) installments.
+	> - Bank Name (________________)
+	> - Account Number Ending in (____)
+	> - Amount ($_____)
+	>
+	>
+	> Installments being on (Enter Date) and will occur on (1st/5th/15th/etc.) of each (day/week/month/etc.) (as applicable). 
+	>
+	> Please allow 12 to 72 business hours for this ACH Debit to post to your account. Revoking an authorization must be done by calling (Phone Number) by (date).
+	>
+	> Should you have any questions regarding your payment, you may reach our office at (Contact Phone). The ACH Debit should show on your bank statement as (Business Name).
 
 # Checks by Web
 
@@ -324,7 +341,7 @@ Authorizations must be readily identifiable as an authorization containing clear
    - Authorization verbiage, NSF fee verbiage, applicable terms, and revocation metho
  - The payment page must display the following authorization verbiage (or substantially similar):
 
-“By authorizing this transaction, the customer agrees that <Merchant Name> may convert this transaction into an Electronic Funds Transfer (EFT) via ACH transaction and to debit this bank account for the amount specified. Additionally, in the even this EFT is returned unpaid, a service fee, as allowable by law, will be charged to this account via EFT or ACH. In the event you choose to revoke this authorization, please do so by contacting the <Merchant Name> directly at <Phone Number>. Please note that processing times may not allow for revocation of this authorization.”
+	>By authorizing this transaction, the customer agrees that <Merchant Name> may convert this transaction into an Electronic Funds Transfer (EFT) via ACH transaction and to debit this bank account for the amount specified. Additionally, in the even this EFT is returned unpaid, a service fee, as allowable by law, will be charged to this account via EFT or ACH. In the event you choose to revoke this authorization, please do so by contacting the <Merchant Name> directly at (Phone Number). Please note that processing times may not allow for revocation of this authorization.
 
  - Clients must retain the customer’s original authorization or copy of the original authorization in its original form that can be reproduced upon request.
  - Authorizations should be securely stored and retained for two (2) years from the last ACH transaction to the customer’s bank account. 
@@ -382,8 +399,11 @@ Certain types of businesses can receive a funding guarantee when the consumer re
  - POS Conversion Guarantee: Conversion of checks with a funding guarantee
  - Paper Guarantee: Manual deposit of checks with a funding guarantee
  - Check 21+ POS Guarantee: The transmission of checks via check image with a funding guarantee
+
 Clients shall have performed all of their obligations related to the issuance of the check. 
+
 On the POS Conversion Guarantee and Check 21 + POS Guarantee, the client is required to have a check imager to qualify for stop payment coverage. In addition, stop payment claims require a copy of the invoice/work order and an image of the check along with written information regarding any claims for reimbursement. Please note, all service(s) or product(s) must have been delivered to the consumer. 
+
 On the Paper Guarantee, the client is required to provide a copy of the invoice/work order and the original check along with written information regarding any claims for reimbursement. Claims must be submitted within 30-days from the date of the original transaction. Please note, all service(s) or product(s) must have been delivered to the check writer.
 
 Important Notes:
@@ -412,6 +432,7 @@ Ideal client types for CCS are noted below:
  - Fundraisers
  - Bill Pay Payment Gateways
  - Education
+	
 Options are compatible with the following programs:
  - ACH Debit
  - Checks by Phone
@@ -454,7 +475,7 @@ Paya provides three different levels of consumer bank account verification or id
 
 # Money Laundering
   
-You can only deposit transactions for your own business. Depositing transactions for a business that does not have a valid processing agreement is called laundering or factoring. Laundering is a form of fraud associated with high chargeback rates and the potential for forcing clients out of business. General information on Money Laundering can be found here.
+You can only deposit transactions for your own business. Depositing transactions for a business that does not have a valid processing agreement is called laundering or factoring. Laundering is a form of fraud associated with high chargeback rates and the potential for forcing clients out of business. General information on Money Laundering can be found [here](https://www.fdic.gov/resources/bankers/bank-secrecy-act/).
 
 # Fraudulent or Suspicious Transactions
   
@@ -517,7 +538,8 @@ First-time users must register through a Paya Support Agent
 
 # Customer Transaction Disputes
   
-Businesses that have used credit card processing are familiar with the term “chargeback”. A chargeback is when a customer disputes a credit card payment. Federal banking laws and NACHA Operating Rules & Guidelines allow customer disputes to protect consumers. 
+Businesses that have used credit card processing are familiar with the term “chargeback”. A chargeback is when a customer disputes a credit card payment. Federal banking laws and NACHA Operating Rules & Guidelines allow customer disputes to protect consumers.
+
 Paya Services uses similar terminology. However, in Paya Services, a client receives a “chargeback” after a customer’s return is received from an ACH debit or Check 21 transaction when the client previously received funding from Paya Services and one of the following occurred: 
 
  - Client does not have a funding Guarantee service
@@ -528,10 +550,18 @@ Federal banking laws and NACHA have specific guidelines and rules for all parts 
  - Decisions to accept a return are made by the bank that processed the transaction. 
 
 The customer’s bank can only send a return for a specific reason and for specific time-frames. When returning a transaction, the customer’s bank will place funds back in the bank account, similar to a refund. Then the customer’s bank sends a return through the Federal Reserve or ACH Network to the bank that processed the transaction. The customer’s bank assigns a return code to indicate the reason for the return. 
+
 A customer can dispute a transaction through their bank when he or she believes that they did not authorize for a business to send the debit. Paya Services and the client are not always afforded the right to disprove a customer or account holder’s dispute. Customer disputes are allowed at any time. 
+
 Before the 61st calendar day from the settlement date of a transaction, the customer’s bank is allowed to return a transaction based only on the customer’s claim when the following is met: 
+ - Account holder signs a Written Statement of Unauthorized Debit (WSUD)
+ - Claim and return are before the 61st calendar day from the settlement of a debit
+
+Please be aware that the customer's bank is not required to send notice, documentation, etc. to the processing bank. The processing bank is required to accept the return when it meets the defined criteria and time frame.
+
+After the 61st calendar day to two (2) years from the settlement date, the customer's bank must recieve permission from the processing bank to send a return of the ACH transaction. The customer's bank can only return a transaction after the following is met:
  
- - Account holder signs a WSUD
+ - Account holder signs a WSUD	
  - Customer’s bank has requested the proof of authorization prior from then processing bank
    - Required wait time is 10-calendar days for a reply
  - The processing bank requests that Paya must provide proof of authorization within enough time for the processing bank to supply the information to the customer’s bank
@@ -553,9 +583,13 @@ A transaction that was previously returned can only be re-attempted or re-sent i
  - Corrective action to remedy the reason for the return, such as a typo
 
 A transaction that was previously returned can only be re-attempted or re-sent within one-hundred eighty (180) days after the settlement date of the original attempt. 
+
 A transaction that was previously returned can only be re-attempted or re-sent if it has not been returned for insufficient or uncollected funds more than two times following the first return.
+	
 Paya is required to enforce restrictions on the types of ACH transactions that may be originated. Paya strives to protect its clients from NACHA Rule Violations. Therefore, Paya developed the Expedites Processor Returns to stop a client from processing transactions that could be considered in violation to the NACHA Operating Rules. 
+
 Paya labels the Expedited Processor Returns with an E-Code instead of an R-Code to provide clients the ability to differentiate between the standard “Receiving Bank” initiated returns (R-Code) and “Processor” initiated returns (E-Code). 
+
 The E-Codes are designed based on the customer or account holder and what Paya expects his or her bank to do based on a transaction previously returned. This means Paya expects the bank to return more transactions using the same return code after first returning one transaction. The E-Codes are used for Check 21 transactions as well as ACH transactions, which are used for consistency along product lines. An additional benefit of E-Code Returns for clients is the acceleration of returns to be received within 1-3 business days. 
 
 Examples:
@@ -569,6 +603,7 @@ The E-Code feature is not an overall opt-in/opt-out feature. An E-Code block can
 # Transaction Returns
 
 NACHA calculates returns on a rolling sixty (60) day period and each submission counts individually. Return rates do not include reversals, credits, refunds, or Expedited (E-Code) Returns. 
+
 NACHA displays two ways to calculate return rates while Paya calculates the return rates by dividing the number of debit transactions returned for the preceding sixty (60) days by the total number of debit transactions contained within the files in which the original transactions were processed. Return rates are used for Check 21 transactions as well as ACH transactions for consistency along product lines. 
 Below are the NACHA return rates that are allowed for a 60-day period:
 
@@ -608,4 +643,5 @@ Some of the most common fatal return codes are noted below:
  - R29/E29 – Corp Customer Advises Not Authorized
 
 When you receive a return other than R01 or R09, you or your customer are required to act before you can process a new debit to the same bank account. Continuing to attempt debits to the same bank account that has a return code other than R01 or R09 will most likely result in more returns and may result in a NACA Rule Violation, which we want to help you avoid. Make a point to remove recurring customers from the next billing cycle when you receive a return with any return code other than R01 or R09. 
+
 Returns from your customer with a return code of R05/R10/R29 may indicate that the customer is required to notify their bank to provide authorization with the bank in order to accept a debit from you. The customer’s bank will need our Company ID number, which is within the details that we send with a transaction. You can receive our Company ID number by contacting us directly. You can provide this number to your customer(s) and request the customer notify his or her bank to allow for ACH payments to process without being returned. 
