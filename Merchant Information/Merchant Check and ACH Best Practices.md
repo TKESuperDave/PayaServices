@@ -1,5 +1,3 @@
-
-
 ### **Table of Contents**
 
 1. [Check and ACH Processing Best Practices]()
