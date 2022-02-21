@@ -107,8 +107,10 @@ Improve cash flow and eliminate collection operations with Guarantee. Below are 
  - Paper Check – Paper Guarantee
  - Checks by Phone
 
-### How does Guarantee work?
-While completing a check transaction, the equipment electronically and automatically receives a verification of the checkwriter’s account history in order to approve and process the debit. Requirements for Guarantee vary by program and can help you avoid risk of non-payment from customers’ returned checks. The Guarantee programs are designed for businesses to keep funds from the payment while Paya handles the collection of the return from the customer. The funds are guaranteed as long as authorization stipulations are met. 
+**How does Guarantee work?**
+
+While completing a check transaction, the equipment electronically and automatically receives a verification of the checkwriter’s account history in order to approve and process the debit. Requirements for Guarantee vary by program and can help you avoid risk of non-payment from customers’ returned checks. The Guarantee programs are designed for businesses to keep funds from the payment while Paya handles the collection of the return from the customer. The funds are guaranteed as long as authorization stipulations are met.
+ 
 Customer claims of fraud, stop payments, and customer fraud are essentially eliminated from funding guarantee and your company will be debited for the return. 
 
 # Paper Check
@@ -144,7 +146,8 @@ How it works:
 # Check 21
 ## Face-to-Face, Guarantee/Non-Guarantee
 
-The Check 21 program “verifies” that a Paya customer does not have any outstanding returned checks. Once the check is approved, Paya processes the check image, both front and back, and sends you the funds. 
+Check 21 program  is wehre Paya “verifies” that a Paya customer does not have any outstanding returned checks. Once the check is approved, Paya processes the check image front and back to the cusomter's bank and sends you the funds for the check.
+ 
  - Equipment will give an approval “auth” code or “decline” reason. You will need to write the auth code number on the check before storing.
  - Do not deposit the check unless Paya contacts you and requests that you deposit.
  - The physical check must be stored by you for a minimum of 90-days and then can be shredded.  
@@ -152,8 +155,10 @@ The Check 21 program “verifies” that a Paya customer does not have any outst
 
 ## Consumer Not Present – Guarantee/Non-Guarantee
 
-The Check 21 program “verifies” that a Paya customer does not have any outstanding returned checks. Once the check is approved, Paya processes the check image, both front and back, and sends you the funds. Checks received in the mail may be accepted up to two weeks after the date of the check.
+The Check 21 program verifies that a Paya customer does not have any outstanding returned checks. Once the check is approved, Paya processes the check image, both front and back, and sends you the funds. Checks received in the mail may be accepted up to two weeks after the date of the check.
+
 See below for more tips:
+
  - Equipment will give an approval “auth” code or “decline” reason. You will need to write the auth code number on the check before storing.
  - Do not deposit the check unless Paya contacts you and requests that you deposit.
  - The physical check must be stored by you for a minimum of 90-days and then can be shredded.  
@@ -170,7 +175,7 @@ Single or one-time debit transactions can be processed on a Guarantee program. R
 Clients must retain the customer’s original authorization or copy of the original authorization in its original form that can be reproduced upon request. Authorization’s should be securely stored and retained for two (2) years from the last ACH transaction to the customer’s bank account. You should obtain a copy of a voided check and attach it to the authorization form to ensure proper routing and account number(s) are retained. 
 Authorization’s must be readily identifiable as an authorization containing clear and readily understandable terms (amount and timing). 
 
-#### Pre-arranged Payment and Deposit (PPD) Requirements
+### Pre-arranged Payment and Deposit (PPD) Requirements
 
  - Electronic signatures are acceptable if compliance with the National E-Sign Act. 
    - Details can be found at https://fdic.gov/regulations/compliance/manual/10/x-3.1.pdf 
@@ -187,7 +192,9 @@ Authorization’s must be readily identifiable as an authorization containing cl
    - The payment page must display the following authorization verbiage (or substantially similar):
 
 “By signing below, I authorize the Merchant to convert this transaction into an Electronic Funds Transfer transaction or paper draft, and to debit this account for the amount as identified above and to the terms stated here. This authorization shall remain in effect until <Merchant> receives written notification from me of intent to terminate at such time and in such manner as to afford the Merchant a reasonable opportunity to act. I authorize this plan to continue as long as the payment amount remains unchanged until the amount owed to the Merchant is paid off, or unless the plan is terminated earlier by me as stated above. I understand that all changes such as payment amount, frequency, bank account number change, will require a new ACH Debit Payment Authorization Form to be filled out and submitted to the Merchant 15-days prior to any change being implemented.
+
 In the event that I choose to revoke this authorization, I will do so by contacting the Merchant directly. Processing times may not allow for revocation of this authorization. 
+
 I understand that this payment plan may be cancelled by the Merchant due to NSF (Non-Sufficient Funds). In the event this draft, or EFT is returned unpaid, I will be liable to pay an NSF fee of $25.00 (or the amount allowable by law), that may be automatically debited to this bank account via draft or EFT for each NSF.” 
 
 ### Corporate Credit or Debit (CCD) Requirements
@@ -234,7 +241,7 @@ Additional requirements include:
    - Statement that authorization was obtained for and is a single ACH Debit
  -	Authorizations must also include the following verbiage (or substantially similar) and must be read and captured on the recording and/or written notice:
   
-“<Customer’s First and Last Name>, by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you <Customer’s Name> are authorizing <Business Name> to create an ACH debit to your account and that this Check by Phone may be drafted from your account as early as today. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
+> “<Customer’s First and Last Name>, by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you <Customer’s Name> are authorizing <Business Name> to create an ACH debit to your account and that this Check by Phone may be drafted from your account as early as today. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
 “Do you authorize <Business Name> to proceed with this Check by Phone?” 
 Customer must state “Yes” or “No”
   
