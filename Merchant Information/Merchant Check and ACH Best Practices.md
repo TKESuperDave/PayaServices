@@ -232,31 +232,29 @@ Additional requirements include:
    - Telephone Number that is answered during normal business houses
    - Date or Oral Authorization
    - Statement that authorization was obtained for and is a single ACH Debit
- -	Authorizations must also include the following verbiage (or substantially similar) and must be read and captured on the recording and/or written notice:
+- Authorizations must also include the following verbiage (or substantially similar) and must be read and captured on the recording and/or written notice:
   
-“<Customer’s First and Last Name>, by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you <Customer’s Name> are authorizing <Business Name> to create an ACH debit to your account and that this Check by Phone may be drafted from your account as early as today. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
-“Do you authorize <Business Name> to proceed with this Check by Phone?” 
-Customer must state “Yes” or “No”
-  
-“A Check by Phone will be drafted from your bank account with the following information:
- - Bank Routing Number
- - Bank Account Number
- - Check Number
-•	Check by Phone Amount
-  
-Please allow 12 to 72 business hours for this transaction to post to your account. Should you have any questions regarding your payment, or choose to revoke your authorization, you may reach our office at <Verbally provide the Business Telephone that is answered during normal business hours>. Please be advised that depending on the timing of your scheduled ACH, revocation of the authorization may not be available.”
+	> “(Customer’s First and Last Name), by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you (Customer’s Name) are authorizing (Business Name) to create an ACH debit to your account and that this Check by Phone may be drafted from your account as early as today. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
+	>
+	> “Do you authorize <Business Name> to proceed with this Check by Phone?” 
+	
+	Customer must state “Yes” or “No”
 
-Below is a sample Single Authorization Notice:
-<Name>,
-By providing your bank account information and verbal authorization today <Enter Today’s Date – MM/DD/YY>, you have authorized <Business Name> to create an ACH debit to your bank account. 
-A one-time ACH debit was authorized with the following information:
-Bank Name <________________>
-Account Number Ending in <____>
-Check Number <____>
-Amount <$_____>
-Date <MM/DD/YY>
-Please allow 12 to 72 business hours for this ACH Debit to post to your account. Revoking an authorization must be done by calling <Phone Number> by <date>. 
-Should you have any questions regarding your payment, you may reach our office at <Contact Phone>. The ACH Debit should show on your bank statement as <Business Name>.
+	>“A Check by Phone will be drafted from your bank account with the following information (Bank Routing Number, Bank Account Number, Check Number, and Check by Phone Amount).  Please allow 12 to 72 business hours for this transaction to post to your account. Should you have any questions regarding your payment, or choose to revoke your authorization, you may reach our office at (Verbally provide the Business Telephone that is answered during normal business hours). Please be advised that depending on the timing of your scheduled ACH, revocation of the authorization may not be available.”
+
+- Below is a sample Single Authorization Notice:
+	>  (Name),
+	>
+	> By providing your bank account information and verbal authorization today (Enter Today’s Date – MM/DD/YY), you have authorized (Business Name) to create an ACH debit to your bank account. 
+	>
+	> A one-time ACH debit was authorized with the following information:
+	> - Bank Name (________________)
+	> - Account Number Ending in (____)
+	> - Check Number (____)
+	> - Amount ($_____)
+	> - Date (MM/DD/YY)
+	>
+	> Please allow 12 to 72 business hours for this ACH Debit to post to your account. Revoking an authorization must be done by calling (Phone Number) by (date). Should you have any questions regarding your payment, you may reach our office at (Contact Phone). The ACH Debit should show on your bank statement as (Business Name).
 
 Recurring authorization must be recorded through one of the following methods:
 
@@ -274,7 +272,7 @@ Recurring authorization must be recorded through one of the following methods:
    - Date of Oral Authorization
    - Statement that authorization was obtained for and is a single ACH Debit 
 
-Authorizations must include the following verbiage (or substantially similar) read and captured on the recorded line and/or written notice:
+- Authorizations must include the following verbiage (or substantially similar) read and captured on the recorded line and/or written notice:
 
 “<Customer’s First and Last Name>, by providing your bank account information and verbal authorization today, (current date MM/DD/YY), you <Customer’s Name> are authorizing <Business Name> to create an ACH debit to your account and that this Check by Phone may be drafted from your account (daily/weekly/monthly) for <Number> installments. In the event your Check by Phone is returned from your bank unpaid, you further agree that a fee of $25.00 or as allowable by law shall also be charged to your account via draft, or ACH debit.”
 “Do you authorize <Business Name> to proceed with this Check by Phone?”
@@ -347,7 +345,7 @@ Authorizations must be readily identifiable as an authorization containing clear
    - Website address where the payment was accepted
    - Statement of how the consumer’s identity was authenticated
 
-### Customer Authorization Requirements
+### Customer Authentication Requirements
 Clients are required to use commercially reasonable methods to authenticate, verify, or validate a customer’s identity prior or during authorization. It is not commercially reasonable to do nothing.
  - Assigning any password(s) and customer(s) authorizing debit(s) within the same Internet session is not commercially reasonable. 
  - Possible methods to authenticate users are noted below:
@@ -380,7 +378,7 @@ Paya created the SwiftSettle program in response to the NACHA-developed Same-Day
  - This must be for an amount of $25,000 or less
  - International (IAT) transactions cannot be processed under SwiftSettle; domestic only
 
-## Stop Payment Coverage
+# Stop Payment Coverage
   
 Certain types of businesses can receive a funding guarantee when the consumer returns a check or ACH as a stop payment through the Stop Payment Coverage program. Clients must receive checks in a face-to-face environment and have one of the products below:
  - POS Conversion Guarantee: Conversion of checks with a funding guarantee
@@ -405,7 +403,7 @@ Stop Payment Coverage is designed for the following types of clients:
  - Paint and Body Repair
  - Transmission Repair
 
-## Stop Payment Coverage
+# Consumer Convenience Fees
   
 Paya offers a Consumer Convenience Fee (CCF) program, which is a no-fee check processing service. CCF gives clients the opportunity to pass processing costs to the consumer, resulting in no-fee for ACH transaction processing. 
 Clients benefit from added secure payment methods without increased costs as there are no processing fees or annual fees for clients. Clients receive online reporting to track transactions at no added cost to them. 
@@ -422,16 +420,16 @@ Options are compatible with the following programs:
  - Checks by Web
  - Non-Guarantee Programs Only
 
-## Check Verification Services
+# Check Verification Services
 
 Paya provides three different levels of consumer bank account verification or identity validation through third-party vendors. Paya’s verification features assist in reducing overall Paya and/or client loss by declining to process check and ACH transactions to bank accounts that may be more likely to return. 
 
-### Level One: Nationwide Proprietary Database
+## Level One: Nationwide Proprietary Database
  - Thousands of organizations nationwide participate in contributing data to a third-party vendor database that tracks consumers by checking account number and driver’s license number. The database uses the check and ACH transaction information to verify if a consumer has outstanding bad checks within the participating clients and/or check collection companies. 
  - A consumer with prior returned check(s) or ACH transactions associated with their bank account or driver’s license will be declined from processing. 
  - This database verification enables Paya to customize velocity limits for consumer transactions. Each velocity limit only approves a specific number of checks with a total combined amount per consumer with a specific window. 
 
-### Level Two: Advanced Account Validation
+## Level Two: Advanced Account Validation
  - Paya uses a third-party vendor to complete real-time verification of a checking or savings account for the account status. The Advanced Banking Verification checks if a consumer’s bank account is open and has a minimum of $1.00 balance. 
 
 ** How does the verification work?**
@@ -449,18 +447,18 @@ Paya provides three different levels of consumer bank account verification or id
  - Not all banks participate, approximately 75% to 80% take part in this verification process
  - If the bank account numb er is for a non-participating bank, the transaction will be approved, but the transaction can still be returned
 
-### Level Three: Identity Verification
+## Level Three: Identity Verification
  - Paya uses a third-party vendor to complete real-time seamless authentication of consumer’s identity using the following consumer information that is collected and entered into a check or ACH transaction:
    - Name
    - Address
    - Date of Birth
    - Social Security Number
 
-## Money Laundering
+# Money Laundering
   
 You can only deposit transactions for your own business. Depositing transactions for a business that does not have a valid processing agreement is called laundering or factoring. Laundering is a form of fraud associated with high chargeback rates and the potential for forcing clients out of business. General information on Money Laundering can be found here.
 
-## Fraudulent or Suspicious Transactions
+# Fraudulent or Suspicious Transactions
   
 We ask our clients to always be on the lookout for possible fraud. Below are some tips that may help spot a bad check writer:
  - Valid checks should always have the following:
@@ -481,7 +479,7 @@ We ask our clients to always be on the lookout for possible fraud. Below are som
 If you have any questions about the legitimacy of your customer or the check presented to you, we urge you to carefully consider not taking the check as form of payment. Remember, clients can help us to continue to keep our product costs low by always being on the lookout for possible fraud. 
 If you are ever unsure of how to handle a check or unusual transaction, please consult with a knowledgeable Paya Support Agent. Please also refer to your terminal guide, where you will find many helpful “Quick-tips”.
 
-## Client Services and Support
+# Client Services and Support
   
 The Paya Support Staff is available Monday through Friday from 8:00 AM to 6:00 PM Central Time. 
  - Customer Care: (888)-481-0757 or CustomerSuport@eftsupport.com 
@@ -492,13 +490,13 @@ You can chat live with a support agent directly from our website during the same
 Did you know that you can access your account information online? We provide our clients the option to access statements, view reports, and manage your account 24/7 with no wait time. If you have not already established your online access, ask your payment processing provider support agent to setup your online account access today! 
 As a client, it is important to remember to notify us anytime information regarding your business changes. This includes a change of address, telephone or fax number, bank account changes, and/or ownership changes. Failure to keep your business information up-to-date could result in delayed funding to your account. 
 
-## Online Reporting Business Management Tool
+# Online Reporting Business Management Tool
   
-### Reporting Options
+## Reporting Options
   
 My Online Reports is a secure, web-hosted online reporting system that lets you take control of your transaction reporting. Clients can access their account information, transaction data, view statements, utilize custom reports, and manage their account 24/7. It’s simple to use and available at no extra cost. 
 
-### Information Available in My Online Reports
+## Information Available in My Online Reports
 My Online Reports allows you to view your deposits, transaction data, batch details, monthly statements, chargebacks, and more. There are a variety of reporting features that allow you to scope down into as much detail as you need. Reports can be viewed on the website or exported to Excel, Word, HTML, or XML and you can customize your reports to fit your needs. 
 
 Below is an overview of the data in some of the reports and how they work together:
@@ -519,7 +517,7 @@ Here are the steps to access My Online Reports:
 5.	Click the menu bar to make a selection
 First-time users must register through a Paya Support Agent
 
-## Customer Transaction Disputes
+# Customer Transaction Disputes
   
 Businesses that have used credit card processing are familiar with the term “chargeback”. A chargeback is when a customer disputes a credit card payment. Federal banking laws and NACHA Operating Rules & Guidelines allow customer disputes to protect consumers. 
 Paya Services uses similar terminology. However, in Paya Services, a client receives a “chargeback” after a customer’s return is received from an ACH debit or Check 21 transaction when the client previously received funding from Paya Services and one of the following occurred: 
@@ -562,7 +560,7 @@ Paya is required to enforce restrictions on the types of ACH transactions that m
 Paya labels the Expedited Processor Returns with an E-Code instead of an R-Code to provide clients the ability to differentiate between the standard “Receiving Bank” initiated returns (R-Code) and “Processor” initiated returns (E-Code). 
 The E-Codes are designed based on the customer or account holder and what Paya expects his or her bank to do based on a transaction previously returned. This means Paya expects the bank to return more transactions using the same return code after first returning one transaction. The E-Codes are used for Check 21 transactions as well as ACH transactions, which are used for consistency along product lines. An additional benefit of E-Code Returns for clients is the acceleration of returns to be received within 1-3 business days. 
 
-## Examples:
+Examples:
 
  - If a customer’s account was closed/invalid/not located yesterday, there is minimal likelihood that the account will be open today.
  - If a customer did not allow client ABC to debit his or her account yesterday, there is minimal likelihood that he or she will not allow client ABC to debit their account today.
@@ -570,7 +568,7 @@ The E-Codes are designed based on the customer or account holder and what Paya e
 
 The E-Code feature is not an overall opt-in/opt-out feature. An E-Code block can be removed from a customer’s bank account once the client that processed the transaction provides a letter from the customer’s bank (on bank letterhead) that states the bank account is active and/or the stop payment has been removed. For more details, please contact your payment provider. 
 
-## Transaction Returns
+# Transaction Returns
 
 NACHA calculates returns on a rolling sixty (60) day period and each submission counts individually. Return rates do not include reversals, credits, refunds, or Expedited (E-Code) Returns. 
 NACHA displays two ways to calculate return rates while Paya calculates the return rates by dividing the number of debit transactions returned for the preceding sixty (60) days by the total number of debit transactions contained within the files in which the original transactions were processed. Return rates are used for Check 21 transactions as well as ACH transactions for consistency along product lines. 
@@ -613,10 +611,3 @@ Some of the most common fatal return codes are noted below:
 
 When you receive a return other than R01 or R09, you or your customer are required to act before you can process a new debit to the same bank account. Continuing to attempt debits to the same bank account that has a return code other than R01 or R09 will most likely result in more returns and may result in a NACA Rule Violation, which we want to help you avoid. Make a point to remove recurring customers from the next billing cycle when you receive a return with any return code other than R01 or R09. 
 Returns from your customer with a return code of R05/R10/R29 may indicate that the customer is required to notify their bank to provide authorization with the bank in order to accept a debit from you. The customer’s bank will need our Company ID number, which is within the details that we send with a transaction. You can receive our Company ID number by contacting us directly. You can provide this number to your customer(s) and request the customer notify his or her bank to allow for ACH payments to process without being returned. 
-
-
-
-
-
-
-
