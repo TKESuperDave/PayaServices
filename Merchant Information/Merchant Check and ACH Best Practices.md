@@ -1,5 +1,3 @@
-
-
 ### **Table of Contents**
 
 1. [Check and ACH Processing Best Practices](Merchant%20Check%20and%20ACH%20Best%20Practices.md#check-and-ach-processing-best-practices)
