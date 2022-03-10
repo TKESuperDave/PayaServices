@@ -7,7 +7,7 @@ https://demo.eftchecks.com/Webservices/AuthGateway.asmx
 ## **VB.NET**
 
 **Example Code – GetCertificationTerminalSettings()**
-```
+```VB
 Public Function GetCertificationTerminalSettings() As String
         ‘This function will get the Certification Terminal Settings for Terminal 1010.
 
@@ -46,7 +46,7 @@ Public Function GetCertificationTerminalSettings() As String
 ```
 
 ## **C#**
-```
+```CSharp
 public string GetCertificationTerminalSettings() 
 { 
   //This function will get the Certification Terminal Settings for Terminal 1010. 
@@ -88,7 +88,7 @@ public string GetCertificationTerminalSettings()
 
 
 ## **SOAP Message Sample**
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <soap:Envelope xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:soap=”http://schemas.xmlsoap.org/soap/envelope/”>
   <soap:Header>
@@ -141,14 +141,7 @@ public string GetCertificationTerminalSettings()
 ```
 
 
-## **Contact Information**
-For questions or to receive certification and live username/passwords and URLs please contact:
-
-Integration Department
-integration@eftsupport.com
-
-
-**Code Sample Kits**
+## **Code Sample Kits**
 
 Java, VB.Net and PHP Sample Kits are available via FTP.
 
@@ -157,4 +150,10 @@ FTP: 		ftp.eftchecks.com
 UserID:     	SampleKits
 
 Password:   	60cJSK13%0ymgzab
+
+## **Contact Information**
+For questions or to receive certification and live username/passwords and URLs please contact:
+
+Integration Department
+integration@eftsupport.com
 
