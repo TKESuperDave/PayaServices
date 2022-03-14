@@ -26,18 +26,17 @@ We use Extensible Markup Language (XML), to send data packet requests and receiv
      - [Merchant Application XML Example](Process.md#merchant-application-xml-example)
      - [XML Samples](Process.md#xml-samples)
 6. [Data Types](Process.md#data-types)
-7. [Supporting Documents](Process.md#supporting-documents)
-8. [How to determine which XSD to Use](Process.md#how-to-determine-which-xsd-to-use)
+7. [How to determine which XSD to Use](Process.md#how-to-determine-which-xsd-to-use)
      - [ACH Schema](Process.md#ach-schema)
      - [Check21 Schema](Process.md#check21-schema)
      - [Gift Schema](Process.md#gift-schema)
      - [Other Schema](Process.md#other-schema)
 
-9. [Response](Process.md#response)
+8. [Response](Process.md#response)
      - [Response Messages - Example of Success Response](Process.md#response-message--example-success-response)
-10. [Exceptions](Process.md#exceptions)
-11. [Sample Code](Process.md#sample-code)
-12. [Contact Information](Process.md#contact-information)
+9. [Exceptions](Process.md#exceptions)
+10. [Sample Code](Process.md#sample-code)
+11. [Contact Information](Process.md#contact-information)
 
 # **Connection Method**
 Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  The webservice address used for certification and testing is as follows:
