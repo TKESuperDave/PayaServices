@@ -194,7 +194,7 @@ The root path for all XML Templates is https://demo.eftchecks.com/webserivces/sc
  - 	If the Terminal is configured for Check Verification.
  - 	If the Terminal is configured for Identity Verification.
 
-## [**How to determine which XSD to Use**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS)
+## **How to determine which XSD to Use**
                        
 The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
 
@@ -305,7 +305,7 @@ Definition and hyperlink to sample SOAP request and response.
   - **Input**:  Accepts no parameters. 
   - **Successful Output**: 
 
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” 
 xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
@@ -1120,7 +1120,7 @@ Again, the host system should first check to make sure the RESULT child element 
 The ProcessSingleCheckWithToken web method will process a valid XML data packet and return an Authorization Message within the response. An example of the Authorization message is below.
 
 ### **Authorization Message Example with Token**
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
 <VALIDATION_MESSAGE>
