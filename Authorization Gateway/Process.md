@@ -1,3 +1,143 @@
+# Overview
+
+The Authorization Gateway is designed to accommodate various input requirements based on a given terminal’s settings. This allows for the development of a single interface that can be easily configured to handle many different scenarios. 
+
+The Authorization Gateway uses web services to present distributed methods for integration into client applications, and an interface with the Authorization Gateway can be developed with any programming language that can consume a web service.
+
+Extensible Markup Language (XML) is used to send data packet requests to the Authorization Gateway and to receive a response back.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS. The Authorization Gateway also employs a custom SOAP header for authentication information.  
+
+XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested. 
+
+### **Table of Contents**
+1. [Overview]()
+4. [Preparing for Authorization Gateway Development (Phase 1)]()
+     - [Where do I start]()
+     - [What are the different Standard Entry Class (SEC) Codes?]()
+5. [Beginning Authorization Gateway Development (Phase 2)]()
+     - [I'm ready to begin Development. Where do I start?]()
+     - [What does it all mean?]()
+     - [How do I identify my data?]()
+     - [What do the different identifiers mean?]()
+     - [What does verification only mean?]()
+     - [What do I need to provide in the account section?]()
+     - [When do I need to include identify information]()
+	 
+6. [Connection Method]()
+7. [Submission]()
+     - [SOAP Header]()
+8. [Web Methods]()
+     - [Certification Web Methods]()
+	      	- [GetCertificationTerminalSetttings]()
+	      	- [AuthGatewayCertification]()
+	      	- [ProcessSingleCertificationCheck]()
+     - [Certification Web Methods when using Tokens]()
+	      	- [GetCertificationTerminalSettings]()
+	      	- [AuthGatewayCertification]()
+	      	- [ProcessSingleCertificationCheckWithToken]()
+	      	- [GetCertificationToken]()
+	      	- [ParseCertificationMICR]()
+     - [Production Web Methods]()
+	      	- [GetTerminalSettings]()
+	      	- [ProcessSingleCheck]()
+	      	- [GetArchivedResponse]()
+     - [Production Web Methods when using Tokens]()
+	      	- [ProcessSingleCheckWithToken]()
+	      	- [GetToken]()
+	      	- [ParseMICR]()
+
+11. [Data Packet - XML Specification]()
+     - [Authorization Gateway XML Data Packet Example]()
+     - [Authorization Gateway XML Data Packet with Token Example]()
+     - [A Note about Special Characters]()
+12. [How to determine which XML Template to Use]()
+     - [Standard XML Templates]()
+	      	- [PPD XML Templates]()
+	      	- [CCD XML Templates]()
+	      	- [WEB XML Templates]()
+	      	- [TEL XML Templates]()
+	      	- [POP XML Templates]()
+	      	- [Check21 XML Templates]()
+	      	- [BOC XML Templates]()
+     - [XML Templates when using Tokens]()
+	      	- [PPD XML Templates]()
+	      	- [CCD XML Templates]()
+	      	- [WEB XML Templates]()
+	      	- [TEL XML Templates]()
+	      	- [POP XML Templates]()
+	      	- [Check21 XML Templates]()
+	      	- [BOC XML Templates]()
+     - [OCR XML Templates]()
+	      	- [POP XML Templates]()
+	      	- [Check21 XML Templates]()
+	      	- [Check21 XML Templates for Mobile]()
+13. [How to determine which XSD to Use]()
+     - [Standard XSD Schemas]()
+	      	- [PPD Schemas - Guaranteed]()
+	      	- [PPD Schemas - Non-Guaranteed]()
+	      	- [CCD Schemas - Guaranteed]()
+	      	- [CCD Schemas - Non-Guaranteed]()
+	      	- [WEB Schemas]()
+	      	- [TEL Schemas - Guaranteed]()
+	      	- [TEL Schemas - Non-Guaranteed]()
+	      	- [POP Schemas]()
+	      	- [Check21 Schemas]()
+	      	- [BOC Schemas]()
+     - [OCR XSD Schemas]()
+	      	- [POP Schemas]()
+	      	- [Check21 Schemas]()
+14. [Data Types]()
+15. [Responses]()
+9. [Terminal Settings - XML Specification]()
+     - [Terminal Settings XML Example]()
+10. [Validation Handling]()
+     - [Validation Messages Response]()
+	      	- [Validation Message Example - Success Response]()
+	      	- [Validation Message Example - Failure Response]()
+     - [Authorization Message Response]()
+	      	- [Authorization Message Example]()
+	      	- [Process Single Certification Check - Authorization]()
+     - [Authorization Message Response with Token]()
+	      	- [Authorization Message Example with Token]()
+			
+	Failure Responses		
+     - [Process Single Certification Check - Check Limit Exceeded]()
+     - [Process Single Certification Check - Decline]()
+     - [Process Single Certification Check - Void]()
+     - [Process Single Certification Check - Reversal]()
+     - [Process Single Certification Check - Credit]()
+     - [Process Single Certification Check - Manager Needed]()
+     - [Process Single Certification Check - Represented Check]()
+     - [Process Single Certification Check - No ACH]()
+     - [Process Single Certification Check - MICR ERROR]()
+16. [Exception Handling]()
+     - [EXCEPTION Element - Example as a child of the RESPONSE element]()
+17. [Request an Archived Response]()
+22. [Sample Code]()     
+- [SOAP Message Sample]()
+23. [Contact Information]()
+
+
+21. [Authorization Requirements]()
+     - [Authorization Page - PPD]()
+     - [Authorization Page - CCD]()
+     - [Authorization Page - WEB]()
+     - [Recorded Authorization - TEL]()
+     - [Reciept Authorization - POP]()
+
+	 
+	 
+	 
+	 
+	 
+18. [Requestion a Certification Script]()
+19. [Beginning Certification (Phase 3)]()
+20. [Migrating to Production (Phase 4)]()	 
+
+- [VB.NET]()
+     - [C#]()
+24. [Code Sample Kits]()
+
+
 # **Phase 1 Preparation**
 
 ## **Connect to the Authorization Gateway**
