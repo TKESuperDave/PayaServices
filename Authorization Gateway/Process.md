@@ -286,7 +286,7 @@ The SOAP header contains the following fields:
 **Example:** 
 ```XML
   <soap:Header>
-    <AuthGatewayHeader    xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway” >
+    <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
       <UserName> GATEWAYUserName </UserName>
       <Password> GATEWAYPassword</Password>
       <TerminalID>1210</TerminalID>
@@ -307,8 +307,7 @@ Definition and hyperlink to sample SOAP request and response.
 
 ```XML
 <?xml version=”1.0” encoding=”utf-8”?>
-<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” 
-xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
+<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
   <TERMINAL_ID>2318</TERMINAL_ID>
   <SEC_CODE>WEB</SEC_CODE>
   <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
@@ -316,12 +315,8 @@ xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
   <DL_REQUIRED>false</DL_REQUIRED>
   <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
   <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
-  <SCHEMA_FILE_PATH>	
-http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd
-  </SCHEMA_FILE_PATH>
-  <XML_TEMPLATE_PATH>
-http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml
-  </XML_TEMPLATE_PATH>
+  <SCHEMA_FILE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
+  <XML_TEMPLATE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml</XML_TEMPLATE_PATH>
 </TERMINAL_SETTINGS>
 ```
 ### **The Terminal Settings XML will contain the following elements**:
@@ -553,48 +548,48 @@ This XML data packet example contains all available elements. The elements and d
 
 <?xml version=”1.0” encoding=”utf-8”?>
 <AUTH_GATEWAY REQUEST_ID=”4654”>
-<TRANSACTION>
-<TRANSACTION_ID>0a4f529d-70fd-4ddb-b909b5598dc07579</TRANSACTION_ID>
-<MERCHANT>
-<TERMINAL_ID>1113</TERMINAL_ID>
-    </MERCHANT>
-    <PACKET>
-<IDENTIFIER>A</IDENTIFIER>
-<CONTROL_CHAR>S</CONTROL_CHAR>
-<VERIFICATION_ONLY>false</VERIFICATION_ONLY>
-<ACCOUNT>
-    <TOKEN>05944FB3E1DA4663868455AF630F45BE</TOKEN>
-    <CHECK_NUMBER>4456</CHECK_NUMBER>
-</ACCOUNT>
-<CONSUMER>
-    <FIRST_NAME>Test</FIRST_NAME>
- <LAST_NAME>Guy</LAST_NAME>
- <ADDRESS1>1001 Test Ave.</ADDRESS1>
- <ADDRESS2>#200</ADDRESS2>
- <CITY>Destin</CITY>
- <STATE>FL</STATE>
- <ZIP>32540</ZIP>
- <PHONE_NUMBER>2345678912</PHONE_NUMBER>
- <DL_STATE>FL</DL_STATE>
- <DL_NUMBER>D12346544</DL_NUMBER>
- <COURTESY_CARD_ID></COURTESY_CARD_ID>
- <IDENTITY>
-     <DOB_YEAR>1961</DOB_YEAR>
-     </IDENTITY>
-   </CONSUMER>
-   <CHECK>
-   <CHECK_AMOUNT>1.25</CHECK_AMOUNT>
-   <IMAGE_FRONT />
-   <IMAGE_BACK />
-   </CHECK>
-<CUSTOM>
-        <CUSTOM1></CUSTOM1>
-        <CUSTOM2></CUSTOM2>
-        <CUSTOM3></CUSTOM3>
-        <CUSTOM4></CUSTOM4>
-       </CUSTOM>
-         </PACKET>
-       </TRANSACTION>
+  <TRANSACTION>
+    <TRANSACTION_ID>0a4f529d-70fd-4ddb-b909b5598dc07579</TRANSACTION_ID>
+      <MERCHANT>
+	  <TERMINAL_ID>1113</TERMINAL_ID>
+      </MERCHANT>
+      <PACKET>
+	<IDENTIFIER>A</IDENTIFIER>
+	<CONTROL_CHAR>S</CONTROL_CHAR>
+	<VERIFICATION_ONLY>false</VERIFICATION_ONLY>
+	<ACCOUNT>
+    	  <TOKEN>05944FB3E1DA4663868455AF630F45BE</TOKEN>
+    	  <CHECK_NUMBER>4456</CHECK_NUMBER>
+	</ACCOUNT>
+	<CONSUMER>
+    	  <FIRST_NAME>Test</FIRST_NAME>
+ 	  <LAST_NAME>Guy</LAST_NAME>
+ 	  <ADDRESS1>1001 Test Ave.</ADDRESS1>
+ 	  <ADDRESS2>#200</ADDRESS2>
+ 	  <CITY>Destin</CITY>
+ 	  <STATE>FL</STATE>
+ 	  <ZIP>32540</ZIP>
+ 	  <PHONE_NUMBER>2345678912</PHONE_NUMBER>
+ 	  <DL_STATE>FL</DL_STATE>
+ 	  <DL_NUMBER>D12346544</DL_NUMBER>
+ 	  <COURTESY_CARD_ID></COURTESY_CARD_ID>
+ 	  <IDENTITY>
+     	    <DOB_YEAR>1961</DOB_YEAR>
+     	  </IDENTITY>
+   	</CONSUMER>
+   	<CHECK>
+   	  <CHECK_AMOUNT>1.25</CHECK_AMOUNT>
+   	  <IMAGE_FRONT />
+   	  <IMAGE_BACK />
+   	</CHECK>
+	<CUSTOM>
+          <CUSTOM1></CUSTOM1>
+          <CUSTOM2></CUSTOM2>
+          <CUSTOM3></CUSTOM3>
+          <CUSTOM4></CUSTOM4>
+       	</CUSTOM>
+     </PACKET>
+  </TRANSACTION>
  </AUTH_GATEWAY>
 ```
 ### **The Authorization Gateway XML data packet may contain the following elements:**
