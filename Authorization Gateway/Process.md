@@ -284,7 +284,7 @@ The SOAP header contains the following fields:
 |     **TerminalID**    |     Integer    |     Unique to   each terminal used.  Provided by Paya   Services at time of terminal approval.    Terminal IDs for certification are provided in this document.    |
 
 **Example:** 
-```
+```XML
   <soap:Header>
     <AuthGatewayHeader    xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway” >
       <UserName> GATEWAYUserName </UserName>
@@ -449,7 +449,7 @@ _NOTE:  Methods with Token will operate the same as those without tokens. Tokens
 
 ### **Authorization Gateway XML Data Packet Example**:
 This XML data packet example contains all available elements. The elements and data types that are required for a specific terminal are defined in that terminal’s XSD.
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <AUTH_GATEWAY REQUEST_ID=”4654”>
   <TRANSACTION>
@@ -1019,7 +1019,7 @@ _NOTE: The AuthGatewayCertification web method response will not contain this el
 ### Validation Message Response
 The AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods will validate that the interface is sending a data packet that conforms to its schema. 
 Validation Message Example – Success Response
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <RESPONSE xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” REQUEST_ID=”4654”>
                 <VALIDATION_MESSAGE>
@@ -1033,7 +1033,7 @@ Validation Message Example – Success Response
 ### **Validation Message Example – Failure Response**
 
 This data packet failed validation because the Driver’s License Information is required by the XSD and was not provided in the data packet.
-```
+```XML
 <<?xml version=”1.0” encoding=”utf-8” ?> 
        <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
     <VALIDATION_MESSAGE>
@@ -1075,7 +1075,7 @@ This data packet failed validation because the Driver’s License Information is
 The ProcessSingleCheck web method will process a valid XML data packet and return an Authorization Message within the response. An example of the Authorization message is below.
 
 ### Authorization Message Example 
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
 <VALIDATION_MESSAGE>
@@ -1279,7 +1279,7 @@ We expect that your integration team has included at least a minimal level of ex
 If an error occurs within the Authorization Gateway, the XML string response will detail the reason for the error within an Exception element. The Exception element will NOT be present if an error did not occur. However, should an error occur, the Exception element may be found as a child element of either the Response element, or the Transaction element.
 
 ### EXCEPTION **Element – Example as a child of the RESPONSE element**
-```
+```XML
 <? Xml version=”1.0” encoding=”utf-8” ?> 
           <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”     
                              xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance”    
