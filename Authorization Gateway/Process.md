@@ -27,7 +27,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
      - [SOAP Header](Process.md#soap-header)
 8. [Web Methods](Process.md#web-methods)
      - [Certification Web Methods](Process.md#certification-methods)
-	      	- [GetCertificationTerminalSetttings]()
+     	      	- [GetCertificationTerminalSetttings]()
 	      	- [AuthGatewayCertification]()
 	      	- [ProcessSingleCertificationCheck]()
      - [Certification Web Methods when using Tokens](Process.md#certification-web-methods-when-using-tokens)
