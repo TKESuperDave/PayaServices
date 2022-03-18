@@ -9,19 +9,8 @@ Extensible Markup Language (XML) is used to send data packet requests to the Aut
 XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested. 
 
 ### **Table of Contents**
-1. [Overview](Process.md#overview)
-4. [Preparing for Authorization Gateway Development (Phase 1)]()
-     - [Where do I start]()
-     - [What are the different Standard Entry Class (SEC) Codes?]()
-5. [Beginning Authorization Gateway Development (Phase 2)]()
-     - [I'm ready to begin Development. Where do I start?]()
-     - [What does it all mean?]()
-     - [How do I identify my data?]()
-     - [What do the different identifiers mean?]()
-     - [What does verification only mean?]()
-     - [What do I need to provide in the account section?]()
-     - [When do I need to include identify information]()
-	 
+
+2. [Overview](Process.md#overview)	 
 6. [Connection Method](Process.md#connection-method)
 7. [Submission](Process.md#submissions)
      - [SOAP Header](Process.md#soap-header)
@@ -130,7 +119,18 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	 
 	 
 	 
-	 
+
+4. [Preparing for Authorization Gateway Development (Phase 1)]()
+     - [Where do I start]()
+     - [What are the different Standard Entry Class (SEC) Codes?]()
+5. [Beginning Authorization Gateway Development (Phase 2)]()
+     - [I'm ready to begin Development. Where do I start?]()
+     - [What does it all mean?]()
+     - [How do I identify my data?]()
+     - [What do the different identifiers mean?]()
+     - [What does verification only mean?]()
+     - [What do I need to provide in the account section?]()
+     - [When do I need to include identify information]()	 
 18. [Requestion a Certification Script]()
 19. [Beginning Certification (Phase 3)]()
 20. [Migrating to Production (Phase 4)]()	 
@@ -138,144 +138,22 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 - [VB.NET]()
      - [C#]()
 24. [Code Sample Kits]()
+1. [Introduction]() - Deleted
 
 
-# **Phase 1 Preparation**
-
-## **Connect to the Authorization Gateway**
-
-Once you have successfully connected to the Authorization Gateway and are comfortable with adding the SOAP header, you will test your request and response with the GetCertificationTerminalSettings.
- 
-The GetCertificationTerminalSettings web method is defined in the [Terminal Settings – XML Specification](#TerminalSettingsXMLSpecification) section, providing an example of the request and response. The invocation of this web method is part of the Preparation Phase because it is the simplest web method and requires no input parameters.
-
-This web method can be invoked if your implementation team determines the host system needs to acquire information about the Authorization Gateway Terminal, and does not need to be invoked on a continuous basis.
-
-_Please note this is not to be confused with the GetTerminalSettings, which performs the same function for production terminals during the Production Phase._
-
-## **SEC Standard Entry Class Codes**
-The Authorization Gateway uses the Standard Entry Class (SEC) codes to determine what information is required to be sent in the submission. The National Automated Clearing House Association (NACHA) requires the use of SEC Codes for each transaction settled through the Automated Clearing House (ACH).  Each code identifies what type of transaction occurred. In addition, the SEC_CODE element in the response XML Data Packet form the GetCertificationTerminalSettings web method will include the SEC code used from the terminal ID provided.  A definition of each of the SEC codes used by the Authorization Gateway can be found below.
-
-•	**PPD** - Prearranged Payment and Deposit Entry :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a consumers account. 
-
-•	**CCD** - Corporate Credit or Debit :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a business account. 
-
-•	**WEB** - Internet Initiated Entry :  An internet initiated entry is a method of payment for goods or services made via the internet.    
-
-•	**TEL** - Telephone Initiated Entry :  A telephone initiated entry is a payment for goods or services made with a single entry debit with oral authorization obtained from the consumer via the telephone.
-
-•	**POP** - Point-of-Purchase Entry : The Point-of-Purchase method of payment is for purchases made for goods or services in person by the consumer.  These are non-recurring debit entries. A check reading device must be used to capture the routing number, account number, and check number from the source document (check). The source document cannot be previously used for any prior POP entry, and the source document must be voided and returned to the customer at the point-of-purchase. In addition, a signed receipt must be obtained at the point-of-purchase and retained for 2 years from the settlement date. The “Authorization Requirements” section in the Authorization Gateway Specification document contains additional information on the receipt requirements.
-
-•	**C21** - Check 21 :  Although not an SEC Code C21 is used to denote Check 21 transactions. Check 21 requires a check reading device capture the routing number, account number, and check number from the source document (Check) as well as capture images of both the front and back of the source document.  
-
-# **Phase 2 Development**
-
-**Interfacing with the Authorization Gateway**
-
-The best place to start is to determine your application architecture for interfacing with the Authorization Gateway.  You will choose which published XSD(s) your XML data packets will be validated against, and you also know the URL for the corresponding XML template(s) for your schema(s).  
-This leaves you with the following possibilities for creating your XML data packets that are sent to the Authorization Gateway:
-
-1.	XML Schema Definition Tool (such as Xsd.exe for .Net or Svcutil.exe) to generate a class based on the published XSD, populate the class properties, and then serialize the object.
-2.	LINQ to XML to build your xml and populate the elements and attributes.
-3.	You can load the XML template into an XML document object and use Xpath to populate the elements and attributes.
-4.	You can build your own XML document and use Xpath to populate the elements and attributes.
-
-We recommend you leverage the published [XSDs](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS) and [XML](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML) templates and use either the first or second options when creating the data packets to be sent. All these methods use the .NET platform however other languages have successfully been used. 
-
-We have provided example request XML Data Packets to assist your integration team with getting started. A link to these examples can be found at the end of the “How to determine which XML Template to Use” section above.
-
-
-Once you have determined how you will create your XML data packets in your system; we recommend reviewing each element and attribute and when they are best used. The Data Packet – XML Specification(#DataPacketXMLSpecification) provides links to XML templates, and text description of the regular expressions, data types, or enumerations that control the allowed data formats for each element.
-
-## **How to determine which XML Template to Use**
-
-The XML data packet can be built from scratch or one of the available XML templates can be used to build the XML data packet prior to submitting to the Authorization Gateway. The URI for the XML data packet for a given terminal can be retrieved from the Terminal Settings but can also be determined by using the criteria below.
-
-The root path for all XML Templates is https://demo.eftchecks.com/webserivces/schemas/  followed by the SEC Code, “/Templates/”, and the XML Template name.  The XML Template is determined by the following criteria:
-
- - 	If the Terminal requires the Driver’s License Information.
- - 	If the Terminal is configured for Check Verification.
- - 	If the Terminal is configured for Identity Verification.
-
-## **How to determine which XSD to Use**
-                       
-The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
-
-The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
-
- - If the Terminal requires the Driver’s License Information. 
- - If the Terminal is configured for Check Verification.
- - If the Terminal is configured for Identity Verification.
- - For PPD and CCD entries, If the Terminal is configured to allow Credit entries   
-   
-A matrix of the available XML Templates, and XSD Schemas for each SEC code can be found in the XML/XSD section, by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.  
-  
-**Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx**
-
-An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
-https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
-
-There are published example XML data packets that contain example data, and XSD Schema packets. 
-https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
-
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
-
-|     Special Character    |     Symbol    |     Escaped Form     |
-|--------------------------|---------------|----------------------|
-|     Ampersand            |     &         |     \&amp;           |
-|     Less-than            |     <         |     \&lt;            |
-|     Greater-than         |     >         |     \&gt;            |
-|     Quotes               |     “         |     \&quot;          |
-|     Apostrophe           |     ‘         |     \&apos;          |
-
-Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
-Link to [XSD Schemas](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD)
-
-
-## **Data Identification**
-The specification for the Authorization Gateway XML Data Packet allows you to optionally identify your data in two distinct ways. The **REQUEST_ID** attribute contained within the AUTH_GATEWAY element and the **TRANSACTION_ID** element. These are built in so your host system can match a response from the Authorization Gateway with the original request. 
-
-These identifiers are not inherently unique, rather the Authorization Gateway leaves the responsibility of determining if an identifier is unique to the host system. It is not required that optional identifiers are unique, but it is strongly recommended. If an identifier is not unique it may become difficult for your host system to match responses or retrieve archived responses.  In the examples we have provided, GUIDs have been used as optional identifiers. The use of GUIDs ensures uniqueness, but any value can be used as an identifier, including database identity column values. It is also important to note that if the implementation team determines an identifier needs to be unique, that it only needs to be unique for a specific terminal ID, but it can be unique across all terminal IDs for a given user. 
- 
-
-**The REQUEST_ID** attribute should be a unique identifier that is used to identify the overall data packet. When your data packet is received by the Authorization Gateway it is processed, and asynchronously stored along with the response. This is done so the host system can invoke the GetArchivedResponse web method to request a previous response. 
-
-The GetArchivedResponse web method accepts the REQUEST_ID as an input parameter and will return the corresponding response.  It is important to note that the GetArchivedResponse is a production only web method and can only be effectively used if the host system keeps track of and submits values in the REQUEST_ID attribute.  The value in the REQUEST_ID attribute of the request data packet is also returned in the response data packet in the REQUEST_ID attribute of the RESPONSE element.
-
-**The TRANSACTION_ID** element should be a unique identifier that is used to identify a specific transaction.  The value contained in the TRANSACTION_ID element is recorded by the Authorization Gateway but is not used internally and cannot be used to request a specific transaction. The value in the TRANSACTION_ID element is however returned in the response data packet in the TRANSACTION_ID element within the parent AUTHORIZATION_MESSAGE element. This was done so that your host system can match the response for a specific transaction to an internal record in the host system. 
-
-## **Valid Identifiers**
-Each request XML Data Packet must contain a valid identifier for its schema. The identifier you use will change depending on the context of the transaction being sent. Your integration team will become more familiar with the different identifiers as you begin to work on each milestone. However, a list of all the valid identifiers can be found below.  
-
-|                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Authorize (A)    |     This   is used in schemas for POP, TEL, WEB, and Check 21 to indicate that an   authorization is requested for the XML Data Packet being sent.  It is also used to process credit   transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|     Recurring (R)    |     This   is used in schemas for PPD, CCD, TEL and WEB to indicate that an   authorization is requested for a single or reoccurring transaction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|     Void (V)         |     This   is used in schemas for PPD, CCD, POP, TEL, WEB, and Check 21 to void a   previously authorized transaction. However, it should be noted that   transactions can only be voided on the same calendar day they were   authorized.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|     Override (O)     |     This   is used in schemas for POP, TEL, and Check 21 when the host system receives a   manager needed message to void the previous transaction and input a new   transaction in its place.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|     Payroll (P)      |     This   is used in schemas for POP and Check 21 for business and payroll checks. What   this does is NOT link the driver’s license to the routing/ account numbers   since the person writing/cashing the check is usually not the business.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|     Update (U)       |     This   is used in schemas for POP and Check 21 for OCR transactions that already   have complete data in the data packet. It forces the transaction to run as a   normal POP or Check 21 transaction on an OCR terminal. This is normally done   when a change is needed to a transaction that was submitted under a normal   OCR transaction. Example: A transaction is sent through using the OCR engine.   The data that is returned does not match the image. If the transaction was   still successful and a change is warranted, a Void Transaction is sent. Then   another transaction with updated data (from the response and corrected from   user) is sent back through the system with a complete data packet and “U” as   the identifier. If the transaction failed, other actions will need to be taken.    |
-
-## **Verification Only**
-If the gateway terminal is setup as verification only or the VERIFICATION_ONLY element is set to true, then the transaction will be processed as verification only. This means that an authorization will be run, but that the check **_will not_** undergo Electronic Check Conversion (ECC) and will have to be taken to the bank for deposit. 
-Depending on the merchant’s program, the funds may or may not be guaranteed.
-
-## **Account Section Data**
-All PPD, CCD, TEL and WEB schemas define that the ACCOUNT child elements must contain values.  The child elements within the ACCOUNT element for POP and Check 21 (C21) schemas define what ACCOUNT child elements must contain values and what ACCOUNT child elements can be left empty.  All of the child elements within the ACCOUNT element for POP and Check 21 (C21), except the ACCOUNT_TYPE for POP schemas, define the data as optional. This is because for these SEC codes you can either provide the swiped MICR data or provide the routing, account, and check numbers.   If the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER are all left empty in the request data packet then the transaction cannot be processed. Either the MICR_DATA or the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements must contain values. 
-
-It is important to note that for POP transactions, that if the swiped MICR data in the MICR_DATA element is missing, but the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements contain values then the transaction will be processed as verification only; even if the CONTROL_CHAR indicates that the information was retrieved from a check reader. In addition, if the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements all contain values, then the Authorization Gateway will only use the information in the MICR_DATA element and will parse it out overwriting any values sent in the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements.
-
-## **Identity information**
-Identity information needs to be included when the terminal is setup to do identity verification. There are schemas that will handle the validation for terminals that are setup to do identity verification, and the GetCertificationTerminalSettings web method will return a response of “true” in the RUN_IDENTITY_VERIFICATION element. If a terminal is setup to do identity verification, then the host system is required to send either the last 4 of the check writers social security number OR their birth year (not both). 
 
 ## **Connection Method**
-Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  
-The webservice address used for certification and testing is as follows:
+Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  The webservice address used for certification and testing is as follows:
 
 https://demo.eftchecks.com/webservices/AuthGateway.asmx
 
-Each web method contains a custom SOAP header used for authentication. A username and password for certification will be provided.
-You can reach our Integration Department by email at integration@eftsupport.com.
+A username and password for certification will be provided.
+
+NOTE: A production webservice address, user name, and password will be supplied upon successful certification.
+
+# **Submissions**
+
+The Authorization Gateway has been designed for fast and easy integration with your existing system. Simply request the Terminal Settings, complete the returned xml data packet template, and return it to the Authorization Gateway for processing. To accomplish this Authorization Gateway provides web methods for certification and for production. In addition, each web method contains a custom SOAP header used for authentication.
 
 ## **SOAP Header**
 The SOAP header contains the following fields:
@@ -296,49 +174,25 @@ The SOAP header contains the following fields:
   </soap:Header>
 ```
 
-## **Web Methods**
+# **Web Methods**
 A definition of the web methods can be found below. Each web method contains a hyperlink to a sample SOAP request and response.
 
-## **Certification Web Methods** 
-Definition and hyperlink to sample SOAP request and response.
+## **Certification Methods**
 
-- [**GetCertificationTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetCertificationTerminalSettings)
+Before you are able to go into production, Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
+
+### **Certification Web Methods** 
+
+
+- [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
   - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
-  - **Input**:  Accepts no parameters. 
-  - **Successful Output**: 
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response-1)
 
-```XML
-<?xml version=”1.0” encoding=”utf-8”?>
-<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
-  <TERMINAL_ID>2318</TERMINAL_ID>
-  <SEC_CODE>WEB</SEC_CODE>
-  <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
-  <ALLOW_CNSMR_CREDITS>false</ALLOW_CNSMR_CREDITS>
-  <DL_REQUIRED>false</DL_REQUIRED>
-  <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
-  <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
-  <SCHEMA_FILE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
-  <XML_TEMPLATE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml</XML_TEMPLATE_PATH>
-</TERMINAL_SETTINGS>
-```
-### **The Terminal Settings XML will contain the following elements**:
-|                                  |                                                                                                                                                                        |
-|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     TERMINAL_SETTINGS            |     Is the parent   element and contains all other elements within the Terminal Settings XML   document.                                                               |
-|     TERMINAL_ID                  |     Contains the ID   for the terminal. The Terminal ID will be numeric value.                                                                                         |
-|     SEC_CODE                     |     Contains the   Standard Entry Class. This will either be Ck21, PPD, CCD, POP, TEL, or WEB.                                                                         |
-|     IS_GATEWAY_TERMINAL          |     Contains true or   false indicating if the Terminal is a gateway terminal or not.                                                                                  |
-|     DL_REQUIRED                  |     Contains true or   false indicating if the terminal requires the driver’s license state and   number is to be included in the data packet request.                 |
-|     RUN_CHECK_VERIFICATION       |     Contains true or   false indicating if the terminal is setup for check verification.                                                                               |
-|     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
-|     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
-|     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
-
-
-- [**AuthGatewayCertification**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=AuthGatewayCertification)	
+- [**AuthGatewayCertification**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md)	
   - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the certification Terminal Settings.
-  - **Output**: Outputs an XML string.
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/AuthGatewayCertification.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/AuthGatewayCertification.md#response-1)
 
 - [**ProcessSingleCertificationCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheck)
   - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
@@ -393,7 +247,11 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
   - **Output**: Outputs an XML string.
 
-## **Production Web Methods** 
+## Production Methods
+
+Once you have **certified** with our Paya Services team you will need to used the Production Methods listed below to create live transaction within the banking system.
+
+### **Production Web Methods** 
 Definition and hyperlink to sample SOAP request and response.
 
 - [**GetTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetTerminalSettings)
@@ -1013,6 +871,38 @@ The Authorization Gateway XML response may contain the following elements:
  
 _NOTE: The AuthGatewayCertification web method response will not contain this element._
 
+## **Terminal Settings - XML Specification**
+
+```XML
+<?xml version=”1.0” encoding=”utf-8”?>
+<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
+  <TERMINAL_ID>2318</TERMINAL_ID>
+  <SEC_CODE>WEB</SEC_CODE>
+  <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
+  <ALLOW_CNSMR_CREDITS>false</ALLOW_CNSMR_CREDITS>
+  <DL_REQUIRED>false</DL_REQUIRED>
+  <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
+  <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
+  <SCHEMA_FILE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
+  <XML_TEMPLATE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml</XML_TEMPLATE_PATH>
+</TERMINAL_SETTINGS>
+```
+### **The Terminal Settings XML will contain the following elements**:
+|                                  |                                                                                                                                                                        |
+|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     TERMINAL_SETTINGS            |     Is the parent   element and contains all other elements within the Terminal Settings XML   document.                                                               |
+|     TERMINAL_ID                  |     Contains the ID   for the terminal. The Terminal ID will be numeric value.                                                                                         |
+|     SEC_CODE                     |     Contains the   Standard Entry Class. This will either be Ck21, PPD, CCD, POP, TEL, or WEB.                                                                         |
+|     IS_GATEWAY_TERMINAL          |     Contains true or   false indicating if the Terminal is a gateway terminal or not.                                                                                  |
+|     DL_REQUIRED                  |     Contains true or   false indicating if the terminal requires the driver’s license state and   number is to be included in the data packet request.                 |
+|     RUN_CHECK_VERIFICATION       |     Contains true or   false indicating if the terminal is setup for check verification.                                                                               |
+|     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
+|     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
+|     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
+
+
+
+
 ### Validation Message Response
 The AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods will validate that the interface is sending a data packet that conforms to its schema. 
 Validation Message Example – Success Response
@@ -1300,6 +1190,139 @@ Each time a valid data packet request is processed the Authorization Message tha
 If needed an Authorization Message for a previously processed transaction can be requested again by invoking the GetArchivedResponse web method.  It is important to note that the transaction is not processed again, only the original Authorization Message that was archived is returned. Each Authorization Message is archived along with the unique user defined Request ID and Terminal ID that was provided in the data packet request. The GetArchivedResponse web method accepts the Request ID as an input parameter and will return the original Authorization Message for the given Request ID and Terminal ID.
  
 _NOTE: If Authorization Gateway Request IDs are duplicated for a given Terminal, only the last Authorization Message for the pairing will be returned._ 
+
+
+
+
+
+# **Phase 1 Preparation**
+
+## **Connect to the Authorization Gateway**
+
+Once you have successfully connected to the Authorization Gateway and are comfortable with adding the SOAP header, you will test your request and response with the GetCertificationTerminalSettings.
+ 
+The GetCertificationTerminalSettings web method is defined in the [Terminal Settings – XML Specification](#TerminalSettingsXMLSpecification) section, providing an example of the request and response. The invocation of this web method is part of the Preparation Phase because it is the simplest web method and requires no input parameters.
+
+This web method can be invoked if your implementation team determines the host system needs to acquire information about the Authorization Gateway Terminal, and does not need to be invoked on a continuous basis.
+
+_Please note this is not to be confused with the GetTerminalSettings, which performs the same function for production terminals during the Production Phase._
+
+## **SEC Standard Entry Class Codes**
+The Authorization Gateway uses the Standard Entry Class (SEC) codes to determine what information is required to be sent in the submission. The National Automated Clearing House Association (NACHA) requires the use of SEC Codes for each transaction settled through the Automated Clearing House (ACH).  Each code identifies what type of transaction occurred. In addition, the SEC_CODE element in the response XML Data Packet form the GetCertificationTerminalSettings web method will include the SEC code used from the terminal ID provided.  A definition of each of the SEC codes used by the Authorization Gateway can be found below.
+
+•	**PPD** - Prearranged Payment and Deposit Entry :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a consumers account. 
+
+•	**CCD** - Corporate Credit or Debit :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a business account. 
+
+•	**WEB** - Internet Initiated Entry :  An internet initiated entry is a method of payment for goods or services made via the internet.    
+
+•	**TEL** - Telephone Initiated Entry :  A telephone initiated entry is a payment for goods or services made with a single entry debit with oral authorization obtained from the consumer via the telephone.
+
+•	**POP** - Point-of-Purchase Entry : The Point-of-Purchase method of payment is for purchases made for goods or services in person by the consumer.  These are non-recurring debit entries. A check reading device must be used to capture the routing number, account number, and check number from the source document (check). The source document cannot be previously used for any prior POP entry, and the source document must be voided and returned to the customer at the point-of-purchase. In addition, a signed receipt must be obtained at the point-of-purchase and retained for 2 years from the settlement date. The “Authorization Requirements” section in the Authorization Gateway Specification document contains additional information on the receipt requirements.
+
+•	**C21** - Check 21 :  Although not an SEC Code C21 is used to denote Check 21 transactions. Check 21 requires a check reading device capture the routing number, account number, and check number from the source document (Check) as well as capture images of both the front and back of the source document.  
+
+# **Phase 2 Development**
+
+**Interfacing with the Authorization Gateway**
+
+The best place to start is to determine your application architecture for interfacing with the Authorization Gateway.  You will choose which published XSD(s) your XML data packets will be validated against, and you also know the URL for the corresponding XML template(s) for your schema(s).  
+This leaves you with the following possibilities for creating your XML data packets that are sent to the Authorization Gateway:
+
+1.	XML Schema Definition Tool (such as Xsd.exe for .Net or Svcutil.exe) to generate a class based on the published XSD, populate the class properties, and then serialize the object.
+2.	LINQ to XML to build your xml and populate the elements and attributes.
+3.	You can load the XML template into an XML document object and use Xpath to populate the elements and attributes.
+4.	You can build your own XML document and use Xpath to populate the elements and attributes.
+
+We recommend you leverage the published [XSDs](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS) and [XML](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML) templates and use either the first or second options when creating the data packets to be sent. All these methods use the .NET platform however other languages have successfully been used. 
+
+We have provided example request XML Data Packets to assist your integration team with getting started. A link to these examples can be found at the end of the “How to determine which XML Template to Use” section above.
+
+
+Once you have determined how you will create your XML data packets in your system; we recommend reviewing each element and attribute and when they are best used. The Data Packet – XML Specification(#DataPacketXMLSpecification) provides links to XML templates, and text description of the regular expressions, data types, or enumerations that control the allowed data formats for each element.
+
+## **How to determine which XML Template to Use**
+
+The XML data packet can be built from scratch or one of the available XML templates can be used to build the XML data packet prior to submitting to the Authorization Gateway. The URI for the XML data packet for a given terminal can be retrieved from the Terminal Settings but can also be determined by using the criteria below.
+
+The root path for all XML Templates is https://demo.eftchecks.com/webserivces/schemas/  followed by the SEC Code, “/Templates/”, and the XML Template name.  The XML Template is determined by the following criteria:
+
+ - 	If the Terminal requires the Driver’s License Information.
+ - 	If the Terminal is configured for Check Verification.
+ - 	If the Terminal is configured for Identity Verification.
+
+## **How to determine which XSD to Use**
+                       
+The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
+
+The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+
+ - If the Terminal requires the Driver’s License Information. 
+ - If the Terminal is configured for Check Verification.
+ - If the Terminal is configured for Identity Verification.
+ - For PPD and CCD entries, If the Terminal is configured to allow Credit entries   
+   
+A matrix of the available XML Templates, and XSD Schemas for each SEC code can be found in the XML/XSD section, by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.  
+  
+**Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx**
+
+An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
+https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
+
+There are published example XML data packets that contain example data, and XSD Schema packets. 
+https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
+
+***Note about Special Characters**
+Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+
+|     Special Character    |     Symbol    |     Escaped Form     |
+|--------------------------|---------------|----------------------|
+|     Ampersand            |     &         |     \&amp;           |
+|     Less-than            |     <         |     \&lt;            |
+|     Greater-than         |     >         |     \&gt;            |
+|     Quotes               |     “         |     \&quot;          |
+|     Apostrophe           |     ‘         |     \&apos;          |
+
+Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
+Link to [XSD Schemas](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD)
+
+
+## **Data Identification**
+The specification for the Authorization Gateway XML Data Packet allows you to optionally identify your data in two distinct ways. The **REQUEST_ID** attribute contained within the AUTH_GATEWAY element and the **TRANSACTION_ID** element. These are built in so your host system can match a response from the Authorization Gateway with the original request. 
+
+These identifiers are not inherently unique, rather the Authorization Gateway leaves the responsibility of determining if an identifier is unique to the host system. It is not required that optional identifiers are unique, but it is strongly recommended. If an identifier is not unique it may become difficult for your host system to match responses or retrieve archived responses.  In the examples we have provided, GUIDs have been used as optional identifiers. The use of GUIDs ensures uniqueness, but any value can be used as an identifier, including database identity column values. It is also important to note that if the implementation team determines an identifier needs to be unique, that it only needs to be unique for a specific terminal ID, but it can be unique across all terminal IDs for a given user. 
+ 
+
+**The REQUEST_ID** attribute should be a unique identifier that is used to identify the overall data packet. When your data packet is received by the Authorization Gateway it is processed, and asynchronously stored along with the response. This is done so the host system can invoke the GetArchivedResponse web method to request a previous response. 
+
+The GetArchivedResponse web method accepts the REQUEST_ID as an input parameter and will return the corresponding response.  It is important to note that the GetArchivedResponse is a production only web method and can only be effectively used if the host system keeps track of and submits values in the REQUEST_ID attribute.  The value in the REQUEST_ID attribute of the request data packet is also returned in the response data packet in the REQUEST_ID attribute of the RESPONSE element.
+
+**The TRANSACTION_ID** element should be a unique identifier that is used to identify a specific transaction.  The value contained in the TRANSACTION_ID element is recorded by the Authorization Gateway but is not used internally and cannot be used to request a specific transaction. The value in the TRANSACTION_ID element is however returned in the response data packet in the TRANSACTION_ID element within the parent AUTHORIZATION_MESSAGE element. This was done so that your host system can match the response for a specific transaction to an internal record in the host system. 
+
+## **Valid Identifiers**
+Each request XML Data Packet must contain a valid identifier for its schema. The identifier you use will change depending on the context of the transaction being sent. Your integration team will become more familiar with the different identifiers as you begin to work on each milestone. However, a list of all the valid identifiers can be found below.  
+
+|                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Authorize (A)    |     This   is used in schemas for POP, TEL, WEB, and Check 21 to indicate that an   authorization is requested for the XML Data Packet being sent.  It is also used to process credit   transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|     Recurring (R)    |     This   is used in schemas for PPD, CCD, TEL and WEB to indicate that an   authorization is requested for a single or reoccurring transaction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|     Void (V)         |     This   is used in schemas for PPD, CCD, POP, TEL, WEB, and Check 21 to void a   previously authorized transaction. However, it should be noted that   transactions can only be voided on the same calendar day they were   authorized.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|     Override (O)     |     This   is used in schemas for POP, TEL, and Check 21 when the host system receives a   manager needed message to void the previous transaction and input a new   transaction in its place.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|     Payroll (P)      |     This   is used in schemas for POP and Check 21 for business and payroll checks. What   this does is NOT link the driver’s license to the routing/ account numbers   since the person writing/cashing the check is usually not the business.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|     Update (U)       |     This   is used in schemas for POP and Check 21 for OCR transactions that already   have complete data in the data packet. It forces the transaction to run as a   normal POP or Check 21 transaction on an OCR terminal. This is normally done   when a change is needed to a transaction that was submitted under a normal   OCR transaction. Example: A transaction is sent through using the OCR engine.   The data that is returned does not match the image. If the transaction was   still successful and a change is warranted, a Void Transaction is sent. Then   another transaction with updated data (from the response and corrected from   user) is sent back through the system with a complete data packet and “U” as   the identifier. If the transaction failed, other actions will need to be taken.    |
+
+## **Verification Only**
+If the gateway terminal is setup as verification only or the VERIFICATION_ONLY element is set to true, then the transaction will be processed as verification only. This means that an authorization will be run, but that the check **_will not_** undergo Electronic Check Conversion (ECC) and will have to be taken to the bank for deposit. 
+Depending on the merchant’s program, the funds may or may not be guaranteed.
+
+## **Account Section Data**
+All PPD, CCD, TEL and WEB schemas define that the ACCOUNT child elements must contain values.  The child elements within the ACCOUNT element for POP and Check 21 (C21) schemas define what ACCOUNT child elements must contain values and what ACCOUNT child elements can be left empty.  All of the child elements within the ACCOUNT element for POP and Check 21 (C21), except the ACCOUNT_TYPE for POP schemas, define the data as optional. This is because for these SEC codes you can either provide the swiped MICR data or provide the routing, account, and check numbers.   If the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER are all left empty in the request data packet then the transaction cannot be processed. Either the MICR_DATA or the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements must contain values. 
+
+It is important to note that for POP transactions, that if the swiped MICR data in the MICR_DATA element is missing, but the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements contain values then the transaction will be processed as verification only; even if the CONTROL_CHAR indicates that the information was retrieved from a check reader. In addition, if the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements all contain values, then the Authorization Gateway will only use the information in the MICR_DATA element and will parse it out overwriting any values sent in the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements.
+
+## **Identity information**
+Identity information needs to be included when the terminal is setup to do identity verification. There are schemas that will handle the validation for terminals that are setup to do identity verification, and the GetCertificationTerminalSettings web method will return a response of “true” in the RUN_IDENTITY_VERIFICATION element. If a terminal is setup to do identity verification, then the host system is required to send either the last 4 of the check writers social security number OR their birth year (not both). 
+
 
 ## **Requesting a Certification Script**
 
