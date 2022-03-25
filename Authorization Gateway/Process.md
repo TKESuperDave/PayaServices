@@ -10,6 +10,15 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 
 ### **Table of Contents**
 1. [Overview](Process.md#overview)
+3. [Workflow Overview](Process.md#workflow-overview)
+     - [Phase 1: Preparation]()
+	      	- [Preparation Phase Milestones]()
+     - [Phase 2: Development]()
+	      	- [Development Phase Milestones]()
+	 - [Phase 3: Certification]()
+	      	- [Certification Phase Milestones]()
+	 - [Phase 4: Production]()
+	      	- [Production Phase Milestones]()
 4. [Preparing for Authorization Gateway Development (Phase 1)]()
      - [Where do I start]()
      - [What are the different Standard Entry Class (SEC) Codes?]()
