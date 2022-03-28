@@ -277,27 +277,27 @@ Once you have **certified** with our Paya Services team you will need to used th
 Definition and hyperlink to sample SOAP request and response.
 
 - #### [**GetTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetTerminalSettings)
-  - **Description **: This method will return the Terminal Settings for a terminal.
-  - **Input**:  Accepts no parameters.
-  - **Output**: Outputs an XML string.
+  - **Description**: This method will return the Terminal Settings for a terminal.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#response-1)
 
 - #### [**ProcessSingleCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCheck)
   - **Description**:  This method will run the authorization for a single check based on the settings for the terminal.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the Terminal Settings.
-  - **Output**: Outputs an XML string.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#response-1)
 
 - #### [**GetArchivedResponse**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetArchivedResponse)
   - **Description**:  This method will retrieve a response for a previously processed transaction.
-  - **Input**:  Accepts a Request ID string.
-  - **Output**: Outputs an XML string.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#response-1)
 
 ## **Production Web Methods when using Tokens**
 Definition using tokens and hyperlink to a sample SOAP request and response.
 
 - #### [**ProcessSingleCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCheckWithToken)
   - **Description**:  This method will run the authorization for a single check based on the settings for the terminal using either, a given Token or the Account Type, Routing Number, and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the Terminal Settings.
-  - **Output**: Outputs an XML string.
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#response-1)
 
 _NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
 
@@ -305,12 +305,14 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
 - #### [**GetToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetToken)
   - **Description**:  This method will return a Token for the Account Type, Routing Number, and Account Number.
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/gettoken.xsd).
-  - **Output**: Outputs an XML string.
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#response-1)
 
 - #### [**ParseMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseMICR)
   - **Description**:  This method will return an Account Type, Routing Number and Account Number.
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
-  - **Output**: Outputs an XML string.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response-1)
 
 
 
