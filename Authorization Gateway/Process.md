@@ -206,17 +206,17 @@ Before you are able to go into production, Paya Services requires that you cerif
 ### **Certification Web Methods** 
 
 
-- [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
+- #### [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
   - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
    - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response-1)
 
-- [**AuthGatewayCertification**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md)	
+- #### [**AuthGatewayCertification**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md)	
   - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
    - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
   - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/AuthGatewayCertification.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/AuthGatewayCertification.md#response-1)
 
-- [**ProcessSingleCertificationCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheck)
+- #### [**ProcessSingleCertificationCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheck)
   - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
 
 |     Routing   Number    |     Purpose                 |
