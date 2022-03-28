@@ -18,24 +18,24 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 8. [Web Methods](Process.md#web-methods)
      - [Certification Methods]()
      	- [Certification Web Methods](Process.md#certification-methods)
-      		- [GetCertificationTerminalSetttings]()
-      		- [AuthGatewayCertification]()
-      		- [ProcessSingleCertificationCheck]()
+      		- [GetCertificationTerminalSetttings](Process.md#getcertificationterminalsettings)
+      		- [AuthGatewayCertification](Process.md#authgatewaycertification)
+      		- [ProcessSingleCertificationCheck](Process.md#processingsinglecertificationcheck)
      	- [Certification Web Methods when using Tokens](Process.md#certification-web-methods-when-using-tokens)
-	      	- [GetCertificationTerminalSettings]()
-	      	- [AuthGatewayCertification]()
-	      	- [ProcessSingleCertificationCheckWithToken]()
-	      	- [GetCertificationToken]()
-	      	- [ParseCertificationMICR]()
+	      	- [GetCertificationTerminalSettings](Process.md#getcertificationterminalsettings-1)
+	      	- [AuthGatewayCertification](Process.md#authgatewaycertification-1)
+	      	- [ProcessSingleCertificationCheckWithToken](Process.md#processsinglecertificationcheckwithtoken)
+	      	- [GetCertificationToken](Process.md#getcertificationtoken)
+	      	- [ParseCertificationMICR](Process.md#parsecertificationmicr)
      - [Production Methods]()
      	- [Production Web Methods](Process.md#production-web-methods)
-	      	- [GetTerminalSettings]()
-	      	- [ProcessSingleCheck]()
-	      	- [GetArchivedResponse]()
+	      	- [GetTerminalSettings](Process.md#getterminalsettings)
+	      	- [ProcessSingleCheck](Process.md#processingsinglecheck)
+	      	- [GetArchivedResponse](Process.md#getarchivedresponse)
      	- [Production Web Methods when using Tokens](Process.md#production-web-methods-when-using-tokens)
-	      	- [ProcessSingleCheckWithToken]()
-	      	- [GetToken]()
-	      	- [ParseMICR]()
+	      	- [ProcessSingleCheckWithToken](Process.md#processsinglecheckwithtoken)
+	      	- [GetToken](Process.md#gettoken)
+	      	- [ParseMICR](Process.md#parsemicr)
 
 11. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
@@ -228,8 +228,8 @@ Before you are able to go into production, Paya Services requires that you cerif
 |     490000050           |     No   ACH                |
 |     490000015           |     MICR   ERROR            |
 
-   - **Input**:  Accepts an XML string called a data packet that must conform to the certification terminals schema provided in the certification Terminal Settings.
-   - **Output**: Outputs an XML string.
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request-1)
+  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response-1)
 
 ## **Certification Web Methods when using Tokens**
 Definition using tokens and hyperlink to samples of SOAP request and response.
@@ -276,17 +276,17 @@ Once you have **certified** with our Paya Services team you will need to used th
 ### **Production Web Methods** 
 Definition and hyperlink to sample SOAP request and response.
 
-- [**GetTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetTerminalSettings)
+- #### [**GetTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetTerminalSettings)
   - **Description **: This method will return the Terminal Settings for a terminal.
   - **Input**:  Accepts no parameters.
   - **Output**: Outputs an XML string.
 
-- [**ProcessSingleCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCheck)
+- #### [**ProcessSingleCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCheck)
   - **Description**:  This method will run the authorization for a single check based on the settings for the terminal.
   - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the Terminal Settings.
   - **Output**: Outputs an XML string.
 
-- [**GetArchivedResponse**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetArchivedResponse)
+- #### [**GetArchivedResponse**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetArchivedResponse)
   - **Description**:  This method will retrieve a response for a previously processed transaction.
   - **Input**:  Accepts a Request ID string.
   - **Output**: Outputs an XML string.
@@ -294,7 +294,7 @@ Definition and hyperlink to sample SOAP request and response.
 ## **Production Web Methods when using Tokens**
 Definition using tokens and hyperlink to a sample SOAP request and response.
 
-- [**ProcessSingleCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCheckWithToken)
+- #### [**ProcessSingleCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCheckWithToken)
   - **Description**:  This method will run the authorization for a single check based on the settings for the terminal using either, a given Token or the Account Type, Routing Number, and Account Number.
   - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the Terminal Settings.
   - **Output**: Outputs an XML string.
@@ -302,12 +302,12 @@ Definition using tokens and hyperlink to a sample SOAP request and response.
 _NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
 
 
-- [**GetToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetToken)
+- #### [**GetToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetToken)
   - **Description**:  This method will return a Token for the Account Type, Routing Number, and Account Number.
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/gettoken.xsd).
   - **Output**: Outputs an XML string.
 
-- [**ParseMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseMICR)
+- #### [**ParseMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseMICR)
   - **Description**:  This method will return an Account Type, Routing Number and Account Number.
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
   - **Output**: Outputs an XML string.
