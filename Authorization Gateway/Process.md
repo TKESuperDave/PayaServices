@@ -209,65 +209,65 @@ Before you are able to go into production, Paya Services requires that you cerif
 - #### [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
   - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
    - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/BoardCertificationLocation_ACH.md#response-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#response-1)
 
 - #### [**AuthGatewayCertification**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md)	
   - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
    - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/AuthGatewayCertification.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/AuthGatewayCertification.md#response-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods//AuthGatewayCertification.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#response-1)
 
 - #### [**ProcessSingleCertificationCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheck)
   - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
+  
+  |     Routing   Number    |     Purpose                 |
+  |-------------------------|-----------------------------|
+  |     490000018           |     Authorization           |
+  |     490000034           |     Decline                 |
+  |     490000021           |     Manager   Needed        |
+  |     490000047           |     Re-Presented   Check    |
+  |     490000050           |     No   ACH                |
+  |     490000015           |     MICR   ERROR            |
 
-|     Routing   Number    |     Purpose                 |
-|-------------------------|-----------------------------|
-|     490000018           |     Authorization           |
-|     490000034           |     Decline                 |
-|     490000021           |     Manager   Needed        |
-|     490000047           |     Re-Presented   Check    |
-|     490000050           |     No   ACH                |
-|     490000015           |     MICR   ERROR            |
-
-	- **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request-1)
-	- **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response-1)
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#response-1)
 
 ## **Certification Web Methods when using Tokens**
 Definition using tokens and hyperlink to samples of SOAP request and response.
 
 - #### [**GetCertificationTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetCertificationTerminalSettings)
   - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
-  - **Input**:  Accepts no parameters. 
-  - **Output**: Outputs an XML string. 
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods//AuthGatewayCertification.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#response-1)
 
 - #### [**AuthGatewayCertification**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=AuthGatewayCertification)
   - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the certification Terminal Settings.
-  - **Output**: Outputs an XML string.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods//AuthGatewayCertification.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#response-1)
 
 - #### [**ProcessSingleCertificationCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheckWithToken)
   - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal using either, a given Token or the Account Type, Routing Number, and Account Number. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
 
-|     Routing Number    |     Token                               |     Purpose               |
-|-----------------------|-----------------------------------------|---------------------------|
-|     490000018         |     05944FB3E1DA4663868455AF630F45BE    |     Authorization         |
-|     490000034         |     15944FB3E1DA4663868455AF630F45BE    |     Decline               |
-|     490000021         |     25944FB3E1DA4663868455AF630F45BE    |     Manager Needed        |
-|     490000047         |     35944FB3E1DA4663868455AF630F45BE    |     Re-Presented Check    |
+  |     Routing Number    |     Token                               |     Purpose               |
+  |-----------------------|-----------------------------------------|---------------------------|
+  |     490000018         |     05944FB3E1DA4663868455AF630F45BE    |     Authorization         |
+  |     490000034         |     15944FB3E1DA4663868455AF630F45BE    |     Decline               |
+  |     490000021         |     25944FB3E1DA4663868455AF630F45BE    |     Manager Needed        |
+  |     490000047         |     35944FB3E1DA4663868455AF630F45BE    |     Re-Presented Check    |
 
-  - **Input**:  Accepts an XML string called a data packet that must conform to the certification terminals schema provided in the certification Terminal Settings.
-  - **Output**: Outputs an XML string.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md#response-1)
 
 _NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
 
 - #### [**GetCertificationToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetCertificationToken)
   - **Description**: This method will return a Token for the Account Type, Routing Number, and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/gettoken.xsd).
-  - **Output**: Outputs an XML string.
-  - 
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#response-1)
+  -  
 - #### [**ParseCertificationMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseCertificationMICR)
   - **Description**: This method will return an Account Type, Routing Number and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
-  - **Output**: Outputs an XML string.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#response-1)
 
 ## Production Methods
 
