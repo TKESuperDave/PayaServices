@@ -1,5 +1,5 @@
 **Input**:  
-- Accepts an XML string called a data packet that must conform to the new terminal application schema.
+- Accepts an XML string called a data packet that must conform to the terminals schema provided in the certification Terminal Settings.
   
 **Output**:  
 - Outputs an XML string.
