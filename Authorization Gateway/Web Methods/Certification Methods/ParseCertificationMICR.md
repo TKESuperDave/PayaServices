@@ -1,5 +1,5 @@
 **Input**:  
-- Accepts no parameters
+- Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
   
 **Output**:  
 - Outputs an XML string.
