@@ -7,10 +7,10 @@
 # SOAP 1.1
 ## Request:
 **Header Information:**  
-POST /webservices/AuthGateway.asmx HTTP/1.1
-Host: demo.eftchecks.com
-Content-Type: text/xml; charset=utf-8
-Content-Length: length
+POST /webservices/AuthGateway.asmx HTTP/1.1  
+Host: demo.eftchecks.com  
+Content-Type: text/xml; charset=utf-8  
+Content-Length: length  
 SOAPAction: "http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway/ParseCertificationMICR"
 
 
@@ -50,10 +50,10 @@ Content-Length: length
 
 ## Request:
 **Header Information:**  
-POST /webservices/AuthGateway.asmx HTTP/1.1
-Host: demo.eftchecks.com
-Content-Type: application/soap+xml; charset=utf-8
-Content-Length: length
+POST /webservices/AuthGateway.asmx HTTP/1.1  
+Host: demo.eftchecks.com  
+Content-Type: application/soap+xml; charset=utf-8  
+Content-Length: length  
  
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
