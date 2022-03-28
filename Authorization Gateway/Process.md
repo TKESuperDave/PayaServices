@@ -228,8 +228,8 @@ Before you are able to go into production, Paya Services requires that you cerif
 |     490000050           |     No   ACH                |
 |     490000015           |     MICR   ERROR            |
 
-   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request-1)
-  - **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response-1)
+	- **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request-1)
+	- **Response**: [SOAP 1.1](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Merchant%20Application%20Gateway/Web%20Methods/Certification%20Methods/ACH/ProcessSingleCertificationCheck.md#response-1)
 
 ## **Certification Web Methods when using Tokens**
 Definition using tokens and hyperlink to samples of SOAP request and response.
