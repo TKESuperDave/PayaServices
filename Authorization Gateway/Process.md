@@ -9,27 +9,7 @@ Extensible Markup Language (XML) is used to send data packet requests to the Aut
 XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested. 
 
 ### **Table of Contents**
-1. [Overview](Process.md#overview)
-3. [Workflow Overview](Process.md#workflow-overview)
-     - [Phase 1: Preparation]()
-	      	- [Preparation Phase Milestones]()
-     - [Phase 2: Development]()
-	      	- [Development Phase Milestones]()
-	 - [Phase 3: Certification]()
-	      	- [Certification Phase Milestones]()
-	 - [Phase 4: Production]()
-	      	- [Production Phase Milestones]()
-4. [Preparing for Authorization Gateway Development (Phase 1)]()
-     - [Where do I start]()
-     - [What are the different Standard Entry Class (SEC) Codes?]()
-5. [Beginning Authorization Gateway Development (Phase 2)]()
-     - [I'm ready to begin Development. Where do I start?]()
-     - [What does it all mean?]()
-     - [How do I identify my data?]()
-     - [What do the different identifiers mean?]()
-     - [What does verification only mean?]()
-     - [What do I need to provide in the account section?]()
-     - [When do I need to include identify information]()
+
 
 2. [Overview](Process.md#overview)	 
 6. [Connection Method](Process.md#connection-method)
@@ -138,8 +118,29 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 
 	 
 	 
+
 	 
-	 
+1. [Introduction]()
+3. [Workflow Overview](Process.md#workflow-overview)
+     - [Phase 1: Preparation]()
+	      	- [Preparation Phase Milestones]()
+     - [Phase 2: Development]()
+	      	- [Development Phase Milestones]()
+	 - [Phase 3: Certification]()
+	      	- [Certification Phase Milestones]()
+	 - [Phase 4: Production]()
+	      	- [Production Phase Milestones]()
+4. [Preparing for Authorization Gateway Development (Phase 1)]()
+     - [Where do I start]()
+     - [What are the different Standard Entry Class (SEC) Codes?]()
+5. [Beginning Authorization Gateway Development (Phase 2)]()
+     - [I'm ready to begin Development. Where do I start?]()
+     - [What does it all mean?]()
+     - [How do I identify my data?]()
+     - [What do the different identifiers mean?]()
+     - [What does verification only mean?]()
+     - [What do I need to provide in the account section?]()
+     - [When do I need to include identify information]()	 
 
 4. [Preparing for Authorization Gateway Development (Phase 1)]()
      - [Where do I start]()
@@ -233,17 +234,17 @@ Before you are able to go into production, Paya Services requires that you cerif
 ## **Certification Web Methods when using Tokens**
 Definition using tokens and hyperlink to samples of SOAP request and response.
 
-- [**GetCertificationTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetCertificationTerminalSettings)
+- #### [**GetCertificationTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetCertificationTerminalSettings)
   - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
   - **Input**:  Accepts no parameters. 
   - **Output**: Outputs an XML string. 
 
-- [**AuthGatewayCertification**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=AuthGatewayCertification)
+- #### [**AuthGatewayCertification**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=AuthGatewayCertification)
   - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
   - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the certification Terminal Settings.
   - **Output**: Outputs an XML string.
 
-- [**ProcessSingleCertificationCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheckWithToken)
+- #### [**ProcessSingleCertificationCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheckWithToken)
   - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal using either, a given Token or the Account Type, Routing Number, and Account Number. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
 
 |     Routing Number    |     Token                               |     Purpose               |
@@ -258,12 +259,12 @@ Definition using tokens and hyperlink to samples of SOAP request and response.
 
 _NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
 
-- [**GetCertificationToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetCertificationToken)
+- #### [**GetCertificationToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetCertificationToken)
   - **Description**: This method will return a Token for the Account Type, Routing Number, and Account Number.
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/gettoken.xsd).
   - **Output**: Outputs an XML string.
   - 
-- [**ParseCertificationMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseCertificationMICR)
+- #### [**ParseCertificationMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseCertificationMICR)
   - **Description**: This method will return an Account Type, Routing Number and Account Number.
   - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
   - **Output**: Outputs an XML string.
