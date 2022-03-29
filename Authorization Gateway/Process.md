@@ -38,6 +38,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	      	- [ParseMICR](Process.md#parsemicr)
 
 11. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
+     - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
      - [A Note about Special Characters]()
@@ -79,8 +80,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	      	- [Check21 Schemas]()
 14. [Data Types](Process.md#data-types)
 15. [Responses](Process.md#responses)
-9. [Terminal Settings - XML Specification]()
-     - [Terminal Settings XML Example]()
+
 10. [Validation Handling]()
      - [Validation Messages Response](Process.md#validation-message-response)
 	      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
@@ -277,11 +277,13 @@ Once you have **certified** with our Paya Services team you will need to used th
 Definition and hyperlink to sample SOAP request and response.
 
 - #### [**GetTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md)
+  - **Replaces**: [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
   - **Description**: This method will return the Terminal Settings for a terminal.
   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#request-1)
   - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#response-1)
 
 - #### [**ProcessSingleCheck**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md)
+  - **Replaces**: [**ProcessSingleCertificationCheck**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md)
   - **Description**:  This method will run the authorization for a single check based on the settings for the terminal.
   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#request-1)
   - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#response-1)
@@ -295,6 +297,7 @@ Definition and hyperlink to sample SOAP request and response.
 Definition using tokens and hyperlink to a sample SOAP request and response.
 
 - #### [**ProcessSingleCheckWithToken**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md)
+  - **Replaces**: [**ProcessSingleCertificationCheckWithToken**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md)
   - **Description**:  This method will run the authorization for a single check based on the settings for the terminal using either, a given Token or the Account Type, Routing Number, and Account Number.
    - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#request-1)
   - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#response-1)
@@ -303,11 +306,13 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
 
 
 - #### [**GetToken**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md)
+  - **Replaces**: [**GetCertificationToken**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md)
   - **Description**:  This method will return a Token for the Account Type, Routing Number, and Account Number.
   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#request-1)
   - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#response-1)
 
 - #### [**ParseMICR**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ParseMICR.md)
+  - **Replaces**: [**ParseCertificationMICR**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md)
   - **Description**:  This method will return an Account Type, Routing Number and Account Number.
   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request-1)
   - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response-1)
@@ -323,8 +328,43 @@ The host system should always check each response to make sure the RESULT child 
 The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
 
 _NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
+### **Terminal Settings - XML Specification**
+
+The GetCertificationTerminalSettings and GetTerminalSettings web methods will return the following XML string.
+
+```XML
+<?xml version=”1.0” encoding=”utf-8”?>
+<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
+  <TERMINAL_ID>2318</TERMINAL_ID>
+  <SEC_CODE>WEB</SEC_CODE>
+  <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
+  <ALLOW_CNSMR_CREDITS>false</ALLOW_CNSMR_CREDITS>
+  <DL_REQUIRED>false</DL_REQUIRED>
+  <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
+  <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
+  <SCHEMA_FILE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
+  <XML_TEMPLATE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml</XML_TEMPLATE_PATH>
+</TERMINAL_SETTINGS>
+```
+The Terminal Settings XML will contain the following elements:
+|                                  |                                                                                                                                                                        |
+|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     TERMINAL_SETTINGS            |     Is the parent   element and contains all other elements within the Terminal Settings XML   document.                                                               |
+|     TERMINAL_ID                  |     Contains the ID   for the terminal. The Terminal ID will be numeric value.                                                                                         |
+|     SEC_CODE                     |     Contains the   Standard Entry Class. This will either be Ck21, PPD, CCD, POP, TEL, or WEB.                                                                         |
+|     IS_GATEWAY_TERMINAL          |     Contains true or   false indicating if the Terminal is a gateway terminal or not.                                                                                  |
+|     DL_REQUIRED                  |     Contains true or   false indicating if the terminal requires the driver’s license state and   number is to be included in the data packet request.                 |
+|     RUN_CHECK_VERIFICATION       |     Contains true or   false indicating if the terminal is setup for check verification.                                                                               |
+|     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
+|     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
+|     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
+
 
 ### **Authorization Gateway XML Data Packet Example**:
+
+
+
+
 This XML data packet example contains all available elements. The elements and data types that are required for a specific terminal are defined in that terminal’s XSD.
 ```XML
 <?xml version=”1.0” encoding=”utf-8”?>
@@ -377,7 +417,7 @@ This XML data packet example contains all available elements. The elements and d
   </TRANSACTION>
 </AUTH_GATEWAY>
 ```
-### The Authorization Gateway XML data packet may contain the following elements:
+The Authorization Gateway XML data packet may contain the following elements:
 
 |                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -474,7 +514,7 @@ This XML data packet example contains all available elements. The elements and d
   </TRANSACTION>
  </AUTH_GATEWAY>
 ```
-### **The Authorization Gateway XML data packet may contain the following elements:**
+The Authorization Gateway XML data packet may contain the following elements:
 
 |                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -893,34 +933,7 @@ The Authorization Gateway XML response may contain the following elements:
  
 _NOTE: The AuthGatewayCertification web method response will not contain this element._
 
-## **Terminal Settings - XML Specification**
 
-```XML
-<?xml version=”1.0” encoding=”utf-8”?>
-<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
-  <TERMINAL_ID>2318</TERMINAL_ID>
-  <SEC_CODE>WEB</SEC_CODE>
-  <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
-  <ALLOW_CNSMR_CREDITS>false</ALLOW_CNSMR_CREDITS>
-  <DL_REQUIRED>false</DL_REQUIRED>
-  <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
-  <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
-  <SCHEMA_FILE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
-  <XML_TEMPLATE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml</XML_TEMPLATE_PATH>
-</TERMINAL_SETTINGS>
-```
-### **The Terminal Settings XML will contain the following elements**:
-|                                  |                                                                                                                                                                        |
-|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     TERMINAL_SETTINGS            |     Is the parent   element and contains all other elements within the Terminal Settings XML   document.                                                               |
-|     TERMINAL_ID                  |     Contains the ID   for the terminal. The Terminal ID will be numeric value.                                                                                         |
-|     SEC_CODE                     |     Contains the   Standard Entry Class. This will either be Ck21, PPD, CCD, POP, TEL, or WEB.                                                                         |
-|     IS_GATEWAY_TERMINAL          |     Contains true or   false indicating if the Terminal is a gateway terminal or not.                                                                                  |
-|     DL_REQUIRED                  |     Contains true or   false indicating if the terminal requires the driver’s license state and   number is to be included in the data packet request.                 |
-|     RUN_CHECK_VERIFICATION       |     Contains true or   false indicating if the terminal is setup for check verification.                                                                               |
-|     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
-|     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
-|     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
 
 
 
