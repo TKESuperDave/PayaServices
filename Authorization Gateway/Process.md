@@ -41,8 +41,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
      - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
-     - [A Note about Special Characters]()
-12. [How to determine which XML Template to Use]()
+12. [How to determine which XML & XDS Template to Use]()
      - [Standard XML Templates]()
 	      	- [PPD XML Templates]()
 	      	- [CCD XML Templates]()
@@ -319,10 +318,7 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
 
 
 
-## **Validation Handling**
-When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
 
-The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet.
 
 ## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
 The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
@@ -557,9 +553,23 @@ The Authorization Gateway XML data packet may contain the following elements:
 |     TYPE:                  |     The   type attribute contains the content type of the image. Valid   TYPE valuesare “tiff”.                                                                                                                                                                                                                                                                                                                                |
 |     MRDCIMGCOUNT:          |     This   is an optional element for transactions that have an SEC code of POP or   Check21. NOTE:  Please view POP or   Check21 XSD’s for implementation.                                                                                                                                                                                                                                                                    |
 |     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.                                                                                                                                                                                                                                                                                                   |
-## **XSD Schimas with XML Template examples** 
+## **XSD Schemas with XML & XSD Template examples** 
+The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. 
 
-A matrix of the available XML Templates and XSD Schmimas for each SEC code can be found below. 
+The XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
+
+The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+
+ - If the Terminal requires the Driver’s License Information. 
+ - If the Terminal is configured for Check Verification.
+ - If the Terminal is configured for Identity Verification.
+ - For PPD and CCD entries, If the Terminal is configured to allow Credit entries
+
+A matrix of the available XMLs and XSDs for each SEC code can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  
+
+The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions. Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx
+
+A matrix of the available XML Templates and XSD Schemas for each SEC code can be found below. 
 
 ### **PPD XSD Schemas with XML Template examples**
 
@@ -815,20 +825,7 @@ Root path:  https://demo.eftchecks.com/webservices/schemas/pop/templates)
 |      OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4323                           |
 |      OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4333                           |
 
-## [**How to determine which XSD to Use**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS)
-The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
 
-The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
-
- - If the Terminal requires the Driver’s License Information. 
- - If the Terminal is configured for Check Verification.
- - If the Terminal is configured for Identity Verification.
- - For PPD and CCD entries, If the Terminal is configured to allow Credit entries
-
-A matrix of the available XSDs for each SEC code can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema.
-
-An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
-https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
 
 ## **Standard XSD Schemas**
 A matrix of the available XSDs can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema.
@@ -922,6 +919,16 @@ https://demo.eftchecks.com/Webservices/schemas/types/StatesAndProvincesSimpleTyp
 https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayTypes.xsd 
  - Authorization Gateway Response Types
 https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayResponseTypes.xsd
+
+
+
+## **Validation Handling**
+When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
+
+The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet.
+
+
+
 
 ## **Responses**
 Each web method in the Authorization Gateway will return an XML string and detail the success or failure of the submission.  If the transaction is accepted (authorized) an authorization number will be returned at a minimum.
