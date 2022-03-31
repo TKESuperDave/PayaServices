@@ -41,7 +41,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
      - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
-12. [How to determine which XML & XDS Template to Use]()
+12. [How to determine which XML & XDS Template to Use](Process.md#xsd-schemas-with-xml--xsd-template-examples)
      - [Standard XML Templates]()
 	      	- [PPD XML Templates]()
 	      	- [CCD XML Templates]()
