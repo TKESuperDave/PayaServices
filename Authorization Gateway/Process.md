@@ -42,27 +42,27 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
 12. [How to determine which XML & XDS Template to Use](Process.md#xsd-schemas-with-xml--xsd-template-examples)
-     - [Standard XML Templates]()
-	      	- [PPD XML Templates]()
-	      	- [CCD XML Templates]()
-	      	- [WEB XML Templates]()
-	      	- [TEL XML Templates]()
-	      	- [POP XML Templates]()
-	      	- [Check21 XML Templates]()
-	      	- [BOC XML Templates]()
-     - [XML Templates when using Tokens]()
-	      	- [PPD XML Templates]()
-	      	- [CCD XML Templates]()
-	      	- [WEB XML Templates]()
-	      	- [TEL XML Templates]()
-	      	- [POP XML Templates]()
-	      	- [Check21 XML Templates]()
-	      	- [BOC XML Templates]()
-     - [OCR XML Templates]()
-	      	- [POP XML Templates]()
-	      	- [Check21 XML Templates]()
-	      	- [Check21 XML Templates for Mobile]()
-13. [How to determine which XSD to Use](Process.md#how-to-determine-which-xsd-to-use)
+     - [Standard XML Templates]()  
+		- [PPD XML & XSD Templates]()  
+		- [CCD XML & XSD Templates]()  
+		- [WEB XML & XSD Templates]()  
+		- [TEL XML & XSD Templates]()  
+		- [POP XML & XSD Templates]()  
+		- [Check21 XML & XSD Templates]()  
+		- [BOC XML & XSD Templates]()  
+     - [XML & XSD Templates when using Tokens]()  
+		- [PPD XML & XSD Templates]()  
+		- [CCD XML & XSD Templates]()  
+		- [WEB XML & XSD Templates]()  
+		- [TEL XML & XSD Templates]()  
+		- [POP XML & XSD Templates]()  
+		- [Check21 & XSD XML Templates]()  
+		- [BOC XML & XSD Templates]()  
+     - [OCR XML Templates]()  
+		- [POP XML & XSD Templates]()  
+		- [Check21 XML & XSD Templates]()  
+		- [Check21 XML & XSD Templates for Mobile]()
+13. How to determine which XSD to Use
      - [Standard XSD Schemas]()
 	      	- [PPD Schemas - Guaranteed]()
 	      	- [PPD Schemas - Non-Guaranteed]()
@@ -571,6 +571,17 @@ The grid also includes the Terminal IDs that can be used for testing and certify
 
 A matrix of the available XML Templates and XSD Schemas for each SEC code can be found below. 
 
+***Note about Special Characters**
+Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+
+|     Special Character    |     Symbol    |     Escaped Form     |
+|--------------------------|---------------|----------------------|
+|     Ampersand            |     &         |     \&amp;           |
+|     Less-than            |     <         |     \&lt;            |
+|     Greater-than         |     >         |     \&gt;            |
+|     Quotes               |     “         |     \&quot;          |
+|     Apostrophe           |     ‘         |     \&apos;          |
+
 ### **PPD XSD Schemas with XML Template examples**
 
 | **PPD**                                                    | Certification Terminal ID                |                |                     |             |                       |
@@ -657,7 +668,7 @@ A matrix of the available XML Templates and XSD Schemas for each SEC code can be
 |     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/TEL%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     1217 / 2217                                   |
 
 
-### **POP XML Templates	**
+### **POP XML Templates**
 (Root path:  https://demo.eftchecks.com/webservices/schemas/pop/templates)
 
 |     Template                                               |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
@@ -687,7 +698,7 @@ A matrix of the available XML Templates and XSD Schemas for each SEC code can be
 |     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     1617                           |
 
 
-## [**XML Templates using Tokens**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML/With%20Tokens)
+## **XML Templates using Tokens**
 
 A matrix of the available XML Templates when using tokens for each SEC code can be found below. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
 
@@ -1314,16 +1325,7 @@ https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVeri
 There are published example XML data packets that contain example data, and XSD Schema packets. 
 https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
 
-|     Special Character    |     Symbol    |     Escaped Form     |
-|--------------------------|---------------|----------------------|
-|     Ampersand            |     &         |     \&amp;           |
-|     Less-than            |     <         |     \&lt;            |
-|     Greater-than         |     >         |     \&gt;            |
-|     Quotes               |     “         |     \&quot;          |
-|     Apostrophe           |     ‘         |     \&apos;          |
 
 Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
 Link to [XSD Schemas](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD)
