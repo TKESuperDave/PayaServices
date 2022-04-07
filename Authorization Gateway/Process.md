@@ -1,139 +1,157 @@
-# **Phase 1 Preparation**
+# Overview
 
-## **Connect to the Authorization Gateway**
+The Authorization Gateway is designed to accommodate various input requirements based on a given terminal’s settings. This allows for the development of a single interface that can be easily configured to handle many different scenarios. 
 
-Once you have successfully connected to the Authorization Gateway and are comfortable with adding the SOAP header, you will test your request and response with the GetCertificationTerminalSettings.
- 
-The GetCertificationTerminalSettings web method is defined in the [Terminal Settings – XML Specification](#TerminalSettingsXMLSpecification) section, providing an example of the request and response. The invocation of this web method is part of the Preparation Phase because it is the simplest web method and requires no input parameters.
+The Authorization Gateway uses web services to present distributed methods for integration into client applications, and an interface with the Authorization Gateway can be developed with any programming language that can consume a web service.
 
-This web method can be invoked if your implementation team determines the host system needs to acquire information about the Authorization Gateway Terminal, and does not need to be invoked on a continuous basis.
+Extensible Markup Language (XML) is used to send data packet requests to the Authorization Gateway and to receive a response back.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS. The Authorization Gateway also employs a custom SOAP header for authentication information.  
 
-_Please note this is not to be confused with the GetTerminalSettings, which performs the same function for production terminals during the Production Phase._
+XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested. 
 
-## **SEC Standard Entry Class Codes**
-The Authorization Gateway uses the Standard Entry Class (SEC) codes to determine what information is required to be sent in the submission. The National Automated Clearing House Association (NACHA) requires the use of SEC Codes for each transaction settled through the Automated Clearing House (ACH).  Each code identifies what type of transaction occurred. In addition, the SEC_CODE element in the response XML Data Packet form the GetCertificationTerminalSettings web method will include the SEC code used from the terminal ID provided.  A definition of each of the SEC codes used by the Authorization Gateway can be found below.
-
-•	**PPD** - Prearranged Payment and Deposit Entry :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a consumers account. 
-
-•	**CCD** - Corporate Credit or Debit :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a business account. 
-
-•	**WEB** - Internet Initiated Entry :  An internet initiated entry is a method of payment for goods or services made via the internet.    
-
-•	**TEL** - Telephone Initiated Entry :  A telephone initiated entry is a payment for goods or services made with a single entry debit with oral authorization obtained from the consumer via the telephone.
-
-•	**POP** - Point-of-Purchase Entry : The Point-of-Purchase method of payment is for purchases made for goods or services in person by the consumer.  These are non-recurring debit entries. A check reading device must be used to capture the routing number, account number, and check number from the source document (check). The source document cannot be previously used for any prior POP entry, and the source document must be voided and returned to the customer at the point-of-purchase. In addition, a signed receipt must be obtained at the point-of-purchase and retained for 2 years from the settlement date. The “Authorization Requirements” section in the Authorization Gateway Specification document contains additional information on the receipt requirements.
-
-•	**C21** - Check 21 :  Although not an SEC Code C21 is used to denote Check 21 transactions. Check 21 requires a check reading device capture the routing number, account number, and check number from the source document (Check) as well as capture images of both the front and back of the source document.  
-
-# **Phase 2 Development**
-
-**Interfacing with the Authorization Gateway**
-
-The best place to start is to determine your application architecture for interfacing with the Authorization Gateway.  You will choose which published XSD(s) your XML data packets will be validated against, and you also know the URL for the corresponding XML template(s) for your schema(s).  
-This leaves you with the following possibilities for creating your XML data packets that are sent to the Authorization Gateway:
-
-1.	XML Schema Definition Tool (such as Xsd.exe for .Net or Svcutil.exe) to generate a class based on the published XSD, populate the class properties, and then serialize the object.
-2.	LINQ to XML to build your xml and populate the elements and attributes.
-3.	You can load the XML template into an XML document object and use Xpath to populate the elements and attributes.
-4.	You can build your own XML document and use Xpath to populate the elements and attributes.
-
-We recommend you leverage the published [XSDs](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS) and [XML](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML) templates and use either the first or second options when creating the data packets to be sent. All these methods use the .NET platform however other languages have successfully been used. 
-
-We have provided example request XML Data Packets to assist your integration team with getting started. A link to these examples can be found at the end of the “How to determine which XML Template to Use” section above.
+### **Table of Contents**
 
 
-Once you have determined how you will create your XML data packets in your system; we recommend reviewing each element and attribute and when they are best used. The Data Packet – XML Specification(#DataPacketXMLSpecification) provides links to XML templates, and text description of the regular expressions, data types, or enumerations that control the allowed data formats for each element.
+2. [Overview](Process.md#overview)	 
+6. [Connection Method](Process.md#connection-method)
+7. [Submission](Process.md#submissions)
+     - [SOAP Header](Process.md#soap-header)
+8. [Web Methods](Process.md#web-methods)
+     - [Certification Methods](Process.md#certification-methods)
+     	- [Certification Web Methods](Process.md#certification-methods)
+      		- [GetCertificationTerminalSetttings](Process.md#getcertificationterminalsettings)
+      		- [AuthGatewayCertification](Process.md#authgatewaycertification)
+      		- [ProcessSingleCertificationCheck](Process.md#processsinglecertificationcheck)
+     	- [Certification Web Methods when using Tokens](Process.md#certification-web-methods-when-using-tokens)
+	      	- [GetCertificationTerminalSettings](Process.md#getcertificationterminalsettings-1)
+	      	- [AuthGatewayCertification](Process.md#authgatewaycertification-1)
+	      	- [ProcessSingleCertificationCheckWithToken](Process.md#processsinglecertificationcheckwithtoken)
+	      	- [GetCertificationToken](Process.md#getcertificationtoken)
+	      	- [ParseCertificationMICR](Process.md#parsecertificationmicr)
+     - [Production Methods](Process.md#production-methods)
+     	- [Production Web Methods](Process.md#production-web-methods)
+	      	- [GetTerminalSettings](Process.md#getterminalsettings)
+	      	- [ProcessSingleCheck](Process.md#processsinglecheck)
+	      	- [GetArchivedResponse](Process.md#getarchivedresponse)
+     	- [Production Web Methods when using Tokens](Process.md#production-web-methods-when-using-tokens)
+	      	- [ProcessSingleCheckWithToken](Process.md#processsinglecheckwithtoken)
+	      	- [GetToken](Process.md#gettoken)
+	      	- [ParseMICR](Process.md#parsemicr)
 
-## **How to determine which XML Template to Use**
+11. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
+     - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
+     - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
+     - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
+12. [How to determine which XML & XDS Template to Use](Process.md#how-to-determine-which-xml--xsd-template-to-use)
+     - [Standard XML Templates]()  
+		- [PPD XML & XSD Templates]()  
+		- [CCD XML & XSD Templates]()  
+		- [WEB XML & XSD Templates]()  
+		- [TEL XML & XSD Templates]()  
+		- [POP XML & XSD Templates]()  
+		- [Check21 XML & XSD Templates]()  
+		- [BOC XML & XSD Templates]()  
+     - [OCR XML Templates]()  
+		- [POP XML & XSD Templates]()  
+		- [Check21 XML & XSD Templates]()  
+		- [Check21 XML & XSD Templates for Mobile]()
+14. [Data Types](Process.md#data-types)
+15. [Responses](Process.md#responses)
 
-The XML data packet can be built from scratch or one of the available XML templates can be used to build the XML data packet prior to submitting to the Authorization Gateway. The URI for the XML data packet for a given terminal can be retrieved from the Terminal Settings but can also be determined by using the criteria below.
-
-The root path for all XML Templates is https://demo.eftchecks.com/webserivces/schemas/  followed by the SEC Code, “/Templates/”, and the XML Template name.  The XML Template is determined by the following criteria:
-
- - 	If the Terminal requires the Driver’s License Information.
- - 	If the Terminal is configured for Check Verification.
- - 	If the Terminal is configured for Identity Verification.
-
-## [**How to determine which XSD to Use**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS)
-                       
-The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
-
-The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
-
- - If the Terminal requires the Driver’s License Information. 
- - If the Terminal is configured for Check Verification.
- - If the Terminal is configured for Identity Verification.
- - For PPD and CCD entries, If the Terminal is configured to allow Credit entries   
-   
-A matrix of the available XML Templates, and XSD Schemas for each SEC code can be found in the XML/XSD section, by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.  
-  
-**Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx**
-
-An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
-https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
-
-There are published example XML data packets that contain example data, and XSD Schema packets. 
-https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
-
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
-
-|     Special Character    |     Symbol    |     Escaped Form     |
-|--------------------------|---------------|----------------------|
-|     Ampersand            |     &         |     \&amp;           |
-|     Less-than            |     <         |     \&lt;            |
-|     Greater-than         |     >         |     \&gt;            |
-|     Quotes               |     “         |     \&quot;          |
-|     Apostrophe           |     ‘         |     \&apos;          |
-
-Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
-Link to [XSD Schemas](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD)
+10. [Validation Handling]()
+     - [Validation Messages Response](Process.md#validation-message-response)
+	      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
+	      	- [Validation Message Example - Failure Response](Process.md#validation-message-example--failure-response)
+     - [Authorization Message Response](Process.md#authorization-message-response)
+	      	- [Authorization Message Example](Process.md#authorization-message-example)
+	      	- [Process Single Certification Check - Authorization](Process.md#process-single-certification-check--authorization)
+     - [Authorization Message Response with Token](Process.md#authorization-message-response-with-token)
+	      	- [Authorization Message Example with Token](Process.md#authorization-message-example-with-token)
+			
+	Failure Responses		
+     - [Process Single Certification Check - Check Limit Exceeded](Process.md#check-limit-exceeded)
+     - [Process Single Certification Check - Decline]()
+     - [Process Single Certification Check - Void]()
+     - [Process Single Certification Check - Reversal]()
+     - [Process Single Certification Check - Credit]()
+     - [Process Single Certification Check - Manager Needed]()
+     - [Process Single Certification Check - Represented Check]()
+     - [Process Single Certification Check - No ACH]()
+     - [Process Single Certification Check - MICR ERROR]()
+16. [Exception Handling](Process.md#exception-handling)
+     - [EXCEPTION Element - Example as a child of the RESPONSE element](Process.md#exception-element--example-as-a-child-of-the-response-element)
+17. [Request an Archived Response](Process.md#request-an-archived-response)
+22. [Sample Code]()     
+- [SOAP Message Sample]()
+23. [Contact Information]()
 
 
-## **Data Identification**
-The specification for the Authorization Gateway XML Data Packet allows you to optionally identify your data in two distinct ways. The **REQUEST_ID** attribute contained within the AUTH_GATEWAY element and the **TRANSACTION_ID** element. These are built in so your host system can match a response from the Authorization Gateway with the original request. 
+21. [Authorization Requirements]()
+     - [Authorization Page - PPD]()
+     - [Authorization Page - CCD]()
+     - [Authorization Page - WEB]()
+     - [Recorded Authorization - TEL]()
+     - [Reciept Authorization - POP]()
 
-These identifiers are not inherently unique, rather the Authorization Gateway leaves the responsibility of determining if an identifier is unique to the host system. It is not required that optional identifiers are unique, but it is strongly recommended. If an identifier is not unique it may become difficult for your host system to match responses or retrieve archived responses.  In the examples we have provided, GUIDs have been used as optional identifiers. The use of GUIDs ensures uniqueness, but any value can be used as an identifier, including database identity column values. It is also important to note that if the implementation team determines an identifier needs to be unique, that it only needs to be unique for a specific terminal ID, but it can be unique across all terminal IDs for a given user. 
- 
+	 
+	 
 
-**The REQUEST_ID** attribute should be a unique identifier that is used to identify the overall data packet. When your data packet is received by the Authorization Gateway it is processed, and asynchronously stored along with the response. This is done so the host system can invoke the GetArchivedResponse web method to request a previous response. 
+	 
+1. [Introduction]()
+3. [Workflow Overview](Process.md#workflow-overview)
+     - [Phase 1: Preparation]()
+	      	- [Preparation Phase Milestones]()
+     - [Phase 2: Development]()
+	      	- [Development Phase Milestones]()
+	 - [Phase 3: Certification]()
+	      	- [Certification Phase Milestones]()
+	 - [Phase 4: Production]()
+	      	- [Production Phase Milestones]()
+4. [Preparing for Authorization Gateway Development (Phase 1)]()
+     - [Where do I start]()
+     - [What are the different Standard Entry Class (SEC) Codes?]()
+5. [Beginning Authorization Gateway Development (Phase 2)]()
+     - [I'm ready to begin Development. Where do I start?]()
+     - [What does it all mean?]()
+     - [How do I identify my data?]()
+     - [What do the different identifiers mean?]()
+     - [What does verification only mean?]()
+     - [What do I need to provide in the account section?]()
+     - [When do I need to include identify information]()	 
 
-The GetArchivedResponse web method accepts the REQUEST_ID as an input parameter and will return the corresponding response.  It is important to note that the GetArchivedResponse is a production only web method and can only be effectively used if the host system keeps track of and submits values in the REQUEST_ID attribute.  The value in the REQUEST_ID attribute of the request data packet is also returned in the response data packet in the REQUEST_ID attribute of the RESPONSE element.
+4. [Preparing for Authorization Gateway Development (Phase 1)]()
+     - [Where do I start]()
+     - [What are the different Standard Entry Class (SEC) Codes?]()
+5. [Beginning Authorization Gateway Development (Phase 2)]()
+     - [I'm ready to begin Development. Where do I start?]()
+     - [What does it all mean?]()
+     - [How do I identify my data?]()
+     - [What do the different identifiers mean?]()
+     - [What does verification only mean?]()
+     - [What do I need to provide in the account section?]()
+     - [When do I need to include identify information]()	 
+18. [Requestion a Certification Script]()
+19. [Beginning Certification (Phase 3)]()
+20. [Migrating to Production (Phase 4)]()	 
 
-**The TRANSACTION_ID** element should be a unique identifier that is used to identify a specific transaction.  The value contained in the TRANSACTION_ID element is recorded by the Authorization Gateway but is not used internally and cannot be used to request a specific transaction. The value in the TRANSACTION_ID element is however returned in the response data packet in the TRANSACTION_ID element within the parent AUTHORIZATION_MESSAGE element. This was done so that your host system can match the response for a specific transaction to an internal record in the host system. 
+- [VB.NET]()
+     - [C#]()
+24. [Code Sample Kits]()
+1. [Introduction]() - Deleted
 
-## **Valid Identifiers**
-Each request XML Data Packet must contain a valid identifier for its schema. The identifier you use will change depending on the context of the transaction being sent. Your integration team will become more familiar with the different identifiers as you begin to work on each milestone. However, a list of all the valid identifiers can be found below.  
 
-|                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Authorize (A)    |     This   is used in schemas for POP, TEL, WEB, and Check 21 to indicate that an   authorization is requested for the XML Data Packet being sent.  It is also used to process credit   transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|     Recurring (R)    |     This   is used in schemas for PPD, CCD, TEL and WEB to indicate that an   authorization is requested for a single or reoccurring transaction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|     Void (V)         |     This   is used in schemas for PPD, CCD, POP, TEL, WEB, and Check 21 to void a   previously authorized transaction. However, it should be noted that   transactions can only be voided on the same calendar day they were   authorized.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|     Override (O)     |     This   is used in schemas for POP, TEL, and Check 21 when the host system receives a   manager needed message to void the previous transaction and input a new   transaction in its place.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|     Payroll (P)      |     This   is used in schemas for POP and Check 21 for business and payroll checks. What   this does is NOT link the driver’s license to the routing/ account numbers   since the person writing/cashing the check is usually not the business.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|     Update (U)       |     This   is used in schemas for POP and Check 21 for OCR transactions that already   have complete data in the data packet. It forces the transaction to run as a   normal POP or Check 21 transaction on an OCR terminal. This is normally done   when a change is needed to a transaction that was submitted under a normal   OCR transaction. Example: A transaction is sent through using the OCR engine.   The data that is returned does not match the image. If the transaction was   still successful and a change is warranted, a Void Transaction is sent. Then   another transaction with updated data (from the response and corrected from   user) is sent back through the system with a complete data packet and “U” as   the identifier. If the transaction failed, other actions will need to be taken.    |
 
-## **Verification Only**
-If the gateway terminal is setup as verification only or the VERIFICATION_ONLY element is set to true, then the transaction will be processed as verification only. This means that an authorization will be run, but that the check **_will not_** undergo Electronic Check Conversion (ECC) and will have to be taken to the bank for deposit. 
-Depending on the merchant’s program, the funds may or may not be guaranteed.
-
-## **Account Section Data**
-All PPD, CCD, TEL and WEB schemas define that the ACCOUNT child elements must contain values.  The child elements within the ACCOUNT element for POP and Check 21 (C21) schemas define what ACCOUNT child elements must contain values and what ACCOUNT child elements can be left empty.  All of the child elements within the ACCOUNT element for POP and Check 21 (C21), except the ACCOUNT_TYPE for POP schemas, define the data as optional. This is because for these SEC codes you can either provide the swiped MICR data or provide the routing, account, and check numbers.   If the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER are all left empty in the request data packet then the transaction cannot be processed. Either the MICR_DATA or the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements must contain values. 
-
-It is important to note that for POP transactions, that if the swiped MICR data in the MICR_DATA element is missing, but the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements contain values then the transaction will be processed as verification only; even if the CONTROL_CHAR indicates that the information was retrieved from a check reader. In addition, if the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements all contain values, then the Authorization Gateway will only use the information in the MICR_DATA element and will parse it out overwriting any values sent in the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements.
-
-## **Identity information**
-Identity information needs to be included when the terminal is setup to do identity verification. There are schemas that will handle the validation for terminals that are setup to do identity verification, and the GetCertificationTerminalSettings web method will return a response of “true” in the RUN_IDENTITY_VERIFICATION element. If a terminal is setup to do identity verification, then the host system is required to send either the last 4 of the check writers social security number OR their birth year (not both). 
-
-## **Connection Method**
-Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  
-The webservice address used for certification and testing is as follows:
+# **Connection Method**
+Paya Services supports connection via secure (https) webservice using SOAP.  SOAP is a simple XML-based protocol to let applications exchange information over HTTP.  The webservice address used for certification and testing is as follows:
 
 https://demo.eftchecks.com/webservices/AuthGateway.asmx
 
-Each web method contains a custom SOAP header used for authentication. A username and password for certification will be provided.
-You can reach our Integration Department by email at integration@eftsupport.com.
+A username and password for certification will be provided.
+
+NOTE: A production webservice address, user name, and password will be supplied upon successful certification.
+
+# **Submissions**
+
+The Authorization Gateway has been designed for fast and easy integration with your existing system. Simply request the Terminal Settings, complete the returned xml data packet template, and return it to the Authorization Gateway for processing. To accomplish this Authorization Gateway provides web methods for certification and for production. In addition, each web method contains a custom SOAP header used for authentication.
 
 ## **SOAP Header**
 The SOAP header contains the following fields:
@@ -144,9 +162,9 @@ The SOAP header contains the following fields:
 |     **TerminalID**    |     Integer    |     Unique to   each terminal used.  Provided by Paya   Services at time of terminal approval.    Terminal IDs for certification are provided in this document.    |
 
 **Example:** 
-```
+```XML
   <soap:Header>
-    <AuthGatewayHeader    xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway” >
+    <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
       <UserName> GATEWAYUserName </UserName>
       <Password> GATEWAYPassword</Password>
       <TerminalID>1210</TerminalID>
@@ -154,21 +172,142 @@ The SOAP header contains the following fields:
   </soap:Header>
 ```
 
-## **Web Methods**
+# **Web Methods**
 A definition of the web methods can be found below. Each web method contains a hyperlink to a sample SOAP request and response.
 
-## **Certification Web Methods** 
+## **Certification Methods**
+
+Before you are able to go into production, Paya Services requires that you cerify your solution using the follow web methods. These methods do not create live transactions with in the banking system but allow you to setup your solution for testing and ceritifying purposes.
+
+### **Certification Web Methods** 
+
+
+- #### [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
+  - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md#response-1)
+
+- #### [**AuthGatewayCertification**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md)	
+  - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods//AuthGatewayCertification.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#response-1)
+
+- #### [**ProcessSingleCertificationCheck**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md)
+  - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
+  
+  |     Routing   Number    |     Purpose                 |
+  |-------------------------|-----------------------------|
+  |     490000018           |     Authorization           |
+  |     490000034           |     Decline                 |
+  |     490000021           |     Manager   Needed        |
+  |     490000047           |     Re-Presented   Check    |
+  |     490000050           |     No   ACH                |
+  |     490000015           |     MICR   ERROR            |
+
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#response-1)
+
+## **Certification Web Methods when using Tokens**
+Definition using tokens and hyperlink to samples of SOAP request and response.
+
+- #### [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
+  - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods//AuthGatewayCertification.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#response-1)
+
+- #### [**AuthGatewayCertification**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md)
+  - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods//AuthGatewayCertification.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/AuthGatewayCertification.md#response-1)
+
+- #### [**ProcessSingleCertificationCheckWithToken**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md)
+  - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal using either, a given Token or the Account Type, Routing Number, and Account Number. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
+
+  |     Routing Number    |     Token                               |     Purpose               |
+  |-----------------------|-----------------------------------------|---------------------------|
+  |     490000018         |     05944FB3E1DA4663868455AF630F45BE    |     Authorization         |
+  |     490000034         |     15944FB3E1DA4663868455AF630F45BE    |     Decline               |
+  |     490000021         |     25944FB3E1DA4663868455AF630F45BE    |     Manager Needed        |
+  |     490000047         |     35944FB3E1DA4663868455AF630F45BE    |     Re-Presented Check    |
+
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md#response-1)
+
+_NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
+
+- #### [**GetCertificationToken**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md)
+  - **Description**: This method will return a Token for the Account Type, Routing Number, and Account Number.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md#response-1)
+  -  
+- #### [**ParseCertificationMICR**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md)
+  - **Description**: This method will return an Account Type, Routing Number and Account Number.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md#response-1)
+
+## Production Methods
+
+Once you have **certified** with our Paya Services team you will need to used the Production Methods listed below to create live transaction within the banking system.
+
+### **Production Web Methods** 
 Definition and hyperlink to sample SOAP request and response.
 
-- [**GetCertificationTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetCertificationTerminalSettings)
-  - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
-  - **Input**:  Accepts no parameters. 
-  - **Successful Output**: 
+- #### [**GetTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md)
+  - **Replaces**: [**GetCertificationTerminalSettings**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationTerminalSettings.md)
+  - **Description**: This method will return the Terminal Settings for a terminal.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetTerminalSettings.md#response-1)
 
-```
+- #### [**ProcessSingleCheck**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md)
+  - **Replaces**: [**ProcessSingleCertificationCheck**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheck.md)
+  - **Description**:  This method will run the authorization for a single check based on the settings for the terminal.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheck.md#response-1)
+
+- #### [**GetArchivedResponse**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md)
+  - **Description**:  This method will retrieve a response for a previously processed transaction.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetArchivedResponse.md#response-1)
+
+## **Production Web Methods when using Tokens**
+Definition using tokens and hyperlink to a sample SOAP request and response.
+
+- #### [**ProcessSingleCheckWithToken**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md)
+  - **Replaces**: [**ProcessSingleCertificationCheckWithToken**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ProcessSingleCertificationCheckWithToken.md)
+  - **Description**:  This method will run the authorization for a single check based on the settings for the terminal using either, a given Token or the Account Type, Routing Number, and Account Number.
+   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ProcessSingleCheckWithToken.md#response-1)
+
+_NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
+
+
+- #### [**GetToken**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md)
+  - **Replaces**: [**GetCertificationToken**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/GetCertificationToken.md)
+  - **Description**:  This method will return a Token for the Account Type, Routing Number, and Account Number.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Production%20Methods/GetToken.md#response-1)
+
+- #### [**ParseMICR**](/Authorization%20Gateway/Web%20Methods/Production%20Methods/ParseMICR.md)
+  - **Replaces**: [**ParseCertificationMICR**](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseCertificationMICR.md)
+  - **Description**:  This method will return an Account Type, Routing Number and Account Number.
+  - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request-1)
+  - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response-1)
+
+
+
+
+
+## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
+The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
+
+_NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
+### **Terminal Settings - XML Specification**
+
+The GetCertificationTerminalSettings and GetTerminalSettings web methods will return the following XML string.
+
+```XML
 <?xml version=”1.0” encoding=”utf-8”?>
-<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” 
-xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
+<TERMINAL_SETTINGS xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
   <TERMINAL_ID>2318</TERMINAL_ID>
   <SEC_CODE>WEB</SEC_CODE>
   <IS_GATEWAY_TERMINAL>true</IS_GATEWAY_TERMINAL>
@@ -176,15 +315,11 @@ xmlns:xsd=”http://www.w3.org/2001/XMLSchema”>
   <DL_REQUIRED>false</DL_REQUIRED>
   <RUN_CHECK_VERIFICATION>false</RUN_CHECK_VERIFICATION>
   <RUN_IDENTITY_VERIFICATION>false</RUN_IDENTITY_VERIFICATION>
-  <SCHEMA_FILE_PATH>	
-http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd
-  </SCHEMA_FILE_PATH>
-  <XML_TEMPLATE_PATH>
-http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml
-  </XML_TEMPLATE_PATH>
+  <SCHEMA_FILE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Ng_CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
+  <XML_TEMPLATE_PATH>http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificationDLOptional.xml</XML_TEMPLATE_PATH>
 </TERMINAL_SETTINGS>
 ```
-### **The Terminal Settings XML will contain the following elements**:
+The Terminal Settings XML will contain the following elements:
 |                                  |                                                                                                                                                                        |
 |----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |     TERMINAL_SETTINGS            |     Is the parent   element and contains all other elements within the Terminal Settings XML   document.                                                               |
@@ -198,118 +333,13 @@ http://localhost/geti.emagnus.webservices/Schemas/WEB/Templates/CheckNoVerificat
 |     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
 
 
-- [**AuthGatewayCertification**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=AuthGatewayCertification)	
-  - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the certification Terminal Settings.
-  - **Output**: Outputs an XML string.
-
-- [**ProcessSingleCertificationCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheck)
-  - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
-
-|     Routing   Number    |     Purpose                 |
-|-------------------------|-----------------------------|
-|     490000018           |     Authorization           |
-|     490000034           |     Decline                 |
-|     490000021           |     Manager   Needed        |
-|     490000047           |     Re-Presented   Check    |
-|     490000050           |     No   ACH                |
-|     490000015           |     MICR   ERROR            |
-
-   - **Input**:  Accepts an XML string called a data packet that must conform to the certification terminals schema provided in the certification Terminal Settings.
-   - **Output**: Outputs an XML string.
-
-## **Certification Web Methods when using Tokens**
-Definition using tokens and hyperlink to samples of SOAP request and response.
-
-- [**GetCertificationTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetCertificationTerminalSettings)
-  - **Description**: This method will return the Terminal Settings for a certification Terminal. This method is used during interface testing and certification.
-  - **Input**:  Accepts no parameters. 
-  - **Output**: Outputs an XML string. 
-
-- [**AuthGatewayCertification**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=AuthGatewayCertification)
-  - **Description**:  This method will validate that the interface is sending a data packet that conforms to its schema and is used during interface testing and certification.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the certification Terminal Settings.
-  - **Output**: Outputs an XML string.
-
-- [**ProcessSingleCertificationCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCertificationCheckWithToken)
-  - **Description**:  This method will run the authorization for a single certification check based on the settings for the provided certification terminal using either, a given Token or the Account Type, Routing Number, and Account Number. A list of the valid certification routing numbers and their purpose is below.  This method is used during interface testing and certification.
-
-|     Routing Number    |     Token                               |     Purpose               |
-|-----------------------|-----------------------------------------|---------------------------|
-|     490000018         |     05944FB3E1DA4663868455AF630F45BE    |     Authorization         |
-|     490000034         |     15944FB3E1DA4663868455AF630F45BE    |     Decline               |
-|     490000021         |     25944FB3E1DA4663868455AF630F45BE    |     Manager Needed        |
-|     490000047         |     35944FB3E1DA4663868455AF630F45BE    |     Re-Presented Check    |
-
-  - **Input**:  Accepts an XML string called a data packet that must conform to the certification terminals schema provided in the certification Terminal Settings.
-  - **Output**: Outputs an XML string.
-
-_NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
-
-- [**GetCertificationToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetCertificationToken)
-  - **Description**: This method will return a Token for the Account Type, Routing Number, and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/gettoken.xsd).
-  - **Output**: Outputs an XML string.
-  - 
-- [**ParseCertificationMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseCertificationMICR)
-  - **Description**: This method will return an Account Type, Routing Number and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
-  - **Output**: Outputs an XML string.
-
-## **Production Web Methods** 
-Definition and hyperlink to sample SOAP request and response.
-
-- [**GetTerminalSettings**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetTerminalSettings)
-  - **Description **: This method will return the Terminal Settings for a terminal.
-  - **Input**:  Accepts no parameters.
-  - **Output**: Outputs an XML string.
-
-- [**ProcessSingleCheck**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=ProcessSingleCheck)
-  - **Description**:  This method will run the authorization for a single check based on the settings for the terminal.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the Terminal Settings.
-  - **Output**: Outputs an XML string.
-
-- [**GetArchivedResponse**](https://demo.eftchecks.com/webservices/AuthGateway.asmx?op=GetArchivedResponse)
-  - **Description**:  This method will retrieve a response for a previously processed transaction.
-  - **Input**:  Accepts a Request ID string.
-  - **Output**: Outputs an XML string.
-
-## **Production Web Methods when using Tokens**
-Definition using tokens and hyperlink to a sample SOAP request and response.
-
-- [**ProcessSingleCheckWithToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ProcessSingleCheckWithToken)
-  - **Description**:  This method will run the authorization for a single check based on the settings for the terminal using either, a given Token or the Account Type, Routing Number, and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the terminals schema provided in the Terminal Settings.
-  - **Output**: Outputs an XML string.
-
-_NOTE: Using this method by passing the Account Type, Routing Number, and Account Number will create a TOKEN and pass it back in the Authorization Message Response. If a TOKEN already exists for the Account Type, Routing Number, and Account Number, the current TOKEN will be passed back in the Authorization Message Response._
-
-
-- [**GetToken**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=GetToken)
-  - **Description**:  This method will return a Token for the Account Type, Routing Number, and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/gettoken.xsd).
-  - **Output**: Outputs an XML string.
-
-- [**ParseMICR**](https://demo.eftchecks.com/Webservices/AuthGateway.asmx?op=ParseMICR)
-  - **Description**:  This method will return an Account Type, Routing Number and Account Number.
-  - **Input**:  Accepts an XML string called a data packet that must conform to the schema provided in this [Link](https://demo.eftchecks.com/webservices/Schemas/other/parsemicr.xsd).
-  - **Output**: Outputs an XML string.
-
-
-
-## **Validation Handling**
-When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
-
-The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet.
-
-## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
-The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
-
-_NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
-
 ### **Authorization Gateway XML Data Packet Example**:
+
+
+
+
 This XML data packet example contains all available elements. The elements and data types that are required for a specific terminal are defined in that terminal’s XSD.
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <AUTH_GATEWAY REQUEST_ID=”4654”>
   <TRANSACTION>
@@ -360,7 +390,7 @@ This XML data packet example contains all available elements. The elements and d
   </TRANSACTION>
 </AUTH_GATEWAY>
 ```
-### The Authorization Gateway XML data packet may contain the following elements:
+The Authorization Gateway XML data packet may contain the following elements:
 
 |                            |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -413,51 +443,51 @@ This XML data packet example contains all available elements. The elements and d
 
 <?xml version=”1.0” encoding=”utf-8”?>
 <AUTH_GATEWAY REQUEST_ID=”4654”>
-<TRANSACTION>
-<TRANSACTION_ID>0a4f529d-70fd-4ddb-b909b5598dc07579</TRANSACTION_ID>
-<MERCHANT>
-<TERMINAL_ID>1113</TERMINAL_ID>
-    </MERCHANT>
-    <PACKET>
-<IDENTIFIER>A</IDENTIFIER>
-<CONTROL_CHAR>S</CONTROL_CHAR>
-<VERIFICATION_ONLY>false</VERIFICATION_ONLY>
-<ACCOUNT>
-    <TOKEN>05944FB3E1DA4663868455AF630F45BE</TOKEN>
-    <CHECK_NUMBER>4456</CHECK_NUMBER>
-</ACCOUNT>
-<CONSUMER>
-    <FIRST_NAME>Test</FIRST_NAME>
- <LAST_NAME>Guy</LAST_NAME>
- <ADDRESS1>1001 Test Ave.</ADDRESS1>
- <ADDRESS2>#200</ADDRESS2>
- <CITY>Destin</CITY>
- <STATE>FL</STATE>
- <ZIP>32540</ZIP>
- <PHONE_NUMBER>2345678912</PHONE_NUMBER>
- <DL_STATE>FL</DL_STATE>
- <DL_NUMBER>D12346544</DL_NUMBER>
- <COURTESY_CARD_ID></COURTESY_CARD_ID>
- <IDENTITY>
-     <DOB_YEAR>1961</DOB_YEAR>
-     </IDENTITY>
-   </CONSUMER>
-   <CHECK>
-   <CHECK_AMOUNT>1.25</CHECK_AMOUNT>
-   <IMAGE_FRONT />
-   <IMAGE_BACK />
-   </CHECK>
-<CUSTOM>
-        <CUSTOM1></CUSTOM1>
-        <CUSTOM2></CUSTOM2>
-        <CUSTOM3></CUSTOM3>
-        <CUSTOM4></CUSTOM4>
-       </CUSTOM>
-         </PACKET>
-       </TRANSACTION>
+  <TRANSACTION>
+    <TRANSACTION_ID>0a4f529d-70fd-4ddb-b909b5598dc07579</TRANSACTION_ID>
+      <MERCHANT>
+	  <TERMINAL_ID>1113</TERMINAL_ID>
+      </MERCHANT>
+      <PACKET>
+	<IDENTIFIER>A</IDENTIFIER>
+	<CONTROL_CHAR>S</CONTROL_CHAR>
+	<VERIFICATION_ONLY>false</VERIFICATION_ONLY>
+	<ACCOUNT>
+    	  <TOKEN>05944FB3E1DA4663868455AF630F45BE</TOKEN>
+    	  <CHECK_NUMBER>4456</CHECK_NUMBER>
+	</ACCOUNT>
+	<CONSUMER>
+    	  <FIRST_NAME>Test</FIRST_NAME>
+ 	  <LAST_NAME>Guy</LAST_NAME>
+ 	  <ADDRESS1>1001 Test Ave.</ADDRESS1>
+ 	  <ADDRESS2>#200</ADDRESS2>
+ 	  <CITY>Destin</CITY>
+ 	  <STATE>FL</STATE>
+ 	  <ZIP>32540</ZIP>
+ 	  <PHONE_NUMBER>2345678912</PHONE_NUMBER>
+ 	  <DL_STATE>FL</DL_STATE>
+ 	  <DL_NUMBER>D12346544</DL_NUMBER>
+ 	  <COURTESY_CARD_ID></COURTESY_CARD_ID>
+ 	  <IDENTITY>
+     	    <DOB_YEAR>1961</DOB_YEAR>
+     	  </IDENTITY>
+   	</CONSUMER>
+   	<CHECK>
+   	  <CHECK_AMOUNT>1.25</CHECK_AMOUNT>
+   	  <IMAGE_FRONT />
+   	  <IMAGE_BACK />
+   	</CHECK>
+	<CUSTOM>
+          <CUSTOM1></CUSTOM1>
+          <CUSTOM2></CUSTOM2>
+          <CUSTOM3></CUSTOM3>
+          <CUSTOM4></CUSTOM4>
+       	</CUSTOM>
+     </PACKET>
+  </TRANSACTION>
  </AUTH_GATEWAY>
 ```
-### **The Authorization Gateway XML data packet may contain the following elements:**
+The Authorization Gateway XML data packet may contain the following elements:
 
 |                            |                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -500,108 +530,217 @@ This XML data packet example contains all available elements. The elements and d
 |     TYPE:                  |     The   type attribute contains the content type of the image. Valid   TYPE valuesare “tiff”.                                                                                                                                                                                                                                                                                                                                |
 |     MRDCIMGCOUNT:          |     This   is an optional element for transactions that have an SEC code of POP or   Check21. NOTE:  Please view POP or   Check21 XSD’s for implementation.                                                                                                                                                                                                                                                                    |
 |     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.                                                                                                                                                                                                                                                                                                   |
-## **XSD Schimas with XML Template examples** 
 
-A matrix of the available XML Templates and XSD Schmimas for each SEC code can be found below. 
+# **How to determine which XML & XSD Template to use** 
+The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
 
-### **PPD XSD Schemas with XML Template examples**
+The root path for all XMLs and XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
 
-| **PPD**                                                    | Certification Terminal ID                |                |                     |             |                       |
-|------------------------------------------------------------|------------------------------------------|----------------|---------------------|-------------|-----------------------|
-|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | [XSD Guarenteed](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed) | [XML Example](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XML/Standard/PPD%20Templates) | [XML Example with Token](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates) |
-| **Debit Only Transactions**                                |                                          |                |                     |             |                       |
-| Check - No Verification DL Optional                          | 1010 / 2010                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckNoVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerficationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
-| Check - No Verification DL Required                          | 1011 / 2011                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
-| Check - Verification Identity Verification DL Optional       | 1012 / 2012                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
-| Check - Verification Identity Verification DL Required       | 1013 / 2013                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
-| Check - Verification Only DL Optional                       | 1014 / 2014                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
-| Check - Verification Only DL Required                       | 1015 / 2015                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
-| Identity Verification Only DL Optional                    | 1016 / 2016                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
-| Identity Verification Only DL Required                    | 1017 / 2017                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
-|                                                            |                                          |                |                     |             |                       |
-| **Credit & Debit Transactions**                            |                                          |                |                     |             |                       |
-| Credit Check - No Verification DL Optional                    | 1810 / 2810                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerficationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
-| Credit Check - No Verification DL Required                     | 1811 / 2811                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
-| Credit Check - Verification Identity Verification DL Optional | 1812 / 2812                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
-| Credi Check - Verification Identity Verification DL Required | 1813 / 2813                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
-| Credit Check - Verification Only DL Optional                 | 1814 / 2814                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
-| Credit Check - Verification Only DL Required                  | 1815 / 2815                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
-| Credit Identity - Verification Only DL Optional               | 1816 / 2816                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditIdentityVerificationOnlyDLOptional.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
-| Credit Identity - Verification Only DL Required               | 1817 / 2817                              | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](https://github.com/PayaDev/PayaServices/blob/main/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+ - If the Terminal requires the Driver’s License Information. 
+ - If the Terminal is configured for Check Verification.
+ - If the Terminal is configured for Identity Verification.
+ - Additionally for XSD of PPD and CCD entries, If the Terminal is configured to allow Credit entries
 
+A matrix of the available XMLs for each SEC code can be found below, followed by the XSDs matrix that correspond to those XMLs. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  
 
+The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions. Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx.
 
+An example of an XML and it's corresponding XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification,  is setup for identity verification, and does not allow credits would be as follows: 
 
+XML: [Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)
 
-### **CCD XSD Schemas with XML Template examples**
+XSD: [Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)
 
-|   **CCD**                                                            | Certification Terminal ID |                |                       |               |                         |
-|---------------------------------------------------------------|:-------------------------:|:--------------:|:---------------------:|:-------------:|:-----------------------:|
-|                                                |    Guarenteed   1000's    |                |                       |               |                         |
-|                  **Debit Only Transactions**                  |  Non-Guarenteed   2000's  | XSD Guarenteed | XSD Non-   Guarenteed | XML   Example | XML   Exampl with Token |
-| Check No Verification DL Optional                             |        1710 / 2710        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Check No Verification DL Required                             |        1711 / 2711        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Check Verification Identity Verification   DL Optional        |        1712 / 2712        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Check Verification Identity Verification   DL Required        |        1713 / 2713        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Check Verification Only DL Optional                           |        1714 / 2714        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Check Verification Only DL Required                           |        1715 / 2715        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Identity Verification Only DL Optional                        |        1716 / 2716        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Identity Verification Only DL Required                        |        1717 / 2717        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-|                                                               |                           |                |                       |               |                         |
-|                **Credit & Debit Transactions**                |                           |                |                       |               |                         |
-| Credit Check No Verification DL Optional                      |        1910 / 2910        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Credit Check No Verification DL Required                      |        1911 / 2911        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Credit Check Verification Identity   Verification DL Optional |        1912 / 2912        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Credit Check Verification Identity   Verification DL Required |         1913 / 293        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Credit Check Verification Only DL   Optional                  |        1914 / 2914        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Credit Check Verification Only DL   Required                  |        1915 / 2915        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Credit Identity Verification Only DL   Optional               |        1916 / 2916        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
-| Credit Identity Verification Only DL   Required               |        1917 / 2917        |     [XSD]()    |        [XSD]()        |    [XML]()    |         [XML]()         |
+***Note about Special Characters**
+Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
 
-### **WEB XSD Schemas with XML Template examples**
+|     Special Character    |     Symbol    |     Escaped Form     |
+|--------------------------|---------------|----------------------|
+|     Ampersand            |     &         |     \&amp;           |
+|     Less-than            |     <         |     \&lt;            |
+|     Greater-than         |     >         |     \&gt;            |
+|     Quotes               |     “         |     \&quot;          |
+|     Apostrophe           |     ‘         |     \&apos;          |
+
+## **Standard Templates**
+
+### PPD Templates
+XML Templates
+| **PPD**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/PPD%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates) |
+| CheckNoVerificationDLOptional                          | 1010 / 2010                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1011 / 2011                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1012 / 2012                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1013 / 2013                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1014 / 2014                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1015 / 2015                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1016 / 2016                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1017 / 2017                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/PPD%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/PPD%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
 
 
-|     **WEB**                                                      |     Certification   Terminal ID |                          |                   |                                |
-|--------------------------------------------------------------|:-------------------------------:|--------------------------|-------------------|--------------------------------|
-|                                                              |                                 |                          |                   |                                |
-|     **Debit Only Transactions**                              |       Non-Guarenteed   2000's   |     XSD   Non-Guarenteed |     XML   Example |     XML   Exampl with Token    |
-|     Check No Verification DL Optional                        |                 2310            |            [XSD]()       |        [XML]()    |             [XML]()            |
-|     Check No Verification DL Required                        |                 2311            |            [XSD]()       |        [XML]()    |             [XML]()            |
-|     Check Verification Identity   Verification   DL Optional |                 2312            |            [XSD]()       |        [XML]()    |             [XML]()            |
-|     Check Verification Identity   Verification   DL Required |                 2313            |            [XSD]()       |        [XML]()    |             [XML]()            |
-|     Check Verification Only DL Optional                      |                 2314            |            [XSD]()       |        [XML]()    |             [XML]()            |
-|     Check Verification Only DL Required                      |                 2315            |            [XSD]()       |        [XML]()    |             [XML]()            |
-|     Identity Verification Only DL Optional                   |                 2316            |            [XSD]()       |        [XML]()    |             [XML]()            |
-|     Identity Verification Only DL Required                   |                 2317            |            [XSD]()       |        [XML]()    |             [XML]()            |
+Corresponding XDS Template
 
-### **TEL XSD Schemas with XML Template examples**	
+| **PPD**                                                    | Certification Terminal ID                |             |              |           |                |                     |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|---------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1010 / 2010                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckNoVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1011 / 2011                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1012 / 2012                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1013 / 2013                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1014 / 2014                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1015 / 2015                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1016 / 2016                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1017 / 2017                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 |
+|                                                            |                                          |             |              |           |             |                       |
+| **Credit & Debit Transactions**                            |                                          |             |              |           |             |                       |
+| CreditCheckNoVerificationDLOptional                    | 1810 / 2810                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLOptional.xsd)                 |
+| CreditCheckNoVerificationDLRequired                     | 1811 / 2811                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLRequired.xsd)                 |
+| CreditCheckVerificationIdentityVerificationDLOptional | 1812 / 2812                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CreditCheckVerificationIdentityVerificationDLRequired | 1813 / 2813                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CreditCheckVerificationOnlyDLOptional                 | 1814 / 2814                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLOptional.xsd)                 |
+| CreditCheckVerificationOnlyDLRequired                  | 1815 / 2815                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLRequired.xsd)                 |
+| CreditIdentityVerificationOnlyDLOptional               | 1816 / 2816                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CreditIdentityVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 |
+| CreditIdentityVerificationOnlyDLRequired               | 1817 / 2817                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 |
 
-| **TEL**                                    | Certification   Terminal ID |                |                     |             |                       |
-|------------------------------------------------------|-----------------------------|----------------|---------------------|-------------|-----------------------|
-|                                                      | Guarenteed 1000's           | XSD Guarenteed | XSD Non- Guarenteed | XML Example | XML Exampl with Token |
-| **Debit Only Transactions**                       | Non-Guarenteed 2000's       | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Check N oVerification DL Optional                    | 1210 / 2210                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Check No Verification D Required                     | 1211 / 2211                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Check Verification Identity Verification DL Optional | 1212 / 2212                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Check Verification Identity Verification DL Required | 1213 / 2213                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Check Verification Only DL Optional                  | 1214 / 2214                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Check Verification Only DL Required                  | 1215 / 2215                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Identity Verification Only DL Optional               | 1216 / 2216                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
-| Identity Verification Only DL Required               | 1217 / 2217                 | [XSD]()        | [XSD]()             | [XML]()     | [XML]()               |
 
-### **POP XSD Schemas with XML Template examples**
 
-| **POP**                                              | Certification   Terminal   ID |                |               |                            |                       |
-|------------------------------------------------------|-------------------------------|----------------|---------------|----------------------------|-----------------------|
-| **Debit   Only Transactions**                        | Guarenteed 1000's             | XSD Guarenteed | XML   Example | XML   Example with   Token | XML Exampl with Token |
-| Check No Verification DL Optional                    | 1110                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
-| Check No Verification DL Required                    | 1111                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
-| Check Verification Identity Verification DL Optional | 1112                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
-| Check Verification Identity Verification DL Required | 1113                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
-| Check Verification Only DL Optional                  | 1114                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
-| Check Verification Only DL Required                  | 1115                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
-| Identity Verification Only DL Optional               | 1116                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
-| Identity Verification Only DL Required               | 1117                          | [XSD]()        | [XML]()       | [XML]()                    | [XML]()               |
+
+
+
+### CCD Templates
+XML Templates
+| **CCD**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/CCD%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates) |
+| CheckNoVerificationDLOptional                          | 1710 / 2710                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1711 / 2711                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1712 / 2712                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1713 / 2713                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1714 / 2714                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1715 / 2715                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1716 / 2716                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1717 / 2717                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/CCD%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/CCD%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+
+
+Corresponding XDS Template
+
+| **CCD**                                                    | Certification Terminal ID                |             |              |           |                |                     |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|---------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1910 / 2910                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CheckNoVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1911 / 2911                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1912 / 2912                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1913 / 2913                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1914 / 2914                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CheckVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1915 / 2915                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1016 / 2016                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1017 / 2017                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 |
+|                                                            |                                          |             |              |           |             |                       |
+| **Credit & Debit Transactions**                            |                                          |             |              |           |             |                       |
+| CreditCheckNoVerificationDLOptional                    | 1810 / 2810                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLOptional.xsd)                 |
+| CreditCheckNoVerificationDLRequired                     | 1811 / 2811                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckNoVerificationDLRequired.xsd)                 |
+| CreditCheckVerificationIdentityVerificationDLOptional | 1812 / 2812                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CreditCheckVerificationIdentityVerificationDLRequired | 1813 / 2813                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditCheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CreditCheckVerificationOnlyDLOptional                 | 1814 / 2814                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLOptional.xsd)                 |
+| CreditCheckVerificationOnlyDLRequired                  | 1815 / 2815                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditCheckVerificationOnlyDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_CreditCheckVerificationOnlyDLRequired.xsd)                 |
+| CreditIdentityVerificationOnlyDLOptional               | 1816 / 2816                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/CreditIdentityVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 |
+| CreditIdentityVerificationOnlyDLRequired               | 1817 / 2817                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 |
+
+### WEB Templates
+XML Templates
+| **WEB**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/WEB%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates) |
+| CheckNoVerificationDLOptional                          | 2210                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 2211                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 2212                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 2213                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 2214                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 2215                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 2216                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 2217                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/WEB%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/WEB%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+
+
+Corresponding XDS Template
+
+| **WEB**                                                    | Certification Terminal ID                |             |              |           |                |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Non-Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| Ng_CheckNoVerificationDLOptional                          | 2210                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_CheckNoVerificationDLOptional.xsd)                 |
+| Ng_CheckNoVerificationDLRequired                          | 2211                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_CheckNoVerificationDLRequired.xsd)                 |
+| Ng_CheckVerificationIdentityVerificationDLOptional       | 2212                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| Ng_CheckVerificationIdentityVerificationDLRequired       | 2213                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| Ng_CheckVerificationOnlyDLOptional                       | 2214                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_CheckVerificationOnlyDLOptional.xsd)                 |
+| Ng_CheckVerificationOnlyDLRequired                       | 2215                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_CheckVerificationOnlyDLRequired.xsd)                 |
+| Ng_IdentityVerificationOnlyDLOptional                    | 2216                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_IdentityVerificationOnlyDLOptional.xsd)                 |
+| Ng_IdentityVerificationOnlyDLRequired                    | 2217                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas/Ng_IdentityVerificationOnlyDLRequired.xsd)                 |
+
+
+
+### TEL Templates
+XML Templates
+| **TEL**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/TEL%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates) |
+| CheckNoVerificationDLOptional                          | 1210 / 2210                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1211 / 2211                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1212 / 2212                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1213 / 2213                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1214 / 2214                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1215 / 2215                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1216 / 2216                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1217 / 2217                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/TEL%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/TEL%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+
+
+Corresponding XDS Template
+
+| **TEL**                                                    | Certification Terminal ID                |             |              |           |                |                     |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|---------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1210 / 2210                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/CheckNoVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1211 / 2211                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1212 / 2212                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1213 / 2213                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1214 / 2214                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/CheckVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1215 / 2215                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/CreditCheckNoVerificationDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1216 / 2216                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLOptional.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1217 / 2217                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed/IdentityVerificationOnlyDLRequired.xsd)            | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed/Ng_IdentityVerificationOnlyDLRequired.xsd)                 |
+
+
+### POP Templates
+XML Templates
+| **POP**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/POP%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates) |
+| CheckNoVerificationDLOptional                          | 1110                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1111                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1112                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1113                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1114                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1115                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1116                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1117                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/POP%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/POP%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+
+
+Corresponding XDS Template
+
+| **POP**                                                    | Certification Terminal ID                |             |              |           |                |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1110                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1111                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1112                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1113                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1114                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1115                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1116                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1117                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/IdentityVerificationOnlyDLRequired.xsd)                 |
 
 
 ### **Check21 XML Templates**
@@ -619,7 +758,7 @@ A matrix of the available XML Templates and XSD Schmimas for each SEC code can b
 |     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     1617                           |
 
 
-## [**XML Templates using Tokens**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML/With%20Tokens)
+## **XML Templates using Tokens**
 
 A matrix of the available XML Templates when using tokens for each SEC code can be found below. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
 
@@ -730,20 +869,7 @@ Root path:  https://demo.eftchecks.com/webservices/schemas/pop/templates)
 |      OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4323                           |
 |      OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4333                           |
 
-## [**How to determine which XSD to Use**](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS)
-The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
 
-The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
-
- - If the Terminal requires the Driver’s License Information. 
- - If the Terminal is configured for Check Verification.
- - If the Terminal is configured for Identity Verification.
- - For PPD and CCD entries, If the Terminal is configured to allow Credit entries
-
-A matrix of the available XSDs for each SEC code can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema.
-
-An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
-https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
 
 ## **Standard XSD Schemas**
 A matrix of the available XSDs can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema.
@@ -795,6 +921,16 @@ https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayTypes.xsd
  - Authorization Gateway Response Types
 https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayResponseTypes.xsd
 
+
+
+## **Validation Handling**
+When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
+
+The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet.
+
+
+
+
 ## **Responses**
 Each web method in the Authorization Gateway will return an XML string and detail the success or failure of the submission.  If the transaction is accepted (authorized) an authorization number will be returned at a minimum.
 
@@ -805,10 +941,15 @@ The Authorization Gateway XML response may contain the following elements:
  
 _NOTE: The AuthGatewayCertification web method response will not contain this element._
 
+
+
+
+
+
 ### Validation Message Response
 The AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods will validate that the interface is sending a data packet that conforms to its schema. 
 Validation Message Example – Success Response
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <RESPONSE xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” REQUEST_ID=”4654”>
                 <VALIDATION_MESSAGE>
@@ -822,7 +963,7 @@ Validation Message Example – Success Response
 ### **Validation Message Example – Failure Response**
 
 This data packet failed validation because the Driver’s License Information is required by the XSD and was not provided in the data packet.
-```
+```XML
 <<?xml version=”1.0” encoding=”utf-8” ?> 
        <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
     <VALIDATION_MESSAGE>
@@ -864,7 +1005,7 @@ This data packet failed validation because the Driver’s License Information is
 The ProcessSingleCheck web method will process a valid XML data packet and return an Authorization Message within the response. An example of the Authorization message is below.
 
 ### Authorization Message Example 
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
 <VALIDATION_MESSAGE>
@@ -909,7 +1050,7 @@ Again, the host system should first check to make sure the RESULT child element 
 The ProcessSingleCheckWithToken web method will process a valid XML data packet and return an Authorization Message within the response. An example of the Authorization message is below.
 
 ### **Authorization Message Example with Token**
-```
+```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
 <VALIDATION_MESSAGE>
@@ -1068,7 +1209,7 @@ We expect that your integration team has included at least a minimal level of ex
 If an error occurs within the Authorization Gateway, the XML string response will detail the reason for the error within an Exception element. The Exception element will NOT be present if an error did not occur. However, should an error occur, the Exception element may be found as a child element of either the Response element, or the Transaction element.
 
 ### EXCEPTION **Element – Example as a child of the RESPONSE element**
-```
+```XML
 <? Xml version=”1.0” encoding=”utf-8” ?> 
           <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”     
                              xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance”    
@@ -1092,6 +1233,130 @@ Each time a valid data packet request is processed the Authorization Message tha
 If needed an Authorization Message for a previously processed transaction can be requested again by invoking the GetArchivedResponse web method.  It is important to note that the transaction is not processed again, only the original Authorization Message that was archived is returned. Each Authorization Message is archived along with the unique user defined Request ID and Terminal ID that was provided in the data packet request. The GetArchivedResponse web method accepts the Request ID as an input parameter and will return the original Authorization Message for the given Request ID and Terminal ID.
  
 _NOTE: If Authorization Gateway Request IDs are duplicated for a given Terminal, only the last Authorization Message for the pairing will be returned._ 
+
+
+
+
+
+# **Phase 1 Preparation**
+
+## **Connect to the Authorization Gateway**
+
+Once you have successfully connected to the Authorization Gateway and are comfortable with adding the SOAP header, you will test your request and response with the GetCertificationTerminalSettings.
+ 
+The GetCertificationTerminalSettings web method is defined in the [Terminal Settings – XML Specification](#TerminalSettingsXMLSpecification) section, providing an example of the request and response. The invocation of this web method is part of the Preparation Phase because it is the simplest web method and requires no input parameters.
+
+This web method can be invoked if your implementation team determines the host system needs to acquire information about the Authorization Gateway Terminal, and does not need to be invoked on a continuous basis.
+
+_Please note this is not to be confused with the GetTerminalSettings, which performs the same function for production terminals during the Production Phase._
+
+## **SEC Standard Entry Class Codes**
+The Authorization Gateway uses the Standard Entry Class (SEC) codes to determine what information is required to be sent in the submission. The National Automated Clearing House Association (NACHA) requires the use of SEC Codes for each transaction settled through the Automated Clearing House (ACH).  Each code identifies what type of transaction occurred. In addition, the SEC_CODE element in the response XML Data Packet form the GetCertificationTerminalSettings web method will include the SEC code used from the terminal ID provided.  A definition of each of the SEC codes used by the Authorization Gateway can be found below.
+
+•	**PPD** - Prearranged Payment and Deposit Entry :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a consumers account. 
+
+•	**CCD** - Corporate Credit or Debit :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a business account. 
+
+•	**WEB** - Internet Initiated Entry :  An internet initiated entry is a method of payment for goods or services made via the internet.    
+
+•	**TEL** - Telephone Initiated Entry :  A telephone initiated entry is a payment for goods or services made with a single entry debit with oral authorization obtained from the consumer via the telephone.
+
+•	**POP** - Point-of-Purchase Entry : The Point-of-Purchase method of payment is for purchases made for goods or services in person by the consumer.  These are non-recurring debit entries. A check reading device must be used to capture the routing number, account number, and check number from the source document (check). The source document cannot be previously used for any prior POP entry, and the source document must be voided and returned to the customer at the point-of-purchase. In addition, a signed receipt must be obtained at the point-of-purchase and retained for 2 years from the settlement date. The “Authorization Requirements” section in the Authorization Gateway Specification document contains additional information on the receipt requirements.
+
+•	**C21** - Check 21 :  Although not an SEC Code C21 is used to denote Check 21 transactions. Check 21 requires a check reading device capture the routing number, account number, and check number from the source document (Check) as well as capture images of both the front and back of the source document.  
+
+# **Phase 2 Development**
+
+**Interfacing with the Authorization Gateway**
+
+The best place to start is to determine your application architecture for interfacing with the Authorization Gateway.  You will choose which published XSD(s) your XML data packets will be validated against, and you also know the URL for the corresponding XML template(s) for your schema(s).  
+This leaves you with the following possibilities for creating your XML data packets that are sent to the Authorization Gateway:
+
+1.	XML Schema Definition Tool (such as Xsd.exe for .Net or Svcutil.exe) to generate a class based on the published XSD, populate the class properties, and then serialize the object.
+2.	LINQ to XML to build your xml and populate the elements and attributes.
+3.	You can load the XML template into an XML document object and use Xpath to populate the elements and attributes.
+4.	You can build your own XML document and use Xpath to populate the elements and attributes.
+
+We recommend you leverage the published [XSDs](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS) and [XML](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML) templates and use either the first or second options when creating the data packets to be sent. All these methods use the .NET platform however other languages have successfully been used. 
+
+We have provided example request XML Data Packets to assist your integration team with getting started. A link to these examples can be found at the end of the “How to determine which XML Template to Use” section above.
+
+
+Once you have determined how you will create your XML data packets in your system; we recommend reviewing each element and attribute and when they are best used. The Data Packet – XML Specification(#DataPacketXMLSpecification) provides links to XML templates, and text description of the regular expressions, data types, or enumerations that control the allowed data formats for each element.
+
+## **How to determine which XML Template to Use**
+
+The XML data packet can be built from scratch or one of the available XML templates can be used to build the XML data packet prior to submitting to the Authorization Gateway. The URI for the XML data packet for a given terminal can be retrieved from the Terminal Settings but can also be determined by using the criteria below.
+
+The root path for all XML Templates is https://demo.eftchecks.com/webserivces/schemas/  followed by the SEC Code, “/Templates/”, and the XML Template name.  The XML Template is determined by the following criteria:
+
+ - 	If the Terminal requires the Driver’s License Information.
+ - 	If the Terminal is configured for Check Verification.
+ - 	If the Terminal is configured for Identity Verification.
+
+## **How to determine which XSD to Use**
+                       
+The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
+
+The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+
+ - If the Terminal requires the Driver’s License Information. 
+ - If the Terminal is configured for Check Verification.
+ - If the Terminal is configured for Identity Verification.
+ - For PPD and CCD entries, If the Terminal is configured to allow Credit entries   
+   
+A matrix of the available XML Templates, and XSD Schemas for each SEC code can be found in the XML/XSD section, by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.  
+  
+**Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx**
+
+An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
+https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
+
+There are published example XML data packets that contain example data, and XSD Schema packets. 
+https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
+
+
+
+Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
+Link to [XSD Schemas](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD)
+
+
+## **Data Identification**
+The specification for the Authorization Gateway XML Data Packet allows you to optionally identify your data in two distinct ways. The **REQUEST_ID** attribute contained within the AUTH_GATEWAY element and the **TRANSACTION_ID** element. These are built in so your host system can match a response from the Authorization Gateway with the original request. 
+
+These identifiers are not inherently unique, rather the Authorization Gateway leaves the responsibility of determining if an identifier is unique to the host system. It is not required that optional identifiers are unique, but it is strongly recommended. If an identifier is not unique it may become difficult for your host system to match responses or retrieve archived responses.  In the examples we have provided, GUIDs have been used as optional identifiers. The use of GUIDs ensures uniqueness, but any value can be used as an identifier, including database identity column values. It is also important to note that if the implementation team determines an identifier needs to be unique, that it only needs to be unique for a specific terminal ID, but it can be unique across all terminal IDs for a given user. 
+ 
+
+**The REQUEST_ID** attribute should be a unique identifier that is used to identify the overall data packet. When your data packet is received by the Authorization Gateway it is processed, and asynchronously stored along with the response. This is done so the host system can invoke the GetArchivedResponse web method to request a previous response. 
+
+The GetArchivedResponse web method accepts the REQUEST_ID as an input parameter and will return the corresponding response.  It is important to note that the GetArchivedResponse is a production only web method and can only be effectively used if the host system keeps track of and submits values in the REQUEST_ID attribute.  The value in the REQUEST_ID attribute of the request data packet is also returned in the response data packet in the REQUEST_ID attribute of the RESPONSE element.
+
+**The TRANSACTION_ID** element should be a unique identifier that is used to identify a specific transaction.  The value contained in the TRANSACTION_ID element is recorded by the Authorization Gateway but is not used internally and cannot be used to request a specific transaction. The value in the TRANSACTION_ID element is however returned in the response data packet in the TRANSACTION_ID element within the parent AUTHORIZATION_MESSAGE element. This was done so that your host system can match the response for a specific transaction to an internal record in the host system. 
+
+## **Valid Identifiers**
+Each request XML Data Packet must contain a valid identifier for its schema. The identifier you use will change depending on the context of the transaction being sent. Your integration team will become more familiar with the different identifiers as you begin to work on each milestone. However, a list of all the valid identifiers can be found below.  
+
+|                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|     Authorize (A)    |     This   is used in schemas for POP, TEL, WEB, and Check 21 to indicate that an   authorization is requested for the XML Data Packet being sent.  It is also used to process credit   transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|     Recurring (R)    |     This   is used in schemas for PPD, CCD, TEL and WEB to indicate that an   authorization is requested for a single or reoccurring transaction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|     Void (V)         |     This   is used in schemas for PPD, CCD, POP, TEL, WEB, and Check 21 to void a   previously authorized transaction. However, it should be noted that   transactions can only be voided on the same calendar day they were   authorized.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|     Override (O)     |     This   is used in schemas for POP, TEL, and Check 21 when the host system receives a   manager needed message to void the previous transaction and input a new   transaction in its place.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|     Payroll (P)      |     This   is used in schemas for POP and Check 21 for business and payroll checks. What   this does is NOT link the driver’s license to the routing/ account numbers   since the person writing/cashing the check is usually not the business.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|     Update (U)       |     This   is used in schemas for POP and Check 21 for OCR transactions that already   have complete data in the data packet. It forces the transaction to run as a   normal POP or Check 21 transaction on an OCR terminal. This is normally done   when a change is needed to a transaction that was submitted under a normal   OCR transaction. Example: A transaction is sent through using the OCR engine.   The data that is returned does not match the image. If the transaction was   still successful and a change is warranted, a Void Transaction is sent. Then   another transaction with updated data (from the response and corrected from   user) is sent back through the system with a complete data packet and “U” as   the identifier. If the transaction failed, other actions will need to be taken.    |
+
+## **Verification Only**
+If the gateway terminal is setup as verification only or the VERIFICATION_ONLY element is set to true, then the transaction will be processed as verification only. This means that an authorization will be run, but that the check **_will not_** undergo Electronic Check Conversion (ECC) and will have to be taken to the bank for deposit. 
+Depending on the merchant’s program, the funds may or may not be guaranteed.
+
+## **Account Section Data**
+All PPD, CCD, TEL and WEB schemas define that the ACCOUNT child elements must contain values.  The child elements within the ACCOUNT element for POP and Check 21 (C21) schemas define what ACCOUNT child elements must contain values and what ACCOUNT child elements can be left empty.  All of the child elements within the ACCOUNT element for POP and Check 21 (C21), except the ACCOUNT_TYPE for POP schemas, define the data as optional. This is because for these SEC codes you can either provide the swiped MICR data or provide the routing, account, and check numbers.   If the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER are all left empty in the request data packet then the transaction cannot be processed. Either the MICR_DATA or the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements must contain values. 
+
+It is important to note that for POP transactions, that if the swiped MICR data in the MICR_DATA element is missing, but the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements contain values then the transaction will be processed as verification only; even if the CONTROL_CHAR indicates that the information was retrieved from a check reader. In addition, if the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements all contain values, then the Authorization Gateway will only use the information in the MICR_DATA element and will parse it out overwriting any values sent in the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements.
+
+## **Identity information**
+Identity information needs to be included when the terminal is setup to do identity verification. There are schemas that will handle the validation for terminals that are setup to do identity verification, and the GetCertificationTerminalSettings web method will return a response of “true” in the RUN_IDENTITY_VERIFICATION element. If a terminal is setup to do identity verification, then the host system is required to send either the last 4 of the check writers social security number OR their birth year (not both). 
+
 
 ## **Requesting a Certification Script**
 
