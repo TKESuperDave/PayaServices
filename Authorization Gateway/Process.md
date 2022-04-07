@@ -553,23 +553,25 @@ The Authorization Gateway XML data packet may contain the following elements:
 |     TYPE:                  |     The   type attribute contains the content type of the image. Valid   TYPE valuesare “tiff”.                                                                                                                                                                                                                                                                                                                                |
 |     MRDCIMGCOUNT:          |     This   is an optional element for transactions that have an SEC code of POP or   Check21. NOTE:  Please view POP or   Check21 XSD’s for implementation.                                                                                                                                                                                                                                                                    |
 |     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.                                                                                                                                                                                                                                                                                                   |
-## **XSD Schemas with XML & XSD Template examples** 
-The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. 
+## **How to determine which XML & XSD Template to use** 
+The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
 
-The XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
-
-The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+The root path for all XMLs and XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
 
  - If the Terminal requires the Driver’s License Information. 
  - If the Terminal is configured for Check Verification.
  - If the Terminal is configured for Identity Verification.
- - For PPD and CCD entries, If the Terminal is configured to allow Credit entries
+ - Additional for XSD of PPD and CCD entries, If the Terminal is configured to allow Credit entries
 
-A matrix of the available XMLs and XSDs for each SEC code can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  
+A matrix of the available XMLs for each SEC code can be found below, followed by the XSDs matrix that correspond to those XMLs. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  
 
-The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions. Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx
+The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions. Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx.
 
-A matrix of the available XML Templates and XSD Schemas for each SEC code can be found below. 
+An example of an XML and it's corresponding XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
+
+XML: [Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml](/Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)
+
+XSD: [Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)
 
 ***Note about Special Characters**
 Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
