@@ -743,40 +743,66 @@ Corresponding XDS Template
 | IdentityVerificationOnlyDLRequired                    | 1117                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/IdentityVerificationOnlyDLRequired.xsd)                 |
 
 
-### **Check21 XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
-
-|     Template                                               |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|     [CheckNoVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerficationDLOptional.xml)                      |                        |                         |                      |     1610                           |
-|     [CheckNoVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerficationDLRequired.xml)                      |     X                  |                         |                      |     1611                           |
-|     [CheckVerificationIdentityVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)    |                        |     X                   |     X                |     1612                           |
-|     [CheckVerificationIdentityVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)    |     X                  |     X                   |     X                |     1613                           |
-|     [CheckVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLOptional.xml)                    |                        |     X                   |                      |     1614                           |
-|     [CheckVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLRequired.xml)                    |     X                  |     X                   |                      |     1615                           |
-|     [IdentityVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLOptional.xml)                 |                        |                         |     X                |     1616                           |
-|     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     1617                           |
-
-
-## **XML Templates using Tokens**
-
-A matrix of the available XML Templates when using tokens for each SEC code can be found below. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
+### Check21 Templates
+XML Templates
+| **Check21**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/Check21%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates) |
+| CheckNoVerificationDLOptional                          | 1610                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1611                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1612                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1613                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1614                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1615                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1616                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1617                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
 
 
+Corresponding XDS Template
 
-### **Check21 XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
+| **Check21**                                                    | Certification Terminal ID                |             |              |           |                |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1610                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1611                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1612                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1613                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1614                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1615                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1616                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1617                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/IdentityVerificationOnlyDLRequired.xsd)                 |
 
-| Template                                                      | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  |
-|---------------------------------------------------------------|---------------|----------------|-------------|----------------------------------------|
-| [CheckNoVerificationDLWithTokenOptional.xml](CheckNoVerificationDLWithTokenOptional.xml)                    |               |                |             | 1610                            |
-| [CheckNoVerificationDLWithTokenRequired.xml](CheckNoVerificationDLWithTokenRequired.xml)                    | X             |                |             | 1611                            |
-| [CheckVerificationIdentityVerificationDLWithTokenOptional.xml](CheckVerificationIdentityVerificationDLWithTokenOptional.xml)  |               | X              | X           | 1612                            |
-| [CheckVerificationIdentityVerificationDLWithTokenRequired.xml](CheckVerificationIdentityVerificationDLWithTokenRequired.xml)  | X             | X              | X           | 1613                            |
-| [CheckVerificationOnlyDLWithTokenOptional.xml](CheckVerificationOnlyDLWithTokenOptional.xml)                  |               | X              |             | 1614                            |
-| [CheckVerificationOnlyDLWithTokenRequired.xml](CheckVerificationOnlyDLWithTokenRequired.xml)                  | X             | X              |             | 1615                            |
-| [IdentityVerificationOnlyDLWithTokenOptional.xml](IdentityVerificationOnlyDLWithTokenOptional.xml)               |               |                | X           | 1616                            |
-| [IdentityVerificationOnlyDLWithTokenRequired.xml](IdentityVerificationOnlyDLWithTokenRequired.xml)               | X             |                | X           | 1617                            |
+
+### BOC Templates
+XML Templates
+| **BOC**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/BOC%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates) |
+| CheckNoVerificationDLOptional                          | 1510                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1511                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1512                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1513                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1514                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1515                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1516                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1517                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+
+
+Corresponding XDS Template
+
+| **BOC**                                                    | Certification Terminal ID                |             |              |           |                |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1510                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1511                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1512                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1513                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1514                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1515                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1516                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1517                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/IdentityVerificationOnlyDLRequired.xsd)                 |
 
 
 ## **OCR XML Templates**
