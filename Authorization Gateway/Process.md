@@ -822,40 +822,38 @@ A matrix of the available XML Templates when using OCR for each SEC code can be 
 _Note:  Optional values submitted for OCR will be TRUSTED and not validated by OCR  _
 
 ### **POP XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/pop/templates)
 
-|     Template                       |     Trans   Type    |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------|---------------------|------------------------|----------------------|------------------------------------|
-|     OCR.xml                        |     P               |                        |                      |     4010                           |
-|     OCR.xml                        |     O               |                        |                      |     4020                           |
-|     OCR.xml                        |     F               |                        |                      |     4030                           |
-|     OCR.xml                        |     P               |     X                  |                      |     4011                           |
-|     OCR.xml                        |     O               |     X                  |                      |     4021                           |
-|     OCR.xml                        |     F               |     X                  |                      |     4031                           |
-|     OCRIdentityVerification.xml    |     P               |                        |     X                |     4012                           |
-|     OCRIdentityVerification.xml    |     O               |                        |     X                |     4022                           |
-|     OCRIdentityVerification.xml    |     F               |                        |     X                |     4032                           |
-|     OCRIdentityVerification.xml    |     P               |     X                  |     X                |     4013                           |
-|     OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4023                           |
-|     OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4033                           |
+|     Template            | Certification Terminal ID | Trans Type | DL Required | Verify ID | XML Template | XSD Template |
+|-------------------------|---------------------------|------------|-------------|-----------|-------------|-------------|
+| OCR                     | 4010                      | P          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4020                      | O          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4030                      | F          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4011                      | P          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4021                      | O          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4031                      | F          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCRIdentityVerification | 4012                      | P          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4022                      | O          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4032                      | F          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4013                      | P          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4023                      | O          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4033                      | F          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+
 
 ### **Check21 XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
-
-|     Template                        |     Trans   Type    |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|-------------------------------------|---------------------|------------------------|----------------------|------------------------------------|
-|      OCR.xml                        |     P               |                        |                      |     4110                           |
-|      OCR.xml                        |     O               |                        |                      |     4120                           |
-|      OCR.xml                        |     F               |                        |                      |     4130                           |
-|      OCR.xml                        |     P               |     X                  |                      |     4111                           |
-|      OCR.xml                        |     O               |     X                  |                      |     4121                           |
-|      OCR.xml                        |     F               |     X                  |                      |     4131                           |
-|      OCRIdentityVerification.xml    |     P               |                        |     X                |     4112                           |
-|      OCRIdentityVerification.xml    |     O               |                        |     X                |     4122                           |
-|      OCRIdentityVerification.xml    |     F               |                        |     X                |     4132                           |
-|      OCRIdentityVerification.xml    |     P               |     X                  |     X                |     4113                           |
-|      OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4123                           |
-|      OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4133                           |
+|     Template            | Certification Terminal ID | Trans Type | DL Required | Verify ID | XML Template | XSD Template |
+|-------------------------|---------------------------|------------|-------------|-----------|-------------|-------------|
+| OCR                     | 4010                      | P          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4020                      | O          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4030                      | F          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4011                      | P          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4021                      | O          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4031                      | F          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCRIdentityVerification | 4012                      | P          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4022                      | O          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4032                      | F          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4013                      | P          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4023                      | O          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4033                      | F          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
 
 ## **Templates for Mobile**
 
