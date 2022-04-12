@@ -36,7 +36,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	      	- [ProcessSingleCheckWithToken](Process.md#processsinglecheckwithtoken)
 	      	- [GetToken](Process.md#gettoken)
 	      	- [ParseMICR](Process.md#parsemicr)
-
+10. [Validation Handling](Process.md#validation-handling)
 11. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
@@ -56,8 +56,6 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 		- [Check21 Templates for Mobile]()
 14. [Data Types](Process.md#data-types)
 15. [Responses](Process.md#responses)
-
-10. [Validation Handling]()
      - [Validation Messages Response](Process.md#validation-message-response)
 	      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
 	      	- [Validation Message Example - Failure Response](Process.md#validation-message-example--failure-response)
@@ -529,7 +527,15 @@ The Authorization Gateway XML data packet may contain the following elements:
 |     SIZE:                  |     The   size attribute contains the image size in bytes. The size can be expressed as   a decimal.                                                                                                                                                                                                                                                                                                                           |
 |     TYPE:                  |     The   type attribute contains the content type of the image. Valid   TYPE valuesare “tiff”.                                                                                                                                                                                                                                                                                                                                |
 |     MRDCIMGCOUNT:          |     This   is an optional element for transactions that have an SEC code of POP or   Check21. NOTE:  Please view POP or   Check21 XSD’s for implementation.                                                                                                                                                                                                                                                                    |
-|     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.                                                                                                                                                                                                                                                                                                   |
+|     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.           
+
+# **Validation Handling**
+
+When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. 
+
+The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
+
+The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet.                                                                                                                  |
 
 # **How to determine which XML & XSD Template to use** 
 The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
@@ -899,15 +905,6 @@ https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayTypes.xsd
 https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayResponseTypes.xsd
 
 
-
-## **Validation Handling**
-When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
-
-The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet.
-
-
-
-
 ## **Responses**
 Each web method in the Authorization Gateway will return an XML string and detail the success or failure of the submission.  If the transaction is accepted (authorized) an authorization number will be returned at a minimum.
 
@@ -916,10 +913,7 @@ The Authorization Gateway XML response may contain the following elements:
  - **VALIDATION_MESSAGE**:  Contains all of the elements in the validation message. 
  - **AUTHORIZATION_MESSAGE**:  Contains all of the elements in the authorization message.
  
-_NOTE: The AuthGatewayCertification web method response will not contain this element._
-
-
-
+*NOTE: The AuthGatewayCertification web method response will not contain this element.*
 
 
 
@@ -941,30 +935,21 @@ Validation Message Example – Success Response
 
 This data packet failed validation because the Driver’s License Information is required by the XSD and was not provided in the data packet.
 ```XML
-<<?xml version=”1.0” encoding=”utf-8” ?> 
-       <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
-    <VALIDATION_MESSAGE>
-          <RESULT>Failed</RESULT> 
-                <SCHEMA_FILE_PATH>
-                         http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/
-                         CheckNoVerificationDLRequired.xsd
-                </SCHEMA_FILE_PATH> 
-               <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
-               <SEVERITY>Error</SEVERITY> 
-               <MESSAGE>
-                              The ‘DL_STATE’ element has an invalid value according to its data
-                               type. An error occurred at (1, 561).
-                          </MESSAGE> 
-           </VALIDATION_ERROR>
-               <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
-               <SEVERITY>Error</SEVERITY> 
-               <MESSAGE>
-                               The ‘IDENTIFIER’ element has an invalid value according to its data      
-                                type.
-                         </MESSAGE> 
-           </VALIDATION_ERROR>
+<?xml version=”1.0” encoding=”utf-8” ?>
+<RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
+    	<VALIDATION_MESSAGE>
+        	<RESULT>Failed</RESULT> 
+                <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckNoVerificationDLRequired.xsd</SCHEMA_FILE_PATH>
+		<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
+        		<SEVERITY>Error</SEVERITY> 
+	               	<MESSAGE>The ‘DL_STATE’ element has an invalid value according to its data type. An error occurred at (1, 561).</MESSAGE> 
+         	</VALIDATION_ERROR>
+         	<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
+               		<SEVERITY>Error</SEVERITY> 
+               		<MESSAGE>The ‘IDENTIFIER’ element has an invalid value according to its data type.</MESSAGE> 
+         	</VALIDATION_ERROR>
       </VALIDATION_MESSAGE>
-   </RESPONSE>
+</RESPONSE>
 ```
 
 ## **The Validation Message may contain the following elements and attributes**:
