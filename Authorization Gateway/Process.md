@@ -291,15 +291,7 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request-1)
   - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response-1)
 
-
-
-
-
-## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
-The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
-
-_NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
-### **Terminal Settings - XML Specification**
+## **Terminal Settings - XML Specification**
 
 The GetCertificationTerminalSettings and GetTerminalSettings web methods will return the following XML string.
 
@@ -329,6 +321,14 @@ The Terminal Settings XML will contain the following elements:
 |     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
 |     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
 |     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
+
+
+
+## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
+The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
+
+_NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
+
 
 
 ### **Authorization Gateway XML Data Packet Example**:
@@ -532,18 +532,20 @@ The Authorization Gateway XML data packet may contain the following elements:
                                                                                                                  
 
 # **How to determine which XML & XSD Template to use** 
-The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
+When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal.
 
-The root path for all XMLs and XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and it's corresponding XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
+
+The root path for all XMLs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name (XSD) is determined by the following criteria:
 
  - If the Terminal requires the Driver’s License Information. 
  - If the Terminal is configured for Check Verification.
  - If the Terminal is configured for Identity Verification.
- - Additionally for XSD of PPD and CCD entries, If the Terminal is configured to allow Credit entries
+ - Additionally for PPD and CCD entries, If the Terminal is configured to allow Credit entries
 
-A matrix of the available XMLs for each SEC code can be found below, followed by the XSDs matrix that correspond to those XMLs. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  
+A matrix of the available XML Templates followed by a matrix for their corresponding XSD Schemas for each SEC code can be found below, broken up by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grids also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.
 
-The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions. Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx.
+Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx
 
 An example of an XML and it's corresponding XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification,  is setup for identity verification, and does not allow credits would be as follows: 
 
@@ -551,8 +553,7 @@ XML: [Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIden
 
 XSD: [Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+***Note about Special Characters:** Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples in the table below.*
 
 |     Special Character    |     Symbol    |     Escaped Form     |
 |--------------------------|---------------|----------------------|
