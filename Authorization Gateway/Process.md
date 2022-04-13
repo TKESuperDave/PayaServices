@@ -297,11 +297,8 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
 
 
 
-## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
-The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
 
-_NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
-### **Terminal Settings - XML Specification**
+# **Terminal Settings - XML Specification**
 
 The GetCertificationTerminalSettings and GetTerminalSettings web methods will return the following XML string.
 
@@ -332,6 +329,11 @@ The Terminal Settings XML will contain the following elements:
 |     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
 |     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
 
+
+## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
+The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
+
+*NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number.*
 
 ### **Authorization Gateway XML Data Packet Example**:
 
@@ -532,18 +534,20 @@ The Authorization Gateway XML data packet may contain the following elements:
 |     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.                                                                                                                                                                                                                                                                                                   |
 
 # **How to determine which XML & XSD Template to use** 
-The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
+When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal.
 
-The root path for all XMLs and XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and it's corresponding XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
+
+The root path for all XMLs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name (XSD) is determined by the following criteria:
 
  - If the Terminal requires the Driver’s License Information. 
  - If the Terminal is configured for Check Verification.
  - If the Terminal is configured for Identity Verification.
- - Additionally for XSD of PPD and CCD entries, If the Terminal is configured to allow Credit entries
+ - Additionally for PPD and CCD entries, If the Terminal is configured to allow Credit entries
 
-A matrix of the available XMLs for each SEC code can be found below, followed by the XSDs matrix that correspond to those XMLs. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  
+A matrix of the available XML Templates followed by a matrix for their corresponding XSD Schemas for each SEC code can be found below, broken up by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grids also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.
 
-The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions. Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx.
+Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx
 
 An example of an XML and it's corresponding XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification,  is setup for identity verification, and does not allow credits would be as follows: 
 
@@ -551,8 +555,7 @@ XML: [Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIden
 
 XSD: [Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+***Note about Special Characters:** Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples in the table below.*
 
 |     Special Character    |     Symbol    |     Escaped Form     |
 |--------------------------|---------------|----------------------|
@@ -757,26 +760,6 @@ Corresponding XDS Template
 |     [IdentityVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLOptional.xml)                 |                        |                         |     X                |     1616                           |
 |     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     1617                           |
 
-
-## **XML Templates using Tokens**
-
-A matrix of the available XML Templates when using tokens for each SEC code can be found below. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
-
-
-
-### **Check21 XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
-
-| Template                                                      | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  |
-|---------------------------------------------------------------|---------------|----------------|-------------|----------------------------------------|
-| [CheckNoVerificationDLWithTokenOptional.xml](CheckNoVerificationDLWithTokenOptional.xml)                    |               |                |             | 1610                            |
-| [CheckNoVerificationDLWithTokenRequired.xml](CheckNoVerificationDLWithTokenRequired.xml)                    | X             |                |             | 1611                            |
-| [CheckVerificationIdentityVerificationDLWithTokenOptional.xml](CheckVerificationIdentityVerificationDLWithTokenOptional.xml)  |               | X              | X           | 1612                            |
-| [CheckVerificationIdentityVerificationDLWithTokenRequired.xml](CheckVerificationIdentityVerificationDLWithTokenRequired.xml)  | X             | X              | X           | 1613                            |
-| [CheckVerificationOnlyDLWithTokenOptional.xml](CheckVerificationOnlyDLWithTokenOptional.xml)                  |               | X              |             | 1614                            |
-| [CheckVerificationOnlyDLWithTokenRequired.xml](CheckVerificationOnlyDLWithTokenRequired.xml)                  | X             | X              |             | 1615                            |
-| [IdentityVerificationOnlyDLWithTokenOptional.xml](IdentityVerificationOnlyDLWithTokenOptional.xml)               |               |                | X           | 1616                            |
-| [IdentityVerificationOnlyDLWithTokenRequired.xml](IdentityVerificationOnlyDLWithTokenRequired.xml)               | X             |                | X           | 1617                            |
 
 
 ## **OCR XML Templates**
@@ -1358,27 +1341,4 @@ It is important to note that for POP transactions, that if the swiped MICR data 
 Identity information needs to be included when the terminal is setup to do identity verification. There are schemas that will handle the validation for terminals that are setup to do identity verification, and the GetCertificationTerminalSettings web method will return a response of “true” in the RUN_IDENTITY_VERIFICATION element. If a terminal is setup to do identity verification, then the host system is required to send either the last 4 of the check writers social security number OR their birth year (not both). 
 
 
-## **Requesting a Certification Script**
 
-Requesting a certification script is the major milestone of the Development Phase. It signifies that your integration team has completed the integration effort and alerts our software team that the host system is ready to undergo certification. It is important that your integration team contact us to request a certification script. If a certification script is not requested, but you begin the Certification Phase, our software team will not be able to properly certify your host system and your team will have to rerun the certification script prior to moving to the Production Phase. 
-You can reach our Integration Department by email at integration@eftsupport.com
-
-# **Phase 3 Certification**
-
-During the certification phase your integration team will be responsible for sequentially completing the objectives in the certification script provided. Your team should now be intimately familiar with the Authorization Gateway and the host system should now be able to handle the completion of these objectives without any problems.  During the certification phase our software team will closely monitor each transaction to ensure it is valid, and that the host system is properly configured. We will alert you to the status of the transaction in our system and advise you if there are any modifications that need to be made to the host system. The successful completion of each objective outlined in the certification script signifies the completion of the major milestone for the Certification Phase and marks the opportunity to begin the Production Phase.
-
-# **Phrase 4 Migrating to Production**
-The Production Phase is the final phase of the integration effort. During this phase you will have to make some minimal changes to the host system in order to use the Authorization Gateway in a production environment. This includes the following:
-
- - You will need to request a user name and password for production. This user name and password will be different from the user name and password provided for certification and will only be valid for production.  The host system will then need to be modified to include this user name and password in the authentication header when invoking a production web method.
- - You will need to request the production URL for the Authorization Gateway. This URL will be different then the URL used for certification, however it will contain identical web methods. The host system will need to be modified to invoke web methods on the production URL.
- - You will also need to change the certification web methods listed below to their sister production web methods.
-
-|     Certification Web Method            |                  |     Production Web Method    |
-|-----------------------------------------|------------------|------------------------------|
-|     GetCertificationTerminalSettings    |     change to    |     GetTerminalSettings      |
-|     ProcessSingleCertificationCheck     |     change to    |     ProcessSingleCheck       |
-
- - Once the host system has been modified to include these changes for processing transactions in a production environment you will need to request a “Go Live” date. Requesting a “Go Live” date signifies completion of the last major milestone of the integration effort and indicates to our software team that the host system is ready for production. 
-
-Congratulations!! :tada:
