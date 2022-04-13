@@ -1,12 +1,12 @@
 # Overview
 
-The Authorization Gateway is designed to accommodate various input requirements based on a given terminal’s settings. This allows for the development of a single interface that can be easily configured to handle many different scenarios. 
+The Authorization Gateway is designed to accommodate various input requirements based on a given terminal’s settings. This allows for the development of a single interface that can be easily configured to handle many different scenarios.
 
 The Authorization Gateway uses web services to present distributed methods for integration into client applications, and an interface with the Authorization Gateway can be developed with any programming language that can consume a web service.
 
-Extensible Markup Language (XML) is used to send data packet requests to the Authorization Gateway and to receive a response back.  Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS. The Authorization Gateway also employs a custom SOAP header for authentication information.  
+Extensible Markup Language (XML) is used to send data packet requests to the Authorization Gateway and to receive a response back. Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS. The Authorization Gateway also employs a custom SOAP header for authentication information.
 
-XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested. 
+XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested.
 
 ### **Table of Contents**
 
@@ -36,28 +36,26 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	      	- [ProcessSingleCheckWithToken](Process.md#processsinglecheckwithtoken)
 	      	- [GetToken](Process.md#gettoken)
 	      	- [ParseMICR](Process.md#parsemicr)
-
+10. [Validation Handling](Process.md#validation-handling)
 11. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
 12. [How to determine which XML & XDS Template to Use](Process.md#how-to-determine-which-xml--xsd-template-to-use)
-     - [Standard XML Templates]()  
-		- [PPD XML & XSD Templates]()  
-		- [CCD XML & XSD Templates]()  
-		- [WEB XML & XSD Templates]()  
-		- [TEL XML & XSD Templates]()  
-		- [POP XML & XSD Templates]()  
-		- [Check21 XML & XSD Templates]()  
-		- [BOC XML & XSD Templates]()  
-     - [OCR XML Templates]()  
-		- [POP XML & XSD Templates]()  
-		- [Check21 XML & XSD Templates]()  
-		- [Check21 XML & XSD Templates for Mobile]()
+     - [Standard XML & XSD Templates](Process.md#standard-templates)  
+		- [PPD Templates](Process.md#ppd-templates)  
+		- [CCD Templates](Process.md#ccd-templates)  
+		- [WEB Templates](Process.md#web-templates)  
+		- [TEL Templates](Process.md#tel-templates)  
+		- [POP Templates](Process.md#pop-templates)  
+		- [Check21 Templates](Process.md#check21-templates)  
+		- [BOC Templates](Process.md#boc-templates)  
+     - [OCR XML Templates](Process.md#ocr-xml-templates)  
+		- [POP Templates]()  
+		- [Check21 Templates]()  
+		- [Check21 Templates for Mobile]()
 14. [Data Types](Process.md#data-types)
 15. [Responses](Process.md#responses)
-
-10. [Validation Handling]()
      - [Validation Messages Response](Process.md#validation-message-response)
 	      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
 	      	- [Validation Message Example - Failure Response](Process.md#validation-message-example--failure-response)
@@ -293,15 +291,7 @@ _NOTE: Using this method by passing the Account Type, Routing Number, and Accoun
   - **Request**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#request-1)
   - **Response**: [SOAP 1.1](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response) | [SOAP 1.2](/Authorization%20Gateway/Web%20Methods/Certification%20Methods/ParseMICR.md#response-1)
 
-
-
-
-
-## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
-The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
-
-_NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
-### **Terminal Settings - XML Specification**
+## **Terminal Settings - XML Specification**
 
 The GetCertificationTerminalSettings and GetTerminalSettings web methods will return the following XML string.
 
@@ -331,6 +321,14 @@ The Terminal Settings XML will contain the following elements:
 |     RUN_IDENTITY_VERIFICATION    |     Contains true or   false indicating if the terminal is setup for identity verification.                                                                            |
 |     SCHEMA_FILE_PATH             |     Contains the   Uniform Resource Identifier (URI) specifying the published XML Schema Definition   (XSD) that the data packet request will be validated against.    |
 |     XML_TEMPLATE_PATH            |     Contains the   Uniform Resource Identifier (URI) specifying the published XML template that   can be used as the basis for creating the data packet request.       |
+
+
+
+## <a name="DataPacketXMLSpecification"></a>**Data Packet – XML Specification**
+The data packet is an XML string sent using the AuthGatewayCertification, ProcessSingleCheck, and ProcessSingleCheckWithToken web methods. The XML data packet must conform to the XSD specified in the Terminal Settings. The XML Template provided in the Terminal Settings can be used as a basis to create the Data Packet.
+
+_NOTE:  Methods with Token will operate the same as those without tokens. Tokens are used in place of Account Type, Routing Number, and Account Number._
+
 
 
 ### **Authorization Gateway XML Data Packet Example**:
@@ -529,21 +527,25 @@ The Authorization Gateway XML data packet may contain the following elements:
 |     SIZE:                  |     The   size attribute contains the image size in bytes. The size can be expressed as   a decimal.                                                                                                                                                                                                                                                                                                                           |
 |     TYPE:                  |     The   type attribute contains the content type of the image. Valid   TYPE valuesare “tiff”.                                                                                                                                                                                                                                                                                                                                |
 |     MRDCIMGCOUNT:          |     This   is an optional element for transactions that have an SEC code of POP or   Check21. NOTE:  Please view POP or   Check21 XSD’s for implementation.                                                                                                                                                                                                                                                                    |
-|     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.                                                                                                                                                                                                                                                                                                   |
+|     CUSTOM1- CUSTOM4:      |     These   are optional elements that can contain up to 50 alpha numeric   characters.  We will return this in   reporting.           
+
+                                                                                                                 
 
 # **How to determine which XML & XSD Template to use** 
-The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
+When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal.
 
-The root path for all XMLs and XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
+The XML data packet can be built from scratch by the web service consumer or one of the available XML templates can be used to build the XML data packet prior to submitting the data packet to the Authorization Gateway. The uniform resource identifier for the XML and it's corresponding XSD data packet for a given terminal can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.
+
+The root path for all XMLs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name (XSD) is determined by the following criteria:
 
  - If the Terminal requires the Driver’s License Information. 
  - If the Terminal is configured for Check Verification.
  - If the Terminal is configured for Identity Verification.
- - Additionally for XSD of PPD and CCD entries, If the Terminal is configured to allow Credit entries
+ - Additionally for PPD and CCD entries, If the Terminal is configured to allow Credit entries
 
-A matrix of the available XMLs for each SEC code can be found below, followed by the XSDs matrix that correspond to those XMLs. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  
+A matrix of the available XML Templates followed by a matrix for their corresponding XSD Schemas for each SEC code can be found below, broken up by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grids also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.
 
-The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions. Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx.
+Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx
 
 An example of an XML and it's corresponding XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification,  is setup for identity verification, and does not allow credits would be as follows: 
 
@@ -551,8 +553,7 @@ XML: [Authorization%20Gateway/XML/Standard/PPD%20Templates/CheckVerificationIden
 
 XSD: [Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed/CheckVerificationIdentityVerificationDLOptional.xsd)
 
-***Note about Special Characters**
-Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples below.
+***Note about Special Characters:** Because the Data packet is XML, some special characters must be escaped to be included in the data. Please see the examples in the table below.*
 
 |     Special Character    |     Symbol    |     Escaped Form     |
 |--------------------------|---------------|----------------------|
@@ -743,40 +744,66 @@ Corresponding XDS Template
 | IdentityVerificationOnlyDLRequired                    | 1117                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas/IdentityVerificationOnlyDLRequired.xsd)                 |
 
 
-### **Check21 XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
-
-|     Template                                               |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|     [CheckNoVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerficationDLOptional.xml)                      |                        |                         |                      |     1610                           |
-|     [CheckNoVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerficationDLRequired.xml)                      |     X                  |                         |                      |     1611                           |
-|     [CheckVerificationIdentityVerificationDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)    |                        |     X                   |     X                |     1612                           |
-|     [CheckVerificationIdentityVerificationDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)    |     X                  |     X                   |     X                |     1613                           |
-|     [CheckVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLOptional.xml)                    |                        |     X                   |                      |     1614                           |
-|     [CheckVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLRequired.xml)                    |     X                  |     X                   |                      |     1615                           |
-|     [IdentityVerificationOnlyDLOptional.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLOptional.xml)                 |                        |                         |     X                |     1616                           |
-|     [IdentityVerificationOnlyDLRequired.xml](https://github.com/TKESuperDave/PayaServices/blob/XML/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLRequired.xml)                 |     X                  |                         |     X                |     1617                           |
-
-
-## **XML Templates using Tokens**
-
-A matrix of the available XML Templates when using tokens for each SEC code can be found below. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. 
+### Check21 Templates
+XML Templates
+| **Check21**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/Check21%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates) |
+| CheckNoVerificationDLOptional                          | 1610                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1611                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1612                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1613                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1614                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1615                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1616                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1617                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/Check21%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/Check21%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
 
 
+Corresponding XDS Template
 
-### **Check21 XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
+| **Check21**                                                    | Certification Terminal ID                |             |              |           |                |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1610                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1611                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1612                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1613                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1614                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1615                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1616                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1617                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas/IdentityVerificationOnlyDLRequired.xsd)                 |
 
-| Template                                                      | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  |
-|---------------------------------------------------------------|---------------|----------------|-------------|----------------------------------------|
-| [CheckNoVerificationDLWithTokenOptional.xml](CheckNoVerificationDLWithTokenOptional.xml)                    |               |                |             | 1610                            |
-| [CheckNoVerificationDLWithTokenRequired.xml](CheckNoVerificationDLWithTokenRequired.xml)                    | X             |                |             | 1611                            |
-| [CheckVerificationIdentityVerificationDLWithTokenOptional.xml](CheckVerificationIdentityVerificationDLWithTokenOptional.xml)  |               | X              | X           | 1612                            |
-| [CheckVerificationIdentityVerificationDLWithTokenRequired.xml](CheckVerificationIdentityVerificationDLWithTokenRequired.xml)  | X             | X              | X           | 1613                            |
-| [CheckVerificationOnlyDLWithTokenOptional.xml](CheckVerificationOnlyDLWithTokenOptional.xml)                  |               | X              |             | 1614                            |
-| [CheckVerificationOnlyDLWithTokenRequired.xml](CheckVerificationOnlyDLWithTokenRequired.xml)                  | X             | X              |             | 1615                            |
-| [IdentityVerificationOnlyDLWithTokenOptional.xml](IdentityVerificationOnlyDLWithTokenOptional.xml)               |               |                | X           | 1616                            |
-| [IdentityVerificationOnlyDLWithTokenRequired.xml](IdentityVerificationOnlyDLWithTokenRequired.xml)               | X             |                | X           | 1617                            |
+
+### BOC Templates
+XML Templates
+| **BOC**                                                    | Certification Terminal ID                |             |              |           |             |                       |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|-------------|-----------------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID | [XML Example](/Authorization%20Gateway/XML/Standard/BOC%20Templates) | [XML Example with Token](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates) |
+| CheckNoVerificationDLOptional                          | 1510                              |             |              |           | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckNoVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckNoVerificationDLWithTokenOptional.xml)                   |
+| CheckNoVerificationDLRequired                          | 1511                              |      X      |              |           | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckNoVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckNoVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationIdentityVerificationDLOptional       | 1512                              |             |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationIdentityVerificationDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationIdentityVerificationDLWithTokenOptional.xml)                   |
+| CheckVerificationIdentityVerificationDLRequired       | 1513                              |      X      |       X      |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationIdentityVerificationDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationIdentityVerificationDLWithTokenRequired.xml)                   |
+| CheckVerificationOnlyDLOptional                       | 1514                              |             |       X      |           |  [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationOnlyDLWithTokenOptional.xml)                   |
+| CheckVerificationOnlyDLRequired                       | 1515                              |      X      |       X      |           | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/CheckVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/CheckVerificationOnlyDLWithTokenRequired.xml)                   |
+| IdentityVerificationOnlyDLOptional                    | 1516                              |             |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/IdentityVerificationOnlyDLOptional.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/IdentityVerificationOnlyDLWithTokenOptional.xml)                   |
+| IdentityVerificationOnlyDLRequired                    | 1517                              |      X      |              |     X     | [XML](/Authorization%20Gateway/XML/Standard/BOC%20Templates/IdentityVerificationOnlyDLRequired.xml)         | [XML](/Authorization%20Gateway/XML/With%20Tokens/BOC%20Templates/IdentityVerificationOnlyDLWithTokenRequired.xml)                   |
+
+
+Corresponding XDS Template
+
+| **BOC**                                                    | Certification Terminal ID                |             |              |           |                |
+|------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
+|                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas) |
+| **Debit Only Transactions**                                |                                          |             |              |           |             |                       |
+| CheckNoVerificationDLOptional                          | 1510                              |             |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckNoVerificationDLOptional.xsd)                 |
+| CheckNoVerificationDLRequired                          | 1511                              |      X      |              |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckNoVerificationDLRequired.xsd)                 |
+| CheckVerificationIdentityVerificationDLOptional       | 1512                              |             |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationIdentityVerificationDLOptional.xsd)                 |
+| CheckVerificationIdentityVerificationDLRequired       | 1513                              |      X      |       X      |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationIdentityVerificationDLRequired.xsd)                 |
+| CheckVerificationOnlyDLOptional                       | 1514                              |             |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationOnlyDLOptional.xsd)                 |
+| CheckVerificationOnlyDLRequired                       | 1515                              |      X      |       X      |           | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/CheckVerificationOnlyDLRequired.xsd)                 |
+| IdentityVerificationOnlyDLOptional                    | 1516                              |             |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/IdentityVerificationOnlyDLOptional.xsd)                 |
+| IdentityVerificationOnlyDLRequired                    | 1517                              |      X      |              |     X     | [XSD](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas/IdentityVerificationOnlyDLRequired.xsd)                 |
 
 
 ## **OCR XML Templates**
@@ -785,132 +812,83 @@ There are two different ways of processing images, one with OCR and one with Mob
 
 Images submitted via a Mobile device, will have the MICR, Courtesy Amount, and Legal Amount recognized by the standard Mobile OCR function.  In order to submit for FULL OCR to receive the additional fields (Payee, Address, Endorsement, etc.), it will be necessary that you code for the full set of OCR responses.    
 
-A matrix of the available XML Templates when using OCR for each SEC code can be found below. Each grid contains the name of the XML Template, based on the XML Templates determining criteria, and a link to the actual XML Template. The Trans Type will indicate what type of response you should receive. NOTE: Verify Check can be applied to any terminal. This will NOT impact the terminal schemas or template.
-
-
+A matrix of the available XML Templates and XSD Schemas when using OCR for each SEC code can be found below. Each grid contains the name of the XML Template and XSD Schemas, based on the determining criteria, and a link to the actual XML Template and XSD Schema. The Trans Type will indicate what type of response you should receive. The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. NOTE: Verify Check can be applied to any terminal. This will NOT impact the terminal schemas or template.
 
 ### Trans Type:
  -	P – Successful Transaction
  -	O -  Successful Transaction with failed optional fields (Fields that are not required to pass the transaction in the system. NOTE: Fields may not match image depending on how OCR translates the image).
  -	F – Failed Transaction
-_Note:  Optional values submitted for OCR will be TRUSTED and not validated by OCR  _
+ - **Note:  Optional values submitted for OCR will be TRUSTED and not validated by OCR**
 
 ### **POP XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/pop/templates)
 
-|     Template                       |     Trans   Type    |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------|---------------------|------------------------|----------------------|------------------------------------|
-|     OCR.xml                        |     P               |                        |                      |     4010                           |
-|     OCR.xml                        |     O               |                        |                      |     4020                           |
-|     OCR.xml                        |     F               |                        |                      |     4030                           |
-|     OCR.xml                        |     P               |     X                  |                      |     4011                           |
-|     OCR.xml                        |     O               |     X                  |                      |     4021                           |
-|     OCR.xml                        |     F               |     X                  |                      |     4031                           |
-|     OCRIdentityVerification.xml    |     P               |                        |     X                |     4012                           |
-|     OCRIdentityVerification.xml    |     O               |                        |     X                |     4022                           |
-|     OCRIdentityVerification.xml    |     F               |                        |     X                |     4032                           |
-|     OCRIdentityVerification.xml    |     P               |     X                  |     X                |     4013                           |
-|     OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4023                           |
-|     OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4033                           |
+|     Template            | Certification Terminal ID | Trans Type | DL Required | Verify ID | XML Template | XSD Template |
+|-------------------------|---------------------------|------------|-------------|-----------|-------------|-------------|
+| OCR                     | 4010                      | P          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4020                      | O          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4030                      | F          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4011                      | P          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4021                      | O          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4031                      | F          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCRIdentityVerification | 4012                      | P          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4022                      | O          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4032                      | F          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4013                      | P          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4023                      | O          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4033                      | F          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+
 
 ### **Check21 XML Templates**
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
-
-|     Template                        |     Trans   Type    |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|-------------------------------------|---------------------|------------------------|----------------------|------------------------------------|
-|      OCR.xml                        |     P               |                        |                      |     4110                           |
-|      OCR.xml                        |     O               |                        |                      |     4120                           |
-|      OCR.xml                        |     F               |                        |                      |     4130                           |
-|      OCR.xml                        |     P               |     X                  |                      |     4111                           |
-|      OCR.xml                        |     O               |     X                  |                      |     4121                           |
-|      OCR.xml                        |     F               |     X                  |                      |     4131                           |
-|      OCRIdentityVerification.xml    |     P               |                        |     X                |     4112                           |
-|      OCRIdentityVerification.xml    |     O               |                        |     X                |     4122                           |
-|      OCRIdentityVerification.xml    |     F               |                        |     X                |     4132                           |
-|      OCRIdentityVerification.xml    |     P               |     X                  |     X                |     4113                           |
-|      OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4123                           |
-|      OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4133                           |
+|     Template            | Certification Terminal ID | Trans Type | DL Required | Verify ID | XML Template | XSD Template |
+|-------------------------|---------------------------|------------|-------------|-----------|-------------|-------------|
+| OCR                     | 4010                      | P          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4020                      | O          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4030                      | F          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4011                      | P          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4021                      | O          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4031                      | F          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCRIdentityVerification | 4012                      | P          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4022                      | O          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4032                      | F          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4013                      | P          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4023                      | O          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4033                      | F          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
 
 ## **Templates for Mobile**
 
 ### **POP XML Teamplates for Mobile** 
-Root path:  https://demo.eftchecks.com/webservices/schemas/pop/templates)
+|     Template            | Certification Terminal ID | Trans Type | DL Required | Verify ID | XML Template | XSD Template |
+|-------------------------|---------------------------|------------|-------------|-----------|-------------|-------------|
+| OCR                     | 4210                      | P          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4220                      | O          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4230                      | F          |             |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4211                      | P          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4221                      | O          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4231                      | F          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRDLRequired.xsd)     |
+| OCRIdentityVerification | 4212                      | P          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4222                      | O          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4232                      | F          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4213                      | P          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4223                      | O          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4233                      | F          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/POP%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/POP%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
 
-|     Template                       |     Trans   Type    |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------|---------------------|------------------------|----------------------|------------------------------------|
-|     OCR.xml                        |     P               |                        |                      |     4210                           |
-|     OCR.xml                        |     O               |                        |                      |     4220                           |
-|     OCR.xml                        |     F               |                        |                      |     4230                           |
-|     OCR.xml                        |     P               |     X                  |                      |     4211                           |
-|     OCR.xml                        |     O               |     X                  |                      |     4221                           |
-|     OCR.xml                        |     F               |     X                  |                      |     4231                           |
-|     OCRIdentityVerification.xml    |     P               |                        |     X                |     4212                           |
-|     OCRIdentityVerification.xml    |     O               |                        |     X                |     4222                           |
-|     OCRIdentityVerification.xml    |     F               |                        |     X                |     4232                           |
-|     OCRIdentityVerification.xml    |     P               |     X                  |     X                |     4213                           |
-|     OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4223                           |
-|     OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4233                           |
 
 ### **Check21 XML Templates for Mobile** 
-(Root path:  https://demo.eftchecks.com/webservices/schemas/c21/templates)
+|     Template            | Certification Terminal ID | Trans Type | DL Required | Verify ID | XML Template | XSD Template |
+|-------------------------|---------------------------|------------|-------------|-----------|-------------|-------------|
+| OCR                     | 4310                      | P          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4320                      | O          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4330                      | F          |             |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLOptional.xsd)     |
+| OCR                     | 4311                      | P          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4321                      | O          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCR                     | 4331                      | F          | X           |           | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCR.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRDLRequired.xsd)     |
+| OCRIdentityVerification | 4312                      | P          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4322                      | O          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4332                      | F          |             |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLOptional.xsd)     |
+| OCRIdentityVerification | 4313                      | P          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4323                      | O          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
+| OCRIdentityVerification | 4333                      | F          | X           |     X     | [XML](/Authorization%20Gateway/XML/OCR/Check21%20Templates%20for%20Mobile/OCRIdentityVerification.xml)     | [XSD](/Authorization%20Gateway/XSD/OCR%20XSD%20Schemas/Check21%20Schemas/OCRIdentityVerificationDLRequired.xsd)     |
 
-|     Template                        |     Trans   Type    |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|-------------------------------------|---------------------|------------------------|----------------------|------------------------------------|
-|      OCR.xml                        |     P               |                        |                      |     4310                           |
-|      OCR.xml                        |     O               |                        |                      |     4320                           |
-|      OCR.xml                        |     F               |                        |                      |     4330                           |
-|      OCR.xml                        |     P               |     X                  |                      |     4311                           |
-|      OCR.xml                        |     O               |     X                  |                      |     4321                           |
-|      OCR.xml                        |     F               |     X                  |                      |     4331                           |
-|      OCRIdentityVerification.xml    |     P               |                        |     X                |     4312                           |
-|      OCRIdentityVerification.xml    |     O               |                        |     X                |     4322                           |
-|      OCRIdentityVerification.xml    |     F               |                        |     X                |     4332                           |
-|      OCRIdentityVerification.xml    |     P               |     X                  |     X                |     4313                           |
-|      OCRIdentityVerification.xml    |     O               |     X                  |     X                |     4323                           |
-|      OCRIdentityVerification.xml    |     F               |     X                  |     X                |     4333                           |
-
-
-
-## **Standard XSD Schemas**
-A matrix of the available XSDs can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema.
-
-
-### **Check21 Schemas** 
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/c21/)
-
-|     Template                                               |     DL     Required    |     Verify     Check    |     Verify     ID    |     Certification   Terminal ID    |
-|------------------------------------------------------------|------------------------|-------------------------|----------------------|------------------------------------|
-|     CheckNoVerificationDLOptional.xsd                      |                        |                         |                      |     1610                           |
-|     CheckNoVerificationDLRequired.xsd                      |     X                  |                         |                      |     1611                           |
-|     CheckVerificationIdentityVerificationDLOptional.xsd    |                        |     X                   |     X                |     1612                           |
-|     CheckVerificationIdentityVerificationDLRequired.xsd    |     X                  |     X                   |     X                |     1613                           |
-|     CheckVerificationOnlyDLOptional.xsd                    |                        |     X                   |                      |     1614                           |
-|     CheckVerificationOnlyDLRequired.xsd                    |     X                  |     X                   |                      |     1615                           |
-|     IdentityVerificationOnlyDLOptional.xsd                 |                        |                         |     X                |     1616                           |
-|     IdentityVerificationOnlyDLRequired.xsd                 |     X                  |                         |     X                |     1617                           |
-
-## **OCR XSD Schemas**
-A matrix of the available OCR XSDs can be found below. Each grid contains the name of the schema, based on the schemas determining criteria, and a link to the actual schema.  The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. NOTE: Verify Check can be applied to any terminal. This will NOT impact the terminal schemas or template.
-
-### **POP Schemas** 
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/pop/)
-
-|     Template                                 |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|----------------------------------------------|------------------------|----------------------|------------------------------------|
-|     OCRDLOptional.xsd                        |                        |                      |     4010/4020/4030/4210            |
-|     OCRDLRequired.xsd                        |     X                  |                      |     4011/4021/4031/4211            |
-|     OCRIdentityVerificationDLOptional.xsd    |                        |     X                |     4012/4022/4032/4212            |
-|     OCRIdentityVerificationDLRequired.xsd    |     X                  |     X                |     4013/4023/4033/4213            |
-
-### **Check21 Schemas** 
-(Root path:  http://demo.eftchecks.com/webservices/Schemas/c21/)
-
-|     Template                                 |     DL     Required    |     Verify     ID    |     Certification   Terminal ID    |
-|----------------------------------------------|------------------------|----------------------|------------------------------------|
-|     OCRDLOptional.xsd                        |                        |                      |     4110/4120/4130/4310            |
-|     OCRDLRequired.xsd                        |     X                  |                      |     4111/4121/4131/4311            |
-|     OCRIdentityVerificationDLOptional.xsd    |                        |     X                |     4112/4122/4132/4312            |
-|     OCRIdentityVerificationDLRequired.xsd    |     X                  |     X                |     4113/4123/4133/4313            |
 
 ## **Data Types**
 Each element in the XML data packet that is sent to the Authorization Gateway has a data type that defines the format of the data contained within the element.  The Terminal’s XSD defines which elements are of what data type. A list and links to the available data types is located below.
@@ -922,13 +900,13 @@ https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayTypes.xsd
 https://demo.eftchecks.com/Webservices/schemas/types/AuthGatewayResponseTypes.xsd
 
 
+# **Validation Handling**
 
-## **Validation Handling**
-When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
+When the AuthGatewayCertification web method receives a request it will first validate your request XML Data Packet against the published XSD for your terminal. Each returned response will include a VALIDATION_MESSAGE element.  If the request XML Data Packet successfully passes validation the RESULT child element of the VALIDATION_MESSAGE element will contain a value of “Passed”, but if the validation failed, the RESULT element will contain a value of “Failed”.  These values can be coded into your host system for determining if a request passed or failed validation. 
 
-The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet.
+The VALIDATION_MESSAGE element will also contain a SCHEMA_FILE_PATH element. The SCHEMA_FILE_PATH element will be present regardless of if the request XML Data Packet passed or failed validation and will include the full URI for the XSD that was used for validating the request XML Data Packet. In addition, if the RESULT element contains “Passed” then only the RESULT and SCHEMA_FILE_PATH elements will be present as child elements of the VALIDATION_MESSAGE. However, if the request XML Data Packet fails validation, and the RESULT element contains a value of “Failed”, then the VALIDATION_MESSAGE will contain one or more VALIDATION_ERROR elements.  The VALIDATION_ERROR element will contain SEVERITY and MESSAGE elements that will detail exactly what failed in the request XML Data Packet as well as LINE_NUMBER and LINE_POSITION attributes that will define exactly where the validation error occurred.  
 
-
+The host system should always check each response to make sure the RESULT child element of the VALIDATION_MESSAGE is set to “Passed”.  If it is not, then there are validation errors and the transaction was not processed. The host system will have to correct any validation errors outlined in the VALIDATION_ERROR element(s) and then resubmit the request XML Data Packet. 
 
 
 ## **Responses**
@@ -939,10 +917,7 @@ The Authorization Gateway XML response may contain the following elements:
  - **VALIDATION_MESSAGE**:  Contains all of the elements in the validation message. 
  - **AUTHORIZATION_MESSAGE**:  Contains all of the elements in the authorization message.
  
-_NOTE: The AuthGatewayCertification web method response will not contain this element._
-
-
-
+*NOTE: The AuthGatewayCertification web method response will not contain this element.*
 
 
 
@@ -964,30 +939,21 @@ Validation Message Example – Success Response
 
 This data packet failed validation because the Driver’s License Information is required by the XSD and was not provided in the data packet.
 ```XML
-<<?xml version=”1.0” encoding=”utf-8” ?> 
-       <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
-    <VALIDATION_MESSAGE>
-          <RESULT>Failed</RESULT> 
-                <SCHEMA_FILE_PATH>
-                         http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/
-                         CheckNoVerificationDLRequired.xsd
-                </SCHEMA_FILE_PATH> 
-               <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
-               <SEVERITY>Error</SEVERITY> 
-               <MESSAGE>
-                              The ‘DL_STATE’ element has an invalid value according to its data
-                               type. An error occurred at (1, 561).
-                          </MESSAGE> 
-           </VALIDATION_ERROR>
-               <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
-               <SEVERITY>Error</SEVERITY> 
-               <MESSAGE>
-                               The ‘IDENTIFIER’ element has an invalid value according to its data      
-                                type.
-                         </MESSAGE> 
-           </VALIDATION_ERROR>
+<?xml version=”1.0” encoding=”utf-8” ?>
+<RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
+    	<VALIDATION_MESSAGE>
+        	<RESULT>Failed</RESULT> 
+                <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckNoVerificationDLRequired.xsd</SCHEMA_FILE_PATH>
+		<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
+        		<SEVERITY>Error</SEVERITY> 
+	               	<MESSAGE>The ‘DL_STATE’ element has an invalid value according to its data type. An error occurred at (1, 561).</MESSAGE> 
+         	</VALIDATION_ERROR>
+         	<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
+               		<SEVERITY>Error</SEVERITY> 
+               		<MESSAGE>The ‘IDENTIFIER’ element has an invalid value according to its data type.</MESSAGE> 
+         	</VALIDATION_ERROR>
       </VALIDATION_MESSAGE>
-   </RESPONSE>
+</RESPONSE>
 ```
 
 ## **The Validation Message may contain the following elements and attributes**:
@@ -1097,7 +1063,7 @@ When processing a single certification check for Check Limit Exceeded you will n
 
 If a transaction is declined the Authorization Gateway will return an 8 in the RESULT_CODE element which indicates a Decline Message. In the returned response above the RESULT_CODE element has a value of 136. If the host system is setup to do a bit comparison of the value in the RESULT_CODE, you will discover that the 136 is made of an 8 indicating a Decline Message and 128 which indicates that the transaction limit has been exceeded.  The fixed decline response also contains a value of 256 in the TYPE_CODE element. This indicates that the host system was unable to determine if this was the first time the check was presented or if it is a representment.
 
-**Decline**
+### **Decline**
 When processing a single certification check for Decline you will need to invoke the ProcessSingleCertificationCheck web method and set the routing number to 490000034 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “R” if you are using a PPD or CCD schema or “A” for all other schemas.   If the request XML Data Packet is valid then this routing number will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  D
@@ -1109,7 +1075,7 @@ When processing a single certification check for Decline you will need to invoke
 
 If a transaction is declined the Authorization Gateway will return an 8 in the RESULT_CODE element which indicates a Decline Message. In the returned response above the RESULT_CODE element has a value of 520. If the host system is setup to do a bit comparison of the value in the RESULT_CODE, you will discover that the 520 is made of an 8 indicating a Decline Message and 512 which indicates that the unpaid check Limit has been exceeded.  The fixed decline response also contains a value of 4100 in the TYPE_CODE element. This again indicates an internal override was done because the Authorization Gateway is returning a predetermined fixed response. However, if the host system is setup to conduct a bit comparison on the value of the TYPE_CODE element it can also be determined that TYPE_CODE also contains a 4, which indicates a Business Check was sent for processing.
 
-**Void**
+### **Void**
 When voiding a previously approved single certification check you will need to invoke the ProcessSingleCertificationCheck web method and set the routing number to 490000018, 490000021, or 490000047 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “V”.  This milestone has been built into the development phase so that you can incorporate this functionality into your host system. If the request XML Data Packet is valid then a Void identifier for previously approved transaction with the routing numbers noted above will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  A
@@ -1121,7 +1087,7 @@ When voiding a previously approved single certification check you will need to i
 
 You should note that the returned information for a voided transaction contains a RESULT_CODE of 0. This indicates that the void was approved, but it also illustrates the importance of examining the information contained with the TYPE_CODE. If the host systems interface with the Authorization Gateway was only set to interpret the RESULT_CODE, the full meaning of the overall response would be lost. In this case the TYPE_CODE returned in the response XML Data Packet contains 5120. A bit comparison of this value indicates that the value contains 1024 indicating a voided check, and 4096 indicating that there was an internal override due to a predetermined fixed response being returned.  
 
-**Reversal**
+### **Reversal**
 When reversing a previously approved single certification check you will need to invoke the ProcessSingleCertificationCheck web method and set the routing number to 490000018, 490000021, or 490000047 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “F”.  This milestone has been built into the development phase so that you can incorporate this functionality into your host system. If the request XML Data Packet is valid then a Reversal identifier for previously approved transaction with the routing numbers noted above will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  A
@@ -1131,7 +1097,7 @@ When reversing a previously approved single certification check you will need to
  - CODE: REVERSAL ACCEPTED
  - MESSAGE:  REVERSAL ACCEPTED
 
- **Credit**
+### **Credit**
 When processing a single certification check for Authorization you will need to invoke the ProcessSingleCertificationCheck web method.  A credit transaction is processed with a negative sign in front of the amount.  Set the routing number to 490000018 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “R” if you are using a PPD or CCD schema or “A” for all other schemas.  If the request XML Data Packet is valid then this routing number will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  A
@@ -1141,7 +1107,7 @@ When processing a single certification check for Authorization you will need to 
  - CODE:  AUTH NUM 272-172
  - MESSAGE:   APPROVAL
 
-**Manager Needed**
+### **Manager Needed**
 When processing a single certification check for Manager Needed you will need to invoke the ProcessSingleCertificationCheck web method and set the routing number to 490000021 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “R” if you are using a PPD or CCD schema or “A” for all other schemas.   If the request XML Data Packet is valid then this routing number will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  W
@@ -1155,7 +1121,7 @@ If a transaction is returned with a warning message, the RESULT_CODE element wil
 
 If the host system receives a warning message back and indicates “MANAGER NEEDED” and you are not doing PPD, then you have the option of sending an override request packet back to the Authorization Gateway.  The override request is created by sending the same request XML Data Packet back to the Authorization Gateway. However, you must change the value of the IDENTIFIER element to “O”. You also have the option of changing the values of the TRANSACTION_ID element and REQUEST_ID attribute so that your host system can record and track the override request as a separate transaction. In this instance you also have the option of changing the value in the CHECK_AMOUNT element.  Again, identifying a request XML Data Packet as an override will void the previous transaction and input a new transaction in its place, and your host system will receive an authorization in return.
 
-**Represented Check**
+### **Represented Check**
 When processing a single certification check for Re-Presented Check you will need to invoke the ProcessSingleCertificationCheck web method and set the routing number to 490000047 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “R” if you are using a PPD or CCD schema or “A” for all other schemas.   If the request XML Data Packet is valid then this routing number will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  W
@@ -1169,7 +1135,7 @@ If a transaction is returned with a warning message, the RESULT_CODE element wil
 
 If the host system receives a warning message back and indicates “MANAGER NEEDED” and you are not doing PPD, then you have the option of sending an override request packet back to the Authorization Gateway.  The override request is created by sending the same request XML Data Packet back to the Authorization Gateway. However, you must change the value of the IDENTIFIER element to “O”. You also have the option of changing the values of the TRANSACTION_ID element and REQUEST_ID attribute so that your host system can record and track the override request as a separate transaction. Again, identifying a request XML Data Packet as an override will void the previous transaction and input a new transaction in its place, and your host system will receive an authorization in return.
 
-**No ACH**
+### **No ACH**
 When processing a single certification check for No ACH Check you will need to invoke the ProcessSingleCertificationCheck web method and set the routing number to 490000050 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “R” if you are using a PPD or CCD schema or “A” for all other schemas.   If the request XML Data Packet is valid then this routing number will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  D, VA
@@ -1179,13 +1145,13 @@ When processing a single certification check for No ACH Check you will need to i
  - CODE: DECLINE, NO ACH
  - MESSAGE: DECLINE, NO ACH
 
-**For SEC Codes (WEB, TEL, PPD, or CCD)**
+### **For SEC Codes (WEB, TEL, PPD, or CCD)**
 If a transaction is returned with a Decline message, the RESULT_CODE element will contain an 8. In this case the MESSAGE element indicates that the transaction is Declined because of the type of SEC code assigned to the terminal. The TYPE_CODE in this response contains a lot of information. A bit comparison will show that the value of 512 in the TYPE_CODE element means that this is a Block for ACH transaction.  The host system should be able to recognize that a warning message was received from the Authorization Gateway and that it was a Decline with No ACH. 
 
-**For All Other SEC Codes.**
+### **For All Other SEC Codes.**
 If a transaction is returned with a Verification Approved message, the RESULT_CODE element will contain a 0. In this case the MESSAGE element indicates that the transaction is Verification Approved. The TYPE_CODE in this response contains a lot of information. A bit comparison will show that the value of 768 in the TYPE_CODE element contains 512 which indicates a Block for ACH and a 256 which indicates it is also for an Unknown Presentment.
 
-**MICR ERROR**
+### **MICR ERROR**
 When processing a single certification check for MICR ERROR Check you will need to invoke the ProcessSingleCertificationCheck web method and set the routing number to 490000015 in the ROUTING_NUMBER element of the request XML Data Packet. You will also have to set the value of the IDENTIFER element to “R” if you are using a PPD or CCD schema or “A” for all other schemas.   If the request XML Data Packet is valid then this routing number will trigger the Authorization Gateway to return a response with the following information to the host system:
 
  - RESPONSE_TYPE:  VE
@@ -1238,33 +1204,6 @@ _NOTE: If Authorization Gateway Request IDs are duplicated for a given Terminal,
 
 
 
-# **Phase 1 Preparation**
-
-## **Connect to the Authorization Gateway**
-
-Once you have successfully connected to the Authorization Gateway and are comfortable with adding the SOAP header, you will test your request and response with the GetCertificationTerminalSettings.
- 
-The GetCertificationTerminalSettings web method is defined in the [Terminal Settings – XML Specification](#TerminalSettingsXMLSpecification) section, providing an example of the request and response. The invocation of this web method is part of the Preparation Phase because it is the simplest web method and requires no input parameters.
-
-This web method can be invoked if your implementation team determines the host system needs to acquire information about the Authorization Gateway Terminal, and does not need to be invoked on a continuous basis.
-
-_Please note this is not to be confused with the GetTerminalSettings, which performs the same function for production terminals during the Production Phase._
-
-## **SEC Standard Entry Class Codes**
-The Authorization Gateway uses the Standard Entry Class (SEC) codes to determine what information is required to be sent in the submission. The National Automated Clearing House Association (NACHA) requires the use of SEC Codes for each transaction settled through the Automated Clearing House (ACH).  Each code identifies what type of transaction occurred. In addition, the SEC_CODE element in the response XML Data Packet form the GetCertificationTerminalSettings web method will include the SEC code used from the terminal ID provided.  A definition of each of the SEC codes used by the Authorization Gateway can be found below.
-
-•	**PPD** - Prearranged Payment and Deposit Entry :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a consumers account. 
-
-•	**CCD** - Corporate Credit or Debit :  A prearranged payment and deposit entry is either a standing or single entry authorization where the funds are transferred to or from a business account. 
-
-•	**WEB** - Internet Initiated Entry :  An internet initiated entry is a method of payment for goods or services made via the internet.    
-
-•	**TEL** - Telephone Initiated Entry :  A telephone initiated entry is a payment for goods or services made with a single entry debit with oral authorization obtained from the consumer via the telephone.
-
-•	**POP** - Point-of-Purchase Entry : The Point-of-Purchase method of payment is for purchases made for goods or services in person by the consumer.  These are non-recurring debit entries. A check reading device must be used to capture the routing number, account number, and check number from the source document (check). The source document cannot be previously used for any prior POP entry, and the source document must be voided and returned to the customer at the point-of-purchase. In addition, a signed receipt must be obtained at the point-of-purchase and retained for 2 years from the settlement date. The “Authorization Requirements” section in the Authorization Gateway Specification document contains additional information on the receipt requirements.
-
-•	**C21** - Check 21 :  Although not an SEC Code C21 is used to denote Check 21 transactions. Check 21 requires a check reading device capture the routing number, account number, and check number from the source document (Check) as well as capture images of both the front and back of the source document.  
-
 # **Phase 2 Development**
 
 **Interfacing with the Authorization Gateway**
@@ -1284,41 +1223,6 @@ We have provided example request XML Data Packets to assist your integration tea
 
 Once you have determined how you will create your XML data packets in your system; we recommend reviewing each element and attribute and when they are best used. The Data Packet – XML Specification(#DataPacketXMLSpecification) provides links to XML templates, and text description of the regular expressions, data types, or enumerations that control the allowed data formats for each element.
 
-## **How to determine which XML Template to Use**
-
-The XML data packet can be built from scratch or one of the available XML templates can be used to build the XML data packet prior to submitting to the Authorization Gateway. The URI for the XML data packet for a given terminal can be retrieved from the Terminal Settings but can also be determined by using the criteria below.
-
-The root path for all XML Templates is https://demo.eftchecks.com/webserivces/schemas/  followed by the SEC Code, “/Templates/”, and the XML Template name.  The XML Template is determined by the following criteria:
-
- - 	If the Terminal requires the Driver’s License Information.
- - 	If the Terminal is configured for Check Verification.
- - 	If the Terminal is configured for Identity Verification.
-
-## **How to determine which XSD to Use**
-                       
-The XSD that will be used can be retrieved from the Terminal Settings, but can also be determined by using the criteria below.  
-
-The root path for all XSDs is http://demo.eftchecks.com/webservices/Schemas followed by the SEC Code and Schema Name. The Schema Name is determined by the following criteria:
-
- - If the Terminal requires the Driver’s License Information. 
- - If the Terminal is configured for Check Verification.
- - If the Terminal is configured for Identity Verification.
- - For PPD and CCD entries, If the Terminal is configured to allow Credit entries   
-   
-A matrix of the available XML Templates, and XSD Schemas for each SEC code can be found in the XML/XSD section, by SEC code. Each grid contains links to the templates and the schema needed determined by your required criteria. The grid also includes the Terminal IDs that can be used for testing and certifying against the provided schema. The Terminal ID will be different for guaranteed transactions and Non-guaranteed transactions.  
-  
-**Guaranteed terminals are numbered 1xxx, and Non-guaranteed terminals are numbered 2xxx**
-
-An example XSD file path for a PPD terminal that does not require the driver’s license information, is setup for check verification, and is setup for identity verification, and does not allow credits would be as follows: 
-https://demo.eftchecks.com/webservices/schemas/ppd/CheckVerificationIdentityVerificationDLOptional.xsd
-
-There are published example XML data packets that contain example data, and XSD Schema packets. 
-https://demo.eftchecks.com/webservices/schemas/ppd/examples/CheckVerificationIdentityVerificationDLOptional.xml
-
-
-
-Link to [XML Examples](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML)
-Link to [XSD Schemas](https://github.com/PayaDev/PayaServices/tree/main/Authorization%20Gateway/XSD)
 
 
 ## **Data Identification**
@@ -1358,27 +1262,6 @@ It is important to note that for POP transactions, that if the swiped MICR data 
 Identity information needs to be included when the terminal is setup to do identity verification. There are schemas that will handle the validation for terminals that are setup to do identity verification, and the GetCertificationTerminalSettings web method will return a response of “true” in the RUN_IDENTITY_VERIFICATION element. If a terminal is setup to do identity verification, then the host system is required to send either the last 4 of the check writers social security number OR their birth year (not both). 
 
 
-## **Requesting a Certification Script**
 
-Requesting a certification script is the major milestone of the Development Phase. It signifies that your integration team has completed the integration effort and alerts our software team that the host system is ready to undergo certification. It is important that your integration team contact us to request a certification script. If a certification script is not requested, but you begin the Certification Phase, our software team will not be able to properly certify your host system and your team will have to rerun the certification script prior to moving to the Production Phase. 
-You can reach our Integration Department by email at integration@eftsupport.com
 
-# **Phase 3 Certification**
 
-During the certification phase your integration team will be responsible for sequentially completing the objectives in the certification script provided. Your team should now be intimately familiar with the Authorization Gateway and the host system should now be able to handle the completion of these objectives without any problems.  During the certification phase our software team will closely monitor each transaction to ensure it is valid, and that the host system is properly configured. We will alert you to the status of the transaction in our system and advise you if there are any modifications that need to be made to the host system. The successful completion of each objective outlined in the certification script signifies the completion of the major milestone for the Certification Phase and marks the opportunity to begin the Production Phase.
-
-# **Phrase 4 Migrating to Production**
-The Production Phase is the final phase of the integration effort. During this phase you will have to make some minimal changes to the host system in order to use the Authorization Gateway in a production environment. This includes the following:
-
- - You will need to request a user name and password for production. This user name and password will be different from the user name and password provided for certification and will only be valid for production.  The host system will then need to be modified to include this user name and password in the authentication header when invoking a production web method.
- - You will need to request the production URL for the Authorization Gateway. This URL will be different then the URL used for certification, however it will contain identical web methods. The host system will need to be modified to invoke web methods on the production URL.
- - You will also need to change the certification web methods listed below to their sister production web methods.
-
-|     Certification Web Method            |                  |     Production Web Method    |
-|-----------------------------------------|------------------|------------------------------|
-|     GetCertificationTerminalSettings    |     change to    |     GetTerminalSettings      |
-|     ProcessSingleCertificationCheck     |     change to    |     ProcessSingleCheck       |
-
- - Once the host system has been modified to include these changes for processing transactions in a production environment you will need to request a “Go Live” date. Requesting a “Go Live” date signifies completion of the last major milestone of the integration effort and indicates to our software team that the host system is ready for production. 
-
-Congratulations!! :tada:
