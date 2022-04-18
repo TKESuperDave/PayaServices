@@ -80,6 +80,9 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 17. [Request an Archived Response](Process.md#request-an-archived-response)
 22. [Sample Code]()     
 - [SOAP Message Sample]()
+- [VB.NET]()
+     - [C#]()
+24. [Code Sample Kits]()
 23. [Contact Information]()
 
 
@@ -94,16 +97,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	 
 
 	 
-1. [Introduction]()
-3. [Workflow Overview](Process.md#workflow-overview)
-     - [Phase 1: Preparation]()
-	      	- [Preparation Phase Milestones]()
-     - [Phase 2: Development]()
-	      	- [Development Phase Milestones]()
-	 - [Phase 3: Certification]()
-	      	- [Certification Phase Milestones]()
-	 - [Phase 4: Production]()
-	      	- [Production Phase Milestones]()
+
 4. [Preparing for Authorization Gateway Development (Phase 1)]()
      - [Where do I start]()
      - [What are the different Standard Entry Class (SEC) Codes?]()
@@ -131,10 +125,8 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 19. [Beginning Certification (Phase 3)]()
 20. [Migrating to Production (Phase 4)]()	 
 
-- [VB.NET]()
-     - [C#]()
-24. [Code Sample Kits]()
-1. [Introduction]() - Deleted
+
+
 
 
 
