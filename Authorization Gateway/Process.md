@@ -9,13 +9,11 @@ Extensible Markup Language (XML) is used to send data packet requests to the Aut
 XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested.
 
 ### **Table of Contents**
-
-
-2. [Overview](Process.md#overview)	 
-6. [Connection Method](Process.md#connection-method)
-7. [Submission](Process.md#submissions)
+1. [Overview](Process.md#overview)	 
+2. [Connection Method](Process.md#connection-method)
+3. [Submission](Process.md#submissions)
      - [SOAP Header](Process.md#soap-header)
-8. [Web Methods](Process.md#web-methods)
+4. [Web Methods](Process.md#web-methods)
      - [Certification Methods](Process.md#certification-methods)
      	- [Certification Web Methods](Process.md#certification-methods)
       		- [GetCertificationTerminalSetttings](Process.md#getcertificationterminalsettings)
@@ -36,12 +34,11 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	      	- [ProcessSingleCheckWithToken](Process.md#processsinglecheckwithtoken)
 	      	- [GetToken](Process.md#gettoken)
 	      	- [ParseMICR](Process.md#parsemicr)
-10. [Validation Handling](Process.md#validation-handling)
-11. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
+5.[Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
-12. [How to determine which XML & XDS Template to Use](Process.md#how-to-determine-which-xml--xsd-template-to-use)
+6. [How to determine which XML & XDS Template to Use](Process.md#how-to-determine-which-xml--xsd-template-to-use)
      - [Standard XML & XSD Templates](Process.md#standard-templates)  
 		- [PPD Templates](Process.md#ppd-templates)  
 		- [CCD Templates](Process.md#ccd-templates)  
@@ -52,20 +49,23 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 		- [BOC Templates](Process.md#boc-templates)  
      - [OCR XML Templates](Process.md#ocr-xml-templates)  
 		- [POP Templates]()  
-		- [Check21 Templates]()  
-		- [Check21 Templates for Mobile]()
-14. [Data Types](Process.md#data-types)
-15. [Responses](Process.md#responses)
+		- [Check21 Templates]()
+		- [Templates for Mobile]() 
+			- [Pop Templates for Mobile]()  
+			- [Check21 Templates for Mobile]()
+7. [Data Types](Process.md#data-types)
+8. [Validation Handling]()
+9. [Responses](Process.md#responses)
      - [Validation Messages Response](Process.md#validation-message-response)
-	      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
-	      	- [Validation Message Example - Failure Response](Process.md#validation-message-example--failure-response)
+     	- [Validation Message Example - Success Response](Process.md#validation-message-response)
+     	- [Validation Message Example - Failure Response](Process.md#validation-message-example--failure-response)
      - [Authorization Message Response](Process.md#authorization-message-response)
-	      	- [Authorization Message Example](Process.md#authorization-message-example)
-	      	- [Process Single Certification Check - Authorization](Process.md#process-single-certification-check--authorization)
+     	- [Authorization Message Example](Process.md#authorization-message-example)
+     	- [Process Single Certification Check - Authorization](Process.md#process-single-certification-check--authorization)
      - [Authorization Message Response with Token](Process.md#authorization-message-response-with-token)
-	      	- [Authorization Message Example with Token](Process.md#authorization-message-example-with-token)
+     	- [Authorization Message Example with Token](Process.md#authorization-message-example-with-token)
 			
-	Failure Responses		
+10. [Single Certification Check Types]()		
      - [Process Single Certification Check - Check Limit Exceeded](Process.md#check-limit-exceeded)
      - [Process Single Certification Check - Decline]()
      - [Process Single Certification Check - Void]()
@@ -75,59 +75,15 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
      - [Process Single Certification Check - Represented Check]()
      - [Process Single Certification Check - No ACH]()
      - [Process Single Certification Check - MICR ERROR]()
-16. [Exception Handling](Process.md#exception-handling)
+11. [Exception Handling](Process.md#exception-handling)
      - [EXCEPTION Element - Example as a child of the RESPONSE element](Process.md#exception-element--example-as-a-child-of-the-response-element)
-17. [Request an Archived Response](Process.md#request-an-archived-response)
-22. [Sample Code]()     
-- [SOAP Message Sample]()
+12. [Request an Archived Response](Process.md#request-an-archived-response)
+13. [Sample Code]()     
 - [VB.NET]()
-     - [C#]()
-24. [Code Sample Kits]()
-23. [Contact Information]()
-
-
-21. [Authorization Requirements]()
-     - [Authorization Page - PPD]()
-     - [Authorization Page - CCD]()
-     - [Authorization Page - WEB]()
-     - [Recorded Authorization - TEL]()
-     - [Reciept Authorization - POP]()
-
-	 
-	 
-
-	 
-
-4. [Preparing for Authorization Gateway Development (Phase 1)]()
-     - [Where do I start]()
-     - [What are the different Standard Entry Class (SEC) Codes?]()
-5. [Beginning Authorization Gateway Development (Phase 2)]()
-     - [I'm ready to begin Development. Where do I start?]()
-     - [What does it all mean?]()
-     - [How do I identify my data?]()
-     - [What do the different identifiers mean?]()
-     - [What does verification only mean?]()
-     - [What do I need to provide in the account section?]()
-     - [When do I need to include identify information]()	 
-
-4. [Preparing for Authorization Gateway Development (Phase 1)]()
-     - [Where do I start]()
-     - [What are the different Standard Entry Class (SEC) Codes?]()
-5. [Beginning Authorization Gateway Development (Phase 2)]()
-     - [I'm ready to begin Development. Where do I start?]()
-     - [What does it all mean?]()
-     - [How do I identify my data?]()
-     - [What do the different identifiers mean?]()
-     - [What does verification only mean?]()
-     - [What do I need to provide in the account section?]()
-     - [When do I need to include identify information]()	 
-18. [Requestion a Certification Script]()
-19. [Beginning Certification (Phase 3)]()
-20. [Migrating to Production (Phase 4)]()	 
-
-
-
-
+- [C#]()
+- [SOAP Message Sample]()
+14. [Code Sample Kits]()
+15. [Contact Information]()
 
 
 # **Connection Method**
