@@ -4,17 +4,18 @@
 
 The Authorization Gateway is designed to accommodate various input requirements based on a given terminal’s settings. You can use this single interface to handle many scenarios. Our Authorization Gateway uses web services and can be developed with any programming language that can consume a web service.
 
-We process using SOAP via. XML. Extensible Markup Language (XML) is used to send data packet requests to the Authorization Gateway and to receive a response back. Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS. The Authorization Gateway also employs a custom SOAP header for authentication information. 
+Extensible Markup Language (XML) is used to send data packet requests to the Authorization Gateway and to receive a response back. Simple Object Access Protocol (SOAP) is used for XML message exchange over HTTPS. The Authorization Gateway also employs a custom SOAP header for authentication information. 
 
 XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested.
-We do provide sample code in VB.NET and C#. In addition, a complete Authorization Gateway sample solution is available to help further illustrate how to create an interface that uses the Authorization Gateway.
 
 # Overview
 
-The workflow consists of four distinct phases, with each phase culminating in a major milestone
- 
+This document will provide a high level overview of a full lifecycle workflow for integrating the authorization gateway into your host system. This workflow was designed to make the gateway integration process as simple as possible and will be used to guide your team throughout the integration effort and to keep the project on track.
+
+The workflow consists of four distinct phases, with each phase culminating in a major milestone. The four distinct phases of the workflow are Preparation, Development, Certification, and Production. These four distinct phases identify the critical planning, assessment, and coordination of activities between the integration team and Paya Services’ software development team.
 
 Each phase is marked with a single major milestone that represents the successful culmination of all the activities of the phase. In addition to this major event, each phase may also have intermediate milestones leading up to the major milestone. They represent points in time when all team members synchronize the integration effort, and members of the project team agree that they have achieved the objectives of that particular phase.
+
 The individual phases are outlined below and include a table that defines the milestones and can also be used by your team to chart the progress of the integration effort.
 
 ## Phase 1:  Preparation
@@ -43,7 +44,7 @@ During this phase the integration team will be responsible for ensuring the host
 The section [Process](https://github.com/kcskw/PayaServices/blob/patch-1/Authorization%20Gateway/Process.md) document, entitled [Interfacing with the Authorization Gateway](https://github.com/kcskw/PayaServices/blob/patch-1/Authorization%20Gateway/Process.md#phase-2-development), details the business logic necessary to complete each milestone in this phase. The completion of this phase marks the opportunity to begin the Certification Phase.
 
 
-Development Phase Milestones
+Development Phase Milestones:
 
 - Validation Handling: Successfully validate a request Data Packet against your published XSD(s) and have the host system be able to handle failed validation messages.
 Process Single Certification Check:

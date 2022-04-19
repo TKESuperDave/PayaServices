@@ -9,13 +9,11 @@ Extensible Markup Language (XML) is used to send data packet requests to the Aut
 XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate data packet requests sent by the client. Each terminal will be assigned a published XSD based on the terminal settings. If a data packet request does not conform to its assigned XSD a failed Validation Message response will be returned, otherwise the data packet will be processed as requested.
 
 ### **Table of Contents**
-
-
-2. [Overview](Process.md#overview)	 
-6. [Connection Method](Process.md#connection-method)
-7. [Submission](Process.md#submissions)
+1. [Overview](Process.md#overview)	 
+2. [Connection Method](Process.md#connection-method)
+3. [Submission](Process.md#submissions)
      - [SOAP Header](Process.md#soap-header)
-8. [Web Methods](Process.md#web-methods)
+4. [Web Methods](Process.md#web-methods)
      - [Certification Methods](Process.md#certification-methods)
      	- [Certification Web Methods](Process.md#certification-methods)
       		- [GetCertificationTerminalSetttings](Process.md#getcertificationterminalsettings)
@@ -36,12 +34,11 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	      	- [ProcessSingleCheckWithToken](Process.md#processsinglecheckwithtoken)
 	      	- [GetToken](Process.md#gettoken)
 	      	- [ParseMICR](Process.md#parsemicr)
-10. [Validation Handling](Process.md#validation-handling)
-11. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
+5.[Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
-12. [How to determine which XML & XDS Template to Use](Process.md#how-to-determine-which-xml--xsd-template-to-use)
+6. [How to determine which XML & XDS Template to Use](Process.md#how-to-determine-which-xml--xsd-template-to-use)
      - [Standard XML & XSD Templates](Process.md#standard-templates)  
 		- [PPD Templates](Process.md#ppd-templates)  
 		- [CCD Templates](Process.md#ccd-templates)  
@@ -52,20 +49,23 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 		- [BOC Templates](Process.md#boc-templates)  
      - [OCR XML Templates](Process.md#ocr-xml-templates)  
 		- [POP Templates]()  
-		- [Check21 Templates]()  
-		- [Check21 Templates for Mobile]()
-14. [Data Types](Process.md#data-types)
-15. [Responses](Process.md#responses)
+		- [Check21 Templates]()
+		- [Templates for Mobile]() 
+			- [Pop Templates for Mobile]()  
+			- [Check21 Templates for Mobile]()
+7. [Data Types](Process.md#data-types)
+8. [Validation Handling]()
+9. [Responses](Process.md#responses)
      - [Validation Messages Response](Process.md#validation-message-response)
-	      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
-	      	- [Validation Message Example - Failure Response](Process.md#validation-message-example--failure-response)
+     	- [Validation Message Example - Success Response](Process.md#validation-message-response)
+     	- [Validation Message Example - Failure Response](Process.md#validation-message-example--failure-response)
      - [Authorization Message Response](Process.md#authorization-message-response)
-	      	- [Authorization Message Example](Process.md#authorization-message-example)
-	      	- [Process Single Certification Check - Authorization](Process.md#process-single-certification-check--authorization)
+     	- [Authorization Message Example](Process.md#authorization-message-example)
+     	- [Process Single Certification Check - Authorization](Process.md#process-single-certification-check--authorization)
      - [Authorization Message Response with Token](Process.md#authorization-message-response-with-token)
-	      	- [Authorization Message Example with Token](Process.md#authorization-message-example-with-token)
+     	- [Authorization Message Example with Token](Process.md#authorization-message-example-with-token)
 			
-	Failure Responses		
+10. [Single Certification Check Types]()		
      - [Process Single Certification Check - Check Limit Exceeded](Process.md#check-limit-exceeded)
      - [Process Single Certification Check - Decline]()
      - [Process Single Certification Check - Void]()
@@ -75,67 +75,15 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
      - [Process Single Certification Check - Represented Check]()
      - [Process Single Certification Check - No ACH]()
      - [Process Single Certification Check - MICR ERROR]()
-16. [Exception Handling](Process.md#exception-handling)
+11. [Exception Handling](Process.md#exception-handling)
      - [EXCEPTION Element - Example as a child of the RESPONSE element](Process.md#exception-element--example-as-a-child-of-the-response-element)
-17. [Request an Archived Response](Process.md#request-an-archived-response)
-22. [Sample Code]()     
-- [SOAP Message Sample]()
-23. [Contact Information]()
-
-
-21. [Authorization Requirements]()
-     - [Authorization Page - PPD]()
-     - [Authorization Page - CCD]()
-     - [Authorization Page - WEB]()
-     - [Recorded Authorization - TEL]()
-     - [Reciept Authorization - POP]()
-
-	 
-	 
-
-	 
-1. [Introduction]()
-3. [Workflow Overview](Process.md#workflow-overview)
-     - [Phase 1: Preparation]()
-	      	- [Preparation Phase Milestones]()
-     - [Phase 2: Development]()
-	      	- [Development Phase Milestones]()
-	 - [Phase 3: Certification]()
-	      	- [Certification Phase Milestones]()
-	 - [Phase 4: Production]()
-	      	- [Production Phase Milestones]()
-4. [Preparing for Authorization Gateway Development (Phase 1)]()
-     - [Where do I start]()
-     - [What are the different Standard Entry Class (SEC) Codes?]()
-5. [Beginning Authorization Gateway Development (Phase 2)]()
-     - [I'm ready to begin Development. Where do I start?]()
-     - [What does it all mean?]()
-     - [How do I identify my data?]()
-     - [What do the different identifiers mean?]()
-     - [What does verification only mean?]()
-     - [What do I need to provide in the account section?]()
-     - [When do I need to include identify information]()	 
-
-4. [Preparing for Authorization Gateway Development (Phase 1)]()
-     - [Where do I start]()
-     - [What are the different Standard Entry Class (SEC) Codes?]()
-5. [Beginning Authorization Gateway Development (Phase 2)]()
-     - [I'm ready to begin Development. Where do I start?]()
-     - [What does it all mean?]()
-     - [How do I identify my data?]()
-     - [What do the different identifiers mean?]()
-     - [What does verification only mean?]()
-     - [What do I need to provide in the account section?]()
-     - [When do I need to include identify information]()	 
-18. [Requestion a Certification Script]()
-19. [Beginning Certification (Phase 3)]()
-20. [Migrating to Production (Phase 4)]()	 
-
-- [VB.NET]()
-     - [C#]()
-24. [Code Sample Kits]()
-1. [Introduction]() - Deleted
-
+12. [Request an Archived Response](Process.md#request-an-archived-response)
+13. [Sample Code]()     
+	- [VB.NET]()
+	- [C#]()
+	- [SOAP Message Sample]()
+14. [Code Sample Kits]()
+15. [Contact Information]()
 
 
 # **Connection Method**
@@ -1201,7 +1149,164 @@ If needed an Authorization Message for a previously processed transaction can be
 _NOTE: If Authorization Gateway Request IDs are duplicated for a given Terminal, only the last Authorization Message for the pairing will be returned._ 
 
 
+# **Sample Code**
 
+The first step is to add a Web Reference to the web service URL below in your project called com.eftchecks.demo. 
+
+https://demo.eftchecks.com/Webservices/AuthGateway.asmx
+
+## **VB.NET**
+
+**Example Code – GetCertificationTerminalSettings()**
+```VB
+Public Function GetCertificationTerminalSettings() As String
+        ‘This function will get the Certification Terminal Settings for Terminal 1010.
+
+        ‘Create variable to hold Authorization Gateway Response
+        Dim myAuthGatewayResponse As String
+
+        ‘Create an instance of the Authorization Gateway
+        Dim myAuthGateway As New com.eftchecks.demo.AuthGateway
+
+        ‘Create an instance of the Authorization Header
+        Dim myAuthHeader As New com.eftchecks.demo.AuthGatewayHeader
+
+        ‘Populate the Auth Header with the User Name, Password, and Terminal ID
+        With myAuthHeader
+            .UserName = “myUserNameGoesHere”
+            .Password = “myPasswordGoesHere”
+            .TerminalID = 1010
+        End With
+
+        ‘Apply the Auth Header to the Auth Gateway
+        myAuthGateway.AuthGatewayHeaderValue = myAuthHeader
+
+        ‘Get the Certification Terminal Settings from the Authorization Gateway
+        myAuthGatewayResponse = myAuthGateway.GetCertificationTerminalSettings()
+
+        ‘Create a new XML Document for the Certification Terminal Settings
+        Dim myTerminalSettings As New System.Xml.XmlDocument
+
+        ‘Load the Certification Terminal Settings XML into an XML Document
+        myTerminalSettings.LoadXml(myAuthGatewayResponse)
+
+        ‘Return the Certification Terminal Settings
+        Return myTerminalSettings.OuterXml.ToString
+
+    End Function
+```
+
+## **C#**
+```CSharp
+public string GetCertificationTerminalSettings() 
+{ 
+  //This function will get the Certification Terminal Settings for Terminal 1010. 
+    
+  //Create variable to hold Authorization Gateway Response 
+  string myAuthGatewayResponse; 
+    
+  //Create an instance of the Authorization Gateway 
+  com.eftchecks.demo.AuthGateway myAuthGateway = new com.eftchecks.demo.AuthGateway(); 
+    
+  //Create an instance of the Authorization Header   
+  com.eftchecks.demo.AuthGatewayHeader myAuthHeader = new    
+  com.eftchecks.demo.AuthGatewayHeader(); 
+    
+  //Populate the Auth Header with the User Name, Password, and Terminal ID 
+	{ 
+	   myAuthHeader.UserName = “myUserNameGoesHere”; 
+	   myAuthHeader.Password = “myPasswordGoesHere”; 
+	   myAuthHeader.TerminalID = 1010; 
+	} 
+    
+  //Apply the Auth Header to the Auth Gateway 
+  myAuthGateway.AuthGatewayHeaderValue = myAuthHeader; 
+    
+  //Get the Certification Terminal Settings from the Authorization Gateway 
+  myAuthGatewayResponse = myAuthGateway.GetCertificationTerminalSettings(); 
+    
+  //Create a new XML Document for the Certification Terminal Settings 
+  System.Xml.XmlDocument myTerminalSettings = new System.Xml.XmlDocument(); 
+    
+  //Load the Certification Terminal Settings XML into an XML Document 
+  myTerminalSettings.LoadXml(myAuthGatewayResponse); 
+    
+  //Return the Certification Terminal Settings 
+  return myTerminalSettings.OuterXml.ToString; 
+    
+}
+```
+
+
+## **SOAP Message Sample**
+```XML
+<?xml version=”1.0” encoding=”utf-8”?>
+<soap:Envelope xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:soap=”http://schemas.xmlsoap.org/soap/envelope/”>
+  <soap:Header>
+    <AuthGatewayHeader    xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway” >
+      <UserName> GATEWAYUserName </UserName>
+      <Password> GATEWAYPassword</Password>
+      <TerminalID>1210</TerminalID>
+    </AuthGatewayHeader>
+  </soap:Header>
+  <soap:Body>
+    <ProcessSingleCertificationCheck xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
+      <DataPacket>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
+        &lt;AUTH_GATEWAY REQUEST_ID=
+&quot;8949a6093fbc414b871eb65e019a8f08&quot;&gt;
+        &lt;TRANSACTION&gt;
+        &lt;TRANSACTION_ID&gt;&lt;/TRANSACTION_ID&gt;
+        &lt;MERCHANT&gt;
+        &lt;TERMINAL_ID&gt;1210&lt;/TERMINAL_ID&gt;
+        &lt;/MERCHANT&gt;
+        &lt;PACKET&gt;
+        &lt;IDENTIFIER&gt;A&lt;/IDENTIFIER&gt;
+        &lt;ACCOUNT&gt;
+        &lt;ROUTING_NUMBER&gt;490000018&lt;/ROUTING_NUMBER&gt;
+        &lt;ACCOUNT_NUMBER&gt;999999&lt;/ACCOUNT_NUMBER&gt;
+        &lt;CHECK_NUMBER&gt;9999&lt;/CHECK_NUMBER&gt;
+        &lt;ACCOUNT_TYPE&gt;Checking&lt;/ACCOUNT_TYPE&gt;
+        &lt;/ACCOUNT&gt; &lt;CONSUMER&gt;
+        &lt;FIRST_NAME&gt;Doug&lt;/FIRST_NAME&gt;
+        &lt;LAST_NAME&gt;Fresh&lt;/LAST_NAME&gt;
+        &lt;ADDRESS1&gt;22 West Way&lt;/ADDRESS1&gt;
+        &lt;ADDRESS2&gt;&lt;/ADDRESS2&gt;
+        &lt;CITY&gt;Los Angls Afb&lt;/CITY&gt;
+        &lt;STATE&gt;CA&lt;/STATE&gt;
+        &lt;ZIP&gt;90009&lt;/ZIP&gt;
+        &lt;PHONE_NUMBER&gt;2073331234&lt;/PHONE_NUMBER&gt;
+        &lt;DL_STATE&gt;&lt;/DL_STATE&gt;
+        &lt;DL_NUMBER&gt;&lt;/DL_NUMBER&gt;
+        &lt;COURTESY_CARD_ID&gt;&lt;/COURTESY_CARD_ID&gt;
+        &lt;/CONSUMER&gt;
+        &lt;CHECK&gt;
+        &lt;CHECK_AMOUNT&gt;24.55&lt;/CHECK_AMOUNT&gt;
+        &lt;/CHECK&gt;
+        &lt;/PACKET&gt;
+        &lt;/TRANSACTION&gt;
+        &lt;/AUTH_GATEWAY&gt;
+      </DataPacket>
+    </ProcessSingleCertificationCheck>
+  </soap:Body>
+</soap:Envelope>
+```
+
+
+## **Code Sample Kits**
+
+Java, VB.Net and PHP Sample Kits are available via FTP.
+
+FTP: 		ftp.eftchecks.com
+
+UserID:     	SampleKits
+
+Password:   	60cJSK13%0ymgzab
+
+## **Contact Information**
+For questions or to receive certification and live username/passwords and URLs please contact:
+
+Integration Department
+integration@eftsupport.com
 
 
 # **Phase 2 Development**
