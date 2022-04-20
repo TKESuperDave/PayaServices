@@ -34,7 +34,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 	      	- [ProcessSingleCheckWithToken](Process.md#processsinglecheckwithtoken)
 	      	- [GetToken](Process.md#gettoken)
 	      	- [ParseMICR](Process.md#parsemicr)
-5.[Data Packet - XML Specification](Process.md#data-packet--xml-specification)
+5. [Data Packet - XML Specification](Process.md#data-packet--xml-specification)
      - [Terminal Settings - XML Specification](Process.md#terminal-settings---xml-specification)
      - [Authorization Gateway XML Data Packet Example](Process.md#authorization-gateway-xml-data-packet-example)
      - [Authorization Gateway XML Data Packet with Token Example](Process.md#authorization-gateway-xml-data-packet-with-token-example)
@@ -48,13 +48,13 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 		- [Check21 Templates](Process.md#check21-templates)  
 		- [BOC Templates](Process.md#boc-templates)  
      - [OCR XML Templates](Process.md#ocr-xml-templates)  
-		- [POP Templates]()  
-		- [Check21 Templates]()
-		- [Templates for Mobile]() 
-			- [Pop Templates for Mobile]()  
-			- [Check21 Templates for Mobile]()
+		- [POP Templates](Process.md#pop-xml-templates)  
+		- [Check21 Templates](Process.md#check21-xml-templates)
+		- [Templates for Mobile](Process.md#templates-for-mobile) 
+			- [Pop Templates for Mobile](Process.md#pop-xml-teamplates-for-mobile)  
+			- [Check21 Templates for Mobile](Process.md#check21-xml-templates-for-mobile)
 7. [Data Types](Process.md#data-types)
-8. [Validation Handling]()
+8. [Validation Handling](Process.md#validation-handling)
 9. [Responses](Process.md#responses)
      - [Validation Messages Response](Process.md#validation-message-response)
      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
@@ -65,25 +65,25 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
      - [Authorization Message Response with Token](Process.md#authorization-message-response-with-token)
      	- [Authorization Message Example with Token](Process.md#authorization-message-example-with-token)
 			
-10. [Single Certification Check Types]()		
+10. [Single Certification Check Types](Process.md#single-certification-check-types)		
      - [Process Single Certification Check - Check Limit Exceeded](Process.md#check-limit-exceeded)
-     - [Process Single Certification Check - Decline]()
-     - [Process Single Certification Check - Void]()
-     - [Process Single Certification Check - Reversal]()
-     - [Process Single Certification Check - Credit]()
-     - [Process Single Certification Check - Manager Needed]()
-     - [Process Single Certification Check - Represented Check]()
-     - [Process Single Certification Check - No ACH]()
-     - [Process Single Certification Check - MICR ERROR]()
+     - [Process Single Certification Check - Decline](Process.md#decline)
+     - [Process Single Certification Check - Void](Process.md#void)
+     - [Process Single Certification Check - Reversal](Process.md#reversal)
+     - [Process Single Certification Check - Credit](Process.md#credit)
+     - [Process Single Certification Check - Manager Needed](Process.md#manager-needed)
+     - [Process Single Certification Check - Represented Check](Process.md#represented-check)
+     - [Process Single Certification Check - No ACH](Process.md#no-ach)
+     - [Process Single Certification Check - MICR ERROR](Process.md#micr-error)
 11. [Exception Handling](Process.md#exception-handling)
      - [EXCEPTION Element - Example as a child of the RESPONSE element](Process.md#exception-element--example-as-a-child-of-the-response-element)
 12. [Request an Archived Response](Process.md#request-an-archived-response)
-13. [Sample Code]()     
-	- [VB.NET]()
-	- [C#]()
-	- [SOAP Message Sample]()
-14. [Code Sample Kits]()
-15. [Contact Information]()
+13. [Sample Code](Process.md#sample-code)     
+	- [VB.NET](Process.md#vbnet)
+	- [C#](Process.md#c)
+	- [SOAP Message Sample](Process.md#soap-message-sample)
+14. [Code Sample Kits](Process.md#code-sample-kits)
+15. [Contact Information](Process.md#contact-information)
 
 
 # **Connection Method**
@@ -109,13 +109,13 @@ The SOAP header contains the following fields:
 
 **Example:** 
 ```XML
-  <soap:Header>
-    <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
-      <UserName> GATEWAYUserName </UserName>
-      <Password> GATEWAYPassword</Password>
+<soap:Header>
+   <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
+      <UserName>GATEWAYUserName</UserName>
+      <Password>GATEWAYPassword</Password>
       <TerminalID>1210</TerminalID>
-    </AuthGatewayHeader>
-  </soap:Header>
+   </AuthGatewayHeader>
+</soap:Header>
 ```
 
 # **Web Methods**
@@ -875,11 +875,10 @@ Validation Message Example – Success Response
 ```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <RESPONSE xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” REQUEST_ID=”4654”>
-                <VALIDATION_MESSAGE>
-<RESULT>Passed</RESULT>
-<SCHEMA_FILE_PATH>http://demo.eftchecks.com/webservices/Schemas/WEB/CheckNoVerificationDLOptional.xsd
-</SCHEMA_FILE_PATH>
-                </VALIDATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Passed</RESULT>
+      <SCHEMA_FILE_PATH>http://demo.eftchecks.com/webservices/Schemas/WEB/CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
+   </VALIDATION_MESSAGE>
 </RESPONSE>
 ```
 
@@ -889,18 +888,18 @@ This data packet failed validation because the Driver’s License Information is
 ```XML
 <?xml version=”1.0” encoding=”utf-8” ?>
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
-    	<VALIDATION_MESSAGE>
-        	<RESULT>Failed</RESULT> 
-                <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckNoVerificationDLRequired.xsd</SCHEMA_FILE_PATH>
-		<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
-        		<SEVERITY>Error</SEVERITY> 
-	               	<MESSAGE>The ‘DL_STATE’ element has an invalid value according to its data type. An error occurred at (1, 561).</MESSAGE> 
-         	</VALIDATION_ERROR>
-         	<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
-               		<SEVERITY>Error</SEVERITY> 
-               		<MESSAGE>The ‘IDENTIFIER’ element has an invalid value according to its data type.</MESSAGE> 
-         	</VALIDATION_ERROR>
-      </VALIDATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Failed</RESULT> 
+      <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckNoVerificationDLRequired.xsd</SCHEMA_FILE_PATH>
+      <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
+         <SEVERITY>Error</SEVERITY> 
+	 <MESSAGE>The ‘DL_STATE’ element has an invalid value according to its data type. An error occurred at (1, 561).</MESSAGE> 
+      </VALIDATION_ERROR>
+      <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
+         <SEVERITY>Error</SEVERITY> 
+         <MESSAGE>The ‘IDENTIFIER’ element has an invalid value according to its data type.</MESSAGE> 
+      </VALIDATION_ERROR>
+   </VALIDATION_MESSAGE>
 </RESPONSE>
 ```
 
@@ -922,19 +921,19 @@ The ProcessSingleCheck web method will process a valid XML data packet and retur
 ```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
-<VALIDATION_MESSAGE>
-<RESULT>Passed</RESULT> 
-<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
-</VALIDATION_MESSAGE>
-<AUTHORIZATION_MESSAGE>
-<TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
-<RESPONSE_TYPE>A</RESPONSE_TYPE> 
-<RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
-<RESULT_CODE>0</RESULT_CODE> 
-<TYPE_CODE>4096</TYPE_CODE> 
-<CODE>AUTH NUM 272-172</CODE> 
-<MESSAGE>APPROVAL</MESSAGE> 
-</AUTHORIZATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Passed</RESULT> 
+      <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
+   </VALIDATION_MESSAGE>
+   <AUTHORIZATION_MESSAGE>
+      <TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
+      <RESPONSE_TYPE>A</RESPONSE_TYPE> 
+      <RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
+      <RESULT_CODE>0</RESULT_CODE> 
+      <TYPE_CODE>4096</TYPE_CODE> 
+      <CODE>AUTH NUM 272-172</CODE> 
+      <MESSAGE>APPROVAL</MESSAGE> 
+   </AUTHORIZATION_MESSAGE>
 </RESPONSE>
 ```
 ### **The Authorization Message may contain the following elements**:
@@ -967,20 +966,20 @@ The ProcessSingleCheckWithToken web method will process a valid XML data packet 
 ```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
-<VALIDATION_MESSAGE>
-<RESULT>Passed</RESULT> 
-<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
-</VALIDATION_MESSAGE>
-<AUTHORIZATION_MESSAGE>
-<TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
-<RESPONSE_TYPE>A</RESPONSE_TYPE> 
-<RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
-<RESULT_CODE>0</RESULT_CODE> 
-<TYPE_CODE>4096</TYPE_CODE> 
-<CODE>AUTH NUM 272-172</CODE> 
-<MESSAGE>APPROVAL</MESSAGE>
-<TOKEN>C7E057491C4A4D67B617EE512D1300AE</TOKEN> 
-</AUTHORIZATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Passed</RESULT> 
+      <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
+   </VALIDATION_MESSAGE>
+   <AUTHORIZATION_MESSAGE>
+      <TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
+      <RESPONSE_TYPE>A</RESPONSE_TYPE> 
+      <RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
+      <RESULT_CODE>0</RESULT_CODE> 
+      <TYPE_CODE>4096</TYPE_CODE> 
+      <CODE>AUTH NUM 272-172</CODE> 
+      <MESSAGE>APPROVAL</MESSAGE>
+      <TOKEN>C7E057491C4A4D67B617EE512D1300AE</TOKEN> 
+   </AUTHORIZATION_MESSAGE>
 </RESPONSE>
 ```
 ### **The Authorization Message may contain the following elements**:
@@ -1125,15 +1124,11 @@ If an error occurs within the Authorization Gateway, the XML string response wil
 ### EXCEPTION **Element – Example as a child of the RESPONSE element**
 ```XML
 <? Xml version=”1.0” encoding=”utf-8” ?> 
-          <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”     
-                             xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance”    
-            REQUEST_ID=”” >
-                 <EXCEPTION>
-               <MESSAGE>An internal error occurred. The transaction was NOT      
-                           Processed.
-                         </MESSAGE> 
-         </EXCEPTION>
-      </RESPONSE>
+<RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=””>
+   <EXCEPTION>
+	<MESSAGE>An internal error occurred. The transaction was NOT Processed.</MESSAGE> 
+   </EXCEPTION>
+</RESPONSE>
 ```
 
 ### **The Exception element will contain the following elements.**
@@ -1243,17 +1238,16 @@ public string GetCertificationTerminalSettings()
 <?xml version=”1.0” encoding=”utf-8”?>
 <soap:Envelope xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:soap=”http://schemas.xmlsoap.org/soap/envelope/”>
   <soap:Header>
-    <AuthGatewayHeader    xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway” >
-      <UserName> GATEWAYUserName </UserName>
-      <Password> GATEWAYPassword</Password>
+    <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
+      <UserName>GATEWAYUserName</UserName>
+      <Password>GATEWAYPassword</Password>
       <TerminalID>1210</TerminalID>
     </AuthGatewayHeader>
   </soap:Header>
   <soap:Body>
     <ProcessSingleCertificationCheck xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
       <DataPacket>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
-        &lt;AUTH_GATEWAY REQUEST_ID=
-&quot;8949a6093fbc414b871eb65e019a8f08&quot;&gt;
+        &lt;AUTH_GATEWAY REQUEST_ID=&quot;8949a6093fbc414b871eb65e019a8f08&quot;&gt;
         &lt;TRANSACTION&gt;
         &lt;TRANSACTION_ID&gt;&lt;/TRANSACTION_ID&gt;
         &lt;MERCHANT&gt;
@@ -1307,66 +1301,3 @@ For questions or to receive certification and live username/passwords and URLs p
 
 Integration Department
 integration@eftsupport.com
-
-
-# **Phase 2 Development**
-
-**Interfacing with the Authorization Gateway**
-
-The best place to start is to determine your application architecture for interfacing with the Authorization Gateway.  You will choose which published XSD(s) your XML data packets will be validated against, and you also know the URL for the corresponding XML template(s) for your schema(s).  
-This leaves you with the following possibilities for creating your XML data packets that are sent to the Authorization Gateway:
-
-1.	XML Schema Definition Tool (such as Xsd.exe for .Net or Svcutil.exe) to generate a class based on the published XSD, populate the class properties, and then serialize the object.
-2.	LINQ to XML to build your xml and populate the elements and attributes.
-3.	You can load the XML template into an XML document object and use Xpath to populate the elements and attributes.
-4.	You can build your own XML document and use Xpath to populate the elements and attributes.
-
-We recommend you leverage the published [XSDs](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XDS) and [XML](https://github.com/TKESuperDave/PayaServices/tree/XML/Authorization%20Gateway/XML) templates and use either the first or second options when creating the data packets to be sent. All these methods use the .NET platform however other languages have successfully been used. 
-
-We have provided example request XML Data Packets to assist your integration team with getting started. A link to these examples can be found at the end of the “How to determine which XML Template to Use” section above.
-
-
-Once you have determined how you will create your XML data packets in your system; we recommend reviewing each element and attribute and when they are best used. The Data Packet – XML Specification(#DataPacketXMLSpecification) provides links to XML templates, and text description of the regular expressions, data types, or enumerations that control the allowed data formats for each element.
-
-
-
-## **Data Identification**
-The specification for the Authorization Gateway XML Data Packet allows you to optionally identify your data in two distinct ways. The **REQUEST_ID** attribute contained within the AUTH_GATEWAY element and the **TRANSACTION_ID** element. These are built in so your host system can match a response from the Authorization Gateway with the original request. 
-
-These identifiers are not inherently unique, rather the Authorization Gateway leaves the responsibility of determining if an identifier is unique to the host system. It is not required that optional identifiers are unique, but it is strongly recommended. If an identifier is not unique it may become difficult for your host system to match responses or retrieve archived responses.  In the examples we have provided, GUIDs have been used as optional identifiers. The use of GUIDs ensures uniqueness, but any value can be used as an identifier, including database identity column values. It is also important to note that if the implementation team determines an identifier needs to be unique, that it only needs to be unique for a specific terminal ID, but it can be unique across all terminal IDs for a given user. 
- 
-
-**The REQUEST_ID** attribute should be a unique identifier that is used to identify the overall data packet. When your data packet is received by the Authorization Gateway it is processed, and asynchronously stored along with the response. This is done so the host system can invoke the GetArchivedResponse web method to request a previous response. 
-
-The GetArchivedResponse web method accepts the REQUEST_ID as an input parameter and will return the corresponding response.  It is important to note that the GetArchivedResponse is a production only web method and can only be effectively used if the host system keeps track of and submits values in the REQUEST_ID attribute.  The value in the REQUEST_ID attribute of the request data packet is also returned in the response data packet in the REQUEST_ID attribute of the RESPONSE element.
-
-**The TRANSACTION_ID** element should be a unique identifier that is used to identify a specific transaction.  The value contained in the TRANSACTION_ID element is recorded by the Authorization Gateway but is not used internally and cannot be used to request a specific transaction. The value in the TRANSACTION_ID element is however returned in the response data packet in the TRANSACTION_ID element within the parent AUTHORIZATION_MESSAGE element. This was done so that your host system can match the response for a specific transaction to an internal record in the host system. 
-
-## **Valid Identifiers**
-Each request XML Data Packet must contain a valid identifier for its schema. The identifier you use will change depending on the context of the transaction being sent. Your integration team will become more familiar with the different identifiers as you begin to work on each milestone. However, a list of all the valid identifiers can be found below.  
-
-|                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     Authorize (A)    |     This   is used in schemas for POP, TEL, WEB, and Check 21 to indicate that an   authorization is requested for the XML Data Packet being sent.  It is also used to process credit   transactions.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|     Recurring (R)    |     This   is used in schemas for PPD, CCD, TEL and WEB to indicate that an   authorization is requested for a single or reoccurring transaction.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-|     Void (V)         |     This   is used in schemas for PPD, CCD, POP, TEL, WEB, and Check 21 to void a   previously authorized transaction. However, it should be noted that   transactions can only be voided on the same calendar day they were   authorized.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|     Override (O)     |     This   is used in schemas for POP, TEL, and Check 21 when the host system receives a   manager needed message to void the previous transaction and input a new   transaction in its place.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|     Payroll (P)      |     This   is used in schemas for POP and Check 21 for business and payroll checks. What   this does is NOT link the driver’s license to the routing/ account numbers   since the person writing/cashing the check is usually not the business.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|     Update (U)       |     This   is used in schemas for POP and Check 21 for OCR transactions that already   have complete data in the data packet. It forces the transaction to run as a   normal POP or Check 21 transaction on an OCR terminal. This is normally done   when a change is needed to a transaction that was submitted under a normal   OCR transaction. Example: A transaction is sent through using the OCR engine.   The data that is returned does not match the image. If the transaction was   still successful and a change is warranted, a Void Transaction is sent. Then   another transaction with updated data (from the response and corrected from   user) is sent back through the system with a complete data packet and “U” as   the identifier. If the transaction failed, other actions will need to be taken.    |
-
-## **Verification Only**
-If the gateway terminal is setup as verification only or the VERIFICATION_ONLY element is set to true, then the transaction will be processed as verification only. This means that an authorization will be run, but that the check **_will not_** undergo Electronic Check Conversion (ECC) and will have to be taken to the bank for deposit. 
-Depending on the merchant’s program, the funds may or may not be guaranteed.
-
-## **Account Section Data**
-All PPD, CCD, TEL and WEB schemas define that the ACCOUNT child elements must contain values.  The child elements within the ACCOUNT element for POP and Check 21 (C21) schemas define what ACCOUNT child elements must contain values and what ACCOUNT child elements can be left empty.  All of the child elements within the ACCOUNT element for POP and Check 21 (C21), except the ACCOUNT_TYPE for POP schemas, define the data as optional. This is because for these SEC codes you can either provide the swiped MICR data or provide the routing, account, and check numbers.   If the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER are all left empty in the request data packet then the transaction cannot be processed. Either the MICR_DATA or the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements must contain values. 
-
-It is important to note that for POP transactions, that if the swiped MICR data in the MICR_DATA element is missing, but the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements contain values then the transaction will be processed as verification only; even if the CONTROL_CHAR indicates that the information was retrieved from a check reader. In addition, if the MICR_DATA, ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements all contain values, then the Authorization Gateway will only use the information in the MICR_DATA element and will parse it out overwriting any values sent in the ROUTING_NUMBER, ACCOUNT_NUMBER, and CHECK_NUMBER elements.
-
-## **Identity information**
-Identity information needs to be included when the terminal is setup to do identity verification. There are schemas that will handle the validation for terminals that are setup to do identity verification, and the GetCertificationTerminalSettings web method will return a response of “true” in the RUN_IDENTITY_VERIFICATION element. If a terminal is setup to do identity verification, then the host system is required to send either the last 4 of the check writers social security number OR their birth year (not both). 
-
-
-
-
-
