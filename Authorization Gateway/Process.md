@@ -78,12 +78,12 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 11. [Exception Handling](Process.md#exception-handling)
      - [EXCEPTION Element - Example as a child of the RESPONSE element](Process.md#exception-element--example-as-a-child-of-the-response-element)
 12. [Request an Archived Response](Process.md#request-an-archived-response)
-13. [Sample Code]()     
-	- [VB.NET]()
-	- [C#]()
-	- [SOAP Message Sample]()
-14. [Code Sample Kits]()
-15. [Contact Information]()
+13. [Sample Code](Process.md#templates-for-mobile)     
+	- [VB.NET](Process.md#vbnet)
+	- [C#](Process.md#c)
+	- [SOAP Message Sample](Process.md#soap-message-sample)
+14. [Code Sample Kits](Process.md#code-sample-kits)
+15. [Contact Information](Process.md#contact-information)
 
 
 # **Connection Method**
