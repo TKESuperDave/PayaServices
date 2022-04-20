@@ -922,19 +922,19 @@ The ProcessSingleCheck web method will process a valid XML data packet and retur
 ```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
-<VALIDATION_MESSAGE>
-<RESULT>Passed</RESULT> 
-<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
-</VALIDATION_MESSAGE>
-<AUTHORIZATION_MESSAGE>
-<TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
-<RESPONSE_TYPE>A</RESPONSE_TYPE> 
-<RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
-<RESULT_CODE>0</RESULT_CODE> 
-<TYPE_CODE>4096</TYPE_CODE> 
-<CODE>AUTH NUM 272-172</CODE> 
-<MESSAGE>APPROVAL</MESSAGE> 
-</AUTHORIZATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Passed</RESULT> 
+      <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
+   </VALIDATION_MESSAGE>
+   <AUTHORIZATION_MESSAGE>
+      <TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
+      <RESPONSE_TYPE>A</RESPONSE_TYPE> 
+      <RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
+      <RESULT_CODE>0</RESULT_CODE> 
+      <TYPE_CODE>4096</TYPE_CODE> 
+      <CODE>AUTH NUM 272-172</CODE> 
+      <MESSAGE>APPROVAL</MESSAGE> 
+   </AUTHORIZATION_MESSAGE>
 </RESPONSE>
 ```
 ### **The Authorization Message may contain the following elements**:
@@ -967,20 +967,20 @@ The ProcessSingleCheckWithToken web method will process a valid XML data packet 
 ```XML
 <?xml version=”1.0” encoding=”utf-8” ?> 
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>
-<VALIDATION_MESSAGE>
-<RESULT>Passed</RESULT> 
-<SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
-</VALIDATION_MESSAGE>
-<AUTHORIZATION_MESSAGE>
-<TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
-<RESPONSE_TYPE>A</RESPONSE_TYPE> 
-<RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
-<RESULT_CODE>0</RESULT_CODE> 
-<TYPE_CODE>4096</TYPE_CODE> 
-<CODE>AUTH NUM 272-172</CODE> 
-<MESSAGE>APPROVAL</MESSAGE>
-<TOKEN>C7E057491C4A4D67B617EE512D1300AE</TOKEN> 
-</AUTHORIZATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Passed</RESULT> 
+      <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckVerificationIdentityVerificationDLRequired.xsd</SCHEMA_FILE_PATH> 
+   </VALIDATION_MESSAGE>
+   <AUTHORIZATION_MESSAGE>
+      <TRANSACTION_ID>0a4f529d-70fd-4ddb-b909-b5598dc07579</TRANSACTION_ID> 
+      <RESPONSE_TYPE>A</RESPONSE_TYPE> 
+      <RESPONSE_TYPE_TEXT>APPROVED</RESPONSE_TYPE_TEXT> 
+      <RESULT_CODE>0</RESULT_CODE> 
+      <TYPE_CODE>4096</TYPE_CODE> 
+      <CODE>AUTH NUM 272-172</CODE> 
+      <MESSAGE>APPROVAL</MESSAGE>
+      <TOKEN>C7E057491C4A4D67B617EE512D1300AE</TOKEN> 
+   </AUTHORIZATION_MESSAGE>
 </RESPONSE>
 ```
 ### **The Authorization Message may contain the following elements**:
@@ -1125,15 +1125,11 @@ If an error occurs within the Authorization Gateway, the XML string response wil
 ### EXCEPTION **Element – Example as a child of the RESPONSE element**
 ```XML
 <? Xml version=”1.0” encoding=”utf-8” ?> 
-          <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema”     
-                             xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance”    
-            REQUEST_ID=”” >
-                 <EXCEPTION>
-               <MESSAGE>An internal error occurred. The transaction was NOT      
-                           Processed.
-                         </MESSAGE> 
-         </EXCEPTION>
-      </RESPONSE>
+<RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=””>
+   <EXCEPTION>
+	<MESSAGE>An internal error occurred. The transaction was NOT Processed.</MESSAGE> 
+   </EXCEPTION>
+</RESPONSE>
 ```
 
 ### **The Exception element will contain the following elements.**
@@ -1243,17 +1239,16 @@ public string GetCertificationTerminalSettings()
 <?xml version=”1.0” encoding=”utf-8”?>
 <soap:Envelope xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:soap=”http://schemas.xmlsoap.org/soap/envelope/”>
   <soap:Header>
-    <AuthGatewayHeader    xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway” >
-      <UserName> GATEWAYUserName </UserName>
-      <Password> GATEWAYPassword</Password>
+    <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
+      <UserName>GATEWAYUserName</UserName>
+      <Password>GATEWAYPassword</Password>
       <TerminalID>1210</TerminalID>
     </AuthGatewayHeader>
   </soap:Header>
   <soap:Body>
     <ProcessSingleCertificationCheck xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
       <DataPacket>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;no&quot;?&gt;
-        &lt;AUTH_GATEWAY REQUEST_ID=
-&quot;8949a6093fbc414b871eb65e019a8f08&quot;&gt;
+        &lt;AUTH_GATEWAY REQUEST_ID=&quot;8949a6093fbc414b871eb65e019a8f08&quot;&gt;
         &lt;TRANSACTION&gt;
         &lt;TRANSACTION_ID&gt;&lt;/TRANSACTION_ID&gt;
         &lt;MERCHANT&gt;
