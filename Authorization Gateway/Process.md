@@ -109,13 +109,13 @@ The SOAP header contains the following fields:
 
 **Example:** 
 ```XML
-  <soap:Header>
-    <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
-      <UserName> GATEWAYUserName </UserName>
-      <Password> GATEWAYPassword</Password>
+<soap:Header>
+   <AuthGatewayHeader xmlns=”http://tempuri.org/GETI.eMagnus.WebServices/AuthGateway”>
+      <UserName>GATEWAYUserName</UserName>
+      <Password>GATEWAYPassword</Password>
       <TerminalID>1210</TerminalID>
-    </AuthGatewayHeader>
-  </soap:Header>
+   </AuthGatewayHeader>
+</soap:Header>
 ```
 
 # **Web Methods**
@@ -875,11 +875,10 @@ Validation Message Example – Success Response
 ```XML
 <?xml version=”1.0” encoding=”utf-8”?>
 <RESPONSE xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” xmlns:xsd=”http://www.w3.org/2001/XMLSchema” REQUEST_ID=”4654”>
-                <VALIDATION_MESSAGE>
-<RESULT>Passed</RESULT>
-<SCHEMA_FILE_PATH>http://demo.eftchecks.com/webservices/Schemas/WEB/CheckNoVerificationDLOptional.xsd
-</SCHEMA_FILE_PATH>
-                </VALIDATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Passed</RESULT>
+      <SCHEMA_FILE_PATH>http://demo.eftchecks.com/webservices/Schemas/WEB/CheckNoVerificationDLOptional.xsd</SCHEMA_FILE_PATH>
+   </VALIDATION_MESSAGE>
 </RESPONSE>
 ```
 
@@ -889,18 +888,18 @@ This data packet failed validation because the Driver’s License Information is
 ```XML
 <?xml version=”1.0” encoding=”utf-8” ?>
 <RESPONSE xmlns:xsd=”http://www.w3.org/2001/XMLSchema” xmlns:xsi=”http://www.w3.org/2001/XMLSchema-instance” REQUEST_ID=”4654”>>
-    	<VALIDATION_MESSAGE>
-        	<RESULT>Failed</RESULT> 
-                <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckNoVerificationDLRequired.xsd</SCHEMA_FILE_PATH>
-		<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
-        		<SEVERITY>Error</SEVERITY> 
-	               	<MESSAGE>The ‘DL_STATE’ element has an invalid value according to its data type. An error occurred at (1, 561).</MESSAGE> 
-         	</VALIDATION_ERROR>
-         	<VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
-               		<SEVERITY>Error</SEVERITY> 
-               		<MESSAGE>The ‘IDENTIFIER’ element has an invalid value according to its data type.</MESSAGE> 
-         	</VALIDATION_ERROR>
-      </VALIDATION_MESSAGE>
+   <VALIDATION_MESSAGE>
+      <RESULT>Failed</RESULT> 
+      <SCHEMA_FILE_PATH>http://localhost/GETI.eMagnus.WebServices/Schemas/PPD/CheckNoVerificationDLRequired.xsd</SCHEMA_FILE_PATH>
+      <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”561” >
+         <SEVERITY>Error</SEVERITY> 
+	 <MESSAGE>The ‘DL_STATE’ element has an invalid value according to its data type. An error occurred at (1, 561).</MESSAGE> 
+      </VALIDATION_ERROR>
+      <VALIDATION_ERROR LINE_NUMBER=”1” LINE_POSITION=”583”>
+         <SEVERITY>Error</SEVERITY> 
+         <MESSAGE>The ‘IDENTIFIER’ element has an invalid value according to its data type.</MESSAGE> 
+      </VALIDATION_ERROR>
+   </VALIDATION_MESSAGE>
 </RESPONSE>
 ```
 
