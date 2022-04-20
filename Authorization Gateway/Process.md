@@ -54,7 +54,7 @@ XML Schema Definitions (XSDs) are used by the Authorization Gateway to validate 
 			- [Pop Templates for Mobile](Process.md#pop-xml-teamplates-for-mobile)  
 			- [Check21 Templates for Mobile](Process.md#check21-xml-templates-for-mobile)
 7. [Data Types](Process.md#data-types)
-8. [Validation Handling]()
+8. [Validation Handling](Process.md#validation-handling)
 9. [Responses](Process.md#responses)
      - [Validation Messages Response](Process.md#validation-message-response)
      	- [Validation Message Example - Success Response](Process.md#validation-message-response)
