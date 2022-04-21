@@ -1290,7 +1290,7 @@ public string GetCertificationTerminalSettings()
 
 Java, VB.Net and PHP Sample Kits are available via FTP.
 
-FTP: 		ftp.eftchecks.com
+FTP: 		sftp.eftchecks.com
 
 UserID:     	SampleKits
 
