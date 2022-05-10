@@ -26,7 +26,6 @@
 require_once('GETIECheckProcessor.php');
 
 $isError = false;
-echo "6";
 // process the POST request
 if (isset($_POST['action']) && $_POST['action'] == 'process') {
 	$validForm = false;
