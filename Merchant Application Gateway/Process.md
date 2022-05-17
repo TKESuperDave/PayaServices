@@ -525,7 +525,7 @@ The data packet is an XML string sent using the BoardCertificationMerchant_X and
 ```
 
 ## **The Application Gateway XML data packet may contain the following elements:**
-|Field|Data Type|
+|Field|Description|
 |:---|:---|
 | ENVELOPE | Is the parent element and contains all other elements within the New Merchant XML document. | 
 | BODY | Contains all of the elements for a given application. |
