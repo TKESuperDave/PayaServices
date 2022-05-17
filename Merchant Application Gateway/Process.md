@@ -65,10 +65,11 @@ The Application Gateway has been designed for fast and easy integration with you
 ### **SOAP Header**
 
 The SOAP header will need the following fields:
-|                 |               |                                                                |
-|-----------------|---------------|----------------------------------------------------------------|
+|     Field       |   Data Type   |     Description                                                |
+|:---  |:---  |:---  |
 |     UserName    |     String    |     Username   provided by Paya Services for authorization.    |
 |     Password    |     String    |     Password   provided by Paya Services for authorization.    |
+
 
 Example:
 
@@ -76,8 +77,8 @@ Example:
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:app="http://tempuri.org/GETI.eMagnus.WebServices/AppGateway">
   <soapenv:Header>
     <app:RemoteAccessHeader>
-      <app:UserName> GATEWAYUserName </app:UserName>
-      <app:Password> GATEWAYPassword</app:Password>
+      <app:UserName>GATEWAYUserName</app:UserName>
+      <app:Password>GATEWAYPassword</app:Password>
      </app:RemoteAccessHeader>
   </soapenv:Header>
 ```
@@ -524,120 +525,120 @@ The data packet is an XML string sent using the BoardCertificationMerchant_X and
 ```
 
 ## **The Application Gateway XML data packet may contain the following elements:**
-
-|     ENVELOPE:                              |     Is   the parent element and contains all other elements within the New Merchant   XML document.                                                                                                       |                                                                |
-|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-|     BODY:                                  |     Contains   all of the elements for a given application.                                                                                                                                               |     Username   provided by Paya Services for authorization.    |
-|     FILE NAME:                             |     Contains   the unique file name for each merchant application. The [File   Name] can contain up to 50 alpha-numeric characters.                                                                       |     Password   provided by Paya Services for authorization.    |
-|     FILE DATE:                             |     Contains   the date the merchant application file is submitted.  The File Date should be in the following   format:  yyyy-MM-dd HH:mm:ss                                                              |                                                                |
-|     NEW MERCHANT:                          |     Contains   all of the elements for the merchant.                                                                                                                                                      |                                                                |
-|     ISO ID:                                |     Contains   the ID for the ISO.  The ISO ID will be   numeric and five digits or less.                                                                                                                 |                                                                |
-|     MERCH CROSS REF ID:                    |      Contains the   bankcard merchant #.  The [Cross   Ref ID] can be up to 50 alpha-numeric characters and can include the   following:  #,-,:, ;, ‘                                                     |                                                                |
-|     MERCH NAME:                            |     Contains   the name of the merchant.  The [Merchant   Name] can be up to 100 alpha-numeric characters and can include the   following:  #,-,:, ;, ‘                                                   |                                                                |
-|     MERCH TYPE ID:                         |      Contains the value   that identifies the [type   of merchant].                                                                                                                                       |                                                                |
-|     MERCH SERVICE TYPE:                    |      Contains the value   that identifies the level of [merchant   service].                                                                                                                              |                                                                |
-|     MERCH GIFT SERVICE TYPE:               |     Contains   the value that identifies the gift merchant service type.                                                                                                                                  |                                                                |
-|     MERCH ADDRESS 1:                       |     Contains   the first line of the merchant’s address.    The [Address1]   can be up to 200 alpha-numeric characters and can include the following:  #, -, :, ;                                         |                                                                |
-|     MERCH ADDRESS 2:                       |     Contains   the second line of the merchant’s address.  The [Address2]   can be up to 200 alpha-numeric characters and can include the following:  #, -, :, ;                                          |                                                                |
-|     MERCH CITY:                            |     Contains   the city of the merchant’s address.    The [City]   can be up to 50 alpha characters.                                                                                                      |                                                                |
-|     MERCH STATE:                           |     Contains   the state or province of the merchant’s address.  Valid state and province codes can be found   [here].                                                                                    |                                                                |
-|     MERCH ZIP:                             |      Contains the [zip   code] of the merchant.                                                                                                                                                           |                                                                |
-|     MERCH PHONE:                           |     Contains   the merchant phone number.  The [Phone   Number] is expected as a 10-digit number without a – or ( ).                                                                                      |                                                                |
-|     MERCH ACH FLAT FEE:                    |     Contains   the transaction fee [amount].                                                                                                                                                              |                                                                |
-|     MERCH NON ACH FLAT FEE:                |     Contains   the transaction fee [amount].                                                                                                                                                              |                                                                |
-|     MERCH PERCENT FEE:                     |     Contains   the discount rate [amount].                                                                                                                                                                |                                                                |
-|     MERCH CHECK21 FLAT FEE:                |     Contains   the transaction fee [amount].                                                                                                                                                              |                                                                |
-|     MERCH CHECK21 NON FLAT FEE:            |     Contains   the transaction fee [amount].                                                                                                                                                              |                                                                |
-|     MERCH CHECK21 PERCENT FEE:             |     Contains   the discount rate [amount].                                                                                                                                                                |                                                                |
-|     MERCH CHECK21 PREMIUM FEE:             |     (Optional)   (C21 ONLY)  Contains the premium   discount rate [amount].                                                                                                                               |                                                                |
-|     MERCH GIFT TRANS FEE:                  |     Contains   the transaction fee [amount].                                                                                                                                                              |                                                                |
-|     MERCH COST PER CARD:                   |     Contains   the reorder cost [amount].   per card.                                                                                                                                                     |                                                                |
-|     MERCH GIFT PERCENT FEE:                |     Contains   the discount rate [amount].                                                                                                                                                                |                                                                |
-|     MERCH RETURN FEE:                      |     Contains   the return fee [amount].                                                                                                                                                                   |                                                                |
-|     MERCH COMMENTS:                        |     This   is an optional element that can contain up to 200 alpha-numeric characters.                                                                                                                    |                                                                |
-|     MERCH MRDC IMAGE FEE:                  |     (Optional)   Contains the transaction fee [amount].                                                                                                                                                   |                                                                |
-|     MERCH ANNUAL FEE:                      |     (Optional)   Contains the annual fee [amount].                                                                                                                                                        |                                                                |
-|     MERCH CHARGEBACK FEE:                  |     (Optional)   Contains the chargeback fee [amount].                                                                                                                                                    |                                                                |
-|     MERCH INVALID TIN FEE:                 |     (Optional)   Contains the invalid TIN fee [amount].                                                                                                                                                   |                                                                |
-|     MERCH NET COMPLIANCE FEE:              |     (Optional)   Contains the network compliance fee [amount].                                                                                                                                            |                                                                |
-|     MERCH CANCELLATION FEE:                |     (Optional)   Contains the cancellation fee [amount].                                                                                                                                                  |                                                                |
-|     MERCH VT TERM FEE:                     |     (Optional)   Contains the virtual terminal fee [amount].                                                                                                                                              |                                                                |
-|     MERCH PREMIUM PRECENT FEE:             |     (Optional)   Contains the premium discount rate [amount].                                                                                                                                             |                                                                |
-|     MERCH READER REPLACEMENT FEE:          |     (Optional)   Contains the reader replacement fee [amount].                                                                                                                                            |                                                                |
-|     MERCH MONTHLY SERVICE FEE:             |     (Optional)   (C21 ONLY) Contains the monthly service fee [amount].                                                                                                                                    |                                                                |
-|     MERCH MONTHLY MINIMUM FEE:             |     (Optional)   (C21 ONLY) Contains the monthly minimum fee [amount].                                                                                                                                    |                                                                |
-|     MERCH REVERSAL FEE:                    |     (Optional)   Contains the reversal fee [amount].                                                                                                                                                      |                                                                |
-|     MERCH BATCH FEE:                       |     (Optional)   Contains the batch fee [amount].                                                                                                                                                         |                                                                |
-|     MERCH URL:                             |     (Optional)   Website address                                                                                                                                                                          |                                                                |
-|     MERCH SALES REP:                       |     (Optional)   sales rep name or sales rep ID#                                                                                                                                                          |                                                                |
-|     PROMO CODE:                            |     (Optional)   PAYA given PROMO code (NOTE: For C21 this is a separate element. Please check   your schema)                                                                                             |                                                                |
-|     BUSINESS INFO:                         |     Contains   all the elements for business info.                                                                                                                                                        |                                                                |
-|     MERCH OWNERSHIP:                       |     Contains   the value that identifies the [merchant   ownership level].                                                                                                                                |                                                                |
-|     MERCH AVG CHECK AMOUNT:                |     Contains   the merchant’s average check [amount].                                                                                                                                                     |                                                                |
-|     MERCH MAX CHECK AMOUNT:                |     Contains   the merchant’s max check [amount].                                                                                                                                                         |                                                                |
-|     MERCH TOTAL TIME IN BUSINESS:          |     Contains   the total number of months the merchant has been in business.                                                                                                                              |                                                                |
-|     GIFT LOYALTY:                          |     Contains   all of the elements for gift and loyalty.                                                                                                                                                  |                                                                |
-|     TIME ZONE:                             |     Contains   the value that identifies the [time   zone] of the gift merchant’s location.                                                                                                               |                                                                |
-|     BUSINESS TYPE:                         |     Contains   the value that identifies the gift merchant’s [business   type].                                                                                                                           |                                                                |
-|     NEW LOCATION:                          |     Contains   all of the elements for the location.                                                                                                                                                      |                                                                |
-|     LOC NAME:                              |     Contains   the name of the location.  The [Location   Name] can be up to 100 alpha-numeric characters and can include the   following:  #,-,:, ;, ‘                                                   |                                                                |
-|     LOC CROSS REF ID:                      |     Same   as the Merch Cross Ref ID unless the location has a different cross ref   id.  The [Cross   Ref ID] can be up to 50 alpha-numeric characters and can include the   following:  #,-,:, ;, ‘     |                                                                |
-|     LOC ADDRESS 1:                         |     Contains   the first line of the location’s address.    The [Address1]   can be up to 200 alpha-numeric characters and can include the following:  #, -, :, ;                                         |                                                                |
-|     LOC ADDRESS 2:                         |     Contains   the second line of the location’s address.    The [Address2]   can be up to 200 alpha-numeric characters and can include the following:  #, -, :, ;                                        |                                                                |
-|     LOC CITY:                              |     Contains   the city of the location’s address.    The [City]   can be up to 50 alpha characters.                                                                                                      |                                                                |
-|     LOC STATE:                             |     Contains   the state or province of the location’s address.  Valid state and province codes can be found   [here].                                                                                    |                                                                |
-|     LOC ZIP:                               |      Contains the [zip   code] of the location.                                                                                                                                                           |                                                                |
-|     LOC PHONE:                             |     Contains   the location phone number.  The [Phone   Number] is expected as a 10 digit number without a – or ( ).                                                                                      |                                                                |
-|     LOC STATEMENT FEE:                     |     Contains   the monthly fee [amount].                                                                                                                                                                  |                                                                |
-|     LOC MINIMUM FEE:                       |     Contains   the monthly minimum [amount].                                                                                                                                                              |                                                                |
-|     LOC FEES ROUTING NUM:                  |     Contains   the 9-digit [routing   number] for location fees.                                                                                                                                          |                                                                |
-|     LOC FEES ACCOUNT NUM:                  |     Contains   the [account   number] for the location fees.    Valid account numbers should be between 3 and 18 numeric characters.                                                                      |                                                                |
-|     LOC TAX PAYER ID:                      |     This   is an optional element that can contain up to 9 numeric characters.                                                                                                                            |                                                                |
-|     LOC TAX PAYER NAME:                    |     This   is an optional element that can contain up to 100 alpha-numeric characters   and can include the following:  #,-,:,   ;, ‘                                                                     |                                                                |
-|     LOC ACH DESCRIPTOR:                    |     (Optional)   Contains the name of the location. Can be up to 16 alpha-numeric characters   and can include the following:  #,-,:,   ;, ‘                                                              |                                                                |
-|     LOC ACH CODATA:                        |     (Optional)   Contains the location phone number.    The [Phone   Number] is expected as a 10 digit number with – and without ()                                                                       |                                                                |
-|     CONSUMER CONVENIENCE:                  |     (Optional)   Contains all the elements for Consumer Convenience Fee.                                                                                                                                  |                                                                |
-|     CHARGE CCF:                            |     (Optional)   Indicate if merchant will charge a consumer convenience fee: 1 for yes, 0 for   no.                                                                                                      |                                                                |
-|     FEE AMOUNT:                            |     (Optional)   Contains consumer convenience fee amount.                                                                                                                                                |                                                                |
-|     FEE INCLUDED IN TRANS:                 |     (Optional)   Indicate if the convenience fee is included in the transaction: 1 for yes, 0   for no.                                                                                                   |                                                                |
-|     FEE IS PERCENT:                        |     (Optional)   Indicate if consumer convenience fee is percent of fee: 1 for yes, 0 for no.                                                                                                             |                                                                |
-|     FEE PERCENT MINIMUM AMOUNT:            |     (Optional)   The minimum fee that would be charged for Convenience to customer even if the   % based fee is lower than this threshold.                                                                |                                                                |
-|     FEE PERCENT MAXIMUM AMOUNT:            |     (Optional)   The maximum fee that would be charged for Convenience to the customer even if   the % based fee is higher than this threshold.                                                           |                                                                |
-|     STATEMENT:                             |     Contains   all the elements for the location statement.                                                                                                                                               |                                                                |
-|     LOC STATEMENT ADDRESS 1:               |      Contains the first   line of the statement address.  The [Address1] can be up to 200 alpha-numeric characters and   can include the following:  #, -, :, ;                                           |                                                                |
-|     LOC STATEMENT ADDRESS 2:               |     Contains   the second line of the statement address.    The [Address2]   can be up to 200 alpha-numeric characters and can include the following:  #, -, :, ;                                         |                                                                |
-|     LOC STATEMENT CITY:                    |     Contains   the city of the statement address.  The   [City]   can be up to 50 alpha characters.                                                                                                       |                                                                |
-|     LOC STATEMENT STATE:                   |     Contains   the state or province of the statement address.  Valid state and province codes can be found   [here].                                                                                     |                                                                |
-|     LOC STATEMENT ZIP:                     |     Contains   the [zip   code] of the statement address.                                                                                                                                                 |                                                                |
-|     LOC STATEMENT ATTN:                    |     This   is an optional element that can contain up to 200 alpha-numeric characters.                                                                                                                    |                                                                |
-|     NEW POC:                               |      Contains all of the   elements for the POC.                                                                                                                                                          |                                                                |
-|     POC PRIMARY:                           |     Indicate   if point of contact is the primary point of contact: 1 for yes, 0 for no.                                                                                                                  |                                                                |
-|     POC FIRST NAME:                        |     Contains   the first name of the point of contact.    The [First   Name] can be up to 100 alpha characters.                                                                                           |                                                                |
-|     POC LAST NAME:                         |     Contains   the last name of the point of contact.    The [Last   Name] can be up to 100 alpha characters.                                                                                             |                                                                |
-|     POC TITLE:                             |     Contains   the title of the point of contact.  The   [Title]   can be up to 100 alpha characters.                                                                                                     |                                                                |
-|     POC COMMENTS:                          |     This   is an optional element that can contain up to 200 alpha-numeric   characters.                                                                                                                  |                                                                |
-|     POC ADDRESS:                           |     Contains   the point of contact’s address.  The [Address]   can be up to 200 alpha-numeric characters and can include the following:  #, -, :, ;                                                      |                                                                |
-|     POC CITY:                              |     Contains   the city of the point of contact’s address.    The [City]   can be up to 50 alpha characters.                                                                                              |                                                                |
-|     POC STATE:                             |     Contains   the state or province of the point of contact’s address.  Valid state and province codes can be found   [here].                                                                            |                                                                |
-|     POC ZIP:                               |     Contains   the [zip   code] of the point of contact.                                                                                                                                                  |                                                                |
-|     POC DOB:                               |     Contains   the date of birth of the point of contact.    The Date of Birth should be in the following format:  yyyy-MM-dd                                                                             |                                                                |
-|     POC SSN:                               |     Contains   the point of contact’s social security number.  The [SSN]   much be 9 numeric characters.                                                                                                  |                                                                |
-|     POC Email:                             |     (Optional)   Contains the point of contact’s Email Address.                                                                                                                                           |                                                                |
-|     POC Role:                              |     (Optional)   Contains the point of contact’s Role which can be found in   AppGatewayTypes.xsd in the Data Types section.                                                                              |                                                                |
-|     NEW TERMINAL:                          |     Contains   all the elements for the terminal.                                                                                                                                                         |                                                                |
-|     TERM CROSS REF ID:                     |      Same as the Merch   Cross Ref ID unless the terminal has a different cross ref id.  The [Cross   Ref ID] can be up to 50 alpha-numeric   characters and can include the following:    #,-,:, ;, ‘    |                                                                |
-|     TERM CHECK LIMIT:                      |     Contains   the max check limit [amount]   accepted by the merchant.                                                                                                                                   |                                                                |
-|     TERM PERIPHERAL:                       |      Contains the value   that identifies the [peripheral] used with the terminal.                                                                                                                        |                                                                |
-|     TERM TYPE ID:                          |     Contains   the value that identifies the [terminal   type].                                                                                                                                           |                                                                |
-|     TERM VERIFICATION ONLY:                |      Indicate if the   terminal should be a verification only terminal: 1 for yes, 0 for no.                                                                                                              |                                                                |
-|     TERM LVL2 VERIFICAITON:                |     (Optional)   Indicate if the terminal should be level 2 – advanced account verification   terminal: 1 for yes, 0 for no.                                                                              |                                                                |
-|     TERM LVL3 VERIFICATION:                |     (Optional)   Indicate if the terminal should be level 3 – Identity verification terminal:   1 for yes, 0 for no.                                                                                      |                                                                |
-|     TERM SWIFT SETTLE CONSUMER DEBIT:      |     (Optional)   Indicate if the terminal wants Swift Settle for consumer debits: 1 for yes, 0   for no.                                                                                                  |                                                                |
-|     TERM SWIFT SETTLE CONSUMER CREDIT:     |     (Optional)   (ACH ONLY) Indicate if the terminal wants Swift Settle for consumer credits:   1 for yes, 0 for no.                                                                                      |                                                                |
-|     TERM SWIFT SETTLE MERCHANT DEBIT:      |     (Optional)   (ACH ONLY) Indicate if the terminal wants Swift Settle for merchant debits: 1   for yes, 0 for no.                                                                                       |                                                                |
-|     TERM OCR:                              |     (Optional)   Indicate if the terminal is OCR: 1 for yes, 0 for no.                                                                                                                                    |                                                                |
-|     TERM MRDC:                             |     (Optional)   Indicate if the terminal is MRDC: 1 for yes, 0 for no.                                                                                                                                   |                                                                |
-|     TERM CLONE FROM TERMNIAL ID:           |     Contains   the ID for the terminal to copy.  The [Terminal   ID] is expected as a numeric value.                                                                                                      |                                                                |
+|Field|Data Type|
+|:---|:---|
+| ENVELOPE | Is the parent element and contains all other elements within the New Merchant XML document. | 
+| BODY | Contains all of the elements for a given application. |
+| FILE NAME | Contains the unique file name for each merchant application. The [File Name] can contain up to 50 alpha-numeric characters. |
+| FILE DATE | Contains the date the merchant application file is submitted. The File Date should be in the following format: yyyy-MM-dd HH:mm:ss |
+| NEW MERCHANT | Contains all of the elements for the merchant. |
+| ISO ID | Contains the ID for the ISO. The ISO ID will be numeric and five digits or less. |
+| MERCH CROSS REF ID | Contains the bankcard merchant #. The [Cross Ref ID] can be up to 50 alpha-numeric characters and can include the following: #,-,:, ;, ‘ |
+| MERCH NAME | Contains the name of the merchant. The [Merchant Name] can be up to 100 alpha-numeric characters and can include the following: #,-,:, ;, ‘ |
+| MERCH TYPE ID | Contains the value that identifies the [type of merchant]. |
+| MERCH SERVICE TYPE | Contains the value that identifies the level of [merchant service]. |
+| MERCH GIFT SERVICE TYPE | Contains the value that identifies the gift merchant service type. |
+| MERCH ADDRESS 1 | Contains the first line of the merchant’s address. The [Address1] can be up to 200 alpha-numeric characters and can include the following: #, -, :, ; |
+| MERCH ADDRESS 2 | Contains the second line of the merchant’s address. The [Address2] can be up to 200 alpha-numeric characters and can include the following: #, -, :, ; |
+| MERCH CITY | Contains the city of the merchant’s address. The [City] can be up to 50 alpha characters. |
+| MERCH STATE | Contains the state or province of the merchant’s address. Valid state and province codes can be found [here]. |
+| MERCH ZIP | Contains the [zip code] of the merchant. |
+| MERCH PHONE | Contains the merchant phone number. The [Phone Number] is expected as a 10-digit number without a – or ( ). |
+| MERCH ACH FLAT FEE | Contains the transaction fee [amount]. |
+| MERCH NON ACH FLAT FEE | Contains the transaction fee [amount]. |
+| MERCH PERCENT FEE | Contains the discount rate [amount]. |
+| MERCH CHECK21 FLAT FEE | Contains the transaction fee [amount]. |
+| MERCH CHECK21 NON FLAT FEE | Contains the transaction fee [amount]. |
+| MERCH CHECK21 PERCENT FEE | Contains the discount rate [amount]. |
+| MERCH CHECK21 PREMIUM FEE | (Optional) (C21 ONLY) Contains the premium discount rate [amount]. |
+| MERCH GIFT TRANS FEE | Contains the transaction fee [amount]. |
+| MERCH COST PER CARD | Contains the reorder cost [amount]. per card. |
+| MERCH GIFT PERCENT FEE | Contains the discount rate [amount]. |
+| MERCH RETURN FEE | Contains the return fee [amount]. |
+| MERCH COMMENTS | This is an optional element that can contain up to 200 alpha-numeric characters. |
+| MERCH MRDC IMAGE FEE | (Optional) Contains the transaction fee [amount]. |
+| MERCH ANNUAL FEE | (Optional) Contains the annual fee [amount]. |
+| MERCH CHARGEBACK FEE | (Optional) Contains the chargeback fee [amount]. |
+| MERCH INVALID TIN FEE | (Optional) Contains the invalid TIN fee [amount]. |
+| MERCH NET COMPLIANCE FEE | (Optional) Contains the network compliance fee [amount]. |
+| MERCH CANCELLATION FEE | (Optional) Contains the cancellation fee [amount]. |
+| MERCH VT TERM FEE | (Optional) Contains the virtual terminal fee [amount]. |
+| MERCH PREMIUM PRECENT FEE | (Optional) Contains the premium discount rate [amount]. |
+| MERCH READER REPLACEMENT FEE | (Optional) Contains the reader replacement fee [amount]. |
+| MERCH MONTHLY SERVICE FEE | (Optional) (C21 ONLY) Contains the monthly service fee [amount]. |
+| MERCH MONTHLY MINIMUM FEE | (Optional) (C21 ONLY) Contains the monthly minimum fee [amount]. |
+| MERCH REVERSAL FEE | (Optional) Contains the reversal fee [amount]. |
+| MERCH BATCH FEE | (Optional) Contains the batch fee [amount]. |
+| MERCH URL | (Optional) Website address |
+| MERCH SALES REP | (Optional) sales rep name or sales rep ID# |
+| PROMO CODE | (Optional) PAYA given PROMO code (NOTE: For C21 this is a separate element. Please check your schema) |
+| BUSINESS INFO | Contains all the elements for business info. |
+| MERCH OWNERSHIP | Contains the value that identifies the [merchant ownership level]. |
+| MERCH AVG CHECK AMOUNT | Contains the merchant’s average check [amount]. |
+| MERCH MAX CHECK AMOUNT | Contains the merchant’s max check [amount]. |
+| MERCH TOTAL TIME IN BUSINESS | Contains the total number of months the merchant has been in business. |
+| GIFT LOYALTY | Contains all of the elements for gift and loyalty. |
+| TIME ZONE | Contains the value that identifies the [time zone] of the gift merchant’s location. |
+| BUSINESS TYPE | Contains the value that identifies the gift merchant’s [business type]. |
+| NEW LOCATION | Contains all of the elements for the location. |
+| LOC NAME | Contains the name of the location. The [Location Name] can be up to 100 alpha-numeric characters and can include the following: #,-,:, ;, ‘ |
+| LOC CROSS REF ID | Same as the Merch Cross Ref ID unless the location has a different cross ref id. The [Cross Ref ID] can be up to 50 alpha-numeric characters and can include the following: #,-,:, ;, ‘ |
+| LOC ADDRESS 1 | Contains the first line of the location’s address. The [Address1] can be up to 200 alpha-numeric characters and can include the following: #, -, :, ; |
+| LOC ADDRESS 2 | Contains the second line of the location’s address. The [Address2] can be up to 200 alpha-numeric characters and can include the following: #, -, :, ; |
+| LOC CITY | Contains the city of the location’s address. The [City] can be up to 50 alpha characters. |
+| LOC STATE | Contains the state or province of the location’s address. Valid state and province codes can be found [here]. |
+| LOC ZIP | Contains the [zip code] of the location. |
+| LOC PHONE | Contains the location phone number. The [Phone Number] is expected as a 10 digit number without a – or ( ). |
+| LOC STATEMENT FEE | Contains the monthly fee [amount]. |
+| LOC MINIMUM FEE | Contains the monthly minimum [amount]. |
+| LOC FEES ROUTING NUM | Contains the 9-digit [routing number] for location fees. |
+| LOC FEES ACCOUNT NUM | Contains the [account number] for the location fees. Valid account numbers should be between 3 and 18 numeric characters. |
+| LOC TAX PAYER ID | This is an optional element that can contain up to 9 numeric characters. |
+| LOC TAX PAYER NAME | This is an optional element that can contain up to 100 alpha-numeric characters and can include the following: #,-,:, ;, ‘ |
+| LOC ACH DESCRIPTOR | (Optional) Contains the name of the location. Can be up to 16 alpha-numeric characters and can include the following: #,-,:, ;, ‘ |
+| LOC ACH CODATA | (Optional) Contains the location phone number. The [Phone Number] is expected as a 10 digit number with – and without () |
+| CONSUMER CONVENIENCE | (Optional) Contains all the elements for Consumer Convenience Fee. |
+| CHARGE CCF | (Optional) Indicate if merchant will charge a consumer convenience fee: 1 for yes, 0 for no. |
+| FEE AMOUNT | (Optional) Contains consumer convenience fee amount. |
+| FEE INCLUDED IN TRANS | (Optional) Indicate if the convenience fee is included in the transaction: 1 for yes, 0 for no. |
+| FEE IS PERCENT | (Optional) Indicate if consumer convenience fee is percent of fee: 1 for yes, 0 for no. |
+| FEE PERCENT MINIMUM AMOUNT | (Optional) The minimum fee that would be charged for Convenience to customer even if the % based fee is lower than this threshold. |
+| FEE PERCENT MAXIMUM AMOUNT | (Optional) The maximum fee that would be charged for Convenience to the customer even if the % based fee is higher than this threshold. |
+| STATEMENT | Contains all the elements for the location statement. |
+| LOC STATEMENT ADDRESS 1 | Contains the first line of the statement address. The [Address1] can be up to 200 alpha-numeric characters and can include the following: #, -, :, ; |
+| LOC STATEMENT ADDRESS 2 | Contains the second line of the statement address. The [Address2] can be up to 200 alpha-numeric characters and can include the following: #, -, :, ; |
+| LOC STATEMENT CITY | Contains the city of the statement address. The [City] can be up to 50 alpha characters. |
+| LOC STATEMENT STATE | Contains the state or province of the statement address. Valid state and province codes can be found [here]. |
+| LOC STATEMENT ZIP | Contains the [zip code] of the statement address. |
+| LOC STATEMENT ATTN | This is an optional element that can contain up to 200 alpha-numeric characters. |
+| NEW POC | Contains all of the elements for the POC. |
+| POC PRIMARY | Indicate if point of contact is the primary point of contact: 1 for yes, 0 for no. |
+| POC FIRST NAME | Contains the first name of the point of contact. The [First Name] can be up to 100 alpha characters. |
+| POC LAST NAME | Contains the last name of the point of contact. The [Last Name] can be up to 100 alpha characters. |
+| POC TITLE | Contains the title of the point of contact. The [Title] can be up to 100 alpha characters. |
+| POC COMMENTS | This is an optional element that can contain up to 200 alpha-numeric characters. |
+| POC ADDRESS | Contains the point of contact’s address. The [Address] can be up to 200 alpha-numeric characters and can include the following: #, -, :, ; |
+| POC CITY | Contains the city of the point of contact’s address. The [City] can be up to 50 alpha characters. |
+| POC STATE | Contains the state or province of the point of contact’s address. Valid state and province codes can be found [here]. |
+| POC ZIP | Contains the [zip code] of the point of contact. |
+| POC DOB | Contains the date of birth of the point of contact. The Date of Birth should be in the following format: yyyy-MM-dd |
+| POC SSN | Contains the point of contact’s social security number. The [SSN] much be 9 numeric characters. |
+| POC Email | (Optional) Contains the point of contact’s Email Address. |
+| POC Role | (Optional) Contains the point of contact’s Role which can be found in AppGatewayTypes.xsd in the Data Types section. |
+| NEW TERMINAL | Contains all the elements for the terminal. |
+| TERM CROSS REF ID | Same as the Merch Cross Ref ID unless the terminal has a different cross ref id. The [Cross Ref ID] can be up to 50 alpha-numeric characters and can include the following: #,-,:, ;, ‘ |
+| TERM CHECK LIMIT | Contains the max check limit [amount] accepted by the merchant. |
+| TERM PERIPHERAL | Contains the value that identifies the [peripheral] used with the terminal. |
+| TERM TYPE ID | Contains the value that identifies the [terminal type]. |
+| TERM VERIFICATION ONLY | Indicate if the terminal should be a verification only terminal: 1 for yes, 0 for no. |
+| TERM LVL2 VERIFICAITON | (Optional) Indicate if the terminal should be level 2 – advanced account verification terminal: 1 for yes, 0 for no. |
+| TERM LVL3 VERIFICATION | (Optional) Indicate if the terminal should be level 3 – Identity verification terminal: 1 for yes, 0 for no. |
+| TERM SWIFT SETTLE CONSUMER DEBIT | (Optional) Indicate if the terminal wants Swift Settle for consumer debits: 1 for yes, 0 for no. |
+| TERM SWIFT SETTLE CONSUMER CREDIT | (Optional) (ACH ONLY) Indicate if the terminal wants Swift Settle for consumer credits: 1 for yes, 0 for no. |
+| TERM SWIFT SETTLE MERCHANT DEBIT | (Optional) (ACH ONLY) Indicate if the terminal wants Swift Settle for merchant debits: 1 for yes, 0 for no. |
+| TERM OCR | (Optional) Indicate if the terminal is OCR: 1 for yes, 0 for no. |
+| TERM MRDC | (Optional) Indicate if the terminal is MRDC: 1 for yes, 0 for no. |
+| TERM CLONE FROM TERMINAL ID | Contains the ID for the terminal to copy. The [Terminal ID] is expected as a numeric value. |                                                                                            |
 
 ## **XML Samples**
 
