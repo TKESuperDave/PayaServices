@@ -723,10 +723,10 @@ The example Schema file paths would be as follows:
 
 ### **ACH Schema**
 
-  - ACH Application Schema:  [NewMerchApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/NewMerchApp_ACH.xsd)
-  - New Location Application Schema:  [NewLocApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newlocapp_ach.xsd)
-  - New Terminal Application Schema:  [NewTermApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermapp_ach.xsd)
-  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermCreateapp_ach.xsd)
+  - ACH Application Schema:  [NewMerchApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/NewMerchApp_ACH.xsd) | [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)
+  - New Location Application Schema:  [NewLocApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newlocapp_ach.xsd)  | [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/newlocapp_ach.xsd)
+  - New Terminal Application Schema:  [NewTermApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermapp_ach.xsd) | [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/newtermapp_ach.xsd)
+  - New Create Terminal Application Schema:  [NewTermCreateApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermCreateapp_ach.xsd) | [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/newtermCreateapp_ach.xsd)
 
 ### **Check21 Schema**
 
