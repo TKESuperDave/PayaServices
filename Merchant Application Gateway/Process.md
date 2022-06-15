@@ -732,7 +732,7 @@ The example Schema file paths would be as follows:
 
 ### **Check21 Schema**
 
-<<<<<<< HEAD
+
 | XSD | Documentation | Production|
 |----------| ----------|----------|
   | Check21 Application Schema|  [NewMerchApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/NewMerchApp_Check21.xsd)  |  [NewMerchApp_Check21](https|//demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)|
