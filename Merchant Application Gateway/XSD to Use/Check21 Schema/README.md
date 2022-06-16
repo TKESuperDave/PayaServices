@@ -1,5 +1,6 @@
 ### **Check21 Schema**
 
+Below are the links to the latest versions of the ACH Production Schema. The XSD files contained in this folder are for documentation purposes only.
 
 | XSD | Documentation | Production|
 |----------| ----------|----------|
