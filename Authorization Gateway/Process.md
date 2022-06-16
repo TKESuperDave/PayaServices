@@ -530,7 +530,7 @@ XML Templates
 
 Corresponding XDS Template
 
-| **PPD**                                                    | Certification Terminal ID                |             |              |           |     |    |  |  |
+| **PPD**                                                    | Certification Terminal ID                |             |              |           |     |    | Production  | Production  |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|---------------------|-|-|
 |                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed) |Production XSD Guarenteed |Production XSD Non- Guarenteed |
 | **Debit Only Transactions**                                |                                          |             |              |           |             |                       | | |
