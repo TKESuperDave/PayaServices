@@ -721,19 +721,24 @@ Each element in the XML data packet that is sent to the Application Gateway has 
 
 The example Schema file paths would be as follows:
 
-### **ACH Schema**
+### **ACH Schema** 
 
  - ACH Application Schema:  [NewMerchApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/NewMerchApp_ACH.xsd)
  - New Location Application Schema: [NewLocApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newlocapp_ach.xsd)
  - New Terminal Application Schema: [NewTermApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermapp_ach.xsd) 
- - New Create Terminal Application Schema: [NewTermCreateApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermCreateapp_ach.xsd) 
+ - New Create Terminal Application Schema: [NewTermCreateApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermCreateapp_ach.xsd)
+
+<sub>For the latest ACH XSD Schemas see: [ACH XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/README.md)</sub>
 
 ### **Check21 Schema**
 
   - Check21 Application Schema: [NewMerchApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/NewMerchApp_Check21.xsd)  
   - New Location Application Schema: [NewLocApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newlocapp_check21.xsd) 
   - New Terminal Application Schema: [NewTermApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermapp_Check21.xsd)  
-  - New Create Terminal Application Schema: [NewTermCreateApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermCreateapp_Check21.xsd)  
+  - New Create Terminal Application Schema: [NewTermCreateApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermCreateapp_Check21.xsd)
+   
+<sub>For the latest Check21 XSD Schemas see: [Check21 XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/README.md)</sub>
+ 
 ### **Gift Schema**
 
  - Gift Application Schema: [NewMerchApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/NewMerchApp_Gift.xsd)  
@@ -741,13 +746,15 @@ The example Schema file paths would be as follows:
  - New Terminal Application Schema: [NewTermApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermapp_gift.xsd)
  - New Create Terminal Application Schema: [NewTermCreateApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermCreateapp_gift.xsd)
 
+<sub>For the latest Gift XSD Schemas see: [Gift XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/README.md)</sub>
+
 ### **Other Schema** 
 
   - Board Merchant Application Schema: [NewMerchantApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewMerchantsApp.xsd)
   - Board Location Application Schema: [NewLocationsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewLocationsApp.xsd)
   - Create Terminal Application Schema: [NewTerminalsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewTerminalsApp.xsd)
 
-
+<sub>For the latest Other XSD Schemas see: [Check21 XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/README.md)</sub>
 
 
 ## **Response**
