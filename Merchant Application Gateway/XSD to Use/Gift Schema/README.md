@@ -1,3 +1,7 @@
+### **Gift Schema**
+
+Below are the links to the latest versions of the ACH Production Schema. The XSD files contained in this folder are for documentation purposes only.
+
 | XSD | Documentation | Production|
 |----------| ----------|----------|
   | Gift Application Schema|  [NewMerchApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/NewMerchApp_Gift.xsd)  | [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)|
