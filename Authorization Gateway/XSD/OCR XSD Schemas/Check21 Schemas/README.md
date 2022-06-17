@@ -1,3 +1,5 @@
+Below are the links to the latest versions of the Check21 Production Schema. The XSD files contained in this folder are for documentation purposes only.
+
 | Documentation Template            | Production Templates                   | DL  Required  | Verify  ID  | Certification Terminal ID  |
 |-----------------------------------|-----|---------------|-------------|----------------------------|
 | [OCRDLOptional.xsd](OCRDLOptional.xsd) |   [OCRDLOptional.xsd](https://demo.eftchecks.com/webservices/Schemas/c21/OCRDLOptional.xsd)                   |               |             | 4110 / 4120/ 4130 / 4210        |
