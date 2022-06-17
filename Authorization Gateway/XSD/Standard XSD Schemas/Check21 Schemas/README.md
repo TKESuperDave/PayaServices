@@ -1,3 +1,5 @@
+Below are the links to the latest versions of the Check21 Production Schema. The XSD files contained in this folder are for documentation purposes only.
+
 |                          Documentation Template  | Production Template                        | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  |
 |:--------------------------------------------------:|:--------:|:-------------:|:--------------:|:-----------:|:--------------------------:|
 | [CheckNoVerificationDLOptional.xsd](CheckNoVerificationDLOptional.xsd)| [CheckNoVerificationDLOptional.xsd](https://demo.eftchecks.com/webservices/Schemas/c21/CheckNoVerificationDLOptional.xsd)                          |               |                |             |            1610            |
