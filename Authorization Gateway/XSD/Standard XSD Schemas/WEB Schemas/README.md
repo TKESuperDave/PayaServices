@@ -1,3 +1,5 @@
+Below are the links to the latest versions of the WEB Production Schema. The XSD files contained in this folder are for documentation purposes only.
+
 |                         Documentation Template     | Production Template                     | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  |
 |:--------------------------------------------------:|:--------:|:-------------:|:--------------:|:-----------:|:--------------------------:|
 | [Ng_CheckNoVerificationDLOptional.xsd](Ng_CheckNoVerificationDLOptional.xsd)| [Ng_CheckNoVerificationDLOptional.xsd](https://demo.eftchecks.com/webservices/Schemas/web/Ng_CheckNoVerificationDLOptional.xsd)                          |               |                |             |            2310            |
