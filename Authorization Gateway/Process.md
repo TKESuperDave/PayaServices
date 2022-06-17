@@ -530,6 +530,8 @@ XML Templates
 
 Corresponding XDS Template
 
+<sub>For the latest PPD XSD Schemas see: [PPD Schemas - Guaranteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed) and [PPD Schemas - Non-Guaranteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed)</sub>
+
 | **PPD**                                                    | Certification Terminal ID                |             |              |           |     |    | Production  | Production  |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|---------------------|-|-|
 |                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/PPD%20Schemas%20-%20Non-Guaranteed) |XSD Guarenteed | XSD Non- Guarenteed |
@@ -575,6 +577,8 @@ XML Templates
 
 Corresponding XDS Template
 
+<sub>For the latest CCD XSD Schemas see: [CCD Schemas - Guaranteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed) and [CCD Schemas - Non-Guaranteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed)</sub>
+
 | **CCD**                                                    | Certification Terminal ID                |             |              |           |                |                     |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|---------------------|
 |                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/CCD%20Schemas%20-%20Non-Guaranteed) |
@@ -615,6 +619,8 @@ XML Templates
 
 Corresponding XDS Template
 
+<sub>For the latest WEB XSD Schemas see: [WEB Schemas](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas)</sub>
+
 | **WEB**                                                    | Certification Terminal ID                |             |              |           |                |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
 |                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Non-Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/WEB%20Schemas) |
@@ -647,6 +653,8 @@ XML Templates
 
 Corresponding XDS Template
 
+<sub>For the latest TEL XSD Schemas see: [TEL Schemas - Guaranteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed) and [TEL Schemas - Non-Guaranteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed)</sub>
+
 | **TEL**                                                    | Certification Terminal ID                |             |              |           |                |                     |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|---------------------|
 |                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Guaranteed) | [XSD Non- Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/TEL%20Schemas%20-%20Non-Guaranteed) |
@@ -677,6 +685,8 @@ XML Templates
 
 
 Corresponding XDS Template
+
+<sub>For the latest POP XSD Schemas see: [POP Schemas](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/POP%20Schemas)</sub>
 
 | **POP**                                                    | Certification Terminal ID                |             |              |           |                |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
@@ -709,6 +719,8 @@ XML Templates
 
 Corresponding XDS Template
 
+<sub>For the latest Check21 XSD Schemas see: [Check21 Schemas](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas)</sub>
+
 | **Check21**                                                    | Certification Terminal ID                |             |              |           |                |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
 |                                                            | Guarenteed 1000's  Non-Guarenteed 2000's | DL Required | Verify Check | Verify ID |[XSD Guarenteed](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/Check21%20Schemas) |
@@ -739,6 +751,8 @@ XML Templates
 
 
 Corresponding XDS Template
+
+<sub>For the latest BOC XSD Schemas see: [BOC Schemas](/Authorization%20Gateway/XSD/Standard%20XSD%20Schemas/BOC%20Schemas)</sub>
 
 | **BOC**                                                    | Certification Terminal ID                |             |              |           |                |
 |------------------------------------------------------------|------------------------------------------|-------------|--------------|-----------|----------------|
