@@ -1,3 +1,5 @@
+Below are the links to the latest versions of the CCD Production Schema. The XSD files contained in this folder are for documentation purposes only.
+
 |                          Documentation Template | Production Template                         | DL  Required  | Verify  Check  | Verify  ID  | Certification Terminal ID  |
 |:-------------------------------------------------:|:---------:|:-------------:|:--------------:|:-----------:|:--------------------------:|
 |                 **Debit Only Transactions**     |             |               |                |             |                            |
