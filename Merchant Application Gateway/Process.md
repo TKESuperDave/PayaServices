@@ -721,44 +721,40 @@ Each element in the XML data packet that is sent to the Application Gateway has 
 
 The example Schema file paths would be as follows:
 
-### **ACH Schema**
+### **ACH Schema** 
 
-| XSD | Documentation | Production|
-|----------| ----------|----------|
-  | ACH Application Schema|  [NewMerchApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/NewMerchApp_ACH.xsd)  |  [NewMerchApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_ACH.xsd)|
-  | New Location Application Schema|  [NewLocApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newlocapp_ach.xsd)   |  [NewLocApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/newlocapp_ach.xsd)|
-  | New Terminal Application Schema|  [NewTermApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermapp_ach.xsd)  |  [NewTermApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/newtermapp_ach.xsd)|
-  | New Create Terminal Application Schema|  [NewTermCreateApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermCreateapp_ach.xsd)  |  [NewTermCreateApp_ACH](https://demo.eftchecks.com/webservices/Schemas/App/newtermCreateapp_ach.xsd)|
+ - ACH Application Schema:  [NewMerchApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/NewMerchApp_ACH.xsd)
+ - New Location Application Schema: [NewLocApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newlocapp_ach.xsd)
+ - New Terminal Application Schema: [NewTermApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermapp_ach.xsd) 
+ - New Create Terminal Application Schema: [NewTermCreateApp_ACH](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema/newtermCreateapp_ach.xsd)
+
+<sub>For the latest ACH XSD Schemas see: [ACH XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/ACH%20Schema)</sub>
 
 ### **Check21 Schema**
 
-
-| XSD | Documentation | Production|
-|----------| ----------|----------|
-  | Check21 Application Schema|  [NewMerchApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/NewMerchApp_Check21.xsd)  |  [NewMerchApp_Check21](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Check21.xsd)|
-  | New Location Application Schema|  [NewLocApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newlocapp_check21.xsd) |[NewLocApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_check21.xsd) |
-  | New Terminal Application Schema|  [NewTermApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermapp_Check21.xsd)  |  [NewTermApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermapp_Check21.xsd)|
-  | New Create Terminal Application Schema|  [NewTermCreateApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermCreateapp_Check21.xsd)  |  [NewTermCreateApp_Check21](https://demo.eftchecks.com/webservices/schemas/app/newtermCreateapp_Check21.xsd)|
-
-
+  - Check21 Application Schema: [NewMerchApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/NewMerchApp_Check21.xsd)  
+  - New Location Application Schema: [NewLocApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newlocapp_check21.xsd) 
+  - New Terminal Application Schema: [NewTermApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermapp_Check21.xsd)  
+  - New Create Terminal Application Schema: [NewTermCreateApp_Check21](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema/newtermCreateapp_Check21.xsd)
+   
+<sub>For the latest Check21 XSD Schemas see: [Check21 XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/Check21%20Schema)</sub>
+ 
 ### **Gift Schema**
 
-| XSD | Documentation | Production|
-|----------| ----------|----------|
-  | Gift Application Schema|  [NewMerchApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/NewMerchApp_Gift.xsd)  | [NewMerchApp_Gift](https://demo.eftchecks.com/webservices/Schemas/App/NewMerchApp_Gift.xsd)|
-  | New Location Application Schema|  [NewLocApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newlocapp_gift.xsd)  | [NewLocApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newlocapp_gift.xsd)|
-  | New Terminal Application Schema|  [NewTermApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermapp_gift.xsd)  | [NewTermApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermapp_gift.xsd)|
-  | New Create Terminal Application Schema|  [NewTermCreateApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermCreateapp_gift.xsd)  | [NewTermCreateApp_Gift](https://demo.eftchecks.com/webservices/schemas/app/newTermCreateapp_gift.xsd)|
+ - Gift Application Schema: [NewMerchApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/NewMerchApp_Gift.xsd)  
+ - New Location Application Schema: [NewLocApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newlocapp_gift.xsd)
+ - New Terminal Application Schema: [NewTermApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermapp_gift.xsd)
+ - New Create Terminal Application Schema: [NewTermCreateApp_Gift](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema/newTermCreateapp_gift.xsd)
+
+<sub>For the latest Gift XSD Schemas see: [Gift XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/Gift%20Schema)</sub>
 
 ### **Other Schema** 
 
-| XSD | Documentation | Production|
-|----------| ----------|----------|
-  | Board Merchant Application Schema|  [NewMerchantApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewMerchantsApp.xsd)  | [NewMerchantApp](https://demo.eftchecks.com/webservices/schemas/app/NewMerchantsApp.xsd)|
-  | Board Location Application Schema|  [NewLocationsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewLocationsApp.xsd)  | [NewLocationsApp](https://demo.eftchecks.com/webservices/schemas/app/NewLocationsApp.xsd)|
-  | Create Terminal Application Schema|  [NewTerminalsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewTerminalsApp.xsd)  | [NewTerminalsApp](https://demo.eftchecks.com/webservices/schemas/app/NewTerminalsApp.xsd)|
+  - Board Merchant Application Schema: [NewMerchantApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewMerchantsApp.xsd)
+  - Board Location Application Schema: [NewLocationsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewLocationsApp.xsd)
+  - Create Terminal Application Schema: [NewTerminalsApp](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema/NewTerminalsApp.xsd)
 
-
+<sub>For the latest Other XSD Schemas see: [Check21 XDS Schema](/Merchant%20Application%20Gateway/XSD%20to%20Use/Other%20Schema)</sub>
 
 
 ## **Response**
